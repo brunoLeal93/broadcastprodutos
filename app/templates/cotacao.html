@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{% block title %}: Cotação{% endblock %}
+{%block content%}
+    <!-- Jumbotrom -->
+    <div class="jumbotron jumbotron-fluid bg-primary">
+        <div class="container text-center">
+            <h3>Encontre tudo que precisa de cotações disponíveis nos nossos produtos</h3>
+            <form method="POST" class="form col-md-6 offset-md-3" action="/cotacao">    
+                <div class="input-group mt-5">
+                    <input type="text" name="contentSearch" class="form-control" placeholder="Buscar em nossas cotações..." aria-label="Buscar em nossas cotações..." aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <input class="btn btn-secondary" type="submit" id="button-addon2" value="Buscar"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Section Derivativos -->
+    <section class="jumbotron bg-light">
+        <div class="container text-center">
+            <div class='row'><div class='col-1 align-middle' name='Mercadoria'>Café</div><div class='col'><div class='row'><div class='col-3' name='Fonte'>BMF</div><div class='col'><div class='row'><div class='col-2' name='Mercado'>Futuro</div><div class='col' name='DescPapel'>Café Arábica Tipo 4/5</div><div class='col-1' name='CodBolsa'>ICF</div><div class='col-1' name='CodBroad'>ICF</div></div><div class='row'><div class='col-2' name='Mercado'>Futuro</div><div class='col' name='DescPapel'>Café Arábica Tipo 4/5</div><div class='col-1' name='CodBolsa'>ICF</div><div class='col-1' name='CodBroad'>ICF</div></div><div class='row'><div class='col-2' name='Mercado'>Futuro</div><div class='col' name='DescPapel'>Café Arábica Tipo 4/5</div><div class='col-1' name='CodBolsa'>ICF</div><div class='col-1' name='CodBroad'>ICF</div></div><div class='row'><div class='col-2' name='Mercado'>Futuro</div><div class='col' name='DescPapel'>Café Arábica Tipo 4/5</div><div class='col-1' name='CodBolsa'>ICF</div><div class='col-1' name='CodBroad'>ICF</div></div></div></div><div class='row'><div class='col-3' name='Fonte'>ICE Europe (IPE)</div><div class='col'><div class='row'><div class='col-2' name='Mercado'>Opção</div><div class='col' name='DescPapel'>Café Robusta</div><div class='col-1' name='CodBolsa'>RC</div><div class='col-1' name='CodBroad'>RRC</div></div><div class='row'><div class='col-2' name='Mercado'>Opção</div><div class='col' name='DescPapel'>Café Robusta</div><div class='col-1' name='CodBolsa'>RC</div><div class='col-1' name='CodBroad'>RRC</div></div></div></div></div></div><div class='row'><div class='col-1' name='Mercadoria'>Soja</div><div class='col'></div></div><div class='row'><div class='col-1' name='Mercadoria'>teste</div><div class='col'><div class='row'><div class='col-3' name='Fonte'>ICE US (NYBOT)</div><div class='col'><div class='row'><div class='col-2' name='Mercado'>teste</div><div class='col' name='DescPapel'>Café Arábica</div><div class='col-1' name='CodBolsa'>KCW</div><div class='col-1' name='CodBroad'>KCW</div></div></div></div></div></div>
+        </div>
+    </section>
+
+{%endblock%}

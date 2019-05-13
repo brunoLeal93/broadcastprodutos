@@ -1,0 +1,473 @@
+{%extends 'base.html'%}
+{% block title %}: BPRO Desktop{% endblock %}
+{%block content%}
+    <!-- Jumbotrom -->
+    <div class="jumbotron jumbotron-fluid bg-primary">
+        <div class="container">
+            <h1>A melhor cobertura em tempo real do Mercado Financeiro</h1>
+        </div>
+    </div>
+
+    <!-- Content Site -->
+    <main role="main">
+    
+        <!-- Section Intro -->
+        <section class="jumbotron bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <img src="../static/img/img-Computers.png" class="img-fluid" alt="Responsive image">
+                    </div>
+                    <div class="col-6">
+                        <p>O Broadcast Profissional é uma plataforma de informações em tempo real que reúne dados, cotações, notícias e análises sobre os principais mercados nacionais e internacionais.</p>
+                        <p>A combinação das redações da Agência Estado e do Estadão, juntamente com uma série de parceiros como consultorias especializadas e analistas de mercado trazem informações sobre acontecimentos no Brasil e no mundo em tempo real com exclusividade para os seus leitores, permitindo um acompanhamento qualificado dos eventos que impactam a volatilidade dos principais setores da economia com uma linguagem objetiva e concisa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section -->
+        <section class="jumbotron bg-light">
+            <div class="container">
+                <p class="lead text-center mb-5">Ao se tornar usuário do Broadcast+, os seguintes conteúdos e funcionalidades são adquiridas:</p>
+                <div class="card-deck">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">COTAÇÕES</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <h5>
+                                        AÇÕES <br/>
+                                        <small class="text-muted">Bovespa, Nyse, Nasdaq, Bolsa de Madri.</small>
+                                    </h5>
+                                </li>
+                                <li class="list-group-item">
+                                    <h5>
+                                        CÂMBIO <br/>
+                                        <small class="text-muted">Taxas Broadcast, Bitcoin, BM&F, CME, ICE US e Contribuidores Broadcast.</small>
+                                    </h5>
+                                </li>
+                                <li class="list-group-item">
+                                    <h5>
+                                        COMMODITIES <br/>
+                                        <small class="text-muted">Taxas Broadcast, CEPEA, BM&F, CBOT, CME, COMEX, ICE Europe, ICE US, LME e Contribuidores Broadcast.</small>
+                                    </h5>
+                                </li>
+                                <li class="list-group-item">
+                                    <h5>
+                                        FUNDOS <br/>
+                                        <small class="text-muted">Fundos ANBIMA e Fundos Bovespa.</small>
+                                    </h5>
+                                </li>
+                                <li class="list-group-item">
+                                    <h5>
+                                        ÍNDICES <br/>
+                                        <small class="text-muted">Índices Mundiais, B3, CME, Dow Jones, Euronext, FTSE, ICE US, NASDAQ e NYSE GIFS.</small>
+                                    </h5>
+                                </li>
+                                <li class="list-group-item">
+                                    <h5>
+                                        RENDA FIXA <br/>
+                                        <small class="text-muted">ANBIMA, Banco Central do Brasil, B3, CBOT, CME, Tullett Prebon e Contribuidores Broadcast.</small>
+                                    </h5>
+                                </li>
+                                <li class="list-group-item">
+                                    <h5>
+                                        TAXAS E INDICADORES <br/>
+                                        <small class="text-muted">Taxas Broadcast, JP Morgan e Contribuidores Broadcast.</small>
+                                    </h5>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">FUNCIONALIDADES</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <h5>
+                                        PRINCIPAIS FERRAMENTAS<br/>
+                                        <small class="text-muted">Janela e painel de cotações, livro de ofertas, ferramenta gráfica, times & trades, players, ativoteca e busca de notícias.</small>
+                                    </h5>
+                                </li>
+                                <li class="list-group-item">
+                                    <h5>
+                                        ALERTAS<br/>
+                                        <small class="text-muted">Cotações e Notícias.</small>
+                                    </h5>
+                                </li>
+                                <li class="list-group-item">
+                                    <h5>
+                                        BROADCAST CHAT<br/>
+                                        <small class="text-muted">Com acesso ao Chat Movél, disponível para Android e iOS.</small>
+                                    </h5>
+                                </li>
+                                <li class="list-group-item">BLINK</li>
+                                <li class="list-group-item">CALCULADORA DE TÍTULOS PÚBLICOS</li>
+                                <li class="list-group-item">DADOS MACROECONOMICOS</li>
+                                <li class="list-group-item">PRECIFICAÇÃO DE OPÇÕES</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section PACOTES -->
+        <section class="jumbotron bg-white" id="pacotes">
+            <div class="container">
+                <h2 class="text-center text-uppercase text-secondary mt-0 mb-0">PACOTES</h2>
+                <hr class="hr-icon hr-products mb-5">
+        
+                <div class="accordion mb-5" id="accordionExample">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                                BROADCAST TRADE
+                            </button>
+                            <h4 class="float-sm-right text-secondary">R$280</h4>
+                            <!---->
+                            <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="bct-descricao" data-toggle="tab" href="#bctdescricao1" role="tab" aria-controls="home" aria-selected="true">DESCRIÇÃO</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="bct-ganhos" data-toggle="tab" href="#bctganhos1" role="tab" aria-controls="profile" aria-selected="false">PRINCIPAIS CARACTERÍSTICAS</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="bctdescricao1" role="tabpanel" aria-labelledby="home-tab">
+                                            
+                                            <div class="mt-4 mb-4">
+                                                <p>O Pacote Broadcast Trade oferece acesso ao caderno de notícias Conjuntura & Negócios que é composto por uma seleção de notícias sobre negócios e empresas, principalmente de companhias de capital aberto publicadas nos noticiários online da Agência Estado e no jornal "O Estado de S. Paulo".</p>
+                                                <p>Além disso, o Pacote Broadcast Trade, disponibiliza cotações com delay das principais Bolsas de Valores do Brasil, EUA e Europa, dados em tempo real de alguns dos principais Indicadores de Inflação, Taxas de Câmbiode, de Juros e de Commodities, Libor, paridades das principais moedas do mundo, Preços Fisicos e Indicadores colhidos e calculados pelo CEPEA e dados de contribuição de Grandes Bancos, Corretoras e Assets sobre Câmbio e Renda Fixa.</p>
+                                                <p><a href="#">Clique aqui</a> para acessar o descritivo completo do pacote.</p>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="bctganhos1" role="tabpanel" aria-labelledby="profile-tab">
+                                            <div class="card-deck mt-4">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Notícas</h5>
+                                                        <ul class="list-group list-group-flush">
+                                                            <li class="list-group-item"><i class="far fa-newspaper text-secondary"></i> Conjuntura & Negócios</li>
+                                                            <li class="list-group-item"><i class="far fa-newspaper text-secondary"></i> Newspapaer (Caderno)</li>
+                                                            <li class="list-group-item"><i class="far fa-newspaper text-secondary"></i> Broadcast TV</li>
+                                                            <li class="list-group-item"><i class="far fa-newspaper text-secondary"></i> Relatórios de Research</li>
+                                                            <li class="list-group-item"><i class="far fa-newspaper text-secondary"></i> Estadão (Economia, Jornal Digital)</li>
+                                                            <li class="list-group-item"><i class="far fa-newspaper text-secondary"></i> Contribuidores - Agência Bovespa, CETIP, STJ, PR Newswire, CEAGESP</li>
+                                                            <li class="list-group-item"><i class="far fa-newspaper text-secondary"></i> Releases</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Add-ons Disponíveis para Contratação</h5>
+                                                        <ul class="list-group list-group-flush">
+                                                            <li class="list-group-item">
+                                                                <i class="fas fa-file-download text-secondary"></i>
+                                                                <a href="#">(BC-14167) Análise Fundamentalista - Capital Aberto</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <i class="fas fa-file-download text-secondary"></i>
+                                                                <a href="#">(BC-19724) Análise Fundamentalista - Capital Aberto e Fechado</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <i class="fas fa-file-download text-secondary"></i>
+                                                                <a href="#">(BC-14166) Fundos de Investimento</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                BROADCAST CONJUNTURA
+                            </button>
+                            <h4 class="float-sm-right text-secondary">R$460</h4>
+                            <!---->
+                            <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="bct-descricao" data-toggle="tab" href="#bctdescricao2" role="tab" aria-controls="home" aria-selected="true">DESCRIÇÃO</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="bct-ganhos" data-toggle="tab" href="#bctganhos2" role="tab" aria-controls="profile" aria-selected="false">CARACTERÍSTICAS</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent1">
+                                            <div class="tab-pane fade show active" id="bctdescricao2" role="tabpanel" aria-labelledby="home-tab">
+                                                
+                                                <div class="mt-4 mb-4">
+                                                    <p>Com notícias em tempo real dos principais fatos políticos, econômicos e empresariais que afetam o setor produtivo, o pacote Broadcast Conjuntura contempla todo conteúdo do Broadcast Trade e ainda oferece oferece o caderno "Conjuntura e Finanças" que realiza uma cobertura completa e intensiva dos mercados de dólar, juros, títulos públicos e dos principais fatos que também afetam o mercado de capitais. Dando um acompanhamento especializado de indicadores econômicos, inflação, decisões no âmbito político e econômico do cenário internacional.</p>
+                                                    <p>Além de toda a corbertura noticiosa e das cotações herdadas pelo Broadcast Trade, este pacote também oferece acesso às cotações de CDS (Credit Default Swap) – Índices Markit.</p>
+                                                    <p><a href="#">Clique aqui</a> para acessar o descritivo completo do pacote.</p>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="bctganhos2" role="tabpanel" aria-labelledby="profile-tab">
+                                                <div class="alert alert-secondary mt-3 text-center" role="alert">
+                                                    Conteúdo do Broadcast Trade +
+                                                </div>
+                                                <div class="card-deck mt-4">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Notícias e Cotações</h5>
+                                                            <ul class="list-group list-group-flush">
+                                                                <li class="list-group-item"><i class="far fa-newspaper text-secondary"></i> Conjuntura & Finanças</li>
+                                                                <li class="list-group-item"><i class="far fa-newspaper text-secondary"></i> Estadão (Finanças e Política)</li>
+                                                                <li class="list-group-item"><i class="fas fa-exchange-alt text-secondary"></i> Markit CDS Índices</li>
+                                                                
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Add-ons Disponíveis para Contratação</h5>
+                                                            <ul class="list-group list-group-flush">
+                                                                <li class="list-group-item">
+                                                                    <i class="fas fa-file-download text-secondary"></i>
+                                                                    <a href="#">(BC-14167) Análise Fundamentalista - Capital Aberto</a>
+                                                                </li>
+                                                                <li class="list-group-item">
+                                                                    <i class="fas fa-file-download text-secondary"></i>
+                                                                    <a href="#">(BC-19724) Análise Fundamentalista - Capital Aberto e Fechado</a>
+                                                                </li>
+                                                                <li class="list-group-item">
+                                                                    <i class="fas fa-file-download text-secondary"></i>
+                                                                    <a href="#">(BC-14166) Fundos de Investimento</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                BROADCAST MERCADOS
+                            </button>
+                            <h4 class="float-sm-right text-secondary">R$770</h4>
+                            <!---->
+                            <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="bct-descricao" data-toggle="tab" href="#bctdescricao3" role="tab" aria-controls="home" aria-selected="true">DESCRIÇÃO</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="bct-ganhos" data-toggle="tab" href="#bctganhos3" role="tab" aria-controls="profile" aria-selected="false">PRINCIPAIS CARACTERÍSTICAS</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="bctdescricao3" role="tabpanel" aria-labelledby="home-tab">
+                                                
+                                                <div class="mt-4 mb-4">
+                                                    <p>Com entrevistas exclusivas e reportagens especiais sobre decisões e bastidores, antecipação e divulgação dos principais fatos sobre as empresas de capital aberto, incluindo operações de fusões e aquisições, planos de investimentos, balanços, fatos relevantes, dividendos, reestruturação, emissões de dívidas e desempenho das ações. O pacote Broadcast Mercados oferece notícias mais contextualizadas, análises e cenários das empresas listadas na B3 e dos principais setores mais relevantes da economia brasileira.</p>
+                                                    <p>Além disso, o Pacote Broadcast Trade, disponibiliza cotações com delay das principais Bolsas de Valores do Brasil e EUA e Europa.</p>
+                                                    <p><a href="#">Clique aqui</a> para acessar o descritivo completo do pacote.</p>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="bctganhos3" role="tabpanel" aria-labelledby="profile-tab">
+                                                <div class="alert alert-secondary mt-3 text-center" role="alert">
+                                                    Conteúdo do Broadcast Conjuntura +
+                                                </div>
+                                                <div class="card-deck mt-4">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Cotações</h5>
+                                                            <ul class="list-group list-group-flush">
+                                                                <li class="list-group-item"><i class="far fa-newspaper text-secondary"></i> Empresa e Setores</li>
+                                                                <li class="list-group-item"><i class="fas fa-exchange-alt text-secondary"></i> <b>Câmbio -</b> Forward e Moedas Spot (Todas as Paridades)</li>
+                                                                <li class="list-group-item"><i class="fas fa-exchange-alt text-secondary"></i> <b>Commodities -</b> Spot Metais e FOB/Exportação (Soja) </li>
+                                                                <li class="list-group-item"><i class="fas fa-exchange-alt text-secondary"></i> <b>Renda Fixa -</b> Tresuaries, Títulos Soberanos (G7 e LatAm) e Contribuidores.</li>
+                                                                <li class="list-group-item"><i class="fas fa-exchange-alt text-secondary"></i> <b>Taxas e Indicadores -</b> Juros e Taxas de BC Mundiais, Moedas BNDES e Índices Anbima</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Add-ons Disponíveis para Contratação</h5>
+                                                            <ul class="list-group list-group-flush">
+                                                                <li class="list-group-item">
+                                                                    <i class="fas fa-file-download text-secondary"></i>
+                                                                    <a href="#">(BC-14167) Análise Fundamentalista - Capital Aberto</a>
+                                                                </li>
+                                                                <li class="list-group-item">
+                                                                    <i class="fas fa-file-download text-secondary"></i>
+                                                                    <a href="#">(BC-19724) Análise Fundamentalista - Capital Aberto e Fechado</a>
+                                                                </li>
+                                                                <li class="list-group-item">
+                                                                    <i class="fas fa-file-download text-secondary"></i>
+                                                                    <a href="#">(BC-14166) Fundos de Investimento</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                BROADCAST NEWS
+                            </button>
+                            <h4 class="float-sm-right text-secondary">R$1.500</h4>
+                            <!---->
+                            <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="bct-descricao" data-toggle="tab" href="#bctdescricao4" role="tab" aria-controls="home" aria-selected="true">DESCRIÇÃO</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="bct-ganhos" data-toggle="tab" href="#bctganhos4" role="tab" aria-controls="profile" aria-selected="false">PRINCIPAIS CARACTERÍSTICAS</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="bctdescricao4" role="tabpanel" aria-labelledby="home-tab">
+                                                <div class="mt-4 mb-4">
+                                                    <p>Contemplando o noticioso em Tempo Real mais completo entre os pacotes, o Broadcast News oferece o caderno de notícias AE News que além de contar com toda a cobertura notíciosa dos demais cadernos, possui temas diários e semanais com resumos e análises dos principais acontecimentos ou que irá acontecer. Alguns desses temas são:</p>
+                                                    <ul>
+                                                        <li><b>Abertura:</b> Laçado diariamente contextualizando o que vai acontecer no dia de mais importante e que pode impactar o Mercado Financeiro.</li>
+                                                        <li><b>Pulso do Mercado:</b> Ativos que tem sido destaques e tem movimentado os mercados.</li>
+                                                        <li><b>Cenários 1 e 2</b></li>
+                                                        <li><b>Destaques da Noite / Final de Semana:</b> Resumo das principais matérias que saíram na noite e no final de semana.</li>
+                                                        <li><b>Manchetes do dia: </b>Lançado aproximadamente as 04h30min com as manchetes dos principais jornais nacionais e Internacionais.</li>
+                                                        <li><u></u></li>
+                                                    </ul>
+                                                        <p>Esse Pacote também acompanha o noticiosos Empresas e Setores, Colunas e Artigos de especialistas de diversas áreas e por fim, o Top News que é uma seleção das 15 notícias mais importantes do momento para o Mercado Financeiro, Agrícola e Político.</p>
+                                                    <p>Referente as cotações, taxas e indicadores o Broadcast News possui o mesmo nível que o Broadcast Mercados, porém como diferencial dos demais pacotes ele possui o Ranking AE Projeções, a proposta é premiar as instituições cujas projeções para os principais indicadores econômicos do País mais se aproximam da realidade e com isso colocar os usuários do Broadcast News a frente do que grandes instituições estão esperando para o Brasil.</p>
+                                                    <p><a href="#">Clique aqui</a> para acessar o descritivo completo do pacote.</p>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="bctganhos4" role="tabpanel" aria-labelledby="profile-tab">
+                                                <div class="alert alert-secondary mt-3 text-center" role="alert">
+                                                    Conteúdo do Broadcast Mercados +
+                                                </div>
+                                                <div class="card-deck mt-4">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Cotações</h5>
+                                                            <ul class="list-group list-group-flush">
+                                                                <li class="list-group-item"><i class="far fa-newspaper text-secondary"></i> AE News</li>
+                                                                <li class="list-group-item"><i class="far fa-newspaper text-secondary"></i> Top News</li>
+                                                                <li class="list-group-item"><i class="far fa-newspaper text-secondary"></i> Exclusivos</li>
+                                                                <li class="list-group-item"><i class="far fa-newspaper text-secondary"></i> Colunistas Broadcast e Estadão</li>
+                                                                <li class="list-group-item"><i class="far fa-newspaper text-secondary"></i> AE Projeções</li>
+                                                                <li class="list-group-item"><i class="far fa-newspaper text-secondary"></i> Análises e Cenários Empresas & Setores</li>
+                                                                <li class="list-group-item"><i class="far fa-newspaper text-secondary"></i> Artigos</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Add-ons Disponíveis para Contratação</h5>
+                                                            <ul class="list-group list-group-flush">
+                                                                <li class="list-group-item">
+                                                                    <i class="fas fa-file-download text-secondary"></i>
+                                                                    <a href="#">(BC-14167) Análise Fundamentalista - Capital Aberto</a>
+                                                                </li>
+                                                                <li class="list-group-item">
+                                                                    <i class="fas fa-file-download text-secondary"></i>
+                                                                    <a href="#">(BC-19724) Análise Fundamentalista - Capital Aberto e Fechado</a>
+                                                                </li>
+                                                                <li class="list-group-item">
+                                                                    <i class="fas fa-file-download text-secondary"></i>
+                                                                    <a href="#">(BC-14166) Fundos de Investimento</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                BROADCAST ANÁLISES
+                            </button>
+                            <h4 class="float-sm-right text-secondary">R$2.500</h4>
+                            <!---->
+                            <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="bct-descricao" data-toggle="tab" href="#bctdescricao5" role="tab" aria-controls="home" aria-selected="true">DESCRIÇÃO</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="bct-ganhos" data-toggle="tab" href="#bctganhos5" role="tab" aria-controls="profile" aria-selected="false">PRINCIPAIS CARACTERÍSTICAS</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="bctdescricao5" role="tabpanel" aria-labelledby="home-tab">
+                                                
+                                                <div class="mt-4 mb-4">
+                                                    <p>Além de comtemplar todo o conteúdo disponível no Pacote Broadcast News, o Broadcast Análises oferece como diferencial acesso gratuito aos Módulos Add-on Agro e Político, que são um extrado das Plataformas Broadcast Agro e Broadcast Político, acesso completo ao Módulo de Fundos de Investimento e Análise Fundamentalista - Capital Aberto.</p>
+                                                    <p><a href="#">Clique aqui</a> para acessar o descritivo completo do pacote.</p>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="bctganhos5" role="tabpanel" aria-labelledby="profile-tab">
+                                                <div class="alert alert-secondary mt-3 text-center" role="alert">
+                                                    Conteúdo do Broadcast News +
+                                                </div>
+                                                <div class="card-deck mt-4">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Cotações</h5>
+                                                            <ul class="list-group list-group-flush">
+                                                                <li class="list-group-item">Conjuntura & Negócios</li>
+                                                                <li class="list-group-item">Newspapaer</li>
+                                                                <li class="list-group-item">Broadcast TV</li>
+                                                                <li class="list-group-item">Relatórios de Research</li>
+                                                                <li class="list-group-item">Estadão (Economia, Jornal Digital)</li>
+                                                                <li class="list-group-item">Contribuidores - Agência Bovespa, CETIP, STJ, PR Newswire, CEAGESP</li>
+                                                                <li class="list-group-item">Releases</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Add-ons Disponíveis para Contratação</h5>
+                                                            <ul class="list-group list-group-flush">
+                                                                <li class="list-group-item">
+                                                                    <i class="fas fa-file-download text-secondary"></i>
+                                                                    <a href="#">(BC-14167) Análise Fundamentalista - Capital Aberto</a>
+                                                                </li>
+                                                                <li class="list-group-item">
+                                                                    <i class="fas fa-file-download text-secondary"></i>
+                                                                    <a href="#">(BC-19724) Análise Fundamentalista - Capital Aberto e Fechado</a>
+                                                                </li>
+                                                                <li class="list-group-item">
+                                                                    <i class="fas fa-file-download text-secondary"></i>
+                                                                    <a href="#">(BC-14166) Fundos de Investimento</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+{%endblock%}

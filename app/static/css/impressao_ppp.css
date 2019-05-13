@@ -1,0 +1,35 @@
+@media print{
+    body{
+        margin: 0;
+        padding: 0;
+        line-height: 1.4em;
+    }
+
+    .header{display:none;}
+    .footer{display:none;}
+    .menu{display:none;}
+    .nprint{display: none;}
+    .container-fluid img {
+    	max-width:200px;
+	    max-height:150px;
+	    width: auto;
+	    height: auto;
+    }
+
+    a:link{
+        text-decoration:none;
+    }
+    .a {
+        border-color: white;
+
+    }
+    .n2{
+        padding-left: 25px;
+    }
+    .n3{
+        padding-left: 40px;
+    }
+    .n4{
+        padding-left: 50px;
+    }
+}
