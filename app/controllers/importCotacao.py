@@ -17,7 +17,7 @@ print(len(teste))
 row=4
 col=1
 
-vet_serv_rt_bmf=[]
+rt=[]
 
 while ws.cell(row=row, column=1).value != None:
     # Separa as Plataformas
@@ -26,10 +26,10 @@ while ws.cell(row=row, column=1).value != None:
     servs_rt = ws.cell(row=4, column=8).value.split('/')
     
     # Separa os Serviços das Plataformas
-    serv1_rt = servs_rt[0].split(';')
+    serv0_rt = servs_rt[0].split(';')
 
-    if ws.cell(row=row, column=1).value == "BMF" and ws.cell(row=row, column=7).value == "Commodities":
-        for x in serv_rt1:
+    if ws.cell(row=row, column=2).value == "BMF" 
+        for x in serv_rt0:
             serv=[]
             #Separa os Campos
             # Cód , DescServ, NProf, Prof, DiasDemo
@@ -46,9 +46,25 @@ while ws.cell(row=row, column=1).value != None:
                 "demo":serv[4]
             }
         
-            vet_serv_rt_bmf.append(serv_rt_bmf_commodities)
+            rt.append(serv_rt_bmf_commodities)
 
-    if ws.cell(row=row, column=1).value == "BMF" and ws.cell(row=row, column=7).value != "Commodities":
+    if ws.cell(row=row, column=2).value != "BMF":
+        for x in serv_rt0:
+            serv=[]
+            #Separa os Campos
+            # Cód , DescServ, NProf, Prof, DiasDemo
+            serv = x.split['--']
+
+            serv_rt={  
+                "plataforma":["BPRO", "BPRO WEB", "BAGRO", "BAGRO WEB", "TN"],
+                "cod":serv[0],
+                "desc":serv[1],
+                "fee":serv[2],
+                "demo":serv[3]
+            }
+        
+            rt.append(serv_rt)
+
 
 post =  {
     "mercadoria": "Café",
@@ -57,6 +73,7 @@ post =  {
     "desc_papel":"Café Arábica Rolagem",
     "codbolsa":"CR1",
     "codbroad":"CR1",
+    "pag_perm":"",
     "serv":{
         "rt":[
             {   
