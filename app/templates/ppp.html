@@ -3,105 +3,118 @@
 {% block title%} PPP 2.0 {%endblock%}
 
 {%block css %}
-<link rel="stylesheet" href="../css/ppp.css">
-<link rel="stylesheet" href="../css/impressao_ppp.css" media="print">
+<link rel="stylesheet" href="../static/css/ppp.css">
+<link rel="stylesheet" href="../static/css/impressao_ppp.css" media="print">
 {%endblock%}
 
 {% block content %}
-<div class="ppp">
-        <!--Fomrs e checkbox da pagina-->
-        <div class="container-fluid">
-            <form style="padding-top: 10px">
-                <div class="row align-items-center a">
-                    <div col="col-3">
-                        <div class="container-fluid">
-                                <img src="../static/img/LOGO-BC-Financeiro.png">
-                        </div>
-                    </div>
-                    <div class="col-2 nprint">
-                        <div class="form-group">
-                            <label for="selectPlataforma">Selecione a Plataforma</label>
-                            <select class="form-control" id="selectPlataforma">
-                                <option >Broadcast+</option>
-                                <option>Broadcast Agro</option>
-                                <option>Broadcast Web</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-2 nprint">        
-                        <div class="form-group">
-                            <label for="selectPlataforma">Nível de Exibição:</label>
-                            <select class="form-control" id="selectNivel" onchange="controlaNivel()">
-                                <option value="0">Recolher Tudo</option>
-                                <option value="1">Abrir 1º Nivel</option>
-                                <option value="2">Abrir 2º Nivel</option>
-                                <option value="3">Expandir Tudo</option>
-                                
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-5 nprint">
-                        
-                        <div class="form-check form-check-inline">
-                                <input type="checkbox" class="form-check-input" id="checkAll" checked>
-                                <label class="form-check-label" for="checkAll" >Exibir Todos os Pacotes</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                                <input type="checkbox" class="form-check-input" id="ckMostraPrecos" checked>
-                                <label class="form-check-label" for="ckMostraPrecos" >Mostrar Preços dos Pacotes</label>
-                        </div>
+<!-- Jumbotrom -->
+<div class="jumbotron jumbotron-fluid bg-primary mb-3">
+    <div class="container-fluid">
+        <h3 class="mb-3 text-center" style="color: white; margin-top:-20px">[ALGUM TEXTO]</h3>
+        <form>
+            <div class="row align-items-center a">
+                <div col="col-3">
+                    <div class="container-fluid">
+                            <img src="../static/img/LOGO-BC-Financeiro.png">
                     </div>
                 </div>
-            </form>
-        </div>
-        <div class="container-fluid">
-            <div class="row" style="border-bottom: 1px solid white">
-                <div class="col">
-                    <form>   
-                            <div class="form-check form-check-inline">
-                                    <h5>Pacotes:</h5>
-                            </div>
-                            <div class="form-check form-check-inline nprint">
-                                    <input type="checkbox" class="form-check-input" id="trade" checked>
-                                    <label class="form-check-label" for="trade" >Trade</label>
-                            </div>
+                <div class="col-2 nprint">
+                    <div class="form-group">
+                        <label for="selectPlataforma">Selecione a Plataforma</label>
+                        <select class="form-control" id="selectPlataforma">
+                            <option >Broadcast+</option>
+                            <option>Broadcast Agro</option>
+                            <option>Broadcast Web</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-2 nprint">        
+                    <div class="form-group">
+                        <label for="selectPlataforma">Nível de Exibição:</label>
+                        <select class="form-control" id="selectNivel" onchange="controlaNivel()">
+                            <option value="0">Recolher Tudo</option>
+                            <option value="1">Abrir 1º Nivel</option>
+                            <option value="2">Abrir 2º Nivel</option>
+                            <option value="3">Expandir Tudo</option>
                             
-                            <div class="form-check form-check-inline nprint">
-                                    <input type="checkbox" class="form-check-input" id="conjuntura" checked>
-                                    <label class="form-check-label" for="conjuntura">Conjuntura</label>
-                            </div>
-                            
-                            <div class="form-check form-check-inline nprint">
-                                    <input type="checkbox" class="form-check-input" id="mercados" checked>
-                                    <label class="form-check-label" for="mercados">Mercados</label>
-                            </div>
-                            
-                            <div class="form-check form-check-inline nprint">
-                                    <input type="checkbox" class="form-check-input" id="news" checked>
-                                    <label class="form-check-label" for="news">News</label>
-                            </div>
-                            <div class="form-check form-check-inline nprint">
-                                <input type="checkbox" class="form-check-input" id="analises" checked>
-                                <label class="form-check-label" for="analises">Análises</label>
-                            </div>  
-                    </form>
-                </div> 
-                <div class="col legenda">
-                    <span style="float: right;">
-                    <div class="realtime"><b>RT</b></div> Real Time &nbsp;&nbsp;<i class="fas fa-clock"></i> Delay &nbsp; <div class="endofday"><b>EoD</b></div> End of Day (Final de Dia) &nbsp; <i class="fas fa-info-circle"></i> Info. Adicionais</span>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-5 nprint">
+                    
+                    <div class="form-check form-check-inline mt-3">
+                            <input type="checkbox" class="form-check-input" id="checkAll" checked>
+                            <label class="form-check-label" for="checkAll" >Exibir Todos os Pacotes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                            <input type="checkbox" class="form-check-input" id="ckMostraPrecos" checked>
+                            <label class="form-check-label" for="ckMostraPrecos" >Mostrar Preços dos Pacotes</label>
+                    </div>
                 </div>
             </div>
+        </form>
+    </div>
+    <div class="container-fluid">
+        <div class="row" style="border-bottom: 1px solid white">
+            <div class="col">
+                <span style="float: left;">
+                    <form>   
+                        <div class="form-check form-check-inline mt-2">
+                            <h5>Pacotes:</h5>
+                        </div>
+                        <div class="form-check form-check-inline nprint">
+                            <input type="checkbox" class="form-check-input" id="trade" checked>
+                            <label class="form-check-label" for="trade" >Trade</label>
+                        </div>
+                        <div class="form-check form-check-inline nprint">
+                            <input type="checkbox" class="form-check-input" id="conjuntura" checked>
+                            <label class="form-check-label" for="conjuntura">Conjuntura</label>
+                        </div>
+                        <div class="form-check form-check-inline nprint">
+                            <input type="checkbox" class="form-check-input" id="mercados" checked>
+                            <label class="form-check-label" for="mercados">Mercados</label>
+                        </div>
+                        <div class="form-check form-check-inline nprint">
+                            <input type="checkbox" class="form-check-input" id="news" checked>
+                            <label class="form-check-label" for="news">News</label>
+                        </div>
+                        <div class="form-check form-check-inline nprint">
+                            <input type="checkbox" class="form-check-input" id="analises" checked>
+                            <label class="form-check-label" for="analises">Análises</label>
+                        </div>  
+                    </form>
+                </span>
+            </div>
+             
+            <div class="col legenda text-center">
+                <span style="float: right;">
+                    <ul class="mt-1">
+                        <li class="alinha-vert"><div class="realtime"><b>RT</b></div> Real Time</li>
+                        <li class="alinha-vert"><i class="fas fa-clock"></i> Delay</li>
+                        <li class="alinha-vert"><div class="endofday"><b>EoD</b></div> End of Day (Final de Dia)</li>
+                        <li class="alinha-vert"><i class="fas fa-info-circle"></i> Info. Adicionais</li>
+                    </ul>
+                </span>
+            </div>
+            
         </div>
+    </div>
+</div>
+
+<div class="ppp">
+        <!--Fomrs e checkbox da pagina-->
+        
         
         <!--Inicio do Conteúdo Incluso #  Cabeçalho-->
         <div class="container-fluid titulo-tabela" id="cont-incluso">
             <div class="row align-items-center" style="border-bottom: 1px solid white">
                 <div class="col-4" ></div>
-                <div class="col"  id="trade-lb"><b><a href="{{ url_for('bpro_terminal', _anchor='pctTrade') }}">Trade</a></b></div>
-                <div class="col"  id="conjuntura-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctConjuntura') }}"><b>Conjuntura</b></a></div>
-                <div class="col"  id="mercados-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctMercados') }}"><b>Mercados</b></a></div>
-                <div class="col"  id="news-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctNews') }}"><b>News</b></a></div>
-                <div class="col"  id="analises-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctAnalises') }}"><b>Análises</b></a></div>
+                <div class="col"  id="trade-lb"><b><a href="#">Trade</a></b></div>
+                <div class="col"  id="conjuntura-lb"><a href="#"><b>Conjuntura</b></a></div>
+                <div class="col"  id="mercados-lb"><a href="#"><b>Mercados</b></a></div>
+                <div class="col"  id="news-lb"><a href="#"><b>News</b></a></div>
+                <div class="col"  id="analises-lb"><a href="#"><b>Análises</b></a></div>
             </div>
 
             <div class="row align-items-center" id="valores" >
@@ -130,7 +143,7 @@
                 <div class="container-fluid">
                     <!--AE NEWS + TOP NEWS-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n2"><a href="{{url_for('noticiosos')}}" data-placement="right" data-toggle="tooltip" data-html="true" title="Noticiário em <b>Tempo Real</b> acompanhado das 10 notícias mais importantes do momento, cobrindo os principais centros financeiros com os números e notícias das principais economias e empresas, além dos desdobramentos dos mercados internacionais e seus impactos no mercado local.">AE News + Top News</a> <!--i class="fas fa-info-circle nprint"></i--></div>
+                        <div class="col-4  n2"><a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="Noticiário em <b>Tempo Real</b> acompanhado das 10 notícias mais importantes do momento, cobrindo os principais centros financeiros com os números e notícias das principais economias e empresas, além dos desdobramentos dos mercados internacionais e seus impactos no mercado local.">AE News + Top News</a> <!--i class="fas fa-info-circle nprint"></i--></div>
                         <div class="col"  id="n-aenews-trade"><i class="fas fa-times"></i></div>
                         <div class="col"  id="n-aenews-conjuntura"><i class="fas fa-times"></i></div>
                         <div class="col"  id="n-aenews-mercados"><i class="fas fa-times"></i></div>
@@ -139,7 +152,7 @@
                     </div>
                     <!--Empresas e Setores-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n2"><a href="{{ url_for('noticiosos', _anchor='empset') }}" data-placement="right" data-toggle="tooltip" data-html="true" title="Caderno com notícias mais contextualizadas, análises e cenários sobre o mercado de capitais, o Empresas e Setores combre as empresas e os setores mais relevantes da economia brasileira.">Empresas e Setores</a> <!--i class="fas fa-info-circle nprint" ></i--></div>
+                        <div class="col-4  n2"><a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="Caderno com notícias mais contextualizadas, análises e cenários sobre o mercado de capitais, o Empresas e Setores combre as empresas e os setores mais relevantes da economia brasileira.">Empresas e Setores</a> <!--i class="fas fa-info-circle nprint" ></i--></div>
                         <div class="col"  id="n-empset-trade"><i class="fas fa-times"></i></div>
                         <div class="col"  id="n-empset-conjuntura"><i class="fas fa-times"></i></div>
                         <div class="col"  id="n-empset-mercados"><i class="fas fa-check"></i></div>
@@ -148,7 +161,7 @@
                     </div>
                     <!--Conjuntura e Finanças-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n2"><a href="{{ url_for('noticiosos', _anchor='conjfin') }}" data-placement="right" data-toggle="tooltip" data-html="true" title="Notícias em tempo real com foco no mercado financeiro dos principais fatos políticos, econômicos e empresariais que também afetam o setor produtivo. Cobertura intensiva dos mercados de dólar, juros, títulos públicos e dos principais fatos que afetam o mercado de capitais">Conjuntura e Finanças</a> <!--i class="fas fa-info-circle nprint" ></i--></div>
+                        <div class="col-4  n2"><a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="Notícias em tempo real com foco no mercado financeiro dos principais fatos políticos, econômicos e empresariais que também afetam o setor produtivo. Cobertura intensiva dos mercados de dólar, juros, títulos públicos e dos principais fatos que afetam o mercado de capitais">Conjuntura e Finanças</a> <!--i class="fas fa-info-circle nprint" ></i--></div>
                         <div class="col"  id="n-conjfin-trade"><i class="fas fa-times"></i></div>
                         <div class="col"  id="n-conjfin-conjuntura"><i class="fas fa-check"></i></div>
                         <div class="col"  id="n-conjfin-mercados"><i class="fas fa-check"></i></div>
@@ -166,7 +179,7 @@
                     </div>
                     <!--Newspaper (caderno)-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n2"><a href="{{ url_for('noticiosos', _anchor='newspaper') }}" data-placement="right" data-toggle="tooltip" data-html="true" title="">Newspaper</a> <!--i class="fas fa-info-circle nprint"></i--></div>
+                        <div class="col-4  n2"><a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="">Newspaper</a> <!--i class="fas fa-info-circle nprint"></i--></div>
                         <div class="col"  id="n-cadnewspaper-trade"><i class="fas fa-check"></i></div>
                         <div class="col"  id="n-cadnewspaper-conjuntura"><i class="fas fa-check"></i></div>
                         <div class="col"  id="n-cadnewspaper-mercados"><i class="fas fa-check"></i></div>
@@ -1800,6 +1813,6 @@
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 {%block scripts%}
-<script type="text/javascript" src="../js/ppp.js"></script>
-<script type="text/javascript" src="../js/ppp2.js"></script>
+<script type="text/javascript" src="../static/js/ppp.js"></script>
+<script type="text/javascript" src="../static/js/ppp2.js"></script>
 {%endblock%}

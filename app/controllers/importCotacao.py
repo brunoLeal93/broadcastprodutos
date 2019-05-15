@@ -11,31 +11,36 @@ ws= wb2['Derivativos']
 #print(ws.cell(row=4, column=8).value)
 
 
-teste = ws.cell(row=4, column=8).value.split('/') # Separa os Serviços
+teste = ws.cell(row=67, column=8).value.split('/') # Separa os Serviços
+print(teste)
 print(len(teste))
 
 row=4
 col=1
 
-rt=[]
+
 
 while ws.cell(row=row, column=1).value != None:
+    rt=[]
     # Separa as Plataformas
     # servs_rt[0] == "plataforma":["BPRO", "BPRO WEB", "BAGRO", "BAGRO WEB", "TN"],
     # servs_rt[1] == "plataforma": WB
-    servs_rt = ws.cell(row=4, column=8).value.split('/')
+    servs_rt = ws.cell(row=row, column=8).value.split('/')
     
-    # Separa os Serviços das Plataformas
-    serv0_rt = servs_rt[0].split(';')
+    # Separa os Serviços por Plataformas
+    serv_bpro = servs_rt[0].split(';')
+    serv_bw = servs_rt[1].split(';') 
+        
 
-    if ws.cell(row=row, column=2).value == "BMF" 
-        for x in serv_rt0:
+    if ws.cell(row=row, column=2).value == "BMF"
+        
+        for x in serv_bpro:
             serv=[]
-            #Separa os Campos
+            #Separa os Campos dos Serviços RT
             # Cód , DescServ, NProf, Prof, DiasDemo
             serv = x.split['--']
 
-            serv_rt_bmf_commodities={  
+            doc={  
                 "plataforma":["BPRO", "BPRO WEB", "BAGRO", "BAGRO WEB", "TN"],
                 "cod":serv[0],
                 "desc":serv[1],
@@ -46,10 +51,26 @@ while ws.cell(row=row, column=1).value != None:
                 "demo":serv[4]
             }
         
-            rt.append(serv_rt_bmf_commodities)
+            rt.append(doc)
+        
+        for x in serv_bw:
+            serv=[]
+            #Separa os Campos dos Serviços RT
+            # Cód , DescServ, fee, DiasDemo
+            serv = x.split['--']
+
+            doc={  
+                "plataforma":"WB",
+                "cod":serv[0],
+                "desc":serv[1],
+                "fee":serv[2],
+                "demo":serv[3]
+            }
+        
+            rt.append(doc)
 
     if ws.cell(row=row, column=2).value != "BMF":
-        for x in serv_rt0:
+        for x in serv0_rt:
             serv=[]
             #Separa os Campos
             # Cód , DescServ, NProf, Prof, DiasDemo
@@ -65,6 +86,30 @@ while ws.cell(row=row, column=1).value != None:
         
             rt.append(serv_rt)
 
+    post =  {
+    "mercadoria": ws.cell(row=row, column=1).value,
+    "fonte":"BMF",
+    "mercado":"Futuro",
+    "desc_papel":"Café Arábica Rolagem",
+    "codbolsa":"CR1",
+    "codbroad":"CR1",
+    "pag_perm":"",
+    "serv":{
+        "rt":[
+            {   
+                "plataforma":["BPRO", "BPRO WEB", "BAGRO", "BAGRO WEB", "TN"],
+                "cod":"",
+                "desc":"",
+                "fee":{
+                    "prof":000,
+                    "nprof":000
+                    },
+                "demo":""
+            }
+            ],
+        "delay":""
+        } 
+    },
 
 post =  {
     "mercadoria": "Café",
@@ -101,5 +146,5 @@ serv_rt_bmf_commodities={
                     },
                 "demo":""
             ]
-
+'''
 

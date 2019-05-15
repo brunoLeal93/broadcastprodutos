@@ -15,7 +15,7 @@ b{
 
 .fixar {
     position:fixed;
-    top: 60px;
+    top: 0px;
     background: white;
     margin-top: 0px !important;
     z-index: 10;
@@ -23,10 +23,7 @@ b{
 .nav-menu{
     z-index: 50;
 }
-body{ 
-	padding-top: 75px;
-	font-size: 1rem;
-}
+
 div .tooltip-inner {
     max-width: 250px !important;
     min-width: 100px;
@@ -58,6 +55,11 @@ h1{
 .legenda{
     font-size: 15px;
     padding-top: 7px;
+    
+}
+
+.alinha-vert{
+    display: inline;
 }
 
 #valores{
