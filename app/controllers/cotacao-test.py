@@ -199,10 +199,11 @@ result_ori = [
     {    "mercadoria": "Café",    "fonte":"ICE US (NYBOT)",    "mercado":"Opção",    "desc_papel":"Café Arábica",    "codbolsa":"KC",    "codbroad":"CF" },
     {    "mercadoria": "Café",    "fonte":"ICE US (NYBOT)",    "mercado":"Opção",    "desc_papel":"Café Arábica",    "codbolsa":"KCW",    "codbroad":"KCW" },
     {    "mercadoria": "Soja",    "fonte":"teste",    "mercado":"Opção",    "desc_papel":"Café Arábica",    "codbolsa":"KCW",    "codbroad":"KCW" },
-    {    "mercadoria": "teste",    "fonte":"ICE US (NYBOT)",    "mercado":"teste",    "desc_papel":"Café Arábica",    "codbolsa":"KCW",    "codbroad":"KCW" },
-    #{    "mercadoria": "teste",    "fonte":"teste",    "mercado":"Opção",    "desc_papel":"Café Arábica",    "codbolsa":"KCW",    "codbroad":"KCW" },
+    {    "mercadoria": "Soja",    "fonte":"ICE US (NYBOT)",    "mercado":"teste",    "desc_papel":"Café Arábica",    "codbolsa":"KCW",    "codbroad":"KCW" },
+    {    "mercadoria": "Soja",    "fonte":"teste",    "mercado":"Opção",    "desc_papel":"Café Arábica",    "codbolsa":"KCW",    "codbroad":"KCW" },
 
 ]
+'''
 
 result_ori_nv = [
     {    "mercadoria": "Café",    "fonte":"BMF",    "mercado":"Futuro",    "desc_papel":"Café Arábica Rolagem",    "codbolsa":"CR1",    "codbroad":"CR1", "serv":{"rt":[{"cod":"","desc":"","fee":{"prof":000,"nprof":000}}],"delay":} },
@@ -394,4 +395,146 @@ a = montaHTMLDerivativos(result)
 txt = open('html.txt', 'w')
 txt.write(a)
 txt.close()
+'''
 
+def contM(x, data):
+    i=0
+
+    for a in data:
+        if x == a['mercadoria']:
+            i=i+1
+    
+    return i
+
+def contF(x, data):
+    i=0
+
+    for a in data:
+        if x == a['fonte']:
+            i=i+1
+    
+    return i
+
+def montaHTMLDerivativos1(data):
+
+    unique_mercadoria=[]
+    unique_fonte=[]
+    html=""
+    table_ini = "<table style='width:100%'>" 
+    table_fim = "</table>"
+    cabecalho= "<tr>" + \
+            "<th class='text-center'>Mercadoria</th>" + \
+            "<th class='text-center'>Fonte</th>" + \
+            "<th class='text-center'>Mercado</th>" + \
+            "<th class='text-center'>Descrição Papel</th>" +\
+            "<th class='text-center'>Cód. Bolsa</th>" +\
+            "<th class='text-center'>Cód. Broadcast</th>" +\
+        "</tr>"
+
+    row_ini= "<tr>"
+    row_fim= "</tr>"
+
+    #x['mercadoria'].count()
+
+    for x in data:
+        if x['mercadoria'] not in unique_mercadoria:
+            unique_mercadoria.append(x['mercadoria'])
+            print('{}:{}'.format(x['mercadoria'],str(contM(x['mercadoria'], data))))
+            varMercadoria = "<td class='text-center' rowspan='"+ str(contM(x['mercadoria'], data)) +"' class='text-center'>"+x['mercadoria']+"</td>"
+            
+            if x['fonte'] not in unique_fonte:
+                unique_fonte.append(x['fonte'])
+                print('{}:{}'.format(x['fonte'],str(contF(x['fonte'], data))))
+                varFonte= "<td class='text-center' rowspan='"+ str(contF(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                "<td>"+x['desc_papel']+"</td>"+\
+                "<td class='text-center'>"+x['codbolsa']+"</td>"+\
+                "<td class='text-center'>"+x['codbroad']+"</td>"
+
+                html = row_ini + varMercadoria + varFonte + varDemais + row_fim
+        else:
+            if x['fonte'] not in unique_fonte:
+                unique_fonte.append(x['fonte'])
+                print('{}:{}'.format(x['fonte'],str(contF(x['fonte'], data))))
+                varFonte= "<td class='text-center' rowspan='"+ str(contF(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                "<td>"+x['desc_papel']+"</td>"+\
+                "<td class='text-center'>"+x['codbolsa']+"</td>"+\
+                "<td class='text-center'>"+x['codbroad']+"</td>"
+                html = html + row_ini + varFonte + varDemais + row_fim
+            
+            else:
+                varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                "<td>"+x['desc_papel']+"</td>"+\
+                "<td class='text-center'>"+x['codbolsa']+"</td>"+\
+                "<td class='text-center'>"+x['codbroad']+"</td>"
+
+                html = html + row_ini + varDemais + row_fim
+
+    html = table_ini + cabecalho + html + table_fim
+
+    return html
+
+a = montaHTMLDerivativos1(result_ori)
+
+txt = open('html1.html', 'w')
+txt.write(a)
+txt.close()
+
+    # Quatidade de Ativos por Mercadoria
+    # Quantidade de Ativos por Fonte
+
+
+
+'''
+<table style="width:100%" >
+    <tr>
+        <th>Mercadoria</th>
+        <th>Fonte</th>
+        <th>Mercado</th>
+        <th>Descrição Papel</th>
+        <th>Cód. Bolsa</th>
+        <th>Cód. Broadcast</th>
+
+    </tr>
+    <tr>
+        <td rowspan="6" class="text-center">Café</th>
+        <td rowspan="4" class="text-center">BMF</td>
+        <td>Futuro</td>
+        <td>Café Arábica Tipo 4/5</td>
+        <td class="text-center">ICF</td>
+        <td class="text-center">ICF</td>
+    </tr>
+    <tr>
+        <td>Futuro</td>
+        <td>Café Arábica Tipo 4/5</td>
+        <td class="text-center">ICF</td>
+        <td class="text-center">ICF</td>
+    </tr>
+    <tr>
+        <td>Futuro</td>
+        <td>Café Arábica Tipo 4/5</td>
+        <td class="text-center">ICF</td>
+        <td class="text-center">ICF</td>
+    </tr>
+    <tr>
+        <td>Futuro</td>
+        <td>Café Arábica Tipo 4/5</td>
+        <td class="text-center">ICF</td>
+        <td class="text-center">ICF</td>
+    </tr>
+    <tr>
+        <td rowspan="2" class="text-center">ICE Europe (IPE)</td>
+        <td>Opção</td>
+        <td>Café Robusta</td>
+        <td class="text-center">RC</td>
+        <td class="text-center">RC</td>
+    </tr>
+    <tr>
+        <td>Opção</td>
+        <td>Café Robusta</td>
+        <td class="text-center">RC</td>
+        <td class="text-center">RC</td>
+    </tr>
+</table>
+'''
