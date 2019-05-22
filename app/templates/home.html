@@ -50,17 +50,17 @@
                             <div class="card-body">
                                 <h5 class="card-title">Cotações</h5>
                                 <p class="card-text">Descubra quais Fontes, Mercados e Ativos que cobrimos e como comercializa-los</p>
-                                <a href="{{url_for('cotacao')}}" class="btn btn-secondary">Go somewhere</a>
+                                <a href="{{url_for('cotacao')}}" class="btn btn-secondary">Acessar</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
                         <div class="card text-center">
-                            <i class="fas fa-tools fa-5x"></i>
+                            <i class="fas fa-tools fa-5x" style="color: grey"></i>
                             <div class="card-body">
-                                <h5 class="card-title">Ferramentas</h5>
+                                <h5 class="card-title" style="color: grey">Ferramentas</h5>
                                 <p class="card-text">Conheça nossas ferramentas e suas funcionalidades segmentadas por plataformas.</p>
-                                <a href="#" class="btn btn-secondary">Go somewhere</a>
+                                <a href="#" class="btn btn-secondary">Acessar</a>
                             </div>
                         </div>
                     </div>
@@ -115,7 +115,13 @@
                             </div>
                         </li>
                     </ul>
+                    <a href="{{url_for('faq')}}">
+                    <div class="alert alert-secondary mt-3 text-center" role="alert">
+                        Veja Mais
+                    </div>
+                    </a>
                 </div>
+                
             </section>
         </main>
     

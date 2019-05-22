@@ -11,6 +11,11 @@ def login():
 def ppp():
         return render_template('ppp.html')
 
+@app.route('/FAQ', methods=('GET', 'POST'))
+def faq():
+        
+        return render_template('faq.html')
+
 @app.route('/Home', methods=('GET', 'POST'))
 @app.route('/', methods=('GET', 'POST'))
 def home():

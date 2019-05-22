@@ -21,11 +21,16 @@ post = {
 #print(client2)
 
 def searchDerivativos(data):
-    result = coll1.find_one()
+        mercadoria = coll.aggregate([
+                {"$match": { "$or":[{}]} }
+        ])
+        result = coll1.find_one()
     
-    return result
+        return result
 
 def searchDemais(data):
     result = coll2.find_one()
     
     return result
+
+merc=coll1.find_one()
