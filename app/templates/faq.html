@@ -1,5 +1,20 @@
 {% extends 'base.html'%}
 {% block title %}: FAQ{% endblock %}
+
+{%block css%}
+<style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 5px;
+          text-align: left;    
+        }
+</style>
+
+{%endblock%}
+
 {% block content%}
 <!-- Jumbotrom -->
 <div class="jumbotron jumbotron-fluid bg-primary">
@@ -36,7 +51,13 @@
                 </button>
                 <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionExample">
                     <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        <ul>
+                            <li><h6>Bovespa - <small>Ações, Fundos, Índices e Renda Fixa</small></h6></li>
+                            <li><h6>BM&F - <small>Câmbio, Commodities e Fundos</small></h6></li>
+                            <li><h6>ICE Europe (IPE) - <small>Commodities</small></h6></li>
+                            <li><h6>ICE US (Nybot) - <small>Câmbio, Commodities e Índices</small></h6></li>
+                            <li><h6>ICE Europe (IPE) - <small>Câmbio, Commodities e Índices</small></h6></li> 
+                        </ul>
                     </div>
                 </div>
             </li>
@@ -52,14 +73,137 @@
             </li>
             <li class="list-group-item">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                    Quais os tipos de contribuição e como ser contribuidor das plataformas Broadcast?
+                    Contribuidores Broadcast: Como se tornar e tipos de contribuição?
                 </button>
                 <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionExample">
                     <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        <p>Para se tornar um Contribuidor Broadcast basta enviar e-mail para <a href="#">marketdata.ae@estadao.com</a> com as informações da Instituição, do (s) responsável (is) pela contribuição e quais conteúdos serão contribuídos, em caso de contribuição de preços é necessário dizer quais ativos e se haverá atualização fora do horário comercial (09-18hrs).</p><p>Atualmente exitem 2 modos de realizar contribuições e suporte para 4 tipos conteúdos:</p>
+                        <ul>
+                            <li>Plataforma de Contribuição - Website - <a href="https://drive.google.com/file/d/1tkc0i4e_YAqMfYWvi174fAQneV4qPXOK/view?usp=sharing">Manual de Uso</a>
+                                <ul>
+                                    <li>Texto</li>
+                                    <li>PDF</li>
+                                    <li>Vídeos</li>
+                                </ul>
+                            </li>
+                            <li>BLink -  Via Excel - <a href="#">Manual de Uso</a>
+                                <ul>
+                                    <li>Preços</li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </li>
+            <li class="list-group-item">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                    O que é o VIX?
+                </button>
+                <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordionExample">
+                    <div class="card-body">
+                        O chamado VIX - Volatility Index – foi criado pela CBOE e reflete informações da volatilidade de mercado derivadas das expectativas contidas na S&P 500, o famoso índice americano. Conhecido como o “índice do medo” pois é considerado uma das ferramentas mais potentes para a mensuração do risco e do sentimento dos investidores.
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                    Quais são as Diferenças entre Spot Moedas Mini e Full? 
+                </button>
+                <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordionExample">
+                    <div class="card-body">
+                        A página SPOT MOEDAS MINI contém mais de 150 ativos e que contempla as principais paridades de moedas do mundo além dos ativos da Libor. Ao contratar o SPOT MOEDAS FULL, o cliente, além de ter acesso a todos o conteúdo disponibilizado na página SPOT MOEDAS MINI, recebe todas as paridades disponibilizadas pela Agência Estado totalizando mais de 2.000 ativos.
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                    Qual é a nossa cobertura de metais? 
+                </button>
+                <div id="collapse7" class="collapse" aria-labelledby="heading7" data-parent="#accordionExample">
+                    <div class="card-body">
+                        Possuímos cotações de contratos futuros negociados na COMEX e  LME, além de metais negociados no mercado balcão (OTC Metals), Índices Dow Jones e Índices S&P.
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                    O que temos de projeção de câmbio? 
+                </button>
+                <div id="collapse8" class="collapse" aria-labelledby="heading8" data-parent="#accordionExample">
+                    <div class="card-body">
+                        Atualmente temos a Pesquisa Focus, divulgada semanalmente pelo Banco Central do Brasil. Estas informações podem ser encontradas no Cadernos AE News às segundas-feiras e no Menu Indicadores-> Brasil-> Pesquisa Focus.
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                    O que é código genérico e como uso o “+” no painel? 
+                </button>
+                <div id="collapse9" class="collapse" aria-labelledby="heading9" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <p>O código genérico é utilizado, geralmente, em contratos futuros com o objetivo de facilitar o acompanhamento no vencimentos dos contratos. A estrutura do código genérico é composta pelo código do contrato +  o caractere “@” + número. Exemplo: Os contratos de dólar da BMF possuem os códigos DOLM19, DOLN19, DOLQ19 e assim sucessivamente. Cada um destes ativos possuem um código genérico conforme segue:</p>
+                        <div class="row">
+                            <div class="col">
+                                <table>
+                                    <tr>
+                                        <th>Ativo</th>
+                                        <th>Genérico</th>
+                                    </tr>
+                                    <tr>
+                                        <td>DOLM19</td>
+                                        <td>DOL@0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DOLN19</td>
+                                        <td>DOL@1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DOLQ19</td>
+                                        <td>DOL@2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DOLU19</td>
+                                        <td>DOL@3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DOLV19</td>
+                                        <td>DOL@4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DOLX19</td>
+                                        <td>DOL@5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DOLZ19</td>
+                                        <td>DOL@6</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-8 text-center">
+                            </br>
+                        </br>
+                    </br>
+                                <p>Quando o DOL@0 vencer, automaticamente o sistema fará a “rolagem” dos demais contratos transformando genérico do DOLN19 em DOL@0 e assim sucessivamente. Esta funcionalidade ajuda nossos clientes no controle de ativos e na manutenção de suas planilhas.</p>
+                            </div>
+                            <div class=col-2> </div>
+                        </div>
+                            
+                    </br>
+                        
+                        <p>Com relação ao uso da função “+”, dentro dos painéis do BPRO é possível digitar um ou mais caracteres seguidos do caractere “+” e, automaticamente aparecerão na tela todos os ativos que comecem com os caracteres digitados. Exemplo: Se um usuário deseja uma lista de todos os ativos que comecem com o termo “PETR”, basta digitar, dentro do painel, a sequencia PETR+.</p>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                        O que é o ICPBQ? 
+                    </button>
+                    <div id="collapse10" class="collapse" aria-labelledby="heading10" data-parent="#accordionExample">
+                        <div class="card-body">
+                                O Índice de Crédito Privado Broadcast Quantum (ICPBQ), lançado pelo Broadcast em parceria com a Quantum Finance é benchmark na indústria de fundos e o primeiro desta categoria. Essencial para acompanhar os investimentos em ativos com risco de crédito privado.
+                        </div>
+                    </div>
+                </li>
         </ul>
     </div>
     
