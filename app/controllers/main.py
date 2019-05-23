@@ -2,7 +2,7 @@
 from flask import render_template, request, jsonify
 from app import app
 from app.controllers import dbmongo as db
-from cotacaoTeste import montaHTMLDerivativos
+from app.controllers import cotacaoTeste as ct
 
 #from cotacaotest import *
 
@@ -39,7 +39,7 @@ def cotacao():
                 print(type(text))
 
                 result = src.searchDerivativos(text)
-                html = montaHTMLDerivativos(result)
+                html = ct.montaHTMLDerivativos(result)
 
         return render_template('cotacao.html', html=html)
 
