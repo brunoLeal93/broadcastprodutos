@@ -1,5 +1,5 @@
 #from database import *
-from flask import render_template, request, jsonify
+from flask import render_template, request, jsonify, redirect
 from app import app
 from app.controllers import dbmongo as db
 from app.controllers import cotacaoTeste as ct
@@ -33,13 +33,14 @@ def noticiosos():
 @app.route('/cotacao', methods=['GET' , 'POST'])
 def cotacao():
         src = db.searchCotacao()
-
+        html=""
         if request.method == "POST":
                 text = request.form.get('contentSearch')
                 print(type(text))
 
                 result = src.searchDerivativos(text)
                 html = ct.montaHTMLDerivativos(result)
+                return render_template('cotacao.html', html=html)
 
         return render_template('cotacao.html', html=html)
 
