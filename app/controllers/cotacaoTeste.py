@@ -537,11 +537,11 @@ def montaHTMLDerivativos(data):
 
     return html
 
-a = montaHTMLDerivativos1(result_ori)
+#a = montaHTMLDerivativos1(result_ori)
 
-txt = open('html1.html', 'w')
-txt.write(a)
-txt.close()
+#txt = open('html1.html', 'w')
+#txt.write(a)
+#txt.close()
 
     # Quatidade de Ativos por Mercadoria
     # Quantidade de Ativos por Fonte
