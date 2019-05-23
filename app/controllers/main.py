@@ -1,5 +1,7 @@
+from database import *
 from flask import render_template, request, jsonify
 from app import app
+
 #from cotacaotest import *
 
 ## CRIAR PAGINA PARA SE LOGAR
@@ -28,9 +30,13 @@ def noticiosos():
 '''
 @app.route('/cotacao', methods=['GET' , 'POST'])
 def cotacao():
+        src = searchCotacao()
+
         if request.method == "POST":
                 text = request.form.get('contentSearch', None)
                 print(text)
+
+                src.searchDerivativos(text)
 
         return render_template('cotacao.html')
 
