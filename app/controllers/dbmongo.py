@@ -5,10 +5,10 @@ client = MongoClient('mongodb://broadcast:agestado@cluster0-shard-00-00-umdst.mo
 
 #client2 = MongoClient('mongodb://172.17.0.3:27017/').database_names()
 
-db2 = client['db-demais']
+#db2 = client['db-demais']
 
 
-coll2 = db['coll-demais']
+#coll2 = db['coll-demais']
 '''
 post = {
         'nome':'Bruno Leal',
@@ -24,7 +24,7 @@ class searchCotacao:
         db = client['db-derivativos']
         coll = db['coll-derivativos']
         
-        def pipelineDerivativos(data):
+        def pipelineDerivativos(self, data):
 
                 #lb = ['Derivativos', 'Mercadoria:', 'Fonte', 'Mercado']
                 lb = ['Mercadoria:', 'Fonte:', 'Mercado:']
@@ -33,19 +33,21 @@ class searchCotacao:
                 #print(a)
                 #print(a.index(lb[0]))
                 #print(a[a.index(lb[0])+1])
+                
+                order = { "$sort": {"mercadoria": -1 , "fonte": -1, "mercado": -1}}
 
                 if lb[0] in a:
 
                         mt = { "$match" : {"mercadoria": a[a.index(lb[0])+1]}}
-
+                        
                         if lb[1] in a:
 
-                        mt = { "$match" : {"mercadoria": a[a.index(lb[0])+1], "fonte": a[a.index(lb[1])+1]}}
+                                mt = { "$match" : {"mercadoria": a[a.index(lb[0])+1], "fonte": a[a.index(lb[1])+1]}}
 
-                        if lb[2] in a:
+                                if lb[2] in a:
 
-                                mt = { "$match" : {"mercadoria": a[a.index(lb[0])+1], "fonte": a[a.index(lb[1])+1], "mercado": a[a.index(lb[2])+1]}}
-                                
+                                        mt = { "$match" : {"mercadoria": a[a.index(lb[0])+1], "fonte": a[a.index(lb[1])+1], "mercado": a[a.index(lb[2])+1]}}
+                        
                 elif lb[1] in a:
 
                         mt = { "$match" : {"fonte": a[a.index(lb[1])+1]}}
@@ -53,7 +55,7 @@ class searchCotacao:
 
                         if lb[1] in a and lb[2] in a:
 
-                        mt = { "$match" : {"fonte": a[a.index(lb[1])+1], "mercado": a[a.index(lb[2])+1]} }
+                                mt = { "$match" : {"fonte": a[a.index(lb[1])+1], "mercado": a[a.index(lb[2])+1]} }
 
                 
                 elif lb[2] in a:
@@ -62,26 +64,27 @@ class searchCotacao:
 
                         if lb[0] in a and lb[2] in a:
 
-                        mt = { "$match" : {"mercadoria": a[a.index(lb[0])+1], "mercado": a[a.index(lb[2])+1]}}
+                                mt = { "$match" : {"mercadoria": a[a.index(lb[0])+1], "mercado": a[a.index(lb[2])+1]}}
 
                 pipeline=[]
                 pipeline.append(mt)
+                pipeline.append(order)
                 return pipeline
 
-        def searchDerivativos(data):
+        def searchDerivativos(self, data):
 
-                pipeline = pipelineDerivativos(data)
+                pipeline = self.pipelineDerivativos(data)
                 print(pipeline)
-                result = coll.aggregate(pipeline)
+                result = self.coll.aggregate(pipeline)
 
                 for x in result:
                         print(x)
 
                 return None
 
-def searchDemais(data):
-    result = coll2.find_one()
+#def searchDemais(data):
+#    result = coll2.find_one()
     
-    return result
+#    return result
 
-searchDerivativos1()
+#searchDerivativos1()

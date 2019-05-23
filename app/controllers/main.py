@@ -1,6 +1,8 @@
-from database import *
+#from database import *
 from flask import render_template, request, jsonify
 from app import app
+from app.controllers import dbmongo as db
+from cotacaoTeste import montaHTMLDerivativos
 
 #from cotacaotest import *
 
@@ -30,15 +32,16 @@ def noticiosos():
 '''
 @app.route('/cotacao', methods=['GET' , 'POST'])
 def cotacao():
-        src = searchCotacao()
+        src = db.searchCotacao()
 
         if request.method == "POST":
-                text = request.form.get('contentSearch', None)
-                print(text)
+                text = request.form.get('contentSearch')
+                print(type(text))
 
-                src.searchDerivativos(text)
+                result = src.searchDerivativos(text)
+                html = montaHTMLDerivativos(result)
 
-        return render_template('cotacao.html')
+        return render_template('cotacao.html', html=html)
 
 
 @app.route('/bpro-terminal', methods=('GET' , 'POST'))

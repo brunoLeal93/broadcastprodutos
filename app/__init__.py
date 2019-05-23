@@ -7,4 +7,4 @@ app.config.from_object('config')
 
 
 from app.controllers import main
-from app.controllers import database
+#from app.controllers import database
