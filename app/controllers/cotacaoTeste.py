@@ -512,8 +512,14 @@ def montaHTMLDerivativos(data):
                 "<td>"+x['desc_papel']+"</td>"+\
                 "<td class='text-center'>"+x['codbolsa']+"</td>"+\
                 "<td class='text-center'>"+x['codbroad']+"</td>"
-
                 html = row_ini + varMercadoria + varFonte + varDemais + row_fim
+            else:
+                varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                "<td>"+x['desc_papel']+"</td>"+\
+                "<td class='text-center'>"+x['codbolsa']+"</td>"+\
+                "<td class='text-center'>"+x['codbroad']+"</td>"
+                html = html + row_ini+ varMercadoria + varDemais + row_fim
+
         else:
             if x['fonte'] not in unique_fonte:
                 unique_fonte.append(x['fonte'])
