@@ -163,7 +163,7 @@ var opc = [
 {'name':'Derivativos > Mercadoria: Suco de Laranja > Fonte: ICE US (NYBOT) > Mercado: Opção','id':162},
 {'name':'Derivativos > Mercadoria: Trigo > Fonte: CBOT > Mercado: Futuro','id':163},
 {'name':'Derivativos > Mercadoria: Trigo > Fonte: CBOT > Mercado: Opção','id':164},
-{'name':'Derivativos > Mercadoria: Trigo > Fonte: ICE Europe (IPE) > Mercado: Futuro','id':165}
+{'name':'Derivativos > Mercadoria: Trigo > Fonte: ICE Europe (IPE) > Mercado: Futuro','id':165},
 {'name':'Derivativos > TUDO','id':166}
     
 ];
