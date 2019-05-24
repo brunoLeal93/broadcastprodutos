@@ -28,7 +28,7 @@ class searchCotacao:
         def pipelineDerivativos(self, data):
 
                 #lb = ['Derivativos', 'Mercadoria:', 'Fonte', 'Mercado']
-                lb = ['Mercadoria:', 'Fonte:', 'Mercado:', 'Tudo']
+                lb = ['Mercadoria:', 'Fonte:', 'Mercado:', 'TUDO']
                 a = data.split(' ')
                 print(a)
 
