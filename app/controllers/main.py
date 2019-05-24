@@ -37,8 +37,9 @@ def cotacao():
         if request.method == "POST":
                 text = request.form.get('contentSearch')
                 print(type(text))
-
+        
                 result = src.searchDerivativos(text)
+                print(result)
                 html = ct.montaHTMLDerivativos(result)
                 return render_template('cotacao.html', html=html)
 
