@@ -210,15 +210,19 @@ class searchCotacao:
                 return pipeline
 
         def searchDerivativos(self, data):
+                if 'TUDO' in data:
+                        result = self.coll.find()
 
-                pipeline = self.pipelineDerivativos(data)
-                print(pipeline)
-                result = self.coll.aggregate(pipeline)
-                aux=[]
-                for x in result:
-                        aux.append(x)
-
-                return aux
+                        return result
+                        
+                else:
+                        pipeline = self.pipelineDerivativos(data)
+                        print(pipeline)
+                        result = self.coll.aggregate(pipeline)
+                        aux=[]
+                        for x in result:
+                                aux.append(x)
+                        return aux
 
 #def searchDemais(data):
 #    result = coll2.find_one()
