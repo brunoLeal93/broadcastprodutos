@@ -28,7 +28,7 @@ class searchCotacao:
         def pipelineDerivativos(self, data):
 
                 #lb = ['Derivativos', 'Mercadoria:', 'Fonte', 'Mercado']
-                lb = ['Mercadoria:', 'Fonte:', 'Mercado:']
+                lb = ['Mercadoria:', 'Fonte:', 'Mercado:', 'Tudo']
                 a = data.split(' ')
                 print(a)
 
@@ -200,6 +200,9 @@ class searchCotacao:
                                         mt = { "$match" : {"mercadoria": a[a.index(lb[0])+1]+" "+a[a.index(lb[0])+2]+" "+a[a.index(lb[0])+3], "mercado": a[a.index(lb[2])+1]}}
 
                                 #mt = { "$match" : {"mercadoria": a[a.index(lb[0])+1], "mercado": a[a.index(lb[2])+1]}}
+
+                elif lb[3] in a:
+                        mt= {}
 
                 pipeline=[]
                 pipeline.append(mt)
