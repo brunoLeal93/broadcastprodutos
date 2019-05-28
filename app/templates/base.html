@@ -8,6 +8,7 @@
     
     <!-- Broadcast Comercial CSS -->
     <link rel="stylesheet" href="../static/css/bcprodutos.css">
+    <link rel="stylesheet" href="../static/css/menu.css">
 
     <!-- Fontawesome Icons CSS -->
     <link rel="stylesheet" href="../static/node_modules/@fortawesome/fontawesome-free/css/all.css">
@@ -18,51 +19,56 @@
     {%block nav %}
     <!-- Nav Menu -->
     <nav class="navbar navbar-expand-md navbar-light bg-gradient-light">
+        <!--
       <a class="navbar-brand" href="{{url_for('home')}}">
           <img src="../static/img/logo-bcComercial.png" height="40" width="auto" alt="Broadcast Comercial">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    
-      <div class="collapse navbar-collapse " id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
+    -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav menu">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Financeiro
+                        <img src="../static/img/LOGO-BC-Financeiro.png" height="40" width="auto" alt="Broadcast Financeiro">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{url_for('bpro_terminal')}}">Desktop</a>
-                    <a class="dropdown-item" href="#">Web</a>
-                    <a class="dropdown-item" href="#">Wallboard</a>
+                    <a class="dropdown-item" href="#"><span style="color: grey">Web</span> (Em Breve)</a>
+                    <a class="dropdown-item" href="#"><span style="color: grey">Wallboard</span> (Em Breve)</a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" style="opacity: 0.3; filter: alpha(opacity=30);">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Agronegócios
+                    <img  src="../static/img/LOGO-BC-Agro.png" height="40" width="auto" alt="Broadcast Agro">
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <!--div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Desktop</a>
                     <a class="dropdown-item" href="#">Web</a>
                     <a class="dropdown-item" href="#">Wallboard</a>
-                </div>
+                </div-->
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Político</a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="#">Trading News</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Soluções
+            <li class="nav-item" style="opacity: 0.3; filter: alpha(opacity=30);">
+                <a class="nav-link" href="#">
+                    <img src="../static/img/LOGO-BC-Político.png" height="40" width="auto" alt="Broadcast Político">
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
+            </li>
+            <li class="nav-item" style="opacity: 0.3; filter: alpha(opacity=30);">
+                <a class="nav-link" href="#">
+                    <img  src="../static/img/LOGO-BC-TradingNews.png" height="40" width="auto" alt="Broadcast TradingNews">
+                </a>
+            </li>
+            <li class="nav-item dropdown" style="opacity: 0.3; filter: alpha(opacity=30);">
+                <a class="nav-link dropdown-toggle mt-1" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <b>Soluções</b>
+                </a>
+                <!--div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#"></a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+                </div-->
             </li>
         </ul>
       </div>

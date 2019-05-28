@@ -32,7 +32,7 @@ def noticiosos():
 '''
 @app.route('/cotacao', methods=['GET' , 'POST'])
 def cotacao():
-        src = db.searchCotacao()
+        #src = db.searchCotacao()
         html=""
         if request.method == "POST":
                 text = request.form.get('contentSearch')

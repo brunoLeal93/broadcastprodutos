@@ -24,8 +24,7 @@
                         <label for="selectPlataforma">Selecione a Plataforma</label>
                         <select class="form-control" id="selectPlataforma">
                             <option >Broadcast+</option>
-                            <option>Broadcast Agro</option>
-                            <option>Broadcast Web</option>
+
                         </select>
                     </div>
                 </div>
@@ -58,7 +57,7 @@
     <div class="container-fluid">
         <div class="row" style="border-bottom: 1px solid white">
             <div class="col">
-                <span style="float: left;">
+                <span style="float: left; ">
                     <form>   
                         <div class="form-check form-check-inline mt-2">
                             <h5>Pacotes:</h5>
@@ -110,11 +109,11 @@
         <div class="container-fluid titulo-tabela" id="cont-incluso">
             <div class="row align-items-center" style="border-bottom: 1px solid white">
                 <div class="col-4" ></div>
-                <div class="col"  id="trade-lb"><b><a href="#">Trade</a></b></div>
-                <div class="col"  id="conjuntura-lb"><a href="#"><b>Conjuntura</b></a></div>
-                <div class="col"  id="mercados-lb"><a href="#"><b>Mercados</b></a></div>
-                <div class="col"  id="news-lb"><a href="#"><b>News</b></a></div>
-                <div class="col"  id="analises-lb"><a href="#"><b>Análises</b></a></div>
+                <div class="col"  id="trade-lb"><b><a href="{{ url_for('bpro_terminal', _anchor='pctTrade') }}">Trade</a></b></div>
+                <div class="col"  id="conjuntura-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctConjuntura') }}"><b>Conjuntura</b></a></div>
+                <div class="col"  id="mercados-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctMercados') }}"><b>Mercados</b></a></div>
+                <div class="col"  id="news-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctNews') }}"><b>News</b></a></div>
+                <div class="col"  id="analises-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctAnalises') }}"><b>Análises</b></a></div>
             </div>
 
             <div class="row align-items-center" id="valores" >
@@ -275,10 +274,10 @@
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2"><i id="iconNContri" class="fas fa-angle-right"></i>&nbsp;<a id="NotContriN2" onclick="iconNoticiaContri()"class="text-decoration-none" data-toggle="collapse" href="#Noticias-ctbd-collapse"><b>Contribuidores</b></a></div>
                         <div class="col" id="n-ctbd-trade"><i class="fas fa-check"></i></div>
-                        <div class="col" id="n-ctbd-conjuntura"><i class="fas fa-times"></i></div>
+                        <div class="col" id="n-ctbd-conjuntura"><i class="fas fa-check"></i></div>
                         <div class="col" id="n-ctbd-mercados"><i class="fas fa-check"></i></div>
-                        <div class="col" id="n-ctbd-news"><i class="fas fa-times"></i></div>
-                        <div class="col" id="n-ctbd-analises"><i class="fas fa-times"></i></div>
+                        <div class="col" id="n-ctbd-news"><i class="fas fa-check"></i></div>
+                        <div class="col" id="n-ctbd-analises"><i class="fas fa-check"></i></div>
                     </div>
                     <!-- Contribuidores Noticias-->
                     <div class="collapse" id="Noticias-ctbd-collapse">
@@ -1077,21 +1076,6 @@
                     </div>
                     <div class="collapse" id="Addon-mod-af-collapse">
                         <div>
-                            <!--Cap. Aberto e Cap. Fechado-->
-                            <div class="row align-items-center destacar">
-                                <div class="col-4  n3">
-                                    <span data-placement="right" data-toggle="tooltip" data-html="true" title="Ferramenta de Análise Fundamentalista com acesso a dados Empresas de Capital Aberto e Fechado">Capital Aberto e Fechado</span> 
-                                    <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
-                                    <b>Cód. Serv:</b> BC-19724</br>
-                                    <b>Custo:</b> R$450,00</br>
-                                    <b>Demonstração: Não Disponível"></i>
-                                </div>
-                                <div class="col"  id="ad-mod-af-capabefech-trade"><i class="fas fa-plus"></i></div>
-                                <div class="col"  id="ad-mod-af-capabefech-conjuntura"><i class="fas fa-plus"></i></div>
-                                <div class="col"  id="ad-mod-af-capabefech-mercados"><i class="fas fa-plus"></i></div>
-                                <div class="col"  id="ad-mod-af-capabefech-news"><i class="fas fa-plus"></i></div>
-                                <div class="col"  id="ad-mod-af-capabefech-analises"><i class="fas fa-times"></i></div>
-                            </div>
                             <!--Capital Aberto-->
                             <div class="row align-items-center destacar">
                                 <div class="col-4  n3" title="Cód.Serv: BC-14167 | Custo: R$ 136,40">
@@ -1122,6 +1106,22 @@
                                 <div class="col"  id="ad-mod-af-capfech-news"><i class="fas fa-times"></i></div>
                                 <div class="col"  id="ad-mod-af-capfech-analises"><i class="fas fa-plus"></i></div>
                             </div>
+                            <!--Cap. Aberto e Cap. Fechado-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n3">
+                                    <span data-placement="right" data-toggle="tooltip" data-html="true" title="Ferramenta de Análise Fundamentalista com acesso a dados Empresas de Capital Aberto e Fechado">Full</span> 
+                                    <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                    <b>Cód. Serv:</b> BC-19724</br>
+                                    <b>Custo:</b> R$450,00</br>
+                                    <b>Demonstração: Não Disponível"></i>
+                                </div>
+                                <div class="col"  id="ad-mod-af-capabefech-trade"><i class="fas fa-plus"></i></div>
+                                <div class="col"  id="ad-mod-af-capabefech-conjuntura"><i class="fas fa-plus"></i></div>
+                                <div class="col"  id="ad-mod-af-capabefech-mercados"><i class="fas fa-plus"></i></div>
+                                <div class="col"  id="ad-mod-af-capabefech-news"><i class="fas fa-plus"></i></div>
+                                <div class="col"  id="ad-mod-af-capabefech-analises"><i class="fas fa-minus"></i></div>
+                            </div>
+                            
                         </div>
                     </div>
                     <!--Deal Data-->

@@ -8,6 +8,10 @@ b{
     height: auto;
 }
 
+.form-check{
+    color: white;
+}
+
 .fixar {
     position:fixed;
     top: 0px;
@@ -53,6 +57,7 @@ h1{
 .legenda{
     font-size: 15px;
     padding-top: 7px;
+    color: white;
     
 }
 
@@ -102,6 +107,7 @@ i.fa-angle-right {color: #007bff;}
 i.fa-angle-down {color: #007bff;}
 i.fa-plus      	{color: #0262a9;}
 i.fa-clock     	{color: #007bff;}
+/*i.fa-minus     	{color: #007bff;}*/
 .realtime{
 	border:2px solid #48d053;
 	border-radius: 3px;
