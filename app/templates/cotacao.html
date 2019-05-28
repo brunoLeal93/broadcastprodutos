@@ -14,6 +14,109 @@
 
 {%endblock%}
 {%block content%}
+    <!-- Modal -->
+    <div class="modal fade" id="filtrosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Filtros</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" action="/cotacao">
+                <div class="row">
+                    <div class="input-group mt-2 ml-2 mr-2">
+                        <input type="text" name="contentSearch" id="contentSearch" class="form-control" placeholder="Buscar em nossas cotações..." aria-label="Buscar em nossas cotações..." aria-describedby="button-Buscar">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check mt-2">
+                            <h5>Mercados</h5>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="todosMercados" checked>
+                            <label class="form-check-label" for="todosMercados" >Todos</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="aVista" checked>
+                            <label class="form-check-label" for="aVista" >A Vista</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="aTermo" checked>
+                            <label class="form-check-label" for="aTermo">A Termo</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Balcao" checked>
+                            <label class="form-check-label" for="Balcao">Balcão</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Futuro" checked>
+                            <label class="form-check-label" for="Futuro">Futuro</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Opcao" checked>
+                            <label class="form-check-label" for="Opcao">Opção</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Spred" checked>
+                            <label class="form-check-label" for="Spred">Spred</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Swap" checked>
+                            <label class="form-check-label" for="Swap">Swap</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                            <div class="form-check mt-2">
+                                <h5>Tipo Ativo</h5>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="todosTipoAtivo" checked>
+                                <label class="form-check-label" for="todosTipoAtivo">Todos</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="Acao" checked>
+                                <label class="form-check-label" for="Acao" >Ação</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="Cambio" checked>
+                                <label class="form-check-label" for="Cambio" >Câmbio</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="Commodities" checked>
+                                <label class="form-check-label" for="Commodities">Commodities</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="Fundos" checked>
+                                <label class="form-check-label" for="Fundos">Fundos</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="IndAcao" checked>
+                                <label class="form-check-label" for="IndAcao">Índices Ação</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="RendaFixa" checked>
+                                <label class="form-check-label" for="RendaFixa">Renda Fixa</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="TaxasIndic" checked>
+                                <label class="form-check-label" for="TaxasIndic">Taxas e Indicadores</label>
+                            </div>
+                        </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+            <button type="submit" id="button-Buscar" class="btn btn-secondary">Buscar</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
     <!-- Jumbotrom -->
     <div class="jumbotron jumbotron-fluid bg-primary">
         <div class="container text-center">
@@ -25,6 +128,9 @@
                         <input class="btn btn-secondary" type="submit" id="button-addon2" value="Buscar"/>
                     </div>
                 </div>
+                <button id="btn-Filtros" type="button" class="btn btn-secondary mt-2" data-toggle="modal" data-target="#filtrosModal">
+                    Filtros
+                </button>
             </form>
         </div>
     </div>
@@ -34,13 +140,20 @@
 
     </section>
     <!-- Section Derivativos -->
+    {%if html != '':%}
     <section class="jumbotron bg-light">
         <div class="title"><h3 style="color: black">Derivativos</h3></div>
         <div class="container text-center">
             {{html|safe}}
         </div>
     </section>
-
+    {%else:%}
+    <section class="jumbotron bg-light">
+        <div class="container text-center">
+            <h2>Realize uma busca!</h2>
+        </div>
+    </section>
+    {%endif%}
 {%endblock%}
 
 {%block scripts%}

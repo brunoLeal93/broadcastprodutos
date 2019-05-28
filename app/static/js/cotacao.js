@@ -1,3 +1,11 @@
+$(document).ready(function(){
+    document.getElementById("btn-Filtros").click();
+});
+
+$('#filtrosModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  });
+
 var opc = [
     {'name':'Derivativos > Mercadoria: Açúcar','id':1},
 {'name':'Derivativos > Mercadoria: Algodão','id':2},
