@@ -222,7 +222,10 @@ class searchCotacao:
                 else:
                         pipeline = "self.pipelineDerivativos1(data)"
                         pprint(pipeline)
-                        result = self.coll.aggregate([{ "$match":{ '$text': {"$search":data}} }])
+                        result = self.coll.aggregate([
+                                { "$match":{ '$text': {"$search":data}},
+                                { "$sort": {"mercadoria": 1 , "fonte": 1, "mercado": 1, "desc_papel":1}}
+                                 }])
                         aux=[]
                         for x in result:
                                 aux.append(x)
