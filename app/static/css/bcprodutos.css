@@ -9,6 +9,10 @@ body {
     float: right !important;
   }
 }
+
+i.fa-home {
+  color: var(--bc-blue);
+}
 .bkg-jumbotronTop {
   background-image: url(http://broadcast.com.br/wp-content/uploads/2017/06/bpro4.png);
   background-repeat: no-repeat;
