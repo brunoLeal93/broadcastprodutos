@@ -346,79 +346,79 @@ class searchCotacao:
                 
 
                 for x in vetText:
-                        result = self.coll.find_one({ 'mercadoria': {"$regex": x, "$options": "im"}})
+                        result = self.coll.find_one({ 'mercadoria': {"$regex": x, "$options": "i"}})
                         if result != None:
                                 vetMercadoria.append(x)
                         
-                        result = self.coll.find_one({ 'fonte': {"$regex": x, "$options": "im"}})
+                        result = self.coll.find_one({ 'fonte': {"$regex": x, "$options": "i"}})
                         if result != None:
                                 vetFonte.append(x)
                         
-                        result = self.coll.find_one({ 'mercado': {"$regex": x, "$options": "im"}})
+                        result = self.coll.find_one({ 'mercado': {"$regex": x, "$options": "i"}})
                         if result != None:
                                 vetMercado.append(x)
                         
-                        result = self.coll.find_one({ 'tp_instr': {"$regex": x, "$options": "im"}})
+                        result = self.coll.find_one({ 'tp_instr': {"$regex": x, "$options": "i"}})
                         if result != None:
                                 vetTpInst.append(x)
                         
-                        result = self.coll.find_one({ 'desc_papel': {"$regex": x, "$options": "im"}})
+                        result = self.coll.find_one({ 'desc_papel': {"$regex": x, "$options": "i"}})
                         if result != None:
                                 vetDescPapel.append(x)
 
-                        result = self.coll.find_one({ 'codbolsa': {"$regex": x, "$options": "im"}})
+                        result = self.coll.find_one({ 'codbolsa': {"$regex": x, "$options": "i"}})
                         if result != None:
                                 vetCodBolsa.append(x)
 
-                        result = self.coll.find_one({ 'codbroad': {"$regex": x, "$options": "im"}})
+                        result = self.coll.find_one({ 'codbroad': {"$regex": x, "$options": "i"}})
                         if result != None:
                                 vetCodBroad.append(x)
 
-                        result = self.coll.find_one({ 'pag_perm': {"$regex": x, "$options": "im"}})
+                        result = self.coll.find_one({ 'pag_perm': {"$regex": x, "$options": "i"}})
                         if result != None:
                                 vetPgPerm.append(x)
 
                 if vetMercadoria != []:
                         aux0=[]
                         for x in vetMercadoria:
-                                aux0.append({ 'mercadoria': {"$regex":x, "$options": "im"}})
+                                aux0.append({ 'mercadoria': {"$regex":x, "$options": "i"}})
 
                         aux = { "$match":"$or": aux0 }
                         pipeline.append(aux)
                 
                 if vetFonte != []:
                         for x in vetFonte:
-                                aux = { "$match":{ 'fonte': {"$regex":x, "$options": "im"}} }
+                                aux = { "$match":{ 'fonte': {"$regex":x, "$options": "i"}} }
                                 pipeline.append(aux)
                 
                 if vetMercado != []:
                         for x in vetMercado:
-                                aux = { "$match":{ 'mercado': {"$regex":x, "$options": "im"}} }
+                                aux = { "$match":{ 'mercado': {"$regex":x, "$options": "i"}} }
                                 pipeline.append(aux)
 
                 if vetTpInst != []:
                         for x in vetTpInst:
-                                aux = { "$match":{ 'tp_instr': {"$regex":x, "$options": "im"}} }
+                                aux = { "$match":{ 'tp_instr': {"$regex":x, "$options": "i"}} }
                                 pipeline.append(aux)
                 
                 if vetDescPapel != []:
                         for x in vetDescPapel:
-                                aux = { "$match":{ 'desc_papel': {"$regex":x, "$options": "im"}} }
+                                aux = { "$match":{ 'desc_papel': {"$regex":x, "$options": "i"}} }
                                 pipeline.append(aux)
                 
                 if vetCodBolsa != []:
                         for x in vetCodBolsa:
-                                aux = { "$match":{ 'codbolsa': {"$regex":x, "$options": "im"}} }
+                                aux = { "$match":{ 'codbolsa': {"$regex":x, "$options": "i"}} }
                                 pipeline.append(aux)
                 
                 if vetCodBroad != []:
                         for x in vetCodBroad:
-                                aux = { "$match":{ 'codbroad': {"$regex":x, "$options": "im"}} }
+                                aux = { "$match":{ 'codbroad': {"$regex":x, "$options": "i"}} }
                                 pipeline.append(aux)
                         
                 if vetPgPerm != []:
                         for x in vetPgPerm:
-                                aux = { "$match":{ 'pag_perm': {"$regex":x, "$options": "im"}} }
+                                aux = { "$match":{ 'pag_perm': {"$regex":x, "$options": "i"}} }
                                 pipeline.append(aux)
                 
                 pipeline.append(order)
