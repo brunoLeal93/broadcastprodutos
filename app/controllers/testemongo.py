@@ -7,17 +7,20 @@ db = client['db-derivativos']
 coll = db['coll-derivativos']
 
 pipeline = [
-    { "$match":{ 'mercadoria': {"$regex":"^boi^", "$option": "i"}} },
-    { "$match":{ 'mercado': {"$regex":"^futuro^", "$option": "i"}} },
-    { "$match":{ 'desc_papel': {"$regex":"^boi^", "$option": "i"}} }
-    { "$match":{ 'desc_papel': {"$regex":"^rolagem^", "$option": "i"}} }
+    { "$match":{ 'mercadoria': {"$regex":"boi", "$options": "i"}} },
+    { "$match":{ 'mercado': {"$regex":"futuro", "$options": "i"}} },
+    { "$match":{ 'desc_papel': {"$regex":"boi", "$options": "i"}} },
+    { "$match":{ 'desc_papel': {"$regex":"rolagem", "$options": "i"}} }
 
 ]
 
+a = coll.update_one({'mercadoria': 'Índice Dow Jones'},{'$set' : {'desc_papel': 'índice Média Industrial Dow Jones Mini (Multiplicador 5)'}})
 result = coll.aggregate(pipeline)
 
-for x in result:
-    print(x)
+#for x in result:
+#    print(x)
 
+result1 = coll.find_one({ 'mercadoria': {"$regex": "teste", "$options": "i"}})
 
+print(result1)
 

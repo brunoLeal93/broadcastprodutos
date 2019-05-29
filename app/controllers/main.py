@@ -1,8 +1,9 @@
 #from database import *
 from flask import render_template, request, jsonify, redirect
 from app import app
-#from app.controllers import dbmongo as db
-#from app.controllers import cotacaoTeste as ct
+from app.controllers import dbmongo as db
+from app.controllers import cotacaoTeste as ct
+from pprint import pprint
 
 #from cotacaotest import *
 
@@ -32,15 +33,15 @@ def noticiosos():
 '''
 @app.route('/cotacao', methods=['GET' , 'POST'])
 def cotacao():
-        #src = db.searchCotacao()
+        src = db.searchCotacao()
         html=""
         if request.method == "POST":
                 text = request.form.get('contentSearch')
                 print(type(text))
         
-                #result = src.searchDerivativos(text)
-                #print(result)
-                html = ''#ct.montaHTMLDerivativos(result)
+                result = src.searchDerivativos(text)
+                pprint(result)
+                html = ct.montaHTMLDerivativos(result)
                 return render_template('cotacao.html', html=html)
 
         return render_template('cotacao.html', html=html)

@@ -1,4 +1,6 @@
 from pymongo import MongoClient, ASCENDING
+
+from pprint import pprint
 #from cotacaoTeste import searchDerivativos
 
 client = MongoClient('mongodb://broadcast:agestado@cluster0-shard-00-00-umdst.mongodb.net:27017,cluster0-shard-00-01-umdst.mongodb.net:27017,cluster0-shard-00-02-umdst.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true')
@@ -36,7 +38,7 @@ class searchCotacao:
                 #print(a.index(lb[0]))
                 #print(a[a.index(lb[0])+1])
                 
-                order = { "$sort": {"mercadoria": 1 , "fonte": 1, "mercado": 1}}
+                order = { "$sort": {"mercadoria": 1 , "fonte": 1, "mercado": 1, "desc_papel":1}}
 
                 if lb[0] in a:
 
@@ -218,14 +220,110 @@ class searchCotacao:
                         return aux
                         
                 else:
-                        pipeline = self.pipelineDerivativos(data)
-                        print(pipeline)
+                        pipeline = self.pipelineDerivativos1(data)
+                        pprint(pipeline)
                         result = self.coll.aggregate(pipeline)
                         aux=[]
                         for x in result:
                                 aux.append(x)
                         return aux
 
+        def pipelineDerivativos1(self, data):
+                vetText = data.split(' ')
+                aux = { "$match":{ '$text': {"$search":data}} }
+                order = { "$sort": {"mercadoria": 1 , "fonte": 1, "mercado": 1, "desc_papel":1}}
+
+                pipeline =[]
+                
+                pipeline.append(aux)
+                
+                vetMercadoria=[]
+                vetFonte=[]
+                vetMercado=[]
+                vetTpInst=[]
+                vetDescPapel=[]
+                vetCodBolsa=[]
+                vetCodBroad=[]
+                vetPgPerm=[]
+
+                
+
+                for x in vetText:
+                        result = self.coll.find_one({ 'mercadoria': {"$regex": x, "$options": "i"}})
+                        if result != None:
+                                vetMercadoria.append(x)
+                        
+                        result = self.coll.find_one({ 'fonte': {"$regex": x, "$options": "i"}})
+                        if result != None:
+                                vetFonte.append(x)
+                        
+                        result = self.coll.find_one({ 'mercado': {"$regex": x, "$options": "i"}})
+                        if result != None:
+                                vetMercado.append(x)
+                        
+                        result = self.coll.find_one({ 'tp_instr': {"$regex": x, "$options": "i"}})
+                        if result != None:
+                                vetTpInst.append(x)
+                        
+                        result = self.coll.find_one({ 'desc_papel': {"$regex": x, "$options": "i"}})
+                        if result != None:
+                                vetDescPapel.append(x)
+
+                        result = self.coll.find_one({ 'codbolsa': {"$regex": x, "$options": "i"}})
+                        if result != None:
+                                vetCodBolsa.append(x)
+
+                        result = self.coll.find_one({ 'codbroad': {"$regex": x, "$options": "i"}})
+                        if result != None:
+                                vetCodBroad.append(x)
+
+                        result = self.coll.find_one({ 'pag_perm': {"$regex": x, "$options": "i"}})
+                        if result != None:
+                                vetPgPerm.append(x)
+
+                if vetMercadoria != []:
+                        for x in vetMercadoria:
+                                aux = { "$match":{ 'mercadoria': {"$regex":x, "$options": "i"}} }
+                                pipeline.append(aux)
+                
+                if vetFonte != []:
+                        for x in vetFonte:
+                                aux = { "$match":{ 'fonte': {"$regex":x, "$options": "i"}} }
+                                pipeline.append(aux)
+                
+                if vetMercado != []:
+                        for x in vetMercado:
+                                aux = { "$match":{ 'mercado': {"$regex":x, "$options": "i"}} }
+                                pipeline.append(aux)
+
+                if vetTpInst != []:
+                        for x in vetTpInst:
+                                aux = { "$match":{ 'tp_instr': {"$regex":x, "$options": "i"}} }
+                                pipeline.append(aux)
+                
+                if vetDescPapel != []:
+                        for x in vetDescPapel:
+                                aux = { "$match":{ 'desc_papel': {"$regex":x, "$options": "i"}} }
+                                pipeline.append(aux)
+                
+                if vetCodBolsa != []:
+                        for x in vetCodBolsa:
+                                aux = { "$match":{ 'codbolsa': {"$regex":x, "$options": "i"}} }
+                                pipeline.append(aux)
+                
+                if vetCodBroad != []:
+                        for x in vetCodBroad:
+                                aux = { "$match":{ 'codbroad': {"$regex":x, "$options": "i"}} }
+                                pipeline.append(aux)
+                        
+                if vetPgPerm != []:
+                        for x in vetPgPerm:
+                                aux = { "$match":{ 'pag_perm': {"$regex":x, "$options": "i"}} }
+                                pipeline.append(aux)
+                
+                pipeline.append(order)
+                
+                return pipeline
 #def searchDemais(data):
 #    result = coll2.find_one()
     
