@@ -477,20 +477,10 @@ def contF(x, data):
     
     return i
 
-def contMercado(x, data):
-    i=0
-
-    for a in data:
-        if x == a['mercado']:
-            i=i+1
-    
-    return i
-
 def montaHTMLDerivativos(data):
 
     unique_mercadoria=[]
     unique_fonte=[]
-    unique_mercado=[]
     html=""
     table_ini = "<table style='width:100%'>" 
     table_fim = "</table>"
@@ -518,78 +508,36 @@ def montaHTMLDerivativos(data):
                 unique_fonte.append(x['fonte'])
                 print('{}:{}'.format(x['fonte'],str(contF(x['fonte'], data))))
                 varFonte= "<td class='text-center' rowspan='"+ str(contF(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"</td>"
-                
-                if x['mercado'] not in unique_mercado:
-                    unique_mercado.append(x['mercado'])
-                    varMercado="<td class='text-center' rowspan='"+ str(contMercado(x['mercado'], data))+"' class='text-center'>"+x['mercado']+"</td>"
-                
-                    varDemais= "<td>"+x['desc_papel']+"</td>"+\
-                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                    "<td class='text-center'>"+x['codbroad']+"</td>"
-
-                    html = row_ini + varMercadoria + varFonte + varMercado+ varDemais + row_fim
-                else:
-                    varDemais= "<td>"+x['desc_papel']+"</td>"+\
-                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                    "<td class='text-center'>"+x['codbroad']+"</td>"
-
-                    html = row_ini + varMercadoria + varFonte + varDemais + row_fim
-            
+                varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                "<td>"+x['desc_papel']+"</td>"+\
+                "<td class='text-center'>"+x['codbolsa']+"</td>"+\
+                "<td class='text-center'>"+x['codbroad']+"</td>"
+                html = row_ini + varMercadoria + varFonte + varDemais + row_fim
             else:
-                if x['mercado'] not in unique_mercado:
-                    unique_mercado.append(x['mercado'])
-                    varMercado="<td class='text-center' rowspan='"+ str(contMercado(x['mercado'], data))+"' class='text-center'>"+x['mercado']+"</td>"
-                
-                    varDemais= "<td>"+x['desc_papel']+"</td>"+\
-                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                    "<td class='text-center'>"+x['codbroad']+"</td>"
-
-                    html = row_ini + varMercadoria + varMercado + varDemais + row_fim
-                else:
-                    varDemais= "<td>"+x['desc_papel']+"</td>"+\
-                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                    "<td class='text-center'>"+x['codbroad']+"</td>"
-
-                    html = row_ini + varMercadoria +  varDemais + row_fim
+                varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                "<td>"+x['desc_papel']+"</td>"+\
+                "<td class='text-center'>"+x['codbolsa']+"</td>"+\
+                "<td class='text-center'>"+x['codbroad']+"</td>"
+                html = html + row_ini+ varMercadoria + varDemais + row_fim
 
         else:
-           if x['fonte'] not in unique_fonte:
+            if x['fonte'] not in unique_fonte:
                 unique_fonte.append(x['fonte'])
                 print('{}:{}'.format(x['fonte'],str(contF(x['fonte'], data))))
                 varFonte= "<td class='text-center' rowspan='"+ str(contF(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"</td>"
-                
-                if x['mercado'] not in unique_mercado:
-                    unique_mercado.append(x['mercado'])
-                    varMercado="<td class='text-center' rowspan='"+ str(contMercado(x['mercado'], data))+"' class='text-center'>"+x['mercado']+"</td>"
-                
-                    varDemais= "<td>"+x['desc_papel']+"</td>"+\
-                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                    "<td class='text-center'>"+x['codbroad']+"</td>"
-
-                    html = row_ini + varFonte + varMercado+ varDemais + row_fim
-                else:
-                    varDemais= "<td>"+x['desc_papel']+"</td>"+\
-                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                    "<td class='text-center'>"+x['codbroad']+"</td>"
-
-                    html = row_ini + varFonte + varDemais + row_fim
+                varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                "<td>"+x['desc_papel']+"</td>"+\
+                "<td class='text-center'>"+x['codbolsa']+"</td>"+\
+                "<td class='text-center'>"+x['codbroad']+"</td>"
+                html = html + row_ini + varFonte + varDemais + row_fim
             
             else:
-                if x['mercado'] not in unique_mercado:
-                    unique_mercado.append(x['mercado'])
-                    varMercado="<td class='text-center' rowspan='"+ str(contMercado(x['mercado'], data))+"' class='text-center'>"+x['mercado']+"</td>"
-                
-                    varDemais= "<td>"+x['desc_papel']+"</td>"+\
-                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                    "<td class='text-center'>"+x['codbroad']+"</td>"
+                varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                "<td>"+x['desc_papel']+"</td>"+\
+                "<td class='text-center'>"+x['codbolsa']+"</td>"+\
+                "<td class='text-center'>"+x['codbroad']+"</td>"
 
-                    html = row_ini + varMercado + varDemais + row_fim
-                else:
-                    varDemais= "<td>"+x['desc_papel']+"</td>"+\
-                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                    "<td class='text-center'>"+x['codbroad']+"</td>"
-
-                    html = row_ini +  varDemais + row_fim
+                html = html + row_ini + varDemais + row_fim
 
     html = table_ini + cabecalho + html + table_fim
 
