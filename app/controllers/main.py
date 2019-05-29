@@ -1,8 +1,8 @@
 #from database import *
 from flask import render_template, request, jsonify, redirect
 from app import app
-#from app.controllers import dbmongo as db
-#from app.controllers import cotacaoTeste as ct
+from app.controllers import dbmongo as db
+from app.controllers import cotacaoTeste as ct
 from pprint import pprint
 
 #from cotacaotest import *
@@ -39,10 +39,10 @@ def cotacao():
                 text = request.form.get('contentSearch')
                 print(type(text))
         
-                #result = src.searchDerivativos(text)
+                result = src.searchDerivativos(text)
                 #pprint(result)
-                #html = ct.montaHTMLDerivativos(result)
-                html=''
+                html = ct.montaHTMLDerivativos(result)
+                #html=''
                 return render_template('cotacao.html', html=html)
 
         return render_template('cotacao.html', html=html)
