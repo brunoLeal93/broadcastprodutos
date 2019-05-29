@@ -533,7 +533,7 @@ def montaHTMLDerivativos(data):
                     "<td class='text-center'>"+x['codbolsa']+"</td>"+\
                     "<td class='text-center'>"+x['codbroad']+"</td>"
 
-                    html = row_ini + varMercadoria + varFonte + varDemais + row_fim
+                    html = html + row_ini + varMercadoria + varFonte + varDemais + row_fim
             
             else:
                 if x['mercado'] not in unique_mercado:
@@ -544,13 +544,13 @@ def montaHTMLDerivativos(data):
                     "<td class='text-center'>"+x['codbolsa']+"</td>"+\
                     "<td class='text-center'>"+x['codbroad']+"</td>"
 
-                    html = row_ini + varMercadoria + varMercado + varDemais + row_fim
+                    html = html + row_ini + varMercadoria + varMercado + varDemais + row_fim
                 else:
                     varDemais= "<td>"+x['desc_papel']+"</td>"+\
                     "<td class='text-center'>"+x['codbolsa']+"</td>"+\
                     "<td class='text-center'>"+x['codbroad']+"</td>"
 
-                    html = row_ini + varMercadoria +  varDemais + row_fim
+                    html = html + row_ini + varMercadoria +  varDemais + row_fim
 
         else:
             if x['fonte'] not in unique_fonte:
@@ -566,13 +566,13 @@ def montaHTMLDerivativos(data):
                     "<td class='text-center'>"+x['codbolsa']+"</td>"+\
                     "<td class='text-center'>"+x['codbroad']+"</td>"
 
-                    html = row_ini + varFonte + varMercado+ varDemais + row_fim
+                    html = html + row_ini + varFonte + varMercado+ varDemais + row_fim
                 else:
                     varDemais= "<td>"+x['desc_papel']+"</td>"+\
                     "<td class='text-center'>"+x['codbolsa']+"</td>"+\
                     "<td class='text-center'>"+x['codbroad']+"</td>"
 
-                    html = row_ini + varFonte + varDemais + row_fim
+                    html = html + row_ini + varFonte + varDemais + row_fim
             
             else:
                 if x['mercado'] not in unique_mercado:
@@ -583,13 +583,13 @@ def montaHTMLDerivativos(data):
                     "<td class='text-center'>"+x['codbolsa']+"</td>"+\
                     "<td class='text-center'>"+x['codbroad']+"</td>"
 
-                    html = row_ini + varMercado + varDemais + row_fim
+                    html = html + row_ini + varMercado + varDemais + row_fim
                 else:
                     varDemais= "<td>"+x['desc_papel']+"</td>"+\
                     "<td class='text-center'>"+x['codbolsa']+"</td>"+\
                     "<td class='text-center'>"+x['codbroad']+"</td>"
 
-                    html = row_ini +  varDemais + row_fim
+                    html = html + row_ini +  varDemais + row_fim
 
     html = table_ini + cabecalho + html + table_fim
 
