@@ -555,7 +555,7 @@ def montaHTMLDerivativos(data):
         else:
             if x['fonte'] not in unique_fonte:
                 unique_fonte.append(x['fonte'])
-                print('{}:{}'.format(x['fonte'],str(contF(x['fonte'], data))))
+                #print('{}:{}'.format(x['fonte'],str(contF(x['fonte'], data))))
                 varFonte= "<td class='text-center' rowspan='"+ str(contF(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"</td>"
                 
                 if x['mercado'] not in unique_mercado:
