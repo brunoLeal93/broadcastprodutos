@@ -157,13 +157,13 @@ i.fa-clock     	{color: #007bff;}
 }
 
 .tooltip-inner  {
-    background-color: #e9ecef; color: black;
+    background-color:#dbdbdb; color: black;
     text-align: left;
 }
-.tooltip.bs-tooltip-right .arrow:before     {border-right-color: #e9ecef !important;}
-.tooltip.bs-tooltip-left .arrow:before      {border-left-color: #e9ecef !important;}
-.tooltip.bs-tooltip-bottom .arrow:before    {border-bottom-color: #e9ecef !important;}
-.tooltip.bs-tooltip-top .arrow:before       {border-top-color: #e9ecef !important;}
+.tooltip.bs-tooltip-right .arrow:before     {border-right-color: #dbdbdb !important;}
+.tooltip.bs-tooltip-left .arrow:before      {border-left-color: #dbdbdb !important;}
+.tooltip.bs-tooltip-bottom .arrow:before    {border-bottom-color: #dbdbdb !important;}
+.tooltip.bs-tooltip-top .arrow:before       {border-top-color: #dbdbdb !important;}
 
 
 
