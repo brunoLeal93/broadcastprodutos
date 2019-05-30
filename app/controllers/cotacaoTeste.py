@@ -458,7 +458,7 @@ txt = open('html.txt', 'w')
 txt.write(a)
 txt.close()
 '''
-
+# conta a quantidade de vezes que uma Mercadoria aparece no resultado da busca
 def contM(x, data):
     i=0
 
@@ -467,7 +467,7 @@ def contM(x, data):
             i=i+1
     
     return i
-
+# conta a quantidade de vezes que uma Fonte aparece no resultado da busca
 def contF(x, data):
     i=0
 
@@ -477,10 +477,36 @@ def contF(x, data):
     
     return i
 
+# conta a quantidade de vezes que uma Fonte por Mercadoria aparece no resultado da busca
+def contFM(x, y, data):
+    i=0
+
+    for a in data:
+        if x == a['fonte'] and y == a['mercadoria']:
+            i=i+1
+    
+    return i
+
+
+def isuniqueMercado(data):
+    merc_unique=[]
+    for x in data:
+        if x['mercado'] not in merc_unique:
+            merc_unique.append(x['mercado'])
+    
+    if len(merc_unique)==1:
+        print('Mercado unico')
+        return True
+    else:
+        print('Mercado Varios')
+        return False
+
+
 def montaHTMLDerivativos(data):
 
     unique_mercadoria=[]
     unique_fonte=[]
+    unique_fontmerc=[]
     html=""
     table_ini = "<table style='width:100%'>" 
     table_fim = "</table>"
@@ -498,47 +524,91 @@ def montaHTMLDerivativos(data):
 
     #x['mercadoria'].count()
 
-    for x in data:
-        if x['mercadoria'] not in unique_mercadoria:
-            unique_mercadoria.append(x['mercadoria'])
-            print('{}:{}'.format(x['mercadoria'],str(contM(x['mercadoria'], data))))
-            varMercadoria = "<td class='text-center' rowspan='"+ str(contM(x['mercadoria'], data)) +"' class='text-center'>"+x['mercadoria']+"</td>"
-            
-            if x['fonte'] not in unique_fonte:
-                unique_fonte.append(x['fonte'])
-                print('{}:{}'.format(x['fonte'],str(contF(x['fonte'], data))))
-                varFonte= "<td class='text-center' rowspan='"+ str(contF(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"</td>"
-                varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
-                "<td>"+x['desc_papel']+"</td>"+\
-                "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                "<td class='text-center'>"+x['codbroad']+"</td>"
-                html = row_ini + varMercadoria + varFonte + varDemais + row_fim
+    if isuniqueMercado(data):
+        for x in data:
+            if x['mercadoria'] not in unique_mercadoria:
+                unique_mercadoria.append(x['mercadoria'])
+                #print('{}:{}'.format(x['mercadoria'],str(contM(x['mercadoria'], data))))
+                varMercadoria = "<td class='text-center' rowspan='"+ str(contM(x['mercadoria'], data)) +"' class='text-center'>"+x['mercadoria']+"</td>"
+                
+                if x['fonte']+x['mercadoria'] not in unique_fontmerc:
+                    unique_fontmerc.append(x['fonte']+x['mercadoria'] )
+                    print('{}+{}:{}'.format(x['mercadoria'],x['fonte'],str(contFM(x['fonte'],x['mercadoria'], data))))
+                    varFonte= "<td class='text-center' rowspan='"+ str(contFM(x['fonte'],x['mercadoria'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                    varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                    "<td>"+x['desc_papel']+"</td>"+\
+                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
+                    "<td class='text-center'>"+x['codbroad']+"</td>"
+                    html = html + row_ini + varMercadoria + varFonte + varDemais + row_fim
+                else:
+                    varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                    "<td>"+x['desc_papel']+"</td>"+\
+                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
+                    "<td class='text-center'>"+x['codbroad']+"</td>"
+                    html = html + row_ini+ varMercadoria + varDemais + row_fim
+
             else:
-                varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
-                "<td>"+x['desc_papel']+"</td>"+\
-                "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                "<td class='text-center'>"+x['codbroad']+"</td>"
-                html = html + row_ini+ varMercadoria + varDemais + row_fim
+                if x['fonte']+x['mercadoria'] not in unique_fontmerc:
+                    print(unique_fontmerc)
+                    unique_fontmerc.append(x['fonte']+x['mercadoria'] )
+                    print('{}+{}:{}'.format(x['mercadoria'],x['fonte'],str(contFM(x['fonte'],x['mercadoria'], data))))
+                    varFonte= "<td class='text-center' rowspan='"+ str(contFM(x['fonte'],x['mercadoria'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                    varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                    "<td>"+x['desc_papel']+"</td>"+\
+                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
+                    "<td class='text-center'>"+x['codbroad']+"</td>"
+                    html = html + row_ini + varFonte + varDemais + row_fim
+                
+                else:
+                    varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                    "<td>"+x['desc_papel']+"</td>"+\
+                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
+                    "<td class='text-center'>"+x['codbroad']+"</td>"
 
-        else:
-            if x['fonte'] not in unique_fonte:
-                unique_fonte.append(x['fonte'])
-                print('{}:{}'.format(x['fonte'],str(contF(x['fonte'], data))))
-                varFonte= "<td class='text-center' rowspan='"+ str(contF(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"</td>"
-                varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
-                "<td>"+x['desc_papel']+"</td>"+\
-                "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                "<td class='text-center'>"+x['codbroad']+"</td>"
-                html = html + row_ini + varFonte + varDemais + row_fim
-            
+                    html = html + row_ini + varDemais + row_fim
+    
+    else:
+        for x in data:
+            if x['mercadoria'] not in unique_mercadoria:
+                unique_mercadoria.append(x['mercadoria'])
+                #print('{}:{}'.format(x['mercadoria'],str(contM(x['mercadoria'], data))))
+                varMercadoria = "<td class='text-center' rowspan='"+ str(contM(x['mercadoria'], data)) +"' class='text-center'>"+x['mercadoria']+"</td>"
+                
+                if x['fonte'] not in unique_fonte:
+                    unique_fonte.append(x['fonte'])
+                    print('{}:{}'.format(x['fonte'],str(contF(x['fonte'], data))))
+                    varFonte= "<td class='text-center' rowspan='"+ str(contF(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                    varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                    "<td>"+x['desc_papel']+"</td>"+\
+                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
+                    "<td class='text-center'>"+x['codbroad']+"</td>"
+                    html = row_ini + varMercadoria + varFonte + varDemais + row_fim
+                else:
+                    varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                    "<td>"+x['desc_papel']+"</td>"+\
+                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
+                    "<td class='text-center'>"+x['codbroad']+"</td>"
+                    html = html + row_ini+ varMercadoria + varDemais + row_fim
+
             else:
-                varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
-                "<td>"+x['desc_papel']+"</td>"+\
-                "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                "<td class='text-center'>"+x['codbroad']+"</td>"
+                if x['fonte'] not in unique_fonte:
+                    unique_fonte.append(x['fonte'])
+                    print('{}:{}'.format(x['fonte'],str(contF(x['fonte'], data))))
+                    varFonte= "<td class='text-center' rowspan='"+ str(contF(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                    varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                    "<td>"+x['desc_papel']+"</td>"+\
+                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
+                    "<td class='text-center'>"+x['codbroad']+"</td>"
+                    html = html + row_ini + varFonte + varDemais + row_fim
+                
+                else:
+                    varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                    "<td>"+x['desc_papel']+"</td>"+\
+                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
+                    "<td class='text-center'>"+x['codbroad']+"</td>"
 
-                html = html + row_ini + varDemais + row_fim
-
+                    html = html + row_ini + varDemais + row_fim
+    
     html = table_ini + cabecalho + html + table_fim
 
     return html
