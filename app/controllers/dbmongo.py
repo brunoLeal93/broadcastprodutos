@@ -225,6 +225,7 @@ class searchCotacao:
                         result = self.coll.aggregate(pipeline)
                         aux=[]
                         for x in result:
+                                print(x)
                                 aux.append(x)
                         return aux
 

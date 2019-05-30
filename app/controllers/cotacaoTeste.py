@@ -468,14 +468,35 @@ def contM(x, data):
     
     return i
 
-def contF(x, data):
+def contF1(x, data):
     i=0
 
     for a in data:
         if x == a['fonte']:
             i=i+1
-    
     return i
+
+def contF2(x, y, data):
+    i=0
+
+    for a in data:
+        if x == a['fonte'] and y == a['mercadoria']:
+            i=i+1
+    return i
+
+def isuniqueMercado(x, data):
+
+    n_total_result = data.count()
+    i=0
+    for a in data:
+        if x == a['mercado']:
+            i=i+1
+
+    if n_total_result - i == 0:
+        return True
+    else:
+        return False
+
 
 def montaHTMLDerivativos(data):
 
@@ -501,13 +522,18 @@ def montaHTMLDerivativos(data):
     for x in data:
         if x['mercadoria'] not in unique_mercadoria:
             unique_mercadoria.append(x['mercadoria'])
-            print('{}:{}'.format(x['mercadoria'],str(contM(x['mercadoria'], data))))
+            #print('{}:{}'.format(x['mercadoria'],str(contM(x['mercadoria'], data))))
             varMercadoria = "<td class='text-center' rowspan='"+ str(contM(x['mercadoria'], data)) +"' class='text-center'>"+x['mercadoria']+"</td>"
             
             if x['fonte'] not in unique_fonte:
                 unique_fonte.append(x['fonte'])
-                print('{}:{}'.format(x['fonte'],str(contF(x['fonte'], data))))
-                varFonte= "<td class='text-center' rowspan='"+ str(contF(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                #print('{}:{}'.format(x['fonte'],str(contF(x['fonte'],, data))))
+                
+                if isuniqueMercado(x['mercado'], data):
+                    varFonte= "<td class='text-center' rowspan='"+ str(contF2(x['fonte'],x['mercadoria'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                else:
+                    varFonte= "<td class='text-center' rowspan='"+ str(contF1(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                
                 varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
                 "<td>"+x['desc_papel']+"</td>"+\
                 "<td class='text-center'>"+x['codbolsa']+"</td>"+\
@@ -523,8 +549,13 @@ def montaHTMLDerivativos(data):
         else:
             if x['fonte'] not in unique_fonte:
                 unique_fonte.append(x['fonte'])
-                print('{}:{}'.format(x['fonte'],str(contF(x['fonte'], data))))
-                varFonte= "<td class='text-center' rowspan='"+ str(contF(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                #print('{}:{}'.format(x['fonte'],str(contF(x['fonte'],x['mercadoria'], data))))
+                
+                if isuniqueMercado(x['mercado'], data):
+                    varFonte= "<td class='text-center' rowspan='"+ str(contF2(x['fonte'],x['mercadoria'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                else:
+                    varFonte= "<td class='text-center' rowspan='"+ str(contF1(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                
                 varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
                 "<td>"+x['desc_papel']+"</td>"+\
                 "<td class='text-center'>"+x['codbolsa']+"</td>"+\
