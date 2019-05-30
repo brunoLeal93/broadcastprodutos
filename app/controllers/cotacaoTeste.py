@@ -640,7 +640,7 @@ def montaHTMLDerivativosTudo(data):
         if x['mercadoria'] not in unique_mercadoria:
             unique_mercadoria.append(x['mercadoria'])
             #print('{}:{}'.format(x['mercadoria'],str(contM(x['mercadoria'], data))))
-            varMercadoria = "<td class='text-center' rowspan='"+ str(contM(x['mercadoria'], data)) +"' class='text-center'>"+x['mercadoria']+"</td>"
+            varMercadoria = "<td class='text-center' rowspan='"+ str(contM(x['mercadoria'], data)) +"' class='text-center'>"+x['mercadoria']+"<br/><div class='realtime'><b>RT</b></div> <i class='fas fa-clock'></i>"+"</td>"
             
             if x['fonte']+x['mercadoria'] not in unique_fontmerc:
                 unique_fontmerc.append(x['fonte']+x['mercadoria'] )

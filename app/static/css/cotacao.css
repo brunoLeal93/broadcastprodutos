@@ -11,3 +11,62 @@ th, td {
     padding: 5px;
     text-align: left;    
 }
+
+i.fa-clock     	{color: #007bff;}
+
+.realtime{
+	border:2px solid #48d053;
+	border-radius: 3px;
+	color: #48d053;
+	max-width:17px;
+    max-height:17px;
+    width: auto;
+    height: auto;
+    font-size: 12px;
+    padding-right: 15px;
+    padding-bottom: 16px;
+    display: inline-block;
+    
+}
+.endofday{
+	border: 2px solid #ff9800;
+    border-radius: 3px;
+    color: #ff9800;
+    max-width: 28px;
+    max-height: 17px;
+    width: auto;
+    height: auto;
+    font-size: 12px;
+    padding-right: 21px;
+    padding-bottom: 16px;
+    padding-left: 2px;
+    display: inline-block;
+    
+}
+
+.info{
+    border: 2px solid #ffffff;
+    background-color: #000000;
+    border-radius: 44px;
+    color: #ffffff;
+    max-width: 10px;
+    max-height: 0px;
+    width: auto;
+    height: auto;
+    font-family: "Times New Roman";
+    font-size: 13px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    padding-left: 4px;
+    display: inline-block;
+    
+}
+
+.tooltip-inner  {
+    background-color:#dbdbdb; color: black;
+    text-align: left;
+}
+.tooltip.bs-tooltip-right .arrow:before     {border-right-color: #dbdbdb !important;}
+.tooltip.bs-tooltip-left .arrow:before      {border-left-color: #dbdbdb !important;}
+.tooltip.bs-tooltip-bottom .arrow:before    {border-bottom-color: #dbdbdb !important;}
+.tooltip.bs-tooltip-top .arrow:before       {border-top-color: #dbdbdb !important;}
