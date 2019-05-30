@@ -212,7 +212,7 @@ class searchCotacao:
                 return pipeline
 
         def searchDerivativos(self, data):
-                if 'TUDO' in data:
+                if 'TUDO' == data.upper():
                         result = self.coll.find({}).sort([('mercadoria', ASCENDING), ('fonte', ASCENDING), ('mercado', ASCENDING)])
                         aux=[]
                         for x in result:
