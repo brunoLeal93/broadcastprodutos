@@ -1,17 +1,7 @@
 {%extends 'base.html'%}
 {% block title %}: Cotação{% endblock %}
 {%block css%}
-<style>
-        table, th, td {
-          border: 1px solid black;
-          border-collapse: collapse;
-        }
-        th, td {
-          padding: 5px;
-          text-align: left;    
-        }
-</style>
-
+<link rel="stylesheet" href="../static/css/cotacao.css">
 {%endblock%}
 {%block content%}
     <!-- Modal 
@@ -128,9 +118,11 @@
                         <input class="btn btn-secondary" type="submit" id="button-addon2" value="Buscar"/>
                     </div>
                 </div>
+                <!--
                 <button id="btn-Filtros" type="button" class="btn btn-secondary mt-2" data-toggle="modal" data-target="#filtrosModal">
                     Filtros
                 </button>
+                -->
             </form>
         </div>
     </div>

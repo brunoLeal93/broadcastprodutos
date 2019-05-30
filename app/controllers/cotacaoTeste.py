@@ -510,7 +510,7 @@ def montaHTMLDerivativos(data):
     html=""
     table_ini = "<table style='width:100%'>" 
     table_fim = "</table>"
-    cabecalho= "<tr>" + \
+    cabecalho= "<tr class='head-derivativos'>" + \
             "<th class='text-center'>Mercadoria</th>" + \
             "<th class='text-center'>Fonte</th>" + \
             "<th class='text-center'>Mercado</th>" + \
