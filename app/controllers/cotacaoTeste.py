@@ -529,12 +529,12 @@ def montaHTMLDerivativos(data):
             if x['mercadoria'] not in unique_mercadoria:
                 unique_mercadoria.append(x['mercadoria'])
                 #print('{}:{}'.format(x['mercadoria'],str(contM(x['mercadoria'], data))))
-                varMercadoria = "<td class='text-center' rowspan='"+ str(contM(x['mercadoria'], data)) +"' class='text-center'>"+x['mercadoria']+"<br/><div class='realtime mr-3'><b>RT</b></div> <i class='fas fa-clock'></i></td>"
+                varMercadoria = "<td class='text-center' rowspan='"+ str(contM(x['mercadoria'], data)) +"' class='text-center'>"+x['mercadoria']+"</td>"
                 
                 if x['fonte']+x['mercadoria'] not in unique_fontmerc:
                     unique_fontmerc.append(x['fonte']+x['mercadoria'] )
                     print('{}+{}:{}'.format(x['mercadoria'],x['fonte'],str(contFM(x['fonte'],x['mercadoria'], data))))
-                    varFonte= "<td class='text-center' rowspan='"+ str(contFM(x['fonte'],x['mercadoria'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                    varFonte= "<td class='text-center' rowspan='"+ str(contFM(x['fonte'],x['mercadoria'], data))+"' class='text-center'>"+x['fonte']+"<br/><div class='realtime mr-3'><b>RT</b></div> <i class='fas fa-clock'></i></td>"
                     varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
                     "<td>"+x['desc_papel']+"</td>"+\
                     "<td class='text-center'>"+x['codbolsa']+"</td>"+\
@@ -552,7 +552,7 @@ def montaHTMLDerivativos(data):
                     print(unique_fontmerc)
                     unique_fontmerc.append(x['fonte']+x['mercadoria'] )
                     print('{}+{}:{}'.format(x['mercadoria'],x['fonte'],str(contFM(x['fonte'],x['mercadoria'], data))))
-                    varFonte= "<td class='text-center' rowspan='"+ str(contFM(x['fonte'],x['mercadoria'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                    varFonte= "<td class='text-center' rowspan='"+ str(contFM(x['fonte'],x['mercadoria'], data))+"' class='text-center'>"+x['fonte']+"<br/><div class='realtime mr-3'><b>RT</b></div> <i class='fas fa-clock'></i></td>"
                     varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
                     "<td>"+x['desc_papel']+"</td>"+\
                     "<td class='text-center'>"+x['codbolsa']+"</td>"+\
@@ -572,12 +572,12 @@ def montaHTMLDerivativos(data):
             if x['mercadoria'] not in unique_mercadoria:
                 unique_mercadoria.append(x['mercadoria'])
                 #print('{}:{}'.format(x['mercadoria'],str(contM(x['mercadoria'], data))))
-                varMercadoria = "<td class='text-center' rowspan='"+ str(contM(x['mercadoria'], data)) +"' class='text-center'>"+x['mercadoria']+"<br/><div class='realtime mr-3'><b>RT</b></div> <i class='fas fa-clock'></i></td>"
+                varMercadoria = "<td class='text-center' rowspan='"+ str(contM(x['mercadoria'], data)) +"' class='text-center'>"+x['mercadoria']+"</td>"
                 
                 if x['fonte'] not in unique_fonte:
                     unique_fonte.append(x['fonte'])
                     print('{}:{}'.format(x['fonte'],str(contF(x['fonte'], data))))
-                    varFonte= "<td class='text-center' rowspan='"+ str(contF(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                    varFonte= "<td class='text-center' rowspan='"+ str(contF(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"<br/><div class='realtime mr-3'><b>RT</b></div> <i class='fas fa-clock'></i></td>"
                     varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
                     "<td>"+x['desc_papel']+"</td>"+\
                     "<td class='text-center'>"+x['codbolsa']+"</td>"+\
@@ -594,7 +594,7 @@ def montaHTMLDerivativos(data):
                 if x['fonte'] not in unique_fonte:
                     unique_fonte.append(x['fonte'])
                     print('{}:{}'.format(x['fonte'],str(contF(x['fonte'], data))))
-                    varFonte= "<td class='text-center' rowspan='"+ str(contF(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                    varFonte= "<td class='text-center' rowspan='"+ str(contF(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"<br/><div class='realtime mr-3'><b>RT</b></div> <i class='fas fa-clock'></i></td>"
                     varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
                     "<td>"+x['desc_papel']+"</td>"+\
                     "<td class='text-center'>"+x['codbolsa']+"</td>"+\
@@ -640,12 +640,12 @@ def montaHTMLDerivativosTudo(data):
         if x['mercadoria'] not in unique_mercadoria:
             unique_mercadoria.append(x['mercadoria'])
             #print('{}:{}'.format(x['mercadoria'],str(contM(x['mercadoria'], data))))
-            varMercadoria = "<td class='text-center' rowspan='"+ str(contM(x['mercadoria'], data)) +"' class='text-center'>"+x['mercadoria']+"<br/><div class='realtime mr-3'><b>RT</b></div> <i class='fas fa-clock'></i></td>"
+            varMercadoria = "<td class='text-center' rowspan='"+ str(contM(x['mercadoria'], data)) +"' class='text-center'>"+x['mercadoria']+"</td>"
             
             if x['fonte']+x['mercadoria'] not in unique_fontmerc:
                 unique_fontmerc.append(x['fonte']+x['mercadoria'] )
                 print('{}+{}:{}'.format(x['mercadoria'],x['fonte'],str(contFM(x['fonte'],x['mercadoria'], data))))
-                varFonte= "<td class='text-center' rowspan='"+ str(contFM(x['fonte'],x['mercadoria'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                varFonte= "<td class='text-center' rowspan='"+ str(contFM(x['fonte'],x['mercadoria'], data))+"' class='text-center'>"+x['fonte']+"<br/><div class='realtime mr-3'><b>RT</b></div> <i class='fas fa-clock'></i></td>"
                 varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
                 "<td>"+x['desc_papel']+"</td>"+\
                 "<td class='text-center'>"+x['codbolsa']+"</td>"+\
@@ -663,7 +663,7 @@ def montaHTMLDerivativosTudo(data):
                 print(unique_fontmerc)
                 unique_fontmerc.append(x['fonte']+x['mercadoria'] )
                 print('{}+{}:{}'.format(x['mercadoria'],x['fonte'],str(contFM(x['fonte'],x['mercadoria'], data))))
-                varFonte= "<td class='text-center' rowspan='"+ str(contFM(x['fonte'],x['mercadoria'], data))+"' class='text-center'>"+x['fonte']+"</td>"
+                varFonte= "<td class='text-center' rowspan='"+ str(contFM(x['fonte'],x['mercadoria'], data))+"' class='text-center'>"+x['fonte']+"<br/><div class='realtime mr-3'><b>RT</b></div> <i class='fas fa-clock'></i></td>"
                 varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
                 "<td>"+x['desc_papel']+"</td>"+\
                 "<td class='text-center'>"+x['codbolsa']+"</td>"+\
