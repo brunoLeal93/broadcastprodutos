@@ -42,11 +42,8 @@ def cotacao():
                 result = src.searchDerivativos(text)
                 #pprint(result)
                 html = ct.montaHTMLDerivativos(result)
-                if html == "<tr><th class='text-center'>Mercadoria</th><th class='text-center'>Fonte</th><th class='text-center'>Mercado</th><th class='text-center'>Descrição Papel</th><th class='text-center'>Cód. Bolsa</th><th class='text-center'>Cód. Broadcast</th></tr>"
-                        html='Nada Encontrado! Reveja os parametros de busca e tente novamente.'
-                        return render_template('cotacao.html', html=html)
-                else:
-                        return render_template('cotacao.html', html=html)
+               
+                return render_template('cotacao.html', html=html)
 
         return render_template('cotacao.html', html=html)
 
