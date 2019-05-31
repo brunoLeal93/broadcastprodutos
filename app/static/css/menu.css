@@ -7,4 +7,65 @@ ul {
 .menu {
     display: flex;
     justify-content: space-around;
+    margin-left: 25%;
+}
+
+#logo-bc-agro{
+    display: inline-block;
+    position: relative;
+}
+
+#logo-bc-agro figcaption{
+    position: absolute;
+    top: -3px;
+    right: 11px;
+    font-size: 22px;
+    color: #0a1c2d;
+    text-shadow: -2px 0px 5px black;
+    transform: rotate(-25deg);
+}
+
+#logo-bc-pol{
+    display: inline-block;
+    position: relative;
+}
+
+#logo-bc-pol figcaption{
+    position: absolute;
+    top: -3px;
+    right: 11px;
+    font-size: 22px;
+    color: #0a1c2d;
+    text-shadow: -2px 0px 5px black;
+    transform: rotate(-25deg);
+}
+
+#logo-bc-tr{
+    display: inline-block;
+    position: relative;
+}
+
+#logo-bc-tr figcaption{
+    position: absolute;
+    top: -3px;
+    right: 11px;
+    font-size: 22px;
+    color: #0a1c2d;
+    text-shadow: -2px 0px 5px black;
+    transform: rotate(-25deg);
+}
+
+#logo-bc-sol{
+    display: inline-block;
+    position: relative;
+}
+
+#logo-bc-sol figcaption{
+    position: absolute;
+    top: -3px;
+    right: -12px;
+    font-size: 22px;
+    color: #0a1c2d;
+    text-shadow: -2px 0px 5px black;
+    transform: rotate(-25deg);
 }

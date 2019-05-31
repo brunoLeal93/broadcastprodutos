@@ -27,17 +27,15 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    
+      
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <a class="nav-link primary text-center" href="{{url_for('home')}}">
+            <i class="fas fa-home fa-2x"></i><br/>Home
+        </a>
         <ul class="navbar-nav menu">
-            <li class="nav-item" style="opacity: 0.3; filter: alpha(opacity=30);">
-                <a class="nav-link primary" href="{{url_for('home')}}">
-                    <i class="fas fa-home fa-2x"></i>
-                </a>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="../static/img/LOGO-BC-Financeiro.png" height="40" width="auto" alt="Broadcast Financeiro">
+                    <img src="../static/img/LOGO-BC-Financeiro.png" height="40" width="auto" alt="Broadcast Financeiro">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{url_for('bpro_terminal')}}">Desktop</a>
@@ -47,7 +45,10 @@
             </li>
             <li class="nav-item dropdown" style="opacity: 0.3; filter: alpha(opacity=30);">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img  src="../static/img/LOGO-BC-Agro.png" height="40" width="auto" alt="Broadcast Agro">
+                    <figure id="logo-bc-agro">
+                        <img  src="../static/img/LOGO-BC-Agro.png" height="40" width="auto" alt="Broadcast Agro">
+                        <figcaption>Em Breve</figcaption>
+                    </figure>
                 </a>
                 <!--div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Desktop</a>
@@ -57,17 +58,28 @@
             </li>
             <li class="nav-item" style="opacity: 0.3; filter: alpha(opacity=30);">
                 <a class="nav-link" href="#">
-                    <img src="../static/img/LOGO-BC-Político.png" height="40" width="auto" alt="Broadcast Político">
+                    <figure id="logo-bc-pol">
+                        <img  src="../static/img/LOGO-BC-Político.png" height="40" width="auto" alt="Broadcast Agro">
+                        <figcaption>Em Breve</figcaption>
+                    </figure>
                 </a>
             </li>
             <li class="nav-item" style="opacity: 0.3; filter: alpha(opacity=30);">
                 <a class="nav-link" href="#">
-                    <img  src="../static/img/LOGO-BC-TradingNews.png" height="40" width="auto" alt="Broadcast TradingNews">
+                    <figure id="logo-bc-tr">
+                        <img  src="../static/img/LOGO-BC-TradingNews.png" height="40" width="auto" alt="Broadcast Agro">
+                        <figcaption>Em Breve</figcaption>
+                    </figure>
                 </a>
             </li>
             <li class="nav-item dropdown" style="opacity: 0.3; filter: alpha(opacity=30);">
                 <a class="nav-link dropdown-toggle mt-1" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <b>Soluções</b>
+                    
+                    <figure id="logo-bc-sol">
+                        <b>Soluções</b>
+                        <figcaption>Em Breve</figcaption>
+                    </figure>
+                    
                 </a>
                 <!--div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#"></a>
