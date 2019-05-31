@@ -8,10 +8,79 @@
 {%endblock%}
 
 {% block content %}
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Controle de Exibição</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+            <div class="row nprint">        
+                <div class="form-group">
+                    <label for="selectPlataforma">Nível de Exibição:</label>
+                    <select class="form-control" id="selectNivel" onchange="controlaNivel()">
+                        <option value="0">Reduzido</option>
+                        <option value="1">Padrão</option>
+                        <option value="2">Expandido</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h5>Pacotes:</h5>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="checkAll" checked>
+                        <label class="form-check-label" for="checkAll" >Todos</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="trade" checked>
+                        <label class="form-check-label" for="trade" >Trade</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="conjuntura" checked>
+                        <label class="form-check-label" for="conjuntura">Conjuntura</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="mercados" checked>
+                        <label class="form-check-label" for="mercados">Mercados</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="news" checked>
+                        <label class="form-check-label" for="news">News</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="analises" checked>
+                        <label class="form-check-label" for="analises">Análises</label>
+                    </div>  
+                </div>
+                <div class="col">
+                    <h5>Preços:</h5>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="ckMostraPrecos" checked>
+                        <label class="form-check-label" for="ckMostraPrecos" >Mostrar</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Jumbotrom -->
 <div class="jumbotron jumbotron-fluid bg-primary mb-3">
     <div class="container-fluid">
-        <h3 class="mb-3 text-center" style="color: white; margin-top:-20px">[ALGUM TEXTO]</h3>
+        <h3 class="mb-3 text-center" style="color: white; margin-top:-20px">Conteúdos vs Pacotes</h3>
         <form>
             <div class="row align-items-center a">
                 <div col="col-3">
@@ -24,18 +93,24 @@
                         <label for="selectPlataforma">Selecione a Plataforma</label>
                         <select class="form-control" id="selectPlataforma">
                             <option >Broadcast+</option>
-
                         </select>
                     </div>
                 </div>
+                <!-- Button trigger modal -->
+                <div class="col-2">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Controle de Exibição
+                    </button>
+                </div>
+                <!--
                 <div class="col-2 nprint">        
                     <div class="form-group">
                         <label for="selectPlataforma">Nível de Exibição:</label>
                         <select class="form-control" id="selectNivel" onchange="controlaNivel()">
-                            <option value="0">Recolher Tudo</option>
-                            <option value="1">Abrir 1º Nivel</option>
-                            <option value="2">Abrir 2º Nivel</option>
-                            <option value="3">Expandir Tudo</option>
+                            <option value="0">Reduzido</option>
+                            <option value="1">Padrão</option>
+                            <option value="2">Detalhada</option>
+                            <option value="2">Expandido</option>
                             
                         </select>
                     </div>
@@ -43,19 +118,21 @@
                 <div class="col-5 nprint">
                     
                     <div class="form-check form-check-inline mt-3">
-                            <input type="checkbox" class="form-check-input" id="checkAll" checked>
-                            <label class="form-check-label" for="checkAll" >Exibir Todos os Pacotes</label>
+                        <input type="checkbox" class="form-check-input" id="checkAll" checked>
+                        <label class="form-check-label" for="checkAll" >Exibir Todos os Pacotes</label>
                     </div>
                     <div class="form-check form-check-inline">
-                            <input type="checkbox" class="form-check-input" id="ckMostraPrecos" checked>
-                            <label class="form-check-label" for="ckMostraPrecos" >Mostrar Preços dos Pacotes</label>
+                        <input type="checkbox" class="form-check-input" id="ckMostraPrecos" checked>
+                        <label class="form-check-label" for="ckMostraPrecos" >Mostrar Preços dos Pacotes</label>
                     </div>
                 </div>
+                    -->
             </div>
         </form>
     </div>
     <div class="container-fluid">
         <div class="row" style="border-bottom: 1px solid white">
+            <!--
             <div class="col">
                 <span style="float: left; ">
                     <form>   
@@ -85,14 +162,15 @@
                     </form>
                 </span>
             </div>
-             
+             -->
             <div class="col legenda text-center">
                 <span style="float: right;">
                     <ul class="mt-1">
-                        <li class="alinha-vert"><div class="realtime"><b>RT</b></div> Real Time</li>
-                        <li class="alinha-vert"><i class="fas fa-clock"></i> Delay</li>
-                        <li class="alinha-vert"><div class="endofday"><b>EoD</b></div> End of Day (Final de Dia)</li>
-                        <li class="alinha-vert"><i class="fas fa-info-circle"></i> Info. Adicionais</li>
+                        <li class="alinha-vert mr-2"><b>Legenda:</b></li>
+                        <li class="alinha-vert mr-2"><div class="realtime"><b>RT</b></div> Tempo Real</li>
+                        <li class="alinha-vert mr-2"><i class="far fa-clock"></i> Delay</li>
+                        <li class="alinha-vert mr-2"><div class="endofday"><b>EoD</b></div> Final de Dia</li>
+                        <!--li class="alinha-vert"><i class="fas fa-info-circle"></i> Info. Adicionais</li-->
                     </ul>
                 </span>
             </div>
@@ -109,11 +187,11 @@
         <div class="container-fluid titulo-tabela" id="cont-incluso">
             <div class="row align-items-center" style="border-bottom: 1px solid white">
                 <div class="col-4" ></div>
-                <div class="col"  id="trade-lb"><b><a href="{{ url_for('bpro_terminal', _anchor='pctTrade') }}">Trade</a></b></div>
-                <div class="col"  id="conjuntura-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctConjuntura') }}"><b>Conjuntura</b></a></div>
-                <div class="col"  id="mercados-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctMercados') }}"><b>Mercados</b></a></div>
-                <div class="col"  id="news-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctNews') }}"><b>News</b></a></div>
-                <div class="col"  id="analises-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctAnalises') }}"><b>Análises</b></a></div>
+                <div class="col"  id="trade-lb"><b><a href="{{ url_for('bpro_terminal', _anchor='pctTrade') }}"><u>Trade</u></a></b></div>
+                <div class="col"  id="conjuntura-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctConjuntura') }}"><u><b>Conjuntura</u></b></a></div>
+                <div class="col"  id="mercados-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctMercados') }}"><b><u>Mercados</u></b></a></div>
+                <div class="col"  id="news-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctNews') }}"><b>News</b><u></a></div>
+                <div class="col"  id="analises-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctAnalises') }}"><b><u>Análises</u></b></a></div>
             </div>
 
             <div class="row align-items-center" id="valores" >

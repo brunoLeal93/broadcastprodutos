@@ -42,12 +42,12 @@ def cotacao():
                 if text=='tudo':
                         result = src.searchDerivativos(text)
                         html = ct.montaHTMLDerivativosTudo(result)
-        
-                result = src.searchDerivativos(text)
-                #pprint(result)
-                html = ct.montaHTMLDerivativos(result)
-               
-                return render_template('cotacao.html', html=html)
+                        return render_template('cotacao.html', html=html)
+                else:
+                        result = src.searchDerivativos(text)
+                        #pprint(result)
+                        html = ct.montaHTMLDerivativos(result)
+                        return render_template('cotacao.html', html=html)
 
         return render_template('cotacao.html', html=html)
 
