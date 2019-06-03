@@ -9,7 +9,7 @@ b{
 }
 
 .form-check{
-    color: white;
+    color: black;
 }
 
 .fixar {
@@ -18,9 +18,6 @@ b{
     background: white;
     margin-top: 0px !important;
     z-index: 10;
-}
-.nav-menu{
-    z-index: 50;
 }
 
 div .tooltip-inner {
@@ -100,7 +97,7 @@ a.change-css{
 */
 
 .col            {text-align: center;}
-.row            {border-bottom: 1px solid #dedede}
+#ppp .row            {border-bottom: 1px solid #dedede}
 i.fa-times      {color: #cd2232;}
 i.fa-check      {color: green;}
 i.fa-angle-right {color: #007bff;}

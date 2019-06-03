@@ -15,25 +15,27 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Controle de Exibição</h5>
+        <h5 class="modal-title" id="exampleModalLabel">ControleS de Exibição</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form>
-            <div class="row nprint">        
-                <div class="form-group">
-                    <label for="selectPlataforma">Nível de Exibição:</label>
-                    <select class="form-control" id="selectNivel" onchange="controlaNivel()">
-                        <option value="0">Reduzido</option>
-                        <option value="1">Padrão</option>
-                        <option value="2">Expandido</option>
-                    </select>
+            <div class="row nprint">   
+                <div class="col">     
+                    <div class="form-group">
+                        <label for="selectPlataforma"><b>Nível de Exibição:</b></label>
+                        <select class="form-control" id="selectNivel" onchange="controlaNivel()">
+                            <option value="0">Reduzido</option>
+                            <option value="1">Padrão</option>
+                            <option value="2">Expandido</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col-6">
                     <h5>Pacotes:</h5>
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="checkAll" checked>
@@ -60,7 +62,7 @@
                         <label class="form-check-label" for="analises">Análises</label>
                     </div>  
                 </div>
-                <div class="col">
+                <div class="col-6">
                     <h5>Preços:</h5>
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="ckMostraPrecos" checked>
@@ -71,7 +73,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Fechar</button>
+        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>
@@ -80,15 +82,15 @@
 <!-- Jumbotrom -->
 <div class="jumbotron jumbotron-fluid bg-primary mb-3">
     <div class="container-fluid">
-        <h3 class="mb-3 text-center" style="color: white; margin-top:-20px">Conteúdos vs Pacotes</h3>
-        <form>
-            <div class="row align-items-center a">
-                <div col="col-3">
+        <h3 class="mb-3 text-center nprint" style="color: white; margin-top:-20px">Conteúdos vs Pacotes</h3>
+        <form class="text-center ml-5">
+            <div class="row">
+                <div col="col-2">
                     <div class="container-fluid">
                             <img src="../static/img/LOGO-BC-Financeiro.png">
                     </div>
                 </div>
-                <div class="col-2 nprint">
+                <div class="col-3 nprint">
                     <div class="form-group">
                         <label for="selectPlataforma">Selecione a Plataforma</label>
                         <select class="form-control" id="selectPlataforma">
@@ -97,14 +99,32 @@
                     </div>
                 </div>
                 <!-- Button trigger modal -->
-                <div class="col-2">
+                <div class="col-2 nprint">
                     <div class="form-group mt-2">
                         <br/>
                         <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
-                            Controle de Exibição
+                            Controles de Exibição
                         </button>
                     </div>
                 </div>
+                <div class="col-1 nprint">
+                    <div class="form-group mt-2">
+                        <br/>
+                        <a onclick="window.print();">
+                            <i class="fas fa-print text-secondary fa-2x "></i>
+                        </a>
+                        <!--
+                        <ul>
+                            <li class="alinha-vert mr-2"><b>Legenda:</b></li>
+                            <li class="alinha-vert mr-2"><div class="realtime"><b>RT</b></div> Tempo Real</li>
+                            <li class="alinha-vert mr-2"><i class="far fa-clock"></i> Delay</li>
+                            <li class="alinha-vert mr-2"><div class="endofday"><b>EoD</b></div> Final de Dia</li>
+                            <li class="alinha-vert"><i class="fas fa-info-circle"></i> Info. Adicionais</li>
+                        </ul>
+                        -->
+                    </div>
+                </div>
+                
                 <!--
                 <div class="col-2 nprint">        
                     <div class="form-group">
@@ -132,10 +152,15 @@
                     -->
             </div>
         </form>
+        
     </div>
+            <div class="row">
+                    
+                </div>
+    <!--
     <div class="container-fluid">
-        <div class="row" style="border-bottom: 1px solid white">
-            <!--
+        <div class="row">
+            
             <div class="col">
                 <span style="float: left; ">
                     <form>   
@@ -165,24 +190,12 @@
                     </form>
                 </span>
             </div>
-             -->
-            <div class="col legenda text-center">
-                <span style="float: right;">
-                    <ul class="mt-1">
-                        <li class="alinha-vert mr-2"><b>Legenda:</b></li>
-                        <li class="alinha-vert mr-2"><div class="realtime"><b>RT</b></div> Tempo Real</li>
-                        <li class="alinha-vert mr-2"><i class="far fa-clock"></i> Delay</li>
-                        <li class="alinha-vert mr-2"><div class="endofday"><b>EoD</b></div> Final de Dia</li>
-                        <!--li class="alinha-vert"><i class="fas fa-info-circle"></i> Info. Adicionais</li-->
-                    </ul>
-                </span>
-            </div>
-            
         </div>
     </div>
+    -->
 </div>
 
-<div class="ppp">
+<div id="ppp">
         <!--Fomrs e checkbox da pagina-->
         
         
@@ -193,7 +206,7 @@
                 <div class="col"  id="trade-lb"><b><a href="{{ url_for('bpro_terminal', _anchor='pctTrade') }}"><u>Trade</u></a></b></div>
                 <div class="col"  id="conjuntura-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctConjuntura') }}"><u><b>Conjuntura</u></b></a></div>
                 <div class="col"  id="mercados-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctMercados') }}"><b><u>Mercados</u></b></a></div>
-                <div class="col"  id="news-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctNews') }}"><b>News</b><u></a></div>
+                <div class="col"  id="news-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctNews') }}"><b><u>News</u></b></a></div>
                 <div class="col"  id="analises-lb"><a href="{{ url_for('bpro_terminal', _anchor='pctAnalises') }}"><b><u>Análises</u></b></a></div>
             </div>
 
