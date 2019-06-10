@@ -25,7 +25,7 @@ post = {
 
 class searchCotacao:
         db = client['db-derivativos']
-        coll = db['coll-derivativos']
+        coll = db['coll-derivativos-full']
         
         def pipelineDerivativos(self, data):
 
@@ -262,7 +262,7 @@ class searchCotacao:
                         if result != None:
                                 vetMercado.append(x)
                         
-                        result = self.coll.find_one({ 'tp_instr': {"$regex": x, "$options": "i"}})
+                        result = self.coll.find_one({ 'tpinst': {"$regex": x, "$options": "i"}})
                         if result != None:
                                 vetTpInst.append(x)
                         
@@ -278,7 +278,7 @@ class searchCotacao:
                         if result != None:
                                 vetCodBroad.append(x)
 
-                        result = self.coll.find_one({ 'pag_perm': {"$regex": x, "$options": "i"}})
+                        result = self.coll.find_one({ 'pag': {"$regex": x, "$options": "i"}})
                         if result != None:
                                 vetPgPerm.append(x)
 
@@ -299,7 +299,7 @@ class searchCotacao:
 
                 if vetTpInst != []:
                         for x in vetTpInst:
-                                aux = { "$match":{ 'tp_instr': {"$regex":x, "$options": "i"}} }
+                                aux = { "$match":{ 'tpinst': {"$regex":x, "$options": "i"}} }
                                 pipeline.append(aux)
                 
                 if vetDescPapel != []:
@@ -319,7 +319,7 @@ class searchCotacao:
                         
                 if vetPgPerm != []:
                         for x in vetPgPerm:
-                                aux = { "$match":{ 'pag_perm': {"$regex":x, "$options": "i"}} }
+                                aux = { "$match":{ 'pag': {"$regex":x, "$options": "i"}} }
                                 pipeline.append(aux)
                 
                 pipeline.append(order)

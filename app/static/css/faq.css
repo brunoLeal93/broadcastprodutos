@@ -1,0 +1,15 @@
+.fixed-faq{
+    position:fixed;
+    z-index:999; 
+    left:90%; 
+    top:80%;
+    overflow:hidden;
+    
+    padding:6px;
+  }
+  #principal{
+    margin:0 auto;
+    border:#000000 1px solid;
+    width:790px;
+    height:1200px
+  }

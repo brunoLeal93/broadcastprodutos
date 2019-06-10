@@ -16,7 +16,7 @@ ws= wb2['Derivativos']
 #print(len(teste))
 
 
-row=4
+row=2
 col=1
 many_post=[]
 
@@ -26,7 +26,7 @@ while ws.cell(row=row, column=1).value != None:
     # Separa as Plataformas
     # servs_rt[0] == "plataforma":["BPRO", "BPRO WEB", "BAGRO", "BAGRO WEB", "TN"],
     # servs_rt[1] == "plataforma": WB
-    servs_rt = ws.cell(row=row, column=8).value.split('/')
+    servs_rt = ws.cell(row=row, column=10).value.split('//')
     print(servs_rt)   
     # Separa os Serviços por Plataformas
     if len(servs_rt) < 1:
@@ -171,46 +171,100 @@ coll.insert_many(many_post)
                 rt.append(doc)
 '''            
         
-    
-
 
 '''
-
-
 post =  {
     "mercadoria": "Café",
     "fonte":"BMF",
     "mercado":"Futuro",
     "desc_papel":"Café Arábica Rolagem",
-    "codbolsa":"CR1",
     "codbroad":"CR1",
-    "pag_perm":"",
-    "serv":{
-        "rt":[
-            {   
-                "plataforma":["BPRO", "BPRO WEB", "BAGRO", "BAGRO WEB", "TN"],
-                "cod":"",
-                "desc":"",
-                "fee":{
-                    "prof":000,
-                    "nprof":000
-                    },
-                "demo":""
-            }
-            ],
-        "delay":""
-        } 
-    },
-
-serv_rt_bmf_commodities={  
-                "plataforma":["BPRO", "BPRO WEB", "BAGRO", "BAGRO WEB", "TN"],
-                "cod":"",
-                "desc":"",
-                "fee":{
-                    "prof":"",
-                    "nprof":""
-                    },
-                "demo":""
-            ]
+    "codbolsa":"CR1",
+    "tpinst":,
+    "cod_pag":,
+    "pag":,
+    "serv_rt":[],
+    "serv_delay":[],
+    }
 '''
 
+## Serviços RT ##
+
+# 1º Split por  '//' para separar as plaformas e seus respectivos serviços ||  p[0] = Broadcast e p[1] = Wallboard
+# 2º Split por '=' para pegar a plataforma || p1[0] = Plataforma e p1[1]=Serviços
+# 3º Split por '/' para separar os serviços   
+# 4º Split por '--' para separar os campos dos serviços
+
+     # Se a quantidade de posições for igual a 4 tomar como paramentro:
+     # p2[0] = Cód Serv
+     # p2[1] = Desc Serv
+     # p2[2] = Fee
+     # p2[3] = Dias Demo
+    '''
+    serv_rt={
+        "plataforma": p1[0],
+        "codserv": p2[0],
+        "descserv":p2[1],
+        "fee":p2[2],
+        "demo":p2[3]
+    }
+    '''
+     # Se a quantidade de posições for igual a 5 tomar como paramentro:
+     # p2[0] = Cód Serv
+     # p2[1] = Desc Serv
+     # p2[2] = Fee Profissional
+     # p2[3] = Fee Não Profissional
+     # p2[4] = Dias Demo
+    '''
+    serv_rt={
+        "plataforma": p1[0],
+        "codserv": p2[0],
+        "descserv":p2[1],
+        "feeprof":p2[2],
+        "feenprof: p[3]
+        "demo":p2[4]
+    }
+    '''
+
+## Serviços Delay ##
+
+# 1º Split por  '//' para separar as plaformas e seus respectivos serviços ||  p[0] = Broadcast e p[1] = Wallboard
+# 2º Split por '=' para pegar a plataforma || p1[0] = Plataforma e p1[1]=Serviços
+# 3º Split por '/' para separar os serviços   
+# 4º Split por '--' para separar os campos dos serviços
+
+    # Se a quantidade de posições for igual a 2 tomar como paramentro:
+    # p2[0] = Disp. todos pacotes
+    # p2[1] = Tempo Delay
+
+        # Se houver plataforma definida
+        '''
+        serv_delay={
+            "plataforma": p1[0],
+            "servs":p2[0],
+            "delay":p2[1]
+        }
+        '''
+        # Se Não houver plataforma definida
+        '''
+        serv_delay={
+            "servs":p2[0],
+            "delay":p2[1]
+        }
+        '''
+
+    # Se a quantidade de posições for igual a 5 tomar como paramentro:
+    # p2[0] = Cód Serv
+    # p2[1] = Desc Serv
+    # p2[2] = Fee
+    # p2[3] = Dias Demo
+    '''
+    serv_delay={
+        "plaforma":p1[0],
+        "codserv": p2[0],
+        "descserv":p2[1],
+        "fee":p2[2],
+        "demo":p2[3],
+        "delay":p2[4]
+    }
+    '''

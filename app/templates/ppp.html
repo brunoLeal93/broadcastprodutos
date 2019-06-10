@@ -11,11 +11,11 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="controlaExibicao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">ControleS de Exibição</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Controles de Exibição</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -83,48 +83,51 @@
 <div class="jumbotron jumbotron-fluid bg-primary mb-3">
     <div class="container-fluid">
         <h3 class="mb-3 text-center nprint" style="color: white; margin-top:-20px">Conteúdos vs Pacotes</h3>
-        <form class="text-center ml-5">
-            <div class="row">
-                <div col="col-2">
+        <form>
+            <div class="form-row">
+                <div col="col-md-3">
                     <div class="container-fluid">
                             <img src="../static/img/LOGO-BC-Financeiro.png">
                     </div>
                 </div>
-                <div class="col-3 nprint">
-                    <div class="form-group">
-                        <label for="selectPlataforma">Selecione a Plataforma</label>
-                        <select class="form-control" id="selectPlataforma">
-                            <option >Broadcast+</option>
-                        </select>
-                    </div>
+                <div class="form-group col-md-3 ml-5 nprint">
+                    <label for="selectPlataforma">Selecione a Plataforma</label>
+                    <select class="form-control" id="selectPlataforma">
+                        <option >Broadcast+</option>
+                    </select>
                 </div>
                 <!-- Button trigger modal -->
-                <div class="col-2 nprint">
-                    <div class="form-group mt-2">
-                        <br/>
-                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
-                            Controles de Exibição
-                        </button>
-                    </div>
+                <div class="form-group col-md-2 ml-5 mt-2 nprint">
+                    <br/>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#controlaExibicao">
+                        Controles de Exibição
+                    </button>
                 </div>
-                <div class="col-1 nprint">
+                <div class="form-group col-md-2 mt-2 nprint">
+                    <br/>
+                    <button type="button" class="btn btn-secondary" onclick="window.print();">
+                            <i class="fas fa-print "></i> Imprimir
+                    </button>
+                    <!--        
                     <div class="form-group mt-2">
                         <br/>
                         <a onclick="window.print();">
-                            <i class="fas fa-print text-secondary fa-2x "></i>
+                            <i class="fas fa-print fa-2x " data-placement="bottom" data-toggle="tooltip" data-html="true" title="<div class='text-center'>Imprimir</div>"></i>
                         </a>
+                        -->
                         <!--
-                        <ul>
+                        <ul class="print">
                             <li class="alinha-vert mr-2"><b>Legenda:</b></li>
                             <li class="alinha-vert mr-2"><div class="realtime"><b>RT</b></div> Tempo Real</li>
                             <li class="alinha-vert mr-2"><i class="far fa-clock"></i> Delay</li>
                             <li class="alinha-vert mr-2"><div class="endofday"><b>EoD</b></div> Final de Dia</li>
                             <li class="alinha-vert"><i class="fas fa-info-circle"></i> Info. Adicionais</li>
                         </ul>
-                        -->
+                       
                     </div>
+                    -->
                 </div>
-                
+            
                 <!--
                 <div class="col-2 nprint">        
                     <div class="form-group">
@@ -721,7 +724,7 @@
                     </div> -->
                     
                     <!--Indices Mundiais-->
-                    <div class="row align-items-center destacar">
+                    <div class="row align-items-center destacar" style="page-break-after: auto;">
                         <div class="col-4  n2"><i id="iconCIndices-0" class="fas fa-angle-right"></i>&nbsp;<a id="CotIndN2" onclick="iconCIndices()"class="text-decoration-none" data-toggle="collapse" title="Índices Mundiais" href="#c-indices-collapse"><b>Índices Mundiais</b></a> <i id="iconCIndices-1" class="far fa-clock"></i> <div id="iconCIndices-2" class="endofday"><b>EoD</b></div></div> 
                         <div class="col"  id="c-indicesMundi-trade"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-indicesMundi-conjuntura"><i class="fas fa-check"></i></div>
@@ -1166,7 +1169,7 @@
                         <div class="col"  id="ad-mod-af-conjuntura"><i class="fas fa-plus"></i></div>
                         <div class="col"  id="ad-mod-af-mercados"><i class="fas fa-plus"></i></div>
                         <div class="col"  id="ad-mod-af-news"><i class="fas fa-plus"></i></div>
-                        <div class="col"  id="ad-mod-af-analises"><i class="fas fa-plus"></i></div>
+                        <div class="col"  id="ad-mod-af-analises"><i class="fas fa-check"></i></div>
                     </div>
                     <div class="collapse" id="Addon-mod-af-collapse">
                         <div>
@@ -1605,7 +1608,7 @@
                         <div class="col"  id="ad-c-nybot-analises"><i class="fas fa-plus"></i></div>
                     </div>
                     <!--Indices Mundiais-->
-                    <div class="row align-items-center destacar">
+                    <div id="teste1" class="row align-items-center destacar" style="position: relative">
                         <div class="col-4  n2"><i id="iconAdCIndices-0" class="fas fa-angle-right"></i>&nbsp;<a id="AdCotIndN2" onclick="iconAdCIndices()"class="text-decoration-none" data-toggle="collapse" title="Índices Mundiais" href="#ad-c-indices-collapse"><b>Índices Mundiais</b></a> </i> <div class="realtime nprint" id="iconAdCIndices-2" data-placement="right" data-toggle="tooltip" data-html="true" title=""><b>RT</b></div></div> 
                         <div class="col"  id="ad-c-indicesMundi-trade"><i class="fas fa-plus"></i></div>
                         <div class="col"  id="ad-c-indicesMundi-conjuntura"><i class="fas fa-plus"></i></div>
@@ -1904,10 +1907,25 @@
             </div>
         </div>       
 </div>
+
+<div class="content print">
+    <ul>
+        <li class="alinha-vert mr-2"><b>Legenda:</b></li>
+        <li class="alinha-vert mr-2"><div class="realtime"><b>RT</b></div> Tempo Real</li>
+        <li class="alinha-vert mr-2"><i class="far fa-clock"></i> Delay</li>
+        <li class="alinha-vert mr-2"><div class="endofday"><b>EoD</b></div> Final de Dia</li>
+        <!--
+        <li class="alinha-vert"><i class="fas fa-info-circle"></i> Info. Adicionais</li>
+        -->
+    </ul>
+</div>
+    
+
 {% endblock %}
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 {%block scripts%}
 <script type="text/javascript" src="../static/js/ppp.js"></script>
 <script type="text/javascript" src="../static/js/ppp2.js"></script>
+<script type="text/javascript" src="../static/js/teste.js"></script>
 {%endblock%}

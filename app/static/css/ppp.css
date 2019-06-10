@@ -7,6 +7,9 @@ b{
     width: auto;
     height: auto;
 }
+.print{
+    display: none;
+}
 
 .form-check{
     color: black;
@@ -104,6 +107,8 @@ i.fa-angle-right {color: #007bff;}
 i.fa-angle-down {color: #007bff;}
 i.fa-plus      	{color: #0262a9;}
 i.fa-clock     	{color: #007bff;}
+/*i.fa-print:hover{color: #dedede !important;}*/
+
 /*i.fa-minus     	{color: #007bff;}*/
 .realtime{
 	border:2px solid #48d053;

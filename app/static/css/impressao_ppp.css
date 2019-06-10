@@ -1,4 +1,5 @@
-@media print{
+@media print{ 
+    
     body{
         margin: 0;
         padding: 0;
@@ -9,6 +10,11 @@
     .footer{display:none;}
     .menu{display:none;}
     .nprint{display: none;}
+    .print{
+        display: inline-block;
+        margin-top: 3%;
+        margin-left: 30%;
+    }
     .container-fluid img {
         position: absolute;
         top: 2%;
@@ -41,4 +47,8 @@
     .copyright{
         margin-top: 5%;
     }
+
+    
+    
+
 }

@@ -4,6 +4,13 @@ ul {
     margin: 0;
     width: 100%;
 }
+
+.home{
+    font-size: 11px;
+}
+i.fa-home {
+    font-size: 25px;
+}
 .menu {
     display: flex;
     justify-content: space-around;
@@ -17,9 +24,9 @@ ul {
 
 #logo-bc-agro figcaption{
     position: absolute;
-    top: -3px;
-    right: 11px;
-    font-size: 22px;
+    top: 1px;
+    right: 22px;
+    font-size: 18px;
     color: #0a1c2d;
     text-shadow: -2px 0px 5px black;
     transform: rotate(-25deg);
@@ -32,12 +39,12 @@ ul {
 
 #logo-bc-pol figcaption{
     position: absolute;
-    top: -3px;
-    right: 11px;
-    font-size: 22px;
+    top: -14px;
+    right: 22px;
+    font-size: 17px;
     color: #0a1c2d;
     text-shadow: -2px 0px 5px black;
-    transform: rotate(-25deg);
+    transform: rotate(-0deg);
 }
 
 #logo-bc-tr{
@@ -47,12 +54,12 @@ ul {
 
 #logo-bc-tr figcaption{
     position: absolute;
-    top: -3px;
-    right: 11px;
-    font-size: 22px;
+    top: 23px;
+    right: 32px;
+    font-size: 16px;
     color: #0a1c2d;
     text-shadow: -2px 0px 5px black;
-    transform: rotate(-25deg);
+    transform: rotate(-0);
 }
 
 #logo-bc-sol{
@@ -62,10 +69,10 @@ ul {
 
 #logo-bc-sol figcaption{
     position: absolute;
-    top: -3px;
-    right: -12px;
-    font-size: 22px;
+    top: -13px;
+    right: 18px;
+    font-size: 16px;
     color: #0a1c2d;
     text-shadow: -2px 0px 5px black;
-    transform: rotate(-25deg);
+    transform: rotate(-0);
 }
