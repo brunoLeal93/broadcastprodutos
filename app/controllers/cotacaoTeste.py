@@ -47,7 +47,7 @@ def htmlTooltipRT(data):
     
     return html
 
-def htmlTooltipDelay(data)
+def htmlTooltipDelay(data):
     vetPlataforma=[]
     html=''
     result = coll.find_one({'cod_pag':data})#.sort("serv_rt.plataforma",1)
