@@ -231,7 +231,7 @@ class searchCotacao:
 
         def pipelineDerivativos1(self, data):
                 vetText = data.split(' ')
-                aux = { "$match":{ '$text': {"$search":data}} }
+                aux = { "$match":{ '$text': {"$search":data, "$language":"portuguese"}} }
                 order = { "$sort": {"mercadoria": 1 , "fonte": 1, "mercado": 1, "desc_papel":1, "serv_rt.plataforma": 1}}
 
                 pipeline =[]
