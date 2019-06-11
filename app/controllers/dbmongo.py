@@ -246,9 +246,9 @@ class searchCotacao:
                 vetCodBolsa=[]
                 vetCodBroad=[]
                 vetPgPerm=[]
-
-                
-
+                pipeline.append(order)
+                return pipeline
+'''
                 for x in vetText:
                         result = self.coll.find_one({ 'mercadoria': {"$regex": x, "$options": "i"}})
                         if result != None:
@@ -283,6 +283,7 @@ class searchCotacao:
                                 vetPgPerm.append(x)
 
                 if vetMercadoria != []:
+                        
                         for x in vetMercadoria:
                                 aux = { "$match":{ 'mercadoria': {"$regex":x, "$options": "i"}} }
                                 pipeline.append(aux)
@@ -325,7 +326,7 @@ class searchCotacao:
                 pipeline.append(order)
                 
                 return pipeline
-
+'''
 #def searchDemais(data):
 #    result = coll2.find_one()
     

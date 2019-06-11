@@ -14,8 +14,10 @@ pipeline = [
 ]
 #print(3)
 #a = coll.update_one({'mercadoria': 'Índice Dow Jones'},{'$set' : {'desc_papel': 'índice Média Industrial Dow Jones Mini (Multiplicador 5)'}})
-#result = coll.aggregate(pipeline)
-#pprint(result)
+result = coll.aggregate(pipeline)
+pprint(result)
+for x in result:
+    pprint(x)
 
 vetPlataforma=[]
 html=''
