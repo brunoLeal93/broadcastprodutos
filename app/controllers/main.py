@@ -4,6 +4,7 @@ from app import app
 from app.controllers import dbmongo as db
 from app.controllers import cotacaoTeste as ct
 from pprint import pprint
+from sendEmail import *
 
 #from cotacaotest import *
 
@@ -18,7 +19,20 @@ def ppp():
 
 @app.route('/FAQ', methods=('GET', 'POST'))
 def faq():
-        
+        if request.method == "POST":
+                solicitante = request.form.get('email-contato')
+                pergunta = request.form.get('pergunta-text')
+                if solicitante and pergunta == None:
+                        print('sem dados')
+                else:
+                        #client = db.client
+                        #db = client['db-faq']
+                        #coll = db['coll-faq-noresponse']
+                        print(solicitante)
+                        print(pergunta)
+                        se = sendEmail()
+                        se.send(solicitante,pergunta)
+                        
         return render_template('faq.html')
 
 @app.route('/Home', methods=('GET', 'POST'))

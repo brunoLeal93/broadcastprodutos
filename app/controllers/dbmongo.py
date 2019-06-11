@@ -326,7 +326,7 @@ class searchCotacao:
                 pipeline.append(order)
                 
                 return pipeline
-'''
+
 #def searchDemais(data):
 #    result = coll2.find_one()
     
