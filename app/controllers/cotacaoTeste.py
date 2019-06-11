@@ -54,30 +54,30 @@ def htmlTooltipDelay(data):
     #pprint(result['serv_rt'])
     for y in result['serv_delay']:
         #print('<------serv rt------>')
-        pprint(y)
+        #pprint(y)
+        #print(countKey(y))
         if countKey(y) == 2:
-            htmlServs = y['servs']+"<br>"+\
-                    y['delay']+"<br>"+\
-                html = html + htmlServs
-        elif countKey(y) == 3:
+            htmlServs = y['servs']+"<br>"+y['delay']+"<br>"
+            html = html + htmlServs
+        if countKey(y) == 3:
             if y['plataforma'] not in vetPlataforma:
                 vetPlataforma.append(y['plataforma'])
                 htmlPlataforma =  "<b>"+y['plataforma']+"</b><br>"
                 htmlServs = y['servs']+"<br>"+\
-                    y['delay']+"<br>"+\
+                    y['delay']+"<br>"
                 html = html + htmlPlataforma + htmlServs
             else:
                 htmlServs = y['servs']+"<br>"+\
-                    y['delay']+"<br>"+\
+                    y['delay']+"<br>"
                 html = html + htmlServs
-        elif:
+        if countKey(y) == 6:
             if y['plataforma'] not in vetPlataforma:
                 vetPlataforma.append(y['plataforma'])
                 htmlPlataforma =  "<b>"+y['plataforma']+"</b><br>"
                 htmlServs = "("+y['codserv']+") - "+y['descserv']+"<br>"+\
                     "Fee Prof: "+y['feeprof']+"<br>"+\
                     "Demonstração: "+y['demo']+"<br>"+\
-                    y['delay']+"<br>"+\
+                    y['delay']+"<br>"
                 html = html + htmlPlataforma + htmlServs
             else:
                 htmlServs = "("+y['codserv']+") - "+y['descserv']+"<br>"+\
@@ -176,7 +176,7 @@ def montaHTMLDerivativos(data):
 
             else:
                 if x['fonte']+x['mercadoria'] not in unique_fontmerc:
-                    print(unique_fontmerc)
+                    #print(unique_fontmerc)
                     unique_fontmerc.append(x['fonte']+x['mercadoria'] )
                     print('{}+{}:{}'.format(x['mercadoria'],x['fonte'],str(contFM(x['fonte'],x['mercadoria'], data))))
                     varFonte= "<td class='text-center' rowspan='"+ str(contFM(x['fonte'],x['mercadoria'], data))+"' class='text-center'>"+x['fonte']+"<br/><div class='realtime mr-3' data-placement='right' data-toggle='tooltip' data-html='true' title='"+htmlTooltipRT(x['cod_pag'])+"'><b>RT</b></div> <i class='far fa-clock' data-placement='right' data-toggle='tooltip' data-html='true' title='"+htmlTooltipDelay(x['cod_pag'])+"'></i></td>"
@@ -196,9 +196,10 @@ def montaHTMLDerivativos(data):
     
     else:
         for x in data:
+            #pprint(x)
             if x['mercadoria'] not in unique_mercadoria:
                 unique_mercadoria.append(x['mercadoria'])
-                #print('{}:{}'.format(x['mercadoria'],str(contM(x['mercadoria'], data))))
+                print('{}:{}'.format(x['mercadoria'],str(contM(x['mercadoria'], data))))
                 varMercadoria = "<td class='text-center' rowspan='"+ str(contM(x['mercadoria'], data)) +"' class='text-center'>"+x['mercadoria']+"</td>"
                 
                 if x['fonte'] not in unique_fonte:
