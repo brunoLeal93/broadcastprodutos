@@ -152,8 +152,8 @@ def montaHTMLDerivativos(data):
             "<th class='text-center'>Fonte</th>" + \
             "<th class='text-center'>Mercado</th>" + \
             "<th class='text-center'>Descrição Papel</th>" +\
-            "<th class='text-center'>Cód. Bolsa</th>" +\
             "<th class='text-center'>Cód. Broadcast</th>" +\
+            "<th class='text-center'>Cód. Bolsa</th>" +\
         "</tr>"
 
     row_ini= "<tr>"
