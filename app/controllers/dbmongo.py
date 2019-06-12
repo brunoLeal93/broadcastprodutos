@@ -282,11 +282,233 @@ class searchCotacao:
                         if result != None:
                                 vetPgPerm.append(x)
 
-                if vetMercadoria != []:
+                #for i in vetMercadoria:
+
+
+                if len(vetMercadoria)>0:
+                        if len(vetMercadoria) == 1:
+                                mt = { "$match":{ 'mercadoria': {"$regex":vetMercadoria[0], "$options": "i"}} }
+                                if len(vetFonte)>0:
+                                        if len(vetFonte) == 1:
+                                                mt = { "$match":{ "$and":[
+                                                        {'mercadoria': {"$regex":vetMercadoria[0], "$options": "i"}},
+                                                        { 'fonte': {"$regex":vetFonte[0], "$options": "i"}}
+                                                        ]}}
+                                                if len(vetMercado)>0:
+                                                        if len(vetMercado) == 1:
+                                                                mt = { "$match":{ "$and":[ 
+                                                                        {'mercadoria': {"$regex":vetMercadoria[0], "$options": "i"}},
+                                                                        { 'fonte': {"$regex":vetFonte[0], "$options": "i"}},
+                                                                        { 'mercado': {"$regex":vetMercado[0], "$options": "i"}} 
+                                                                        ]}}
+                                                        else:
+                                                                tam = len(vetMercado)
+                                                                a=[]
+                                                                while tam != 0:
+                                                                        x = { 'mercado': {"$regex":vetMercado[tam-1], "$options": "i"}}
+                                                                        a.append(x)
+                                                                        tam=tam-1
+                                                                mt = { "$match":{ "$and":[ 
+                                                                        {'mercadoria': {"$regex":vetMercadoria[0], "$options": "i"}},
+                                                                        { 'fonte': {"$regex":vetFonte[0], "$options": "i"}},
+                                                                        {"$or":a}
+                                                                        ]}}
+                                        else:
+                                                tam = len(vetFonte)
+                                                a=[]
+                                                
+                                                while tam != 0:
+                                                        x = { 'fonte': {"$regex":vetFonte[tam-1], "$options": "i"}}
+                                                        a.append(x)
+                                                        tam=tam-1
+                                                mt = { "$match":{ "$and":[ {'mercadoria': {"$regex":vetMercadoria[0], "$options": "i"}}, {"$or":a}] }}
+                                                
+                                                if len(vetMercado)>0:
+                                                        if len(vetMercado) == 1:
+                                                                mt = { "$match":{ "$and":[ 
+                                                                        {'mercadoria': {"$regex":vetMercadoria[0], "$options": "i"}},
+                                                                        {"$or":a},
+                                                                        { 'mercado': {"$regex":vetMercado[0], "$options": "i"}} 
+                                                                        ]}}
+                                                        else:
+                                                                tam = len(vetMercado)
+                                                                b=[]
+                                                                while tam != 0:
+                                                                        x = { 'mercado': {"$regex":vetMercado[tam-1], "$options": "i"}}
+                                                                        b.append(x)
+                                                                        tam=tam-1
+                                                                mt = { "$match":{ "$and":[ 
+                                                                        {'mercadoria': {"$regex":vetMercadoria[0], "$options": "i"}},
+                                                                        {"$or":a},
+                                                                        {"$or":b}
+                                                                        ]}}
+                                else:
+                                        if len(vetMercado)>0:
+                                                if len(vetMercado) == 1:
+                                                        mt = { "$match":{ "$and":[ 
+                                                                {'mercadoria': {"$regex":vetMercadoria[0], "$options": "i"}},
+                                                                { 'mercado': {"$regex":vetMercado[0], "$options": "i"}} 
+                                                                ]}}
+                                                else:
+                                                        tam = len(vetMercado)
+                                                        a=[]
+                                                        while tam != 0:
+                                                                x = { 'mercado': {"$regex":vetMercado[tam-1], "$options": "i"}}
+                                                                a.append(x)
+                                                                tam=tam-1
+                                                        mt = { "$match":{ "$and":[ 
+                                                                {'mercadoria': {"$regex":vetMercadoria[0], "$options": "i"}},
+                                                                {"$or":a}
+                                                                ]}}
+                        else:
+                                tam = len(vetMercadoria)
+                                a=[]
+                                while tam != 0:
+                                        x = { 'mercadoria': {"$regex":vetMercadoria[tam-1], "$options": "i"}}
+                                        a.append(x)
+                                        tam=tam-1
+
+                                mt = { "$match":{"$or":a}}
+
+                                if len(vetFonte)>0:
+                                        if len(vetFonte) == 1:
+                                                mt = { "$match":{ "$and":[
+                                                        { "$match":{"$or":a}},
+                                                        { 'fonte': {"$regex":vetFonte[0], "$options": "i"}}
+                                                        ]}}
+                                                if len(vetMercado)>0:
+                                                        if len(vetMercado) == 1:
+                                                                mt = { "$match":{ "$and":[ 
+                                                                        { "$match":{"$or":a}},
+                                                                        { 'fonte': {"$regex":vetFonte[0], "$options": "i"}},
+                                                                        { 'mercado': {"$regex":vetMercado[0], "$options": "i"}} 
+                                                                        ]}}
+                                                        else:
+                                                                tam = len(vetMercado)
+                                                                b=[]
+                                                                while tam != 0:
+                                                                        x = { 'mercado': {"$regex":vetMercado[tam-1], "$options": "i"}}
+                                                                        b.append(x)
+                                                                        tam=tam-1
+                                                                mt = { "$match":{ "$and":[ 
+                                                                        { "$match":{"$or":a}},
+                                                                        { 'fonte': {"$regex":vetFonte[0], "$options": "i"}},
+                                                                        {"$or":b}
+                                                                        ]}}
+                                        else:
+                                                tam = len(vetFonte)
+                                                b=[]
+                                                
+                                                while tam != 0:
+                                                        x = { 'fonte': {"$regex":vetFonte[tam-1], "$options": "i"}}
+                                                        b.append(x)
+                                                        tam=tam-1
+                                                mt = { "$match":{ "$and":[ {"$or":a}, {"$or":b}] }}
+                                                
+                                                if len(vetMercado)>0:
+                                                        if len(vetMercado) == 1:
+                                                                mt = { "$match":{ "$and":[ 
+                                                                        {"$or":a},
+                                                                        {"$or":b},
+                                                                        { 'mercado': {"$regex":vetMercado[0], "$options": "i"}} 
+                                                                        ]}}
+                                                        else:
+                                                                tam = len(vetMercado)
+                                                                c=[]
+                                                                while tam != 0:
+                                                                        x = { 'mercado': {"$regex":vetMercado[tam-1], "$options": "i"}}
+                                                                        c.append(x)
+                                                                        tam=tam-1
+                                                                mt = { "$match":{ "$and":[ 
+                                                                        {"$or":a},
+                                                                        {"$or":b},
+                                                                        {"$or":c}
+                                                                        ]}}
+
+
+                else:
+                        if len(vetFonte)>0:
+                                        if len(vetFonte) == 1:
+                                                mt = { "$match":{ 'fonte': {"$regex":vetFonte[0], "$options": "i"}}}
+                                                if len(vetMercado)>0:
+                                                        if len(vetMercado) == 1:
+                                                                mt = { "$match":{ "$and":[ 
+                                                                        { 'fonte': {"$regex":vetFonte[0], "$options": "i"}},
+                                                                        { 'mercado': {"$regex":vetMercado[0], "$options": "i"}} 
+                                                                        ]}}
+                                                        else:
+                                                                tam = len(vetMercado)
+                                                                a=[]
+                                                                while tam != 0:
+                                                                        x = { 'mercado': {"$regex":vetMercado[tam-1], "$options": "i"}}
+                                                                        a.append(x)
+                                                                        tam=tam-1
+                                                                mt = { "$match":{ "$and":[ 
+                                                                        { 'fonte': {"$regex":vetFonte[0], "$options": "i"}},
+                                                                        {"$or":a}
+                                                                        ]}}
+                                        else:
+                                                tam = len(vetFonte)
+                                                a=[]
+                                                
+                                                while tam != 0:
+                                                        x = { 'fonte': {"$regex":vetFonte[tam-1], "$options": "i"}}
+                                                        a.append(x)
+                                                        tam=tam-1
+                                                mt = { "$match":{ "$or":a }}
+                                                
+                                                if len(vetMercado)>0:
+                                                        if len(vetMercado) == 1:
+                                                                mt = { "$match":{ "$and":[ 
+                                                                        {"$or":a},
+                                                                        { 'mercado': {"$regex":vetMercado[0], "$options": "i"}} 
+                                                                        ]}}
+                                                        else:
+                                                                tam = len(vetMercado)
+                                                                b=[]
+                                                                while tam != 0:
+                                                                        x = { 'mercado': {"$regex":vetMercado[tam-1], "$options": "i"}}
+                                                                        b.append(x)
+                                                                        tam=tam-1
+                                                                mt = { "$match":{ "$and":[ 
+                                                                        {"$or":a},
+                                                                        {"$or":b}
+                                                                        ]}}
+                        else:
+                                if len(vetMercado)>0:
+                                        if len(vetMercado) == 1:
+                                                mt = { "$match":{ 'mercado': {"$regex":vetMercado[0], "$options": "i"}}}
+                                        else:
+                                                tam = len(vetMercado)
+                                                a=[]
+                                                while tam != 0:
+                                                        x = { 'mercado': {"$regex":vetMercado[tam-1], "$options": "i"}}
+                                                        a.append(x)
+                                                        tam=tam-1
+                                                mt = { "$match":{"$or":a}}
+
+                pipeline.append(mt)
+                pipeline.append(order)
+                
+                return pipeline
+
+                ###############   FIM        ############
+                '''
+                else:
+
+                 ##############################################################################################3          
                         
-                        for x in vetMercadoria:
-                                aux = { "$match":{ 'mercadoria': {"$regex":x, "$options": "i"}} }
+                        if len(vetMercadoria) == 1:
+                                aux = { "$match":{ 'mercadoria': {"$regex":vetMercadoria[0], "$options": "i"}} }
                                 pipeline.append(aux)
+
+                                if len(vetFonte) == 1:
+                                        aux = { "$match":{ "$and":[ {'mercadoria': {"$regex":vetMercadoria[0], "$options": "i"}},{ 'fonte': {"$regex":vetFonte[0], "$options": "i"}} ] }}
+                                if len(vetMercado) == 1:
+                        
+                        #for x in vetMercadoria:
+                        #        aux = { "$match":{ 'mercadoria': {"$regex":x, "$options": "i"}} }
+                        #        pipeline.append(aux)
                 
                 if vetFonte != []:
                         for x in vetFonte:
@@ -326,7 +548,7 @@ class searchCotacao:
                 pipeline.append(order)
                 
                 return pipeline
-
+'''
 #def searchDemais(data):
 #    result = coll2.find_one()
     

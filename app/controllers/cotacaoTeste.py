@@ -116,6 +116,16 @@ def contFM(x, y, data):
     
     return i
 
+# conta a quantidade de vezes de Mercado por Fonte aparece no resultado da busca
+def contMF(x, y, data):
+    i=0
+
+    for a in data:
+        if x == a['fonte'] and y == a['mercadoria']:
+            i=i+1
+    
+    return i
+
 def isuniqueMercado(data):
     merc_unique=[]
     for x in data:
@@ -151,92 +161,49 @@ def montaHTMLDerivativos(data):
 
     #x['mercadoria'].count()
 
-    if isuniqueMercado(data):
-        for x in data:
-            if x['mercadoria'] not in unique_mercadoria:
-                unique_mercadoria.append(x['mercadoria'])
-                #print('{}:{}'.format(x['mercadoria'],str(contM(x['mercadoria'], data))))
-                varMercadoria = "<td class='text-center' rowspan='"+ str(contM(x['mercadoria'], data)) +"' class='text-center'>"+x['mercadoria']+"</td>"
-                
-                if x['fonte']+x['mercadoria'] not in unique_fontmerc:
-                    unique_fontmerc.append(x['fonte']+x['mercadoria'] )
-                    print('{}+{}:{}'.format(x['mercadoria'],x['fonte'],str(contFM(x['fonte'],x['mercadoria'], data))))
-                    varFonte= "<td class='text-center' rowspan='"+ str(contFM(x['fonte'],x['mercadoria'], data))+"' class='text-center'>"+x['fonte']+"<br/><div class='realtime mr-3' data-placement='right' data-toggle='tooltip' data-html='true' title='"+htmlTooltipRT(x['cod_pag'])+"'><b>RT</b></div> <i class='far fa-clock' data-placement='right' data-toggle='tooltip' data-html='true' title='"+htmlTooltipDelay(x['cod_pag'])+"'></i></td>"
-                    varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
-                    "<td>"+x['desc_papel']+"</td>"+\
-                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                    "<td class='text-center'>"+x['codbroad']+"</td>"
-                    html = html + row_ini + varMercadoria + varFonte + varDemais + row_fim
-                else:
-                    varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
-                    "<td>"+x['desc_papel']+"</td>"+\
-                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                    "<td class='text-center'>"+x['codbroad']+"</td>"
-                    html = html + row_ini+ varMercadoria + varDemais + row_fim
-
-            else:
-                if x['fonte']+x['mercadoria'] not in unique_fontmerc:
-                    #print(unique_fontmerc)
-                    unique_fontmerc.append(x['fonte']+x['mercadoria'] )
-                    print('{}+{}:{}'.format(x['mercadoria'],x['fonte'],str(contFM(x['fonte'],x['mercadoria'], data))))
-                    varFonte= "<td class='text-center' rowspan='"+ str(contFM(x['fonte'],x['mercadoria'], data))+"' class='text-center'>"+x['fonte']+"<br/><div class='realtime mr-3' data-placement='right' data-toggle='tooltip' data-html='true' title='"+htmlTooltipRT(x['cod_pag'])+"'><b>RT</b></div> <i class='far fa-clock' data-placement='right' data-toggle='tooltip' data-html='true' title='"+htmlTooltipDelay(x['cod_pag'])+"'></i></td>"
-                    varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
-                    "<td>"+x['desc_papel']+"</td>"+\
-                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                    "<td class='text-center'>"+x['codbroad']+"</td>"
-                    html = html + row_ini + varFonte + varDemais + row_fim
-                
-                else:
-                    varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
-                    "<td>"+x['desc_papel']+"</td>"+\
-                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                    "<td class='text-center'>"+x['codbroad']+"</td>"
-
-                    html = html + row_ini + varDemais + row_fim
     
-    else:
-        for x in data:
-            #pprint(x)
-            if x['mercadoria'] not in unique_mercadoria:
-                unique_mercadoria.append(x['mercadoria'])
-                print('{}:{}'.format(x['mercadoria'],str(contM(x['mercadoria'], data))))
-                varMercadoria = "<td class='text-center' rowspan='"+ str(contM(x['mercadoria'], data)) +"' class='text-center'>"+x['mercadoria']+"</td>"
-                
-                if x['fonte'] not in unique_fonte:
-                    unique_fonte.append(x['fonte'])
-                    print('{}:{}'.format(x['fonte'],str(contF(x['fonte'], data))))
-                    varFonte= "<td class='text-center' rowspan='"+ str(contF(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"<br/><div class='realtime mr-3' data-placement='right' data-toggle='tooltip' data-html='true' title='"+htmlTooltipRT(x['cod_pag'])+"'><b>RT</b></div> <i class='far fa-clock' data-placement='right' data-toggle='tooltip' data-html='true' title='"+htmlTooltipDelay(x['cod_pag'])+"'></i></td>"
-                    varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
-                    "<td>"+x['desc_papel']+"</td>"+\
-                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                    "<td class='text-center'>"+x['codbroad']+"</td>"
-                    html = row_ini + varMercadoria + varFonte + varDemais + row_fim
-                else:
-                    varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
-                    "<td>"+x['desc_papel']+"</td>"+\
-                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                    "<td class='text-center'>"+x['codbroad']+"</td>"
-                    html = html + row_ini+ varMercadoria + varDemais + row_fim
-
+    for x in data:
+        if x['mercadoria'] not in unique_mercadoria:
+            unique_mercadoria.append(x['mercadoria'])
+            #print('{}:{}'.format(x['mercadoria'],str(contM(x['mercadoria'], data))))
+            varMercadoria = "<td class='text-center' rowspan='"+ str(contM(x['mercadoria'], data)) +"' class='text-center'>"+x['mercadoria']+"</td>"
+            
+            if x['fonte']+x['mercadoria'] not in unique_fontmerc:
+                unique_fontmerc.append(x['fonte']+x['mercadoria'] )
+                print('{}+{}:{}'.format(x['mercadoria'],x['fonte'],str(contFM(x['fonte'],x['mercadoria'], data))))
+                varFonte= "<td class='text-center' rowspan='"+ str(contFM(x['fonte'],x['mercadoria'], data))+"' class='text-center'>"+x['fonte']+"<br/><div class='realtime mr-3' data-placement='right' data-toggle='tooltip' data-html='true' title='"+htmlTooltipRT(x['cod_pag'])+"'><b>RT</b></div> <i class='far fa-clock' data-placement='right' data-toggle='tooltip' data-html='true' title='"+htmlTooltipDelay(x['cod_pag'])+"'></i></td>"
+                varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                "<td>"+x['desc_papel']+"</td>"+\
+                "<td class='text-center'>"+x['codbroad']+"</td>"+\
+                "<td class='text-center'>"+x['codbolsa']+"</td>"
+                html = html + row_ini + varMercadoria + varFonte + varDemais + row_fim
             else:
-                if x['fonte'] not in unique_fonte:
-                    unique_fonte.append(x['fonte'])
-                    print('{}:{}'.format(x['fonte'],str(contF(x['fonte'], data))))
-                    varFonte= "<td class='text-center' rowspan='"+ str(contF(x['fonte'], data))+"' class='text-center'>"+x['fonte']+"<br/><div class='realtime mr-3'data-placement='right' data-toggle='tooltip' data-html='true' title='"+htmlTooltipRT(x['cod_pag'])+"' ><b>RT</b></div> <i class='far fa-clock' data-placement='right' data-toggle='tooltip' data-html='true' title='"+htmlTooltipDelay(x['cod_pag'])+"'></i></td>"
-                    varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
-                    "<td>"+x['desc_papel']+"</td>"+\
-                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                    "<td class='text-center'>"+x['codbroad']+"</td>"
-                    html = html + row_ini + varFonte + varDemais + row_fim
-                
-                else:
-                    varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
-                    "<td>"+x['desc_papel']+"</td>"+\
-                    "<td class='text-center'>"+x['codbolsa']+"</td>"+\
-                    "<td class='text-center'>"+x['codbroad']+"</td>"
+                varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                "<td>"+x['desc_papel']+"</td>"+\
+                "<td class='text-center'>"+x['codbroad']+"</td>"+\
+                "<td class='text-center'>"+x['codbolsa']+"</td>"
+                html = html + row_ini+ varMercadoria + varDemais + row_fim
 
-                    html = html + row_ini + varDemais + row_fim
-    
+        else:
+            if x['fonte']+x['mercadoria'] not in unique_fontmerc:
+                #print(unique_fontmerc)
+                unique_fontmerc.append(x['fonte']+x['mercadoria'] )
+                print('{}+{}:{}'.format(x['mercadoria'],x['fonte'],str(contFM(x['fonte'],x['mercadoria'], data))))
+                varFonte= "<td class='text-center' rowspan='"+ str(contFM(x['fonte'],x['mercadoria'], data))+"' class='text-center'>"+x['fonte']+"<br/><div class='realtime mr-3' data-placement='right' data-toggle='tooltip' data-html='true' title='"+htmlTooltipRT(x['cod_pag'])+"'><b>RT</b></div> <i class='far fa-clock' data-placement='right' data-toggle='tooltip' data-html='true' title='"+htmlTooltipDelay(x['cod_pag'])+"'></i></td>"
+                varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                "<td>"+x['desc_papel']+"</td>"+\
+                "<td class='text-center'>"+x['codbroad']+"</td>"+\
+                "<td class='text-center'>"+x['codbolsa']+"</td>"
+                html = html + row_ini + varFonte + varDemais + row_fim
+            
+            else:
+                varDemais= "<td class='text-center'>"+x['mercado']+"</td>"+\
+                "<td>"+x['desc_papel']+"</td>"+\
+                "<td class='text-center'>"+x['codbroad']+"</td>"+\
+                "<td class='text-center'>"+x['codbolsa']+"</td>"
+
+                html = html + row_ini + varDemais + row_fim
+
     html = table_ini + cabecalho + html + table_fim
 
     return html
