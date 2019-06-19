@@ -24,12 +24,12 @@ i.fa-home {
 
 #logo-bc-agro figcaption{
     position: absolute;
-    top: 1px;
-    right: 22px;
-    font-size: 18px;
+    top: 30px;
+    right: 36px;
+    font-size: 14px;
     color: #0a1c2d;
     text-shadow: -2px 0px 5px black;
-    transform: rotate(-25deg);
+    transform: rotate(-0);
 }
 
 #logo-bc-pol{
@@ -39,12 +39,12 @@ i.fa-home {
 
 #logo-bc-pol figcaption{
     position: absolute;
-    top: -14px;
-    right: 22px;
-    font-size: 17px;
+    top: 30px;
+    right: 36px;
+    font-size: 14px;
     color: #0a1c2d;
     text-shadow: -2px 0px 5px black;
-    transform: rotate(-0deg);
+    transform: rotate(-0);
 }
 
 #logo-bc-tr{
@@ -54,9 +54,9 @@ i.fa-home {
 
 #logo-bc-tr figcaption{
     position: absolute;
-    top: 23px;
-    right: 32px;
-    font-size: 16px;
+    top: 32px;
+    right: 36px;
+    font-size: 14px;
     color: #0a1c2d;
     text-shadow: -2px 0px 5px black;
     transform: rotate(-0);
@@ -69,9 +69,9 @@ i.fa-home {
 
 #logo-bc-sol figcaption{
     position: absolute;
-    top: -13px;
-    right: 18px;
-    font-size: 16px;
+    top: 29px;
+    right: 11px;
+    font-size: 14px;
     color: #0a1c2d;
     text-shadow: -2px 0px 5px black;
     transform: rotate(-0);
