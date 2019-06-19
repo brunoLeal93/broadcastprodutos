@@ -57,8 +57,8 @@ def cotacao():
                         html = ct.montaHTMLDerivativosTudo(result)
                         return render_template('cotacao.html', html=html)
                 else:
-                        #result = src.searchDerivativos(text)
-                        #pprint(result)
+                        result = src.searchDerivativos(text)
+                        pprint(result)
                         html = ct.montaHTMLDerivativos(result)
                         return render_template('cotacao.html', html=html)
 
