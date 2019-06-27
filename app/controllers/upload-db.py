@@ -7,7 +7,7 @@ client = MongoClient('mongodb://broadcast:agestado@cluster0-shard-00-00-umdst.mo
 db = client['db-derivativos']
 coll = db['coll-derivativos-full']
 
-wb2 = load_workbook('D:\Mercados\Cotação\Base Cotacao.xlsx')
+wb2 = load_workbook('Base Cotacao_2.xlsx')
 ws= wb2['Derivativos']
 
 
@@ -104,13 +104,13 @@ while row < 10:#ws.cell(row=row, column=1).value != None:
     serv_delay = trataServDelay(ws.cell(row=row, column=11).value)
 
     post =  {
-        "mercadoria": ws.cell(row=row, column=1).value,
-        "fonte":ws.cell(row=row, column=2).value,
-        "mercado":ws.cell(row=row, column=3).value,
-        "desc_papel":ws.cell(row=row, column=4).value,
-        "codbroad":ws.cell(row=row, column=5).value,
-        "codbolsa":ws.cell(row=row, column=6).value,
-        "tpinst":ws.cell(row=row, column=7).value,
+        "mercadoria": ws.cell(row=row, column=7).value,
+        "fonte":ws.cell(row=row, column=1).value,
+        "mercado":ws.cell(row=row, column=6).value,
+        "desc_papel":ws.cell(row=row, column=3).value,
+        "codbroad":ws.cell(row=row, column=2).value,
+        "codbolsa":ws.cell(row=row, column=4).value,
+        "tpinst":ws.cell(row=row, column=5).value,
         "cod_pag":ws.cell(row=row, column=9).value,
         "pag":ws.cell(row=row, column=8).value,
         "serv_rt":serv_rt,
