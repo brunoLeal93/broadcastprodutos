@@ -44,7 +44,7 @@ class searchCotacao:
                 vetCodBolsa=[]
                 vetCodBroad=[]
                 vetPgPerm=[]
-                mt={}
+                
                 #pipeline.append(order)
                 #return pipeline
 
@@ -285,7 +285,7 @@ class searchCotacao:
                                                         a.append(x)
                                                         tam=tam-1
                                                 mt = { "$match":{"$or":a}}
-
+                print(mt)
                 pipeline.append(mt)
                 pipeline.append(order)
                 
