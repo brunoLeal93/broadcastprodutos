@@ -4,11 +4,15 @@ from pymongo import MongoClient, TEXT
 
 client = MongoClient('mongodb://broadcast:agestado@cluster0-shard-00-00-umdst.mongodb.net:27017,cluster0-shard-00-01-umdst.mongodb.net:27017,cluster0-shard-00-02-umdst.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true')
 
-db = client['db-derivativos']
-coll = db['coll-derivativos-full']
+db = client['db-broadcastprodutos']
 
-wb2 = load_workbook('Base Cotacao_2.xlsx')
-ws= wb2['Derivativos']
+coll1 = db['coll-derivativos']
+wb1 = load_workbook('Base Cotacao_2.xlsx')
+ws1 = wb1['Derivativos']
+
+coll2 = db['coll-faq']
+wb2 = load_workbook('Base_FAQ_1.xlsx')
+ws2= wb2['FAQ']
 
 
 
@@ -96,23 +100,43 @@ def trataServDelay(data):
 
     return serv_delay
 
+
+#### Bloco de upload de planilha de FAQ ###
 many_post=[]
 row=2
-while row < 10:#ws.cell(row=row, column=1).value != None:
-
-    serv_rt = trataServRT(ws.cell(row=row, column=10).value)
-    serv_delay = trataServDelay(ws.cell(row=row, column=11).value)
+while ws2.cell(row=row, column=1).value != None:
 
     post =  {
-        "mercadoria": ws.cell(row=row, column=7).value,
-        "fonte":ws.cell(row=row, column=1).value,
-        "mercado":ws.cell(row=row, column=6).value,
-        "desc_papel":ws.cell(row=row, column=3).value,
-        "codbroad":ws.cell(row=row, column=2).value,
-        "codbolsa":ws.cell(row=row, column=4).value,
-        "tpinst":ws.cell(row=row, column=5).value,
-        "cod_pag":ws.cell(row=row, column=9).value,
-        "pag":ws.cell(row=row, column=8).value,
+        "_id": ws2.cell(row=row,column=1).value,
+        "pergunta":ws2.cell(row=row, column=2).value,
+        "resposta":ws2.cell(row=row, column=3).value
+    }
+
+    many_post.append(post)
+    row=row+1
+
+coll.insert_many(many_post)
+coll.create_index([("pergunta", TEXT),("resposta",TEXT)], name="faq_index")
+
+
+#### Bloco de upload de planilha de DErivativos ###
+many_post=[]
+row=2
+while ws1.cell(row=row, column=1).value != None:
+
+    serv_rt = trataServRT(ws1.cell(row=row, column=10).value)
+    serv_delay = trataServDelay(ws1.cell(row=row, column=11).value)
+
+    post =  {
+        "mercadoria": ws1.cell(row=row, column=7).value,
+        "fonte":ws1.cell(row=row, column=1).value,
+        "mercado":ws1.cell(row=row, column=6).value,
+        "desc_papel":ws1.cell(row=row, column=3).value,
+        "codbroad":ws1.cell(row=row, column=2).value,
+        "codbolsa":ws1.cell(row=row, column=4).value,
+        "tpinst":ws1.cell(row=row, column=5).value,
+        "cod_pag":ws1.cell(row=row, column=9).value,
+        "pag":ws1.cell(row=row, column=8).value,
         "serv_rt":serv_rt,
         "serv_delay":serv_delay,
     }
@@ -121,13 +145,12 @@ while row < 10:#ws.cell(row=row, column=1).value != None:
     row=row+1
 
 coll.insert_many(many_post)
-coll.create_index([("mercadoria", TEXT),("fonte",TEXT),("mercado", TEXT),("tpinst", TEXT),("desc_papel", TEXT),("codbroad", TEXT),("codbolsa", TEXT),("pag", TEXT)], name="primary_index")
+coll.create_index([("mercadoria", TEXT),("fonte",TEXT),("mercado", TEXT),("tpinst", TEXT),("desc_papel", TEXT),("codbroad", TEXT),("codbolsa", TEXT),("pag", TEXT)], name="derivativos_index")
 #pprint(many_post)
 
-
+#############
 
 '''
-
 post =  {
     "mercadoria": "Café",
     "fonte":"BMF",

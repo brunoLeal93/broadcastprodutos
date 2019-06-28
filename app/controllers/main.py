@@ -1,17 +1,15 @@
-#from database import *
 from flask import render_template, request, jsonify, redirect
 from app import app
-from app.controllers import dbmongo as db
-from app.controllers import cotacaoTeste as ct
+from app.models import cotacao as db
+from app.models import criaHtml as ch
+from app.controllers import sendEmail as se
 from pprint import pprint
-from sendEmail import *
 
-#from cotacaotest import *
-
-## CRIAR PAGINA PARA SE LOGAR
-@app.route('/login', methods=('GET', 'POST'))
-def login():
-        return render_template('index.html')
+@app.route('/Home', methods=('GET', 'POST'))
+@app.route('/', methods=('GET', 'POST'))
+def home():
+        
+        return render_template('home.html')
 
 @app.route('/Conteudo-vs-Pacotes')
 def ppp():
@@ -22,8 +20,8 @@ def faq():
         if request.method == "POST":
                 solicitante = request.form.get('email-contato')
                 pergunta = request.form.get('pergunta-text')
-                if solicitante and pergunta == None:
-                        print('sem dados')
+                if solicitante or pergunta == None:
+                        print('Sem todos os dados')
                 else:
                         #client = db.client
                         #db = client['db-faq']
@@ -35,19 +33,10 @@ def faq():
                         
         return render_template('faq.html')
 
-@app.route('/Home', methods=('GET', 'POST'))
-@app.route('/', methods=('GET', 'POST'))
-def home():
-        
-        return render_template('home.html')
-'''
-@app.route('/noticiosos', methods=('GET' , 'POST'))
-def noticiosos():
-        return render_template('noticiosos.html')
-'''
 @app.route('/cotacao', methods=['GET' , 'POST'])
 def cotacao():
         src = db.searchCotacao()
+        deri = ch.htmlDerivativos()
         html=""
         if request.method == "POST":
                 text = request.form.get('contentSearch')
@@ -57,49 +46,18 @@ def cotacao():
                         return render_template('cotacao.html', html=html)
                 if text.upper() =='TUDO':
                         result = src.searchDerivativos("")
-                        html = ct.montaHTMLDerivativosTudo(result)
+                        html = deri.montaHTMLDerivativosTudo(result)
                         return render_template('cotacao.html', html=html)
                 else:
                         result = src.searchDerivativos(text)
                         pprint(result)
-                        html = ct.montaHTMLDerivativos(result)
+                        html = deri.montaHTMLDerivativos(result)
                         return render_template('cotacao.html', html=html)
 
         return render_template('cotacao.html', html=html)
 
 
-@app.route('/bpro-terminal', methods=('GET' , 'POST'))
-def bpro_terminal():
-        return render_template('BCP-Terminal.html')
 
-@app.route('/bpro-web', methods=('GET' , 'POST'))
-def bpro_web():
-        return render_template('BCP-Terminal.html')
-
-@app.route('/bpro-wallboard', methods=('GET' , 'POST'))
-def bpro_wallboard():
-        return render_template('bcpro.html')
-
-@app.route('/bagro-terminal', methods=('GET' , 'POST'))
-def bagro_terminal():
-        return render_template('bcagro.html')
-
-@app.route('/bagro-web', methods=('GET' , 'POST'))
-def bagro_web():
-        return render_template('bcagro.html')
-
-@app.route('/bagro-wallboard', methods=('GET' , 'POST'))
-def bagro_wallboard():
-        return render_template('bcagro.html')
-
-
-@app.route('/bpol', methods=('GET' , 'POST'))
-def bpol():
-        return render_template('bpro.html')
-
-@app.route('/TradingNews', methods=('GET' , 'POST'))
-def tradingnews():
-        return render_template('bpro.html')
 
 
 
