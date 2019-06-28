@@ -11,17 +11,19 @@ def home():
         
         return render_template('home.html')
 
+
 @app.route('/Conteudo-vs-Pacotes')
 def ppp():
         return render_template('ppp.html')
+
 
 @app.route('/FAQ', methods=('GET', 'POST'))
 def faq():
         if request.method == "POST":
                 solicitante = request.form.get('email-contato')
                 pergunta = request.form.get('pergunta-text')
-                if solicitante or pergunta == None:
-                        print('Sem todos os dados')
+                if solicitante and pergunta == None:
+                        print('sem dados')
                 else:
                         #client = db.client
                         #db = client['db-faq']
@@ -32,6 +34,7 @@ def faq():
                         se.send(solicitante,pergunta)
                         
         return render_template('faq.html')
+
 
 @app.route('/cotacao', methods=['GET' , 'POST'])
 def cotacao():
@@ -57,7 +60,6 @@ def cotacao():
         return render_template('cotacao.html', html=html)
 
 
-
-
-
-
+@app.route('/bpro-terminal', methods=('GET' , 'POST'))
+def bpro_terminal():
+        return render_template('BCP-Terminal.html')
