@@ -281,6 +281,24 @@ class htmlDerivativos:
 
         return html
 
+class htmlFAQ:
+
+    def montaHtmlFAQ(self, data):
+        html_fim = ""
+        for x in data:
+            html= "<li class='list-group-item'>+\
+                            <button class='btn btn-link collapsed' type='button' data-toggle='collapse' data-target='#collapse"+str(x['_id'])+"' aria-expanded='false' aria-controls='collapse"+str(x['_id'])+"'>+\
+                                "+x['pergunta']+"+\
+                            </button>+\
+                            <div id='collapse"+str(x['_id'])+"' class='collapse' aria-labelledby='heading"+str(x['_id'])+"' data-parent='#accordionExample'>+\
+                                <div class='card-body'>+\
+                                "+x['resposta']+"+\
+                                </div>+\
+                            </div>+\
+                        </li>
+            html_fim = html_fim + html
+        return html_fim
+        
 #a = montaHTMLDerivativos1(result_ori)
 
 #txt = open('html1.html', 'w')

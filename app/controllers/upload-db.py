@@ -7,7 +7,7 @@ client = MongoClient('mongodb://broadcast:agestado@cluster0-shard-00-00-umdst.mo
 db = client['db-broadcastprodutos']
 
 coll1 = db['coll-derivativos']
-wb1 = load_workbook('Base Cotacao_2.xlsx')
+wb1 = load_workbook('Base Cotacao_3.xlsx')
 ws1 = wb1['Derivativos']
 
 coll2 = db['coll-faq']
@@ -115,8 +115,8 @@ while ws2.cell(row=row, column=1).value != None:
     many_post.append(post)
     row=row+1
 
-coll.insert_many(many_post)
-coll.create_index([("pergunta", TEXT),("resposta",TEXT)], name="faq_index")
+coll2.insert_many(many_post)
+coll2.create_index([("pergunta", TEXT),("resposta",TEXT)], name="faq_index")
 
 
 #### Bloco de upload de planilha de DErivativos ###
@@ -144,8 +144,8 @@ while ws1.cell(row=row, column=1).value != None:
     many_post.append(post)
     row=row+1
 
-coll.insert_many(many_post)
-coll.create_index([("mercadoria", TEXT),("fonte",TEXT),("mercado", TEXT),("tpinst", TEXT),("desc_papel", TEXT),("codbroad", TEXT),("codbolsa", TEXT),("pag", TEXT)], name="derivativos_index")
+coll1.insert_many(many_post)
+coll1.create_index([("mercadoria", TEXT),("fonte",TEXT),("mercado", TEXT),("tpinst", TEXT),("desc_papel", TEXT),("codbroad", TEXT),("codbolsa", TEXT),("pag", TEXT)], name="derivativos_index")
 #pprint(many_post)
 
 #############

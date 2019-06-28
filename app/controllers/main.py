@@ -19,27 +19,31 @@ def ppp():
 
 @app.route('/FAQ', methods=('GET', 'POST'))
 def faq():
+        src = db.searchFAQ()
+        htmlfaq = ch.htmlFAQ()
+        result = src.searchfaq("")
+        html = htmlfaq.montaHtmlFAQ(result)
+
         if request.method == "POST":
                 solicitante = request.form.get('email-contato')
                 pergunta = request.form.get('pergunta-text')
-                if solicitante and pergunta == None:
-                        print('sem dados')
-                else:
-                        #client = db.client
-                        #db = client['db-faq']
-                        #coll = db['coll-faq-noresponse']
-                        print(solicitante)
-                        print(pergunta)
+                if solicitante and pergunta != None:
                         se = sendEmail()
-                        se.send(solicitante,pergunta)
+                        se.send(solicitante,pergunta)     
+                else:
+                        faqText = request.form.get('contentSearch')
+                        result = src.searchfaq(faqText)
+                        html = htmlfaq.montaHtmlFAQ(result)
+                        return render_template('faq1.html', html=html)
                         
-        return render_template('faq.html')
+                        
+        return render_template('faq1.html', html=html)
 
 
 @app.route('/cotacao', methods=['GET' , 'POST'])
 def cotacao():
         src = db.searchCotacao()
-        deri = ch.htmlDerivativos()
+        htmlderi = ch.htmlDerivativos()
         html=""
         if request.method == "POST":
                 text = request.form.get('contentSearch')
@@ -49,12 +53,12 @@ def cotacao():
                         return render_template('cotacao.html', html=html)
                 if text.upper() =='TUDO':
                         result = src.searchDerivativos("")
-                        html = deri.montaHTMLDerivativosTudo(result)
+                        html = htmlderi.montaHTMLDerivativosTudo(result)
                         return render_template('cotacao.html', html=html)
                 else:
                         result = src.searchDerivativos(text)
                         pprint(result)
-                        html = deri.montaHTMLDerivativos(result)
+                        html = htmlderi.montaHTMLDerivativos(result)
                         return render_template('cotacao.html', html=html)
 
         return render_template('cotacao.html', html=html)

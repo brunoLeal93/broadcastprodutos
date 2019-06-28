@@ -1,0 +1,83 @@
+{% extends 'base.html'%}
+{% block title %}: FAQ{% endblock %}
+
+{%block css%}
+<style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 5px;
+          text-align: left;    
+        }
+</style>
+<link rel="stylesheet" href="../static/css/faq.css">
+{%endblock%}
+
+{% block content%}
+<!-- Jumbotrom -->
+<div class="jumbotron jumbotron-fluid bg-primary">
+    <div class="container text-center">
+        <h1 style="color: white">Perguntas Frequentes</h1>
+        <form method="POST" class="form col-md-6 offset-md-3" action="/faq">    
+            <div class="input-group mt-5">
+                <input type="text" name="contentSearch" class="form-control" placeholder="Buscar perguntas..." aria-label="Buscar perguntas..." aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <input class="btn btn-secondary" type="submit" id="button-addon2" value="Buscar"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Section FAQ -->
+<section id="faq">
+    <div class="container-fluid">
+        <div class="accordion mb-5" id="accordionExample">
+            <ul class="list-group list-group-flush">
+                {{html|safe}}
+            </ul>
+        </div>    
+    </div>
+    <!-- Button trigger modal -->
+    <div class="text-center fixed-faq">
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#pergunta">
+            <small>Não encontrou o que precisa? Clique aqui e faça uma pergunta!</small>
+        </button>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="pergunta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Faça uma pergunta?</h5>
+                    <!--
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    -->
+                </div>
+                <form method="POST" action="/FAQ">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="email-contato" class="col-form-label">*E-mail para Contato:</label>
+                            <input type="text" class="form-control" id="email-contato" name="email-contato">
+                        </div>
+                        <div class="form-group">
+                            <label for="pergunta-text" class="col-form-label">*Pergunta:</label>
+                            <textarea class="form-control" id="pergunta-text" name="pergunta-text"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <small>(*) Campos Obrigatórios</small>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-secondary">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{%endblock%}

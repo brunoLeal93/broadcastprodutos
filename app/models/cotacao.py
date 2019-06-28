@@ -294,6 +294,21 @@ class searchCotacao:
 
                 ###############   FIM        ############
                 
+class searchFAQ:
+        db = client['db-broadcastprodutos']
+        coll = db['coll-faq']
+        
+
+        def searchfaq(self, data):
+                
+                if data == "":
+                        result = self.coll.find({})
+                else:
+                        mt = { "$match":{ '$text': {"$search":data, "$language":"portuguese"}} }
+                        order = { "$sort": {"_id": 1 }}
+                        result = self.coll.aggregate([mt, order]])
+                        
+                return result
 #def searchDemais(data):
 #    result = coll2.find_one()
     
