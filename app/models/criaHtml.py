@@ -295,10 +295,10 @@ class htmlFAQ:
                                 "+x['resposta']+"+\
                                 </div>+\
                             </div>+\
-                        </li>
+                        </li>"
             html_fim = html_fim + html
         return html_fim
-        
+
 #a = montaHTMLDerivativos1(result_ori)
 
 #txt = open('html1.html', 'w')
