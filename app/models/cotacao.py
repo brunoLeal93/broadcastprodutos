@@ -306,8 +306,8 @@ class searchFAQ:
                 else:
                         mt = { "$match":{ '$text': {"$search":data, "$language":"portuguese"}} }
                         order = { "$sort": {"_id": 1 }}
-                        result = self.coll.aggregate([mt, order]])
-                        
+                        result = self.coll.aggregate([mt, order])
+
                 return result
 #def searchDemais(data):
 #    result = coll2.find_one()
