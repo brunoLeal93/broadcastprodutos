@@ -85,6 +85,7 @@ class searchCotacao:
 
 
                 if len(vetMercadoria)>0:
+                        print("cria mt")
                         if len(vetMercadoria) == 1:
                                 mt = { "$match":{ 'mercadoria': {"$regex":vetMercadoria[0], "$options": "i"}} }
                                 if len(vetFonte)>0:
