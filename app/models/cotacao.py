@@ -18,7 +18,7 @@ class searchCotacao:
                         return aux
                         
                 else:
-                        pipeline = self.pipelineDerivativos1(data)
+                        pipeline = self.pipelineDerivativos(data)
                         pprint(pipeline)
                         result = self.coll.aggregate(pipeline)
                         aux=[]
