@@ -44,6 +44,7 @@ class searchCotacao:
                 vetCodBolsa=[]
                 vetCodBroad=[]
                 vetPgPerm=[]
+                mt={}
                 #pipeline.append(order)
                 #return pipeline
 
