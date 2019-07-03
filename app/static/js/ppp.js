@@ -1,17 +1,43 @@
-/* Funções para controlar movimentação dos icones da callopse*/
 
+var chkAll = document.getElementById('checkAll');
+var ckTrade = document.getElementById('trade');
+var ckConjuntura  = document.getElementById('conjuntura');
+var ckMercados  = document.getElementById('mercados');
+var ckNews  = document.getElementById('news');
+var ckAnalises  = document.getElementById('analises');
+
+/* Funções para controlar movimentação dos icones da callopse*/
 function iconNoticia(){
     if($(document.getElementById("Noticias-collapse")).hasClass('show')){
         $('#iconN').removeClass('fa-angle-down');
         $('#iconN').addClass('fa-angle-right');
-        $("#n-trade").show();
-        $("#n-conjuntura").show();
-        $("#n-mercados").show();
-        $("#n-news").show();
-        $("#n-analises").show();
+        if(chkAll.checked == true){
+            $("#n-trade").show();
+            $("#n-conjuntura").show();
+            $("#n-mercados").show();
+            $("#n-news").show();
+            $("#n-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#n-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#n-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#n-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#n-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#n-analises").show();
+            }
+        }
     } else{
         $('#iconN').removeClass('fa-angle-right');
         $('#iconN').addClass('fa-angle-down');
+        
         $("#n-trade").hide();
         $("#n-conjuntura").hide();
         $("#n-mercados").hide();
@@ -24,11 +50,29 @@ function iconNoticiaNewsLetter(){
     if($(document.getElementById("Noticias-nwlttr-collapse")).hasClass('show')){
         $('#iconNNewsletter').removeClass('fa-angle-down');
         $('#iconNNewsletter').addClass('fa-angle-right');
-        $("#n-nwlttr-trade").show();
-        $("#n-nwlttr-conjuntura").show();
-        $("#n-nwlttr-mercados").show();
-        $("#n-nwlttr-news").show();
-        $("#n-nwlttr-analises").show();
+        if(chkAll.checked == true){
+            $("#n-nwlttr-trade").show();
+            $("#n-nwlttr-conjuntura").show();
+            $("#n-nwlttr-mercados").show();
+            $("#n-nwlttr-news").show();
+            $("#n-nwlttr-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#n-nwlttr-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#n-nwlttr-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#n-nwlttr-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#n-nwlttr-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#n-nwlttr-analises").show();
+            }
+        }
     } else{
         $('#iconNNewsletter').removeClass('fa-angle-right');
         $('#iconNNewsletter').addClass('fa-angle-down');
@@ -44,11 +88,29 @@ function iconNoticiaContri(){
     if($(document.getElementById("Noticias-ctbd-collapse")).hasClass('show')){
         $('#iconNContri').removeClass('fa-angle-down');
         $('#iconNContri').addClass('fa-angle-right');
-        $("#n-ctbd-trade").show();
-        $("#n-ctbd-conjuntura").show();
-        $("#n-ctbd-mercados").show();
-        $("#n-ctbd-news").show();
-        $("#n-ctbd-analises").show();
+        if(chkAll.checked == true){
+            $("#n-ctbd-trade").show();
+            $("#n-ctbd-conjuntura").show();
+            $("#n-ctbd-mercados").show();
+            $("#n-ctbd-news").show();
+            $("#n-ctbd-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#n-ctbd-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#n-ctbd-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#n-ctbd-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#n-ctbd-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#n-ctbd-analises").show();
+            }
+        }
     } else{
         $('#iconNContri').removeClass('fa-angle-right');
         $('#iconNContri').addClass('fa-angle-down');
@@ -64,12 +126,29 @@ function iconCotacao(){
     if($(document.getElementById("Cotacao-collapse")).hasClass('show')){
         $('#iconCotacao').removeClass('fa-angle-down');
         $('#iconCotacao').addClass('fa-angle-right');
-        $("#c-trade").show();
-        $("#c-conjuntura").show();
-        $("#c-mercados").show();
-        $("#c-news").show();
-        $("#c-analises").show();
-
+        if(chkAll.checked == true){
+            $("#c-trade").show();
+            $("#c-conjuntura").show();
+            $("#c-mercados").show();
+            $("#c-news").show();
+            $("#c-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#c-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#c-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#c-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#c-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#c-analises").show();
+            }
+        }
     } else{
         $('#iconCotacao').removeClass('fa-angle-right');
         $('#iconCotacao').addClass('fa-angle-down');
@@ -86,11 +165,29 @@ function iconCotacaoAnb(){
         $('#iconCAnb-0').removeClass('fa-angle-down');
         $('#iconCAnb-0').addClass('fa-angle-right');
         $('#iconCAnb-1').show();
-        $("#c-anb-trade").show();
-        $("#c-anb-conjuntura").show();
-        $("#c-anb-mercados").show();
-        $("#c-anb-news").show();
-        $("#c-anb-analises").show();
+        if(chkAll.checked == true){
+            $("#c-anb-trade").show();
+            $("#c-anb-conjuntura").show();
+            $("#c-anb-mercados").show();
+            $("#c-anb-news").show();
+            $("#c-anb-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#c-anb-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#c-anb-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#c-anb-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#c-anb-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#c-anb-analises").show();
+            }
+        }
     } else{
         $('#iconCAnb-0').removeClass('fa-angle-right');
         $('#iconCAnb-0').addClass('fa-angle-down');
@@ -108,11 +205,29 @@ function iconCotacaoB3(){
         $('#iconCB3-0').removeClass('fa-angle-down');
         $('#iconCB3-0').addClass('fa-angle-right');
         $('#iconCB3-1').show();
-        $("#c-b3-trade").show();
-        $("#c-b3-conjuntura").show();
-        $("#c-b3-mercados").show();
-        $("#c-b3-news").show();
-        $("#c-b3-analises").show();
+        if(chkAll.checked == true){
+            $("#c-b3-trade").show();
+            $("#c-b3-conjuntura").show();
+            $("#c-b3-mercados").show();
+            $("#c-b3-news").show();
+            $("#c-b3-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#c-b3-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#c-b3-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#c-b3-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#c-b3-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#c-b3-analises").show();
+            }
+        }
     } else{
         $('#iconCB3-0').removeClass('fa-angle-right');
         $('#iconCB3-0').addClass('fa-angle-down');
@@ -130,11 +245,29 @@ function iconCotacaoBC(){
         $('#iconCBC-0').removeClass('fa-angle-down');
         $('#iconCBC-0').addClass('fa-angle-right');
         $('#iconCBC-1').show();
-        $("#c-bc-trade").show();
-        $("#c-bc-conjuntura").show();
-        $("#c-bc-mercados").show();
-        $("#c-bc-news").show();
-        $("#c-bc-analises").show();
+        if(chkAll.checked == true){
+            $("#c-bc-trade").show();
+            $("#c-bc-conjuntura").show();
+            $("#c-bc-mercados").show();
+            $("#c-bc-news").show();
+            $("#c-bc-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#c-bc-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#c-bc-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#c-bc-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#c-bc-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#c-bc-analises").show();
+            }
+        }
     } else{
         $('#iconCBC-0').removeClass('fa-angle-right');
         $('#iconCBC-0').addClass('fa-angle-down');
@@ -153,11 +286,29 @@ function iconCIndices(){
         $('#iconCIndices-0').addClass('fa-angle-right');
         $("#iconCIndices-1").show();
         $("#iconCIndices-2").show();
-        $("#c-indicesMundi-trade").show();
-        $("#c-indicesMundi-conjuntura").show();
-        $("#c-indicesMundi-mercados").show();
-        $("#c-indicesMundi-news").show();
-        $("#c-indicesMundi-analises").show();
+        if(chkAll.checked == true){
+            $("#c-indicesMundi-trade").show();
+            $("#c-indicesMundi-conjuntura").show();
+            $("#c-indicesMundi-mercados").show();
+            $("#c-indicesMundi-news").show();
+            $("#c-indicesMundi-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#c-indicesMundi-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#c-indicesMundi-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#c-indicesMundi-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#c-indicesMundi-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#c-indicesMundi-analises").show();
+            }
+        }
     } else{
         $('#iconCIndices-0').removeClass('fa-angle-right');
         $('#iconCIndices-0').addClass('fa-angle-down');
@@ -177,11 +328,30 @@ function iconCIndAsiaOcean(){
         $('#iconCIndAsiaOcean-0').addClass('fa-angle-right');
         $("#iconCIndAsiaOcean-1").show();
         $("#iconCIndAsiaOcean-2").show();
-        $("#c-ind-ao-trade").show();
-        $("#c-ind-ao-conjuntura").show();
-        $("#c-ind-ao-mercados").show();
-        $("#c-ind-ao-news").show();
-        $("#c-ind-ao-analises").show();
+        if(chkAll.checked == true){
+            $("#c-ind-ao-trade").show();
+            $("#c-ind-ao-conjuntura").show();
+            $("#c-ind-ao-mercados").show();
+            $("#c-ind-ao-news").show();
+            $("#c-ind-ao-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#c-ind-ao-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#c-ind-ao-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#c-ind-ao-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#c-ind-ao-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#c-ind-ao-analises").show();
+            }
+        }
+        
     } else{
         $('#iconCIndAsiaOcean-0').removeClass('fa-angle-right');
         $('#iconCIndAsiaOcean-0').addClass('fa-angle-down');
@@ -200,11 +370,30 @@ function iconCIndEuropa(){
         $('#iconCIndEuropa-0').removeClass('fa-angle-down');
         $('#iconCIndEuropa-0').addClass('fa-angle-right');
         $("#iconCIndEuropa-1").show();
-        $("#c-ind-euro-trade").show();
-        $("#c-ind-euro-conjuntura").show();
-        $("#c-ind-euro-mercados").show();
-        $("#c-ind-euro-news").show();
-        $("#c-ind-euro-analises").show();
+        if(chkAll.checked == true){
+            $("#c-ind-euro-trade").show();
+            $("#c-ind-euro-conjuntura").show();
+            $("#c-ind-euro-mercados").show();
+            $("#c-ind-euro-news").show();
+            $("#c-ind-euro-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#c-ind-euro-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#c-ind-euro-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#c-ind-euro-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#c-ind-euro-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#c-ind-euro-analises").show();
+            }
+        }
+        
     } else{
         $('#iconCIndEuropa-0').removeClass('fa-angle-right');
         $('#iconCIndEuropa-0').addClass('fa-angle-down');
@@ -222,16 +411,34 @@ function iconCIndLatam(){
         $('#iconCIndLatam-0').removeClass('fa-angle-down');
         $('#iconCIndLatam-0').addClass('fa-angle-right');
         $("#iconCIndLatam-1").show();
-        $("#c-ind-latam-trade").show();
-        $("#c-ind-latam-conjuntura").show();
-        $("#c-ind-latam-mercados").show();
-        $("#c-ind-latam-news").show();
-        $("#c-ind-latam-analises").show();
+        if(chkAll.checked == true){
+            $("#c-ind-latam-trade").show();
+            $("#c-ind-latam-conjuntura").show();
+            $("#c-ind-latam-mercados").show();
+            $("#c-ind-latam-news").show();
+            $("#c-ind-latam-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#c-ind-latam-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#c-ind-latam-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#c-ind-latam-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#c-ind-latam-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#c-ind-latam-analises").show();
+            }
+        }
+        
     } else{
         $('#iconCIndLatam-0').removeClass('fa-angle-right');
         $('#iconCIndLatam-0').addClass('fa-angle-down');
         $("#iconCIndLatam-1").hide();
-        
         $("#c-ind-latam-trade").hide();
         $("#c-ind-latam-conjuntura").hide();
         $("#c-ind-latam-mercados").hide();
@@ -245,16 +452,35 @@ function iconCIndUSA(){
         $('#iconCIndUSA-0').removeClass('fa-angle-down');
         $('#iconCIndUSA-0').addClass('fa-angle-right');
         $('#iconCIndUSA-1').show();
-        $("#c-ind-usa-trade").show();
-        $("#c-ind-usa-conjuntura").show();
-        $("#c-ind-usa-mercados").show();
-        $("#c-ind-usa-news").show();
-        $("#c-ind-usa-analises").show();
+        if(chkAll.checked == true){
+            $("#c-ind-usa-trade").show();
+            $("#c-ind-usa-conjuntura").show();
+            $("#c-ind-usa-mercados").show();
+            $("#c-ind-usa-news").show();
+            $("#c-ind-usa-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#c-ind-usa-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#c-ind-usa-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#c-ind-usa-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#c-ind-usa-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#c-ind-usa-analises").show();
+            }
+        }
+        
     } else{
         $('#iconCIndUSA-0').removeClass('fa-angle-right');
         $('#iconCIndUSA-0').addClass('fa-angle-down');
         $('#iconCIndUSA-1').hide();
-        $("#c-ind-usd-trade").hide();
+        $("#c-ind-usa-trade").hide();
         $("#c-ind-usa-conjuntura").hide();
         $("#c-ind-usa-mercados").hide();
         $("#c-ind-usa-news").hide();
@@ -267,11 +493,29 @@ function iconCNyse(){
         $('#iconCNyse-0').removeClass('fa-angle-down');
         $('#iconCNyse-0').addClass('fa-angle-right');
         $('#iconCNyse-1').show();
-        $("#c-nyse-trade").show();
-        $("#c-nyse-conjuntura").show();
-        $("#c-nyse-mercados").show();
-        $("#c-nyse-news").show();
-        $("#c-nyse-analises").show();
+        if(chkAll.checked == true){
+            $("#c-nyse-trade").show();
+            $("#c-nyse-conjuntura").show();
+            $("#c-nyse-mercados").show();
+            $("#c-nyse-news").show();
+            $("#c-nyse-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#c-nyse-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#c-nyse-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#c-nyse-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#c-nyse-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#c-nyse-analises").show();
+            }
+        }
     } else{
         $('#iconCNyse-0').removeClass('fa-angle-right');
         $('#iconCNyse-0').addClass('fa-angle-down');
@@ -288,11 +532,30 @@ function iconCotacaoContri(){
     if($(document.getElementById("Cotacao-ctbd-collapse")).hasClass('show')){
         $('#iconCContri').removeClass('fa-angle-down');
         $('#iconCContri').addClass('fa-angle-right');
-        $("#c-ctbd-trade").show();
-        $("#c-ctbd-conjuntura").show();
-        $("#c-ctbd-mercados").show();
-        $("#c-ctbd-news").show();
-        $("#c-ctbd-analises").show();
+        if(chkAll.checked == true){
+            $("#c-ctbd-trade").show();
+            $("#c-ctbd-conjuntura").show();
+            $("#c-ctbd-mercados").show();
+            $("#c-ctbd-news").show();
+            $("#c-ctbd-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#c-ctbd-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#c-ctbd-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#c-ctbd-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#c-ctbd-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#c-ctbd-analises").show();
+            }
+        }
+
     } else{
         $('#iconCContri').removeClass('fa-angle-right');
         $('#iconCContri').addClass('fa-angle-down');
@@ -328,11 +591,30 @@ function iconModulos(){
     if($(document.getElementById("Addon-mod-collapse")).hasClass('show')){
         $('#iconModulos').removeClass('fa-angle-down');
         $('#iconModulos').addClass('fa-angle-right');
-        $("#ad-mod-trade").show();
-        $("#ad-mod-conjuntura").show();
-        $("#ad-mod-mercados").show();
-        $("#ad-mod-news").show();
-        $("#ad-mod-analises").show();
+        if(chkAll.checked == true){
+            $("#ad-mod-trade").show();
+            $("#ad-mod-conjuntura").show();
+            $("#ad-mod-mercados").show();
+            $("#ad-mod-news").show();
+            $("#ad-mod-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#ad-mod-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#ad-mod-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#ad-mod-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#ad-mod-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#ad-mod-analises").show();
+            }
+        }
+
     } else{
         $('#iconModulos').removeClass('fa-angle-right');
         $('#iconModulos').addClass('fa-angle-down');
@@ -348,11 +630,30 @@ function iconAnaFund(){
     if($(document.getElementById("Addon-mod-af-collapse")).hasClass('show')){
         $('#iconAnaFund').removeClass('fa-angle-down');
         $('#iconAnaFund').addClass('fa-angle-right');
-        $("#ad-mod-af-trade").show();
-        $("#ad-mod-af-conjuntura").show();
-        $("#ad-mod-af-mercados").show();
-        $("#ad-mod-af-news").show();
-        $("#ad-mod-af-analises").show();
+        if(chkAll.checked == true){
+            $("#ad-mod-af-trade").show();
+            $("#ad-mod-af-conjuntura").show();
+            $("#ad-mod-af-mercados").show();
+            $("#ad-mod-af-news").show();
+            $("#ad-mod-af-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#ad-mod-af-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#ad-mod-af-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#ad-mod-af-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#ad-mod-af-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#ad-mod-af-analises").show();
+            }
+        }
+
     } else{
         $('#iconAnaFund').removeClass('fa-angle-right');
         $('#iconAnaFund').addClass('fa-angle-down');
@@ -368,11 +669,30 @@ function iconModNoticias(){
     if($(document.getElementById("Addon-n-collapse")).hasClass('show')){
         $('#iconModNoticias').removeClass('fa-angle-down');
         $('#iconModNoticias').addClass('fa-angle-right');
-        $("#ad-n-trade").show();
-        $("#ad-n-conjuntura").show();
-        $("#ad-n-mercados").show();
-        $("#ad-n-news").show();
-        $("#ad-n-analises").show();
+        if(chkAll.checked == true){
+            $("#ad-n-trade").show();
+            $("#ad-n-conjuntura").show();
+            $("#ad-n-mercados").show();
+            $("#ad-n-news").show();
+            $("#ad-n-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#ad-n-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#ad-n-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#ad-n-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#ad-n-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#ad-n-analises").show();
+            }
+        }
+
     } else{
         $('#iconModNoticias').removeClass('fa-angle-right');
         $('#iconModNoticias').addClass('fa-angle-down');
@@ -388,11 +708,30 @@ function iconModNDJN(){
     if($(document.getElementById("Addon-n-djn-collapse")).hasClass('show')){
         $('#iconModNDJN').removeClass('fa-angle-down');
         $('#iconModNDJN').addClass('fa-angle-right');
-        $("#ad-n-djn-trade").show();
-        $("#ad-n-djn-conjuntura").show();
-        $("#ad-n-djn-mercados").show();
-        $("#ad-n-djn-news").show();
-        $("#ad-n-djn-analises").show();
+        if(chkAll.checked == true){
+            $("#ad-n-djn-trade").show();
+            $("#ad-n-djn-conjuntura").show();
+            $("#ad-n-djn-mercados").show();
+            $("#ad-n-djn-news").show();
+            $("#ad-n-djn-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#ad-n-djn-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#ad-n-djn-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#ad-n-djn-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#ad-n-djn-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#ad-n-djn-analises").show();
+            }
+        }
+
     } else{
         $('#iconModNDJN').removeClass('fa-angle-right');
         $('#iconModNDJN').addClass('fa-angle-down');
@@ -408,11 +747,30 @@ function iconModCotacao(){
     if($(document.getElementById("Addon-c-collapse")).hasClass('show')){
         $('#iconModCotacao').removeClass('fa-angle-down');
         $('#iconModCotacao').addClass('fa-angle-right');
-        $("#ad-c-trade").show();
-        $("#ad-c-conjuntura").show();
-        $("#ad-c-mercados").show();
-        $("#ad-c-news").show();
-        $("#ad-c-analises").show();
+        if(chkAll.checked == true){
+            $("#ad-c-trade").show();
+            $("#ad-c-conjuntura").show();
+            $("#ad-c-mercados").show();
+            $("#ad-c-news").show();
+            $("#ad-c-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#ad-c-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#ad-c-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#ad-c-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#ad-c-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#ad-c-analises").show();
+            }
+        }
+        
     } else{
         $('#iconModCotacao').removeClass('fa-angle-right');
         $('#iconModCotacao').addClass('fa-angle-down');
@@ -429,11 +787,29 @@ function iconAdCotacaoB3(){
         $('#iconAdCB3-0').removeClass('fa-angle-down');
         $('#iconAdCB3-0').addClass('fa-angle-right');
         $('#iconAdCB3-1').show();
-        $("#ad-c-b3-trade").show();
-        $("#ad-c-b3-conjuntura").show();
-        $("#ad-c-b3-mercados").show();
-        $("#ad-c-b3-news").show();
-        $("#ad-c-b3-analises").show();
+        if(chkAll.checked == true){
+            $("#ad-c-b3-trade").show();
+            $("#ad-c-b3-conjuntura").show();
+            $("#ad-c-b3-mercados").show();
+            $("#ad-c-b3-news").show();
+            $("#ad-c-b3-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#ad-c-b3-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#ad-c-b3-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#ad-c-b3-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#ad-c-b3-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#ad-c-b3-analises").show();
+            }
+        }
     } else{
         $('#iconAdCB3-0').removeClass('fa-angle-right');
         $('#iconAdCB3-0').addClass('fa-angle-down');
@@ -452,11 +828,29 @@ function iconAdCIndices(){
         $('#iconAdCIndices-0').addClass('fa-angle-right');
         $("#iconAdCIndices-1").show();
         $("#iconAdCIndices-2").show();
-        $("#ad-c-indicesMundi-trade").show();
-        $("#ad-c-indicesMundi-conjuntura").show();
-        $("#ad-c-indicesMundi-mercados").show();
-        $("#ad-c-indicesMundi-news").show();
-        $("#ad-c-indicesMundi-analises").show();
+        if(chkAll.checked == true){
+            $("#ad-c-indicesMundi-trade").show();
+            $("#ad-c-indicesMundi-conjuntura").show();
+            $("#ad-c-indicesMundi-mercados").show();
+            $("#ad-c-indicesMundi-news").show();
+            $("#ad-c-indicesMundi-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#ad-c-indicesMundi-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#ad-c-indicesMundi-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#ad-c-indicesMundi-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#ad-c-indicesMundi-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#ad-c-indicesMundi-analises").show();
+            }
+        }
     } else{
         $('#iconAdCIndices-0').removeClass('fa-angle-right');
         $('#iconAdCIndices-0').addClass('fa-angle-down');
@@ -475,11 +869,30 @@ function iconAdCIndEuropa(){
         $('#iconAdCIndEuropa-0').removeClass('fa-angle-down');
         $('#iconAdCIndEuropa-0').addClass('fa-angle-right');
         $("#iconAdCIndEuropa-1").show();
-        $("#ad-c-ind-euro-trade").show();
-        $("#ad-c-ind-euro-conjuntura").show();
-        $("#ad-c-ind-euro-mercados").show();
-        $("#ad-c-ind-euro-news").show();
-        $("#ad-c-ind-euro-analises").show();
+        if(chkAll.checked == true){
+            $("#ad-c-ind-euro-trade").show();
+            $("#ad-c-ind-euro-conjuntura").show();
+            $("#ad-c-ind-euro-mercados").show();
+            $("#ad-c-ind-euro-news").show();
+            $("#ad-c-ind-euro-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#ad-c-ind-euro-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#ad-c-ind-euro-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#ad-c-ind-euro-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#ad-c-ind-euro-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#ad-c-ind-euro-analises").show();
+            }
+        }
+        
     } else{
         $('#iconAdCIndEuropa-0').removeClass('fa-angle-right');
         $('#iconAdCIndEuropa-0').addClass('fa-angle-down');
@@ -498,17 +911,36 @@ function iconAdCIndUSA(){
         $('#iconAdCIndUSA-0').addClass('fa-angle-right');
         $('#iconAdCIndUSA-1').show();
         $('#iconAdCIndUSA-2').show();
-        $("#ad-c-ind-usa-trade").show();
-        $("#ad-c-ind-usa-conjuntura").show();
-        $("#ad-c-ind-usa-mercados").show();
-        $("#ad-c-ind-usa-news").show();
-        $("#ad-c-ind-usa-analises").show();
+        if(chkAll.checked == true){
+            $("#ad-c-ind-usa-trade").show();
+            $("#ad-c-ind-usa-conjuntura").show();
+            $("#ad-c-ind-usa-mercados").show();
+            $("#ad-c-ind-usa-news").show();
+            $("#ad-c-ind-usa-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("#ad-c-ind-usa-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#ad-c-ind-usa-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#ad-c-ind-usa-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#ad-c-ind-usa-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#ad-c-ind-usa-analises").show();
+            }
+        }
+        
     } else{
         $('#iconAdCIndUSA-0').removeClass('fa-angle-right');
         $('#iconAdCIndUSA-0').addClass('fa-angle-down');
         $('#iconAdCIndUSA-1').hide();
         $('#iconAdCIndUSA-2').hide();
-        $("#ad-c-ind-usd-trade").hide();
+        $("#ad-c-ind-usa-trade").hide();
         $("#ad-c-ind-usa-conjuntura").hide();
         $("#ad-c-ind-usa-mercados").hide();
         $("#ad-c-ind-usa-news").hide();
@@ -521,11 +953,30 @@ function iconAdCNyse(){
         $('#iconAdCNyse-0').removeClass('fa-angle-down');
         $('#iconAdCNyse-0').addClass('fa-angle-right');
         $('#iconAdCNyse-1').show();
-        $("#ad-c-nyse-trade").show();
-        $("#ad-c-nyse-conjuntura").show();
-        $("#ad-c-nyse-mercados").show();
-        $("#ad-c-nyse-news").show();
-        $("#ad-c-nyse-analises").show();
+        if(chkAll.checked == true){
+            $("#ad-c-nyse-trade").show();
+            $("#ad-c-nyse-conjuntura").show();
+            $("#ad-c-nyse-mercados").show();
+            $("#ad-c-nyse-news").show();
+            $("#ad-c-nyse-analises").show();
+        } else {
+            if(ckTrade.checked == true){
+                $("ad-#c-nyse-trade").show();
+            }
+            if(ckConjuntura.checked == true){
+                $("#ad-c-nyse-conjuntura").show();
+            }
+            if(ckMercados.checked == true){
+                $("#ad-c-nyse-mercados").show();
+            }
+            if(ckNews.checked == true){
+                $("#ad-c-nyse-news").show();
+            }
+            if(ckAnalises.checked == true){
+                $("#ad-c-nyse-analises").show();
+            }
+        }
+        
     } else{
         $('#iconAdCNyse-0').removeClass('fa-angle-right');
         $('#iconAdCNyse-0').addClass('fa-angle-down');

@@ -1,7 +1,7 @@
 from flask import render_template, request, jsonify, redirect
 from app import app
-from app.models import cotacao as db
-from app.models import criaHtml as ch
+#from app.models import buscador as bcd
+#from app.models import criaHtml as ch
 from app.controllers import sendEmail as se
 from pprint import pprint
 
@@ -19,7 +19,7 @@ def ppp():
 
 @app.route('/FAQ', methods=('GET', 'POST'))
 def faq():
-        src = db.searchFAQ()
+        src = bcd.searchFAQ()
         htmlfaq = ch.htmlFAQ()
         result = src.searchfaq("")
         html = htmlfaq.montaHtmlFAQ(result)
@@ -42,7 +42,7 @@ def faq():
 
 @app.route('/cotacao', methods=['GET' , 'POST'])
 def cotacao():
-        src = db.searchCotacao()
+        src = bcd.searchCotacao()
         htmlderi = ch.htmlDerivativos()
         html=""
         if request.method == "POST":
