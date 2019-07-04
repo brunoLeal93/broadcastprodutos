@@ -53,6 +53,7 @@ def cotacao():
                         return render_template('cotacao.html', html=html)
                 if text.upper() =='TUDO':
                         result = src.searchDerivativos("")
+                        pprint(result)
                         html = htmlderi.montaHTMLDerivativosTudo(result)
                         return render_template('cotacao.html', html=html)
                 else:
