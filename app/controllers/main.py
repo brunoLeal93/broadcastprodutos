@@ -1,6 +1,6 @@
 from flask import render_template, request, jsonify, redirect
 from app import app
-from app.models import buscador as bcd
+from app.models.buscador import searchCotacao, searchFAQ
 from app.models import criaHtml as ch
 from app.controllers import sendEmail as se
 from pprint import pprint
@@ -19,7 +19,7 @@ def ppp():
 
 @app.route('/FAQ', methods=('GET', 'POST'))
 def faq():
-        src = bcd.searchFAQ()
+        src = searchFAQ()
         htmlfaq = ch.htmlFAQ()
         result = src.searchfaq("")
         html = htmlfaq.montaHtmlFAQ(result)
@@ -42,12 +42,12 @@ def faq():
 
 @app.route('/cotacao', methods=['GET' , 'POST'])
 def cotacao():
-        src = bcd.searchCotacao()
+        src = searchCotacao()
         htmlderi = ch.htmlDerivativos()
         html=""
         if request.method == "POST":
                 text = request.form.get('contentSearch')
-                print(text)
+                #print(text)
                 if text == '':
                         html=""
                         return render_template('cotacao.html', html=html)
@@ -57,9 +57,12 @@ def cotacao():
                         return render_template('cotacao.html', html=html)
                 else:
                         result = src.searchDerivativos(text)
-                        pprint(result)
-                        html = htmlderi.montaHTMLDerivativos(result)
-                        return render_template('cotacao.html', html=html)
+                        if result == "Não Encontrou":
+                                html = result
+                                return render_template('cotacao.html', html=html)
+                        else:
+                                html = htmlderi.montaHTMLDerivativos(result)
+                                return render_template('cotacao.html', html=html)
 
         return render_template('cotacao.html', html=html)
 

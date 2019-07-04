@@ -18,14 +18,18 @@ class searchCotacao:
                         return aux
                         
                 else:
-                        pipeline = self.pipelineDerivativos(data)
-                        pprint(pipeline)
-                        result = self.coll.aggregate(pipeline)
-                        aux=[]
-                        for x in result:
-                                print("x: {}".format(x))
-                                aux.append(x)
-                        return aux
+                        a = coll.find_one({ '$text': {"$search":'data', "$language":"portuguese"}})
+                        if a != None:
+                                pipeline = self.pipelineDerivativos(data)
+                                pprint(pipeline)
+                                result = self.coll.aggregate(pipeline)
+                                aux=[]
+                                for x in result:
+                                        print("x: {}".format(x))
+                                        aux.append(x)
+                                return aux
+                        else:
+                                return "Não Encontrou"
 
         def pipelineDerivativos(self, data):
                 vetText = data.split(' ')
