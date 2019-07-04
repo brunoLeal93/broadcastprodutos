@@ -18,7 +18,7 @@ class searchCotacao:
                         return aux
                         
                 else:
-                        a = coll.find_one({ '$text': {"$search":'data', "$language":"portuguese"}})
+                        a = self.coll.find_one({ '$text': {"$search":'data', "$language":"portuguese"}})
                         if a != None:
                                 pipeline = self.pipelineDerivativos(data)
                                 pprint(pipeline)
