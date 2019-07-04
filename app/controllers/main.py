@@ -2,7 +2,7 @@ from flask import render_template, request, jsonify, redirect
 from app import app
 from app.models.buscador import searchCotacao, searchFAQ
 from app.models import criaHtml as ch
-from app.controllers import sendEmail as se
+from app.controllers.sendEmail import sendEmail
 from pprint import pprint
 
 @app.route('/Home', methods=('GET', 'POST'))
