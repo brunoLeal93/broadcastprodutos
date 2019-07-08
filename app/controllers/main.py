@@ -4,6 +4,7 @@ from app.models.buscador import searchCotacao, searchFAQ
 from app.models import criaHtml as ch
 from app.controllers.sendEmail import sendEmail
 from pprint import pprint
+from pymongo import ASCENDING
 
 @app.route('/Home', methods=('GET', 'POST'))
 @app.route('/', methods=('GET', 'POST'))
@@ -52,17 +53,19 @@ def cotacao():
                         html=""
                         return render_template('cotacao.html', html=html)
                 if text.upper() =='TUDO':
-                        result = src.searchDerivativos("")
-                        pprint(result)
+                        result = src.searchDerivativos(text)
+                        #pprint(result)
                         html = htmlderi.montaHTMLDerivativosTudo(result)
                         return render_template('cotacao.html', html=html)
                 else:
                         result = src.searchDerivativos(text)
+                        pprint(result)
                         if result == "Não Encontrou":
                                 html = result
                                 return render_template('cotacao.html', html=html)
                         else:
                                 html = htmlderi.montaHTMLDerivativos(result)
+                                pprint(html)
                                 return render_template('cotacao.html', html=html)
 
         return render_template('cotacao.html', html=html)

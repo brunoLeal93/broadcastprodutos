@@ -21,11 +21,12 @@ class searchCotacao:
                         a = self.coll.find_one({ '$text': {"$search":data}})
                         if a != None:
                                 pipeline = self.pipelineDerivativos(data)
+                                print("\n Pipeline:")
                                 pprint(pipeline)
                                 result = self.coll.aggregate(pipeline)
                                 aux=[]
                                 for x in result:
-                                        print("x: {}".format(x))
+                                        #pprint("\n{}".format(x))
                                         aux.append(x)
                                 return aux
                         else:
@@ -52,18 +53,19 @@ class searchCotacao:
                 #pipeline.append(order)
                 #return pipeline
 
+                ## FOR para identificar em quais campos houve match ##
                 for x in vetText:
                         result = self.coll.find_one({ 'mercadoria': {"$regex": x, "$options": "i"}})
                         if result != None:
-                                vetMercadoria.append(x)
+                                vetMercadoria.append(x) # ok
                         
                         result = self.coll.find_one({ 'fonte': {"$regex": x, "$options": "i"}})
                         if result != None:
-                                vetFonte.append(x)
+                                vetFonte.append(x) # ok
                         
                         result = self.coll.find_one({ 'mercado': {"$regex": x, "$options": "i"}})
                         if result != None:
-                                vetMercado.append(x)
+                                vetMercado.append(x) # ok
                         
                         result = self.coll.find_one({ 'tpinst': {"$regex": x, "$options": "i"}})
                         if result != None:
@@ -71,23 +73,21 @@ class searchCotacao:
                         
                         result = self.coll.find_one({ 'desc_papel': {"$regex": x, "$options": "i"}})
                         if result != None:
-                                vetDescPapel.append(x)
+                                vetDescPapel.append(x) # ok
 
                         result = self.coll.find_one({ 'codbolsa': {"$regex": x, "$options": "i"}})
                         if result != None:
-                                vetCodBolsa.append(x)
+                                vetCodBolsa.append(x) # ok
 
                         result = self.coll.find_one({ 'codbroad': {"$regex": x, "$options": "i"}})
                         if result != None:
-                                vetCodBroad.append(x)
+                                vetCodBroad.append(x) # ok
 
                         result = self.coll.find_one({ 'pag': {"$regex": x, "$options": "i"}})
                         if result != None:
                                 vetPgPerm.append(x)
 
-                #for i in vetMercadoria:
-
-
+                ## Após identificar os campos, os IFs abaixo montam o pipeline (mt) ##
                 if len(vetMercadoria)>0:
                         print("cria mt")
                         if len(vetMercadoria) == 1:
@@ -177,13 +177,13 @@ class searchCotacao:
                                 if len(vetFonte)>0:
                                         if len(vetFonte) == 1:
                                                 mt = { "$match":{ "$and":[
-                                                        { "$match":{"$or":a}},
+                                                        {"$or":a},
                                                         { 'fonte': {"$regex":vetFonte[0], "$options": "i"}}
                                                         ]}}
                                                 if len(vetMercado)>0:
                                                         if len(vetMercado) == 1:
                                                                 mt = { "$match":{ "$and":[ 
-                                                                        { "$match":{"$or":a}},
+                                                                        {"$or":a},
                                                                         { 'fonte': {"$regex":vetFonte[0], "$options": "i"}},
                                                                         { 'mercado': {"$regex":vetMercado[0], "$options": "i"}} 
                                                                         ]}}
@@ -195,7 +195,7 @@ class searchCotacao:
                                                                         b.append(x)
                                                                         tam=tam-1
                                                                 mt = { "$match":{ "$and":[ 
-                                                                        { "$match":{"$or":a}},
+                                                                        {"$or":a},
                                                                         { 'fonte': {"$regex":vetFonte[0], "$options": "i"}},
                                                                         {"$or":b}
                                                                         ]}}
@@ -228,8 +228,24 @@ class searchCotacao:
                                                                         {"$or":b},
                                                                         {"$or":c}
                                                                         ]}}
-
-
+                                else:
+                                        if len(vetMercado)>0:
+                                                        if len(vetMercado) == 1:
+                                                                mt = { "$match":{ "$and":[ 
+                                                                        {"$or":a},
+                                                                        { 'mercado': {"$regex":vetMercado[0], "$options": "i"}} 
+                                                                        ]}}
+                                                        else:
+                                                                tam = len(vetMercado)
+                                                                b=[]
+                                                                while tam != 0:
+                                                                        x = { 'mercado': {"$regex":vetMercado[tam-1], "$options": "i"}}
+                                                                        b.append(x)
+                                                                        tam=tam-1
+                                                                mt = { "$match":{ "$and":[ 
+                                                                        {"$or":a},
+                                                                        {"$or":b}
+                                                                        ]}}
                 else:
                         if len(vetFonte)>0:
                                         if len(vetFonte) == 1:
@@ -290,6 +306,42 @@ class searchCotacao:
                                                         a.append(x)
                                                         tam=tam-1
                                                 mt = { "$match":{"$or":a}}
+                                else:
+                                        if len(vetDescPapel)>0:
+                                                if len(vetDescPapel)==1:
+                                                        mt = { "$match": {'desc_papel':{"$regex": vetDescPapel[0], "$options": "i"}}}
+                                                else:
+                                                        tam = len(vetDescPapel)
+                                                        a=[]
+                                                        while tam != 0:
+                                                                x = { 'desc_papel': {"$regex":vetDescPapel[tam-1], "$options": "i"}}
+                                                                a.append(x)
+                                                                tam=tam-1
+                                                        mt = { "$match":{"$or":a}}
+                                        
+                                        if len(vetCodBolsa)>0:
+                                                if len(vetCodBolsa)==1:
+                                                        mt = { "$match": {'codbolsa':{"$regex": vetCodBolsa[0], "$options": "i"}}}
+                                                else:
+                                                        tam = len(vetCodBolsa)
+                                                        a=[]
+                                                        while tam != 0:
+                                                                x = { 'codbolsa': {"$regex":vetCodBolsa[tam-1], "$options": "i"}}
+                                                                a.append(x)
+                                                                tam=tam-1
+                                                        mt = { "$match":{"$or":a}}
+                                        if len(vetCodBroad)>0:
+                                                if len(vetCodBroad)==1:
+                                                        mt = { "$match": {'codbroad':{"$regex": vetCodBroad[0], "$options": "i"}}}
+                                                else:
+                                                        tam = len(vetCodBroad)
+                                                        a=[]
+                                                        while tam != 0:
+                                                                x = { 'codbroad': {"$regex":vetCodBroad[tam-1], "$options": "i"}}
+                                                                a.append(x)
+                                                                tam=tam-1
+                                                        mt = { "$match":{"$or":a}}
+                                        
                 print(mt)
                 pipeline.append(mt)
                 pipeline.append(order)

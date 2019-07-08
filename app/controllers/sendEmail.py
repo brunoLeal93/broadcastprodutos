@@ -11,7 +11,7 @@ class sendEmail:
     password = 'Agencia02@2015'
 
     from_addr = username
-    to_addrs = ['bruno.pereira@estadao.com', 'diego.braga@estadao.com', 'eder.tujioka@estadao.com']
+    to_addrs = ['bruno.pereira@estadao.com']
     
     def send(self, solicitante, pergunta):
         content = "Solicitante: "+solicitante+"\n\n"+"Pergunta: "+pergunta

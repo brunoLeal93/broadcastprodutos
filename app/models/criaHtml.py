@@ -21,7 +21,7 @@ class htmlDerivativos:
         #pprint(result['serv_rt'])
         for y in result['serv_rt']:
             #print('<------serv rt------>')
-            pprint(y)
+            #pprint(y)
             if self.countKey(y) == 6:
                 if y['plataforma'] not in vetPlataforma:
                     vetPlataforma.append(y['plataforma'])
@@ -234,8 +234,9 @@ class htmlDerivativos:
 
         #x['mercadoria'].count()
 
-
+        pprint("{} \n {}".format(type(unique_mercadoria), data))
         for x in data:
+            print("{}".format(x['mercadoria']))
             if x['mercadoria'] not in unique_mercadoria:
                 unique_mercadoria.append(x['mercadoria'])
                 #print('{}:{}'.format(x['mercadoria'],str(contM(x['mercadoria'], data))))
