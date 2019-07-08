@@ -356,12 +356,16 @@ class searchFAQ:
         
 
         def searchfaq(self, data):
-                
+                order = { "$sort": {"_id": 1}}
                 if data == "":
                         result = self.coll.find({})
                 else:
-                        mt = { "$match":{ '$text': {"$search":data, "$language":"portuguese"}} }
-                        order = { "$sort": {"_id": 1 }}
+                        mt = { "$match":{
+                                "$or":[
+                                        { 'pergunta': {"$regex":data, "$options": "i"}},
+                                        { 'resposta': {"$regex":data, "$options": "i"}} 
+                                ]
+                        }}
                         result = self.coll.aggregate([mt, order])
 
                 return result
