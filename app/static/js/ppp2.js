@@ -216,6 +216,7 @@ $('#checkAll').click(function(){
             $("#c-trade").hide();
             $("#c-tresuaries-trade").hide();
             $("#n-aenews-trade").hide();
+            $("#n-topnews-trade").hide();
             $("#n-artigos-trade").hide();
             $("#n-bctv-trade").hide();
             $("#n-cadnewspaper-trade").hide();
@@ -409,6 +410,7 @@ $('#checkAll').click(function(){
             
             $("#c-tresuaries-trade").show();
             $("#n-aenews-trade").show();
+            $("#n-topnews-trade").show();
             $("#n-artigos-trade").show();
             $("#n-bctv-trade").show();
             $("#n-cadnewspaper-trade").show();
@@ -587,6 +589,7 @@ $('#conjuntura').click(function() {
         $("#conjuntura-valor-2").hide();
         $("#c-tresuaries-conjuntura").hide();
         $("#n-aenews-conjuntura").hide();
+        $("#n-topnews-conjuntura").hide();
         $("#n-artigos-conjuntura").hide();
         $("#n-bctv-conjuntura").hide();
         $("#n-cadnewspaper-conjuntura").hide();
@@ -779,6 +782,7 @@ $('#conjuntura').click(function() {
         
         $("#c-tresuaries-conjuntura").show();
         $("#n-aenews-conjuntura").show();
+        $("#n-topnews-conjuntura").show();
         $("#n-artigos-conjuntura").show();
         $("#n-bctv-conjuntura").show();
         $("#n-cadnewspaper-conjuntura").show();
@@ -951,6 +955,7 @@ $('#mercados').click(function() {
         $("#mercados-valor").hide();
         $("#mercados-valor-2").hide();
         $("#n-aenews-mercados").hide();
+        $("#n-topnews-mercados").hide();
         $("#n-artigos-mercados").hide();
         $("#n-bctv-mercados").hide();
         $("#n-cadnewspaper-mercados").hide();
@@ -1140,6 +1145,7 @@ $('#mercados').click(function() {
             $("#mercados-valor-2").show();
         }
         $("#n-aenews-mercados").show();
+        $("#n-topnews-mercados").show();
         $("#n-artigos-mercados").show();
         $("#n-bctv-mercados").show();
         $("#n-cadnewspaper-mercados").show();
@@ -1307,6 +1313,7 @@ $('#news').click(function() {
         $("#c-nyse-news").hide();
         $("#c-tresuaries-news").hide();
         $("#n-aenews-news").hide();
+        $("#n-topnews-news").hide();
         $("#n-artigos-news").hide();
         $("#n-bctv-news").hide();
         $("#n-cadnewspaper-news").hide();
@@ -1494,6 +1501,7 @@ $('#news').click(function() {
         }
         $("#c-tresuaries-news").show();
         $("#n-aenews-news").show();
+        $("#n-topnews-news").show();
         $("#n-artigos-news").show();
         $("#n-bctv-news").show();
         $("#n-cadnewspaper-news").show();
@@ -1663,6 +1671,7 @@ $('#analises').click(function() {
         $("#c-nyse-bolsa-analises").hide();
         $("#c-tresuaries-analises").hide();
         $("#n-aenews-analises").hide();
+        $("#n-topnews-analises").hide();
         $("#n-analises").hide();
         $("#n-artigos-analises").hide();
         $("#n-bctv-analises").hide();
@@ -1856,6 +1865,7 @@ $('#analises').click(function() {
         $("#c-nyse-bolsa-analises").show();
         $("#c-tresuaries-analises").show();
         $("#n-aenews-analises").show();
+        $("#n-topnews-analises").show();
         if($(document.getElementById("Noticias-collapse")).hasClass('show')==false){
             $("#n-analises").show();
         }

@@ -1,8 +1,4 @@
-$(document).ready(function(){
-  $('[data-toggle="tooltip"]').tooltip();
-  //document.getElementById("btn-Filtros").click();
-    
-});
+
 
 $('#filtrosModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
