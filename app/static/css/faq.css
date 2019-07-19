@@ -1,15 +1,31 @@
 .fixed-faq{
-    position:fixed;
-    z-index:999; 
-    left:90%; 
-    top:80%;
-    overflow:hidden;
-    
-    padding:6px;
-  }
-  #principal{
-    margin:0 auto;
-    border:#000000 1px solid;
-    width:790px;
-    height:1200px
-  }
+  position:fixed;
+  z-index:999; 
+  left:94%; 
+  top:80%;
+  overflow:hidden;
+  padding:6px;
+  border-radius: 150px;
+  background-color: white;
+  color
+}
+#principal{
+  margin:0 auto;
+  border:#000000 1px solid;
+  width:790px;
+  height:1200px
+}
+
+.fixed-faq:hover{
+  position:fixed;
+  z-index:999; 
+  left:89%; 
+  top:80%;
+  overflow:hidden;
+  padding:6px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 0px;
+  background-color: white;
+}
