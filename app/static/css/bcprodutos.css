@@ -5883,6 +5883,12 @@ a.close.disabled {
 .align-text-top {
   vertical-align: text-top !important;
 }
+/*Css Adcionados*/
+.agro {
+  color: #6c842c !important;
+}
+
+/*Fim*/
 
 .bg-primary {
   background-color: #143556 !important;

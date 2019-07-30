@@ -1,10 +1,10 @@
-{% extends 'base.html'%}
+{% extends 'base1.html'%}
 
-{% block title%} PPP 2.0 {%endblock%}
+{% block title%} comparativo 2.0 {%endblock%}
 
 {%block css %}
-<link rel="stylesheet" href="../static/css/ppp.css">
-<link rel="stylesheet" href="../static/css/impressao_ppp.css" media="print">
+<link rel="stylesheet" href="../static/css/comparativo.css">
+<link rel="stylesheet" href="../static/css/impressao_comparativo.css" media="print">
 {%endblock%}
 
 {% block content %}
@@ -41,25 +41,33 @@
                         <input type="checkbox" class="form-check-input" id="checkAll" checked>
                         <label class="form-check-label" for="checkAll" >Todos</label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check" id="cktrade">
                         <input type="checkbox" class="form-check-input" id="trade" checked>
                         <label class="form-check-label" for="trade" >Trade</label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check" id="ckconjuntura">
                         <input type="checkbox" class="form-check-input" id="conjuntura" checked>
                         <label class="form-check-label" for="conjuntura">Conjuntura</label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check" id="ckmercados">
                         <input type="checkbox" class="form-check-input" id="mercados" checked>
                         <label class="form-check-label" for="mercados">Mercados</label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check" id="cknews">
                         <input type="checkbox" class="form-check-input" id="news" checked>
                         <label class="form-check-label" for="news">News</label>
                     </div>
-                    <div class="form-check">
+                    <div class="form-check" id="ckanalises">
                         <input type="checkbox" class="form-check-input" id="analises" checked>
                         <label class="form-check-label" for="analises">Análises</label>
+                    </div>  
+                    <div class="form-check d-none" id="ckagrotrade">
+                        <input type="checkbox" class="form-check-input" id="agrontrade" checked>
+                        <label class="form-check-label" for="agrontrade">Agro Trade</label>
+                    </div>
+                    <div class="form-check d-none" id="ckagro">
+                        <input type="checkbox" class="form-check-input" id="agro" checked>
+                        <label class="form-check-label" for="agro">Agro</label>
                     </div>  
                 </div>
                 <div class="col-6">
@@ -87,13 +95,15 @@
             <div class="form-row">
                 <div col="col-md-3">
                     <div class="container-fluid">
-                            <img src="../static/img/LOGO-BC-Financeiro.png">
+                            <img id="img-bpro" src="../static/img/LOGO-BC-Financeiro.png">
+                            <img id="img-bagro" class="d-none" src="../static/img/LOGO-BC-Agro.png">
                     </div>
                 </div>
                 <div class="form-group col-md-3 ml-5 nprint">
                     <label for="selectPlataforma">Selecione a Plataforma</label>
-                    <select class="form-control" id="selectPlataforma">
-                        <option >Broadcast+</option>
+                    <select class="form-control" id="selectPlataforma" onchange="controlaPlataformas()">
+                        <option value="1">Broadcast+ Desktop</option>
+                        <option value="2">Broadcast Agro Desktop</option>
                     </select>
                 </div>
                 <!-- Button trigger modal -->
@@ -108,51 +118,7 @@
                     <button type="button" class="btn btn-secondary" onclick="window.print();">
                             <i class="fas fa-print "></i> Imprimir
                     </button>
-                    <!--        
-                    <div class="form-group mt-2">
-                        <br/>
-                        <a onclick="window.print();">
-                            <i class="fas fa-print fa-2x " data-placement="bottom" data-toggle="tooltip" data-html="true" title="<div class='text-center'>Imprimir</div>"></i>
-                        </a>
-                        -->
-                        <!--
-                        <ul class="print">
-                            <li class="alinha-vert mr-2"><b>Legenda:</b></li>
-                            <li class="alinha-vert mr-2"><div class="realtime"><b>RT</b></div> Tempo Real</li>
-                            <li class="alinha-vert mr-2"><i class="far fa-clock"></i> Delay</li>
-                            <li class="alinha-vert mr-2"><div class="endofday"><b>EoD</b></div> Final de Dia</li>
-                            <li class="alinha-vert"><i class="fas fa-info-circle"></i> Info. Adicionais</li>
-                        </ul>
-                       
-                    </div>
-                    -->
                 </div>
-            
-                <!--
-                <div class="col-2 nprint">        
-                    <div class="form-group">
-                        <label for="selectPlataforma">Nível de Exibição:</label>
-                        <select class="form-control" id="selectNivel" onchange="controlaNivel()">
-                            <option value="0">Reduzido</option>
-                            <option value="1">Padrão</option>
-                            <option value="2">Detalhada</option>
-                            <option value="2">Expandido</option>
-                            
-                        </select>
-                    </div>
-                </div>
-                <div class="col-5 nprint">
-                    
-                    <div class="form-check form-check-inline mt-3">
-                        <input type="checkbox" class="form-check-input" id="checkAll" checked>
-                        <label class="form-check-label" for="checkAll" >Exibir Todos os Pacotes</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input type="checkbox" class="form-check-input" id="ckMostraPrecos" checked>
-                        <label class="form-check-label" for="ckMostraPrecos" >Mostrar Preços dos Pacotes</label>
-                    </div>
-                </div>
-                    -->
             </div>
         </form>
         
@@ -160,45 +126,10 @@
             <div class="row">
                     
                 </div>
-    <!--
-    <div class="container-fluid">
-        <div class="row">
-            
-            <div class="col">
-                <span style="float: left; ">
-                    <form>   
-                        <div class="form-check form-check-inline mt-2">
-                            <h5>Pacotes:</h5>
-                        </div>
-                        <div class="form-check form-check-inline nprint">
-                            <input type="checkbox" class="form-check-input" id="trade" checked>
-                            <label class="form-check-label" for="trade" >Trade</label>
-                        </div>
-                        <div class="form-check form-check-inline nprint">
-                            <input type="checkbox" class="form-check-input" id="conjuntura" checked>
-                            <label class="form-check-label" for="conjuntura">Conjuntura</label>
-                        </div>
-                        <div class="form-check form-check-inline nprint">
-                            <input type="checkbox" class="form-check-input" id="mercados" checked>
-                            <label class="form-check-label" for="mercados">Mercados</label>
-                        </div>
-                        <div class="form-check form-check-inline nprint">
-                            <input type="checkbox" class="form-check-input" id="news" checked>
-                            <label class="form-check-label" for="news">News</label>
-                        </div>
-                        <div class="form-check form-check-inline nprint">
-                            <input type="checkbox" class="form-check-input" id="analises" checked>
-                            <label class="form-check-label" for="analises">Análises</label>
-                        </div>  
-                    </form>
-                </span>
-            </div>
-        </div>
-    </div>
-    -->
 </div>
 
-<div id="ppp">
+<!-- Pacotes Broadcast + -->
+<div id="bpro">
         <!--Fomrs e checkbox da pagina-->
         
         
@@ -239,13 +170,13 @@
                 <div class="container-fluid">
                     <!--TOP NEWS-->
                     <div class="row align-items-center destacar">
-                            <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Apanhado das 15 matérias do AE News de maior destaque no momento segundo a redação">Top News</span> <!--i class="fas fa-info-circle nprint"></i--></div>
-                            <div class="col"  id="n-topnews-trade"><i class="fas fa-times"></i></div>
-                            <div class="col"  id="n-topnews-conjuntura"><i class="fas fa-times"></i></div>
-                            <div class="col"  id="n-topnews-mercados"><i class="fas fa-times"></i></div>
-                            <div class="col"  id="n-topnews-news"><i class="fas fa-check"></i></div>
-                            <div class="col"  id="n-topnews-analises"><i class="fas fa-check"></i></div>
-                        </div>
+                        <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Apanhado das 15 matérias do AE News de maior destaque no momento segundo a redação">Top News</span> <!--i class="fas fa-info-circle nprint"></i--></div>
+                        <div class="col"  id="n-topnews-trade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="n-topnews-conjuntura"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="n-topnews-mercados"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="n-topnews-news"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="n-topnews-analises"><i class="fas fa-check"></i></div>
+                    </div>
                     <!--AE NEWS-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Principal noticiário em Tempo Real que cobre todos os principais centros econômicos e financeiros do Brasil e do mundo, os desdobramentos dos mercados internacionais e seus impactos no mercado local e notícias <b>Exclusivas</b> com temas diários como: a <b>Abertura</b>, os <b>Cenários (1 e 2)</b>, <b>Pulso do Mercado</b>, entre outros que embasam de forma rápida e completa a tomada de decisão.">AE News</span> <!--i class="fas fa-info-circle nprint"></i--></div>
@@ -284,7 +215,7 @@
                     </div>
                     <!--Newspaper (caderno)-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Sinopse diária das notícias dos principais jornais do país, reunindo as manchetes e as informações sobre agenda. Traz também uma síntese das notícias econômicas, políticas, de negócios, do mercado financeiro, de esportes, geral, colunas, revistas e assuntos internacionais, elaborado pela estrutura jornalística da Agência Estado.">Newspaper (caderno)</span> <!--i class="fas fa-info-circle nprint"></i--></div>
+                        <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Sinopse diária das notícias dos principais jornais do país, reunindo as manchetes e as informações sobre agenda. Traz também uma síntese das notícias econômicas, políticas, de negócios, do mercado financeiro, de esportes, geral, colunas, revistas e assuntos internacionais, elaborado pela estrutura jornalística da Agência Estado.">Newspaper (caderno e PDF)</span> <!--i class="fas fa-info-circle nprint"></i--></div>
                         <div class="col"  id="n-cadnewspaper-trade"><i class="fas fa-check"></i></div>
                         <div class="col"  id="n-cadnewspaper-conjuntura"><i class="fas fa-check"></i></div>
                         <div class="col"  id="n-cadnewspaper-mercados"><i class="fas fa-check"></i></div>
@@ -673,7 +604,16 @@
                     </div>
                     <!--CBOT-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante do CME Group, a Chicago Board of Trade possui contratos Futuros e Opções de Ações, Commodities Agrícolas e Taxas de Juros.">CBOT - Chicago Board of Trade</span> <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
+                        <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante do CME Group, possui contratos Futuros e Opções de Ações, Commodities Agrícolas e Taxas de Juros. Seus principais contratos são:<br>
+                                <ul>
+                                    <li>SBC - Soja grão</li>
+                                    <li>COC - Milho</li>
+                                    <li>WHK - Trigo</li>
+                                    <li>NQC - E-Mini Nasdaq 100</li>
+                                    <li>RCC - Arroz em casca</li>
+                                    <li>ZQC - Fed Funds 30</li>
+                                    <li>ZDC - Dow Jones Futures</li>
+                                </ul>">CBOT - Chicago Board of Trade </span><i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
                         <div class="col"  id="c-cbot-trade"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-cbot-conjuntura"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-cbot-mercados"><i class="fas fa-check"></i></div>
@@ -691,7 +631,17 @@
                     </div>
                     <!--CME-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n2">CME - Chicago Mercantile Exchange <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
+                        <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante do CME Group, possui contratos Futuros e Opções de Ações, Commodities Agrícolas, Taxas de Juros e Câmbio. Seus principais contratos são:<br>
+                                <ul>
+                                    <li>EDC - Eurodollar</li>
+                                    <li>SP5 - Índice S&P500 Futuro</li>
+                                    <li>SPM - Mini S&P500</li>
+                                    <li>NQC - E-Mini Nasdaq 100</li>
+                                    <li>BRC - BRL/USD</li>
+                                    <li>BPC - GBP/USD</li>
+                                    <li>LCC - Live Cattle</li>
+                                    <li>FCC - Feeder Cattle</li>
+                                </ul>">CME - Chicago Mercantile Exchange </span><i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
                         <div class="col"  id="c-cme-trade"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-cme-conjuntura"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-cme-mercados"><i class="fas fa-check"></i></div>
@@ -700,7 +650,16 @@
                     </div>
                     <!--Comex-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n2">COMEX - Commodity Exchange <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
+                        <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante do CME Group, possui contratos Futuros e Opções somente de Metais. Seus principais contratos são:<br>
+                                <ul>
+                                    <li>GLN - Ouro Futuro</li>
+                                    <li>QO - Mini contrato de ouro</li>
+                                    <li>SIN - Prata Futuro</li>
+                                    <li>QIN - Mini contrato de prata</li>
+                                    <li>HGN - Cobre Futuro</li>
+                                    <li>PLN - Platina Futuro</li>
+                                    <li>PAN - Paládio Futuro</li>
+                                </ul>">COMEX - Commodity Exchange </span><i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
                         <div class="col"  id="c-comex-trade"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-comex-conjuntura"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-comex-mercados"><i class="fas fa-check"></i></div>
@@ -709,7 +668,16 @@
                     </div>
                     <!--IPE-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n2">ICE Europe (IPE) <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
+                        <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Possui contratos futuros e de opções para petróleo bruto , taxas de juros, derivativos de ações, gás natural, energia, carvão, emissões e commodities leves. Seus principais contratos são:<br>
+                                <ul>
+                                    <li>OIL - Crude Oil</li>
+                                    <li>WTI - Petróleo WTI Futuro</li>
+                                    <li>PTL - Gas Oil PTL</li>
+                                    <li>CCL - Cacau</li>
+                                    <li>RCC - Café robusta</li>
+                                    <li>SWL - Açúcar</li>
+                                    <li>WHL - Trigo</li>
+                                </ul>">ICE Europe (IPE) </span><i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
                         <div class="col"  id="c-ipe-trade"><i class="fas fa-check"></i></div>
                         
                         <div class="col"  id="c-ipe-conjuntura"><i class="fas fa-check"></i></div>
@@ -721,29 +689,22 @@
                     </div>
                     <!--NYBOT-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n2">ICE US (NYBOT) <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
+                        <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante da ICE Group, possui contratos futuros para Commodities Agrícolas, Índices de Ações, Metais, Taxas de Juros, Câmbio e Energia. Seus principais contratos são:<br>
+                            <ul>
+                                <li>SGN - Açúcar Bruto #11</li>
+                                <li>CCN - Cacau</li>
+                                <li>CFN - Café Arábica</li>
+                                <li>OJN - Suco de Laranja, tipo A</li>
+                            </ul>">ICE US (NYBOT) </span><i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
                         <div class="col"  id="c-nybot-trade"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-nybot-conjuntura"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-nybot-mercados"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-nybot-news"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-nybot-analises"><i class="fas fa-check"></i></div>
                     </div>
-                    <!--Indicadores Cepea
-                    <div class="row align-items-center destacar">
-                        <div class="col-4  px-lg-5" title="Indicadores Agrícolas">Indicadores Cepea</div>
-                        <div class="col"  id="c-indcepea-trade"><i class="fas fa-check"></i></div>
-                        
-                        <div class="col"  id="c-indcepea-conjuntura"><i class="fas fa-check"></i></div>
-                        
-                        <div class="col"  id="c-indcepea-mercados"><i class="fas fa-check"></i></div>
-                        
-                        <div class="col"  id="c-indcepea-news"><i class="fas fa-check"></i></div>
-                        <div class="col"  id="c-indcepea-analises"><i class="fas fa-check"></i></div>
-                    </div> -->
-                    
                     <!--Indices Mundiais-->
                     <div class="row align-items-center destacar" style="page-break-after: auto;">
-                        <div class="col-4  n2"><i id="iconCIndices-0" class="fas fa-angle-right"></i>&nbsp;<a id="CotIndN2" onclick="iconCIndices()"class="text-decoration-none" data-toggle="collapse" title="Índices Mundiais" href="#c-indices-collapse"><b>Índices Mundiais</b></a> <i id="iconCIndices-1" class="far fa-clock"></i> <div id="iconCIndices-2" class="endofday"><b>EoD</b></div></div> 
+                        <div class="col-4  n2"><i id="iconCIndices-0" class="fas fa-angle-right"></i>&nbsp;<a id="CotIndN2" onclick="iconCIndices()"class="text-decoration-none" data-toggle="collapse" title="Índices das principais bolsas de valores no mundo como Nasdaq, Frankfurt, Tóquio, Londres, México, Xangai, entre outros." href="#c-indices-collapse"><b>Índices Mundiais</b></a> <i id="iconCIndices-1" class="far fa-clock"></i> <div id="iconCIndices-2" class="endofday"><b>EoD</b></div></div> 
                         <div class="col"  id="c-indicesMundi-trade"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-indicesMundi-conjuntura"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-indicesMundi-mercados"><i class="fas fa-check"></i></div>
@@ -946,15 +907,7 @@
                                         <div class="col"  id="c-ind-usa-cboe-news"><i class="fas fa-check"></i></div>
                                         <div class="col"  id="c-ind-usa-cboe-analises"><i class="fas fa-check"></i></div>
                                     </div>
-                                    <!--CME S&P Indices
-                                    <div class="row align-items-center destacar">
-                                        <div class="col-4  n4">CME S&P Indices <i class="far fa-clock"></i></div>
-                                        <div class="col"  id="c-ind-usa-sp-trade"><i class="fas fa-check"></i></div>
-                                        <div class="col"  id="c-ind-usa-sp-conjuntura"><i class="fas fa-check"></i></div>
-                                        <div class="col"  id="c-ind-usa-sp-mercados"><i class="fas fa-check"></i></div>
-                                        <div class="col"  id="c-ind-usa-sp-news"><i class="fas fa-check"></i></div>
-                                        <div class="col"  id="c-ind-usa-sp-analises"><i class="fas fa-check"></i></div>
-                                    </div> -->
+                                    
                                     <!--Nasdaq Índices-->
                                     <div class="row align-items-center destacar">
                                         <div class="col-4  n4">Nasdaq Indexes <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
@@ -979,7 +932,7 @@
                     </div>
                     <!--Latibex-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n2">Latibex - Bolsa de Madri <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                        <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="A Bolsa de Madrid foi criada em 1831 e hoje é um importante centro financeiro na Europa, com negociação de ações, certificados de empresas latinoamericanas (Latibex), ETFs, Warrants e Fundos de Investimento.">Latibex - Bolsa de Madri </span> <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
                         <div class="col"  id="c-latibex-trade"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-latibex-conjuntura"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-latibex-mercados"><i class="fas fa-check"></i></div>
@@ -988,7 +941,7 @@
                     </div>
                     <!--Markit CDS Índices-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n2">Markit CDS Índices</div>
+                        <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="CDS é um instrumento de crédito (derivativo) de renda fixa, negociado em OTC (mercado de balcão) utilizado para operações de Hedge e/ou arbitragem contra risco de inadimplência.<br>A informação de índices de CDS contempla os principais índices apurados pela Markit para vencimentos de cinco anos.">Markit CDS Índices</span></div>
                         <div class="col"  id="c-indcds-trade"><i class="fas fa-times"></i></div>
                         
                         <div class="col"  id="c-indcds-conjuntura"><i class="fas fa-check"></i></div>
@@ -1000,7 +953,7 @@
                     </div>
                     <!--Nasdaq-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n2">Nasdaq - Ações <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                        <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="A Nasdaq faz parte do grupo NASDAQ OMX, que conta com 26 mercados,  3 clearings e 5 centrais depositárias espalhadas nos 6 continentes. O grupo trabalho com múltiplos asset classes incluindo ações, derivativos, renda fixa, commodities e produtos estruturados. São mais de 3.400 empresas listadas em 35 países, diversas soluções de tecnologia e pós-trading , além dos mais de 40.000 índices em tempo real.">Nasdaq - Ações </span><i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
                         <div class="col"  id="c-nasdaq-trade"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-nasdaq-conjuntura"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-nasdaq-mercados"><i class="fas fa-check"></i></div>
@@ -1047,7 +1000,7 @@
                     </div>
                     <!--Treasuries Americanas-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4 n2" title="">Treasuries Americanas <div class="realtime"><b>RT</b></div></div>
+                        <div class="col-4 n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Dados em tempo real das treasuries americanas transacionadas no mercado de balcão">Treasuries Americanas</span> <div class="realtime"><b>RT</b></div></div>
                         <div class="col"  id="c-tresuaries-trade"><i class="fas fa-times"></i></div>
                         
                         <div class="col"  id="c-tresuaries-conjuntura"><i class="fas fa-times"></i></div>
@@ -1145,7 +1098,7 @@
                     <!--ADD-on AGRO-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2">
-                            <a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                            <a data-placement="right" data-toggle="tooltip" data-html="true" title="
                             Extensão do Broadcast Agro para o Broadcast+, contemplando o principal caderno <b>Agro News</b> com <b>Top News Agro</b>, além de outros noticiosos agrícolas. Este Add-on acompanha também, Preços Físicos e Futuros de Commodities, Fretes e etc.">
                             Add-On Agro</a> 
                             <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
@@ -1162,7 +1115,7 @@
                     <!--ADD-on Político-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2">
-                            <a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                            <a data-placement="right" data-toggle="tooltip" data-html="true" title="
                             O Add-On Político é um serviço dedicado à cobertura política, com notícias em tempo real, bastidores e análises sobre as três esferas do poder.">
                             Add-On Político</a> 
                             <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
@@ -1180,7 +1133,7 @@
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2"><i id="iconAnaFund" class="fas fa-angle-right"></i>&nbsp;
                             <a id="ModAFN2" onclick="iconAnaFund()"class="text-decoration-none" data-toggle="collapse" href="#Addon-mod-af-collapse"><b>
-                            <span data-placement="right" data-toggle="tooltip" data-html="true" title="Ferramenta para realizar analises fundamentalistas de empresas tanto de capital Aberto quanto de capital Fechado">Análise Fundamentalista</span></b>
+                                <span data-placement="right" data-toggle="tooltip" data-html="true" title="Ferramenta com informações de demonstrativos financeiros e indicadores de empresas tanto de capital Aberto quanto de capital Fechado.">Análise Fundamentalista</span></b>
                             </a>
                         </div>
                         <div class="col"  id="ad-mod-af-trade"><i class="fas fa-plus"></i></div>
@@ -1246,7 +1199,7 @@
                     <!--Deal Data-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2">
-                            <a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                            <a  data-placement="right" data-toggle="tooltip" data-html="true" title="
                             Ferramenta que analisa dado transacional sobre Fusões e Aquisições (M&A), Private Equity e Mercado de Capitais com foco nas transações mais importantes no Brasil.">Deal Data - Dados Transacionais</a> 
                             <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
                             <b>Cód. Serv:</b> BC-15171</br>
@@ -1262,9 +1215,7 @@
                     <!--Fundos de Investimentos-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2">
-                            <a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="
-                            Ferramenta de análise de fundos de investimentos com informacões sobre o
-                            patrimonio, valor da cota, performance, taxa de administracão e etc.">Fundos de Investimentos</a> 
+                            <a data-placement="right" data-toggle="tooltip" data-html="true" title="Ferramenta de análise de fundos de investimentos com informações sobre o  patrimônio, valor da cota, performance, taxa de administração e etc. Fornece também possibilidades para se montar diversas carteiras de fundos, realizar comparações entre fundos e medir de forma simples a fronteira eficiente das carteiras, visando reduzir risco com uma melhor alocação dos investimentos.">Fundos de Investimentos</a> 
                             <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
                             <b>Cód. Serv:</b> BC-14166</br>
                             <b>Custo:</b> R$341,00</br>
@@ -1289,28 +1240,10 @@
             </div>
             <div class="collapse" id="Addon-n-collapse">
                 <div>
-                    <!--Agro - Clima/Tempo
-                    <div class="row align-items-center destacar">
-                        <div class="col-4  n2" title="Cód.Serv: BC-1947 | Custo: R$ 352,31">Agro - Clima/Tempo</div>
-                        <div class="col"  id="ad-n-climatempo-trade"><i class="fas fa-plus"></i></div>
-                        <div class="col"  id="ad-n-climatempo-conjuntura"><i class="fas fa-plus"></i></div>
-                        <div class="col"  id="ad-n-climatempo-mercados"><i class="fas fa-plus"></i></div>
-                        <div class="col"  id="ad-n-climatempo-news"><i class="fas fa-plus"></i></div>
-                        <div class="col"  id="ad-n-climatempo-analises"><i class="fas fa-plus"></i></div>
-                    </div> -->
-                    <!--Análises Agrícolas>
-                    <div class="row align-items-center destacar">
-                        <div class="col-4 n2" title="Cód.Serv: BC-1150 | Custo: R$ 195,53">Análises Agrícolas CEPEA</div>
-                        <div class="col"  id="ad-n-cepea-trade"><i class="fas fa-plus"></i></div>
-                        <div class="col"  id="ad-n-cepea-conjuntura"><i class="fas fa-plus"></i></div>
-                        <div class="col"  id="ad-n-cepea-mercados"><i class="fas fa-plus"></i></div>
-                        <div class="col"  id="ad-n-cepea-news"><i class="fas fa-plus"></i></div>
-                        <div class="col"  id="ad-n-cepea-analises"><i class="fas fa-plus"></i></div>
-                    </div-->
                     <!--Arko America Latina-->
                     <div class="row align-items-center destacar">
                         <div class="col-4 n2">
-                                <a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="">Arko America Latina</a>
+                                <a data-placement="right" data-toggle="tooltip" data-html="true" title="Com uma experiência de 30 anos no coração político do Brasil, a Arko usa toda sua expertise para realizar análises políticas, prever riscos e antecipar tendências no segmento político.">Arko America Latina</a>
                                 <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
                                 <b>Cód. Serv:</b> BC-1669</br>
                                 <b>Custo:</b> R$386,34</br>
@@ -1325,7 +1258,7 @@
                     <!--Bom dia Mercado-->
                     <div class="row align-items-center destacar">
                         <div class="col-4 n2">
-                                <a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="">Bom dia Mercado</a>
+                                <a data-placement="right" data-toggle="tooltip" data-html="true" title="Coluna diária produzida pela jornalista Rosa Riscala que projeta as expectativas do mercado com foco nos fatos da agenda nacional e internacional, das notícias e dos movimentos dos mercados que podem influenciar os pregões.">Bom dia Mercado</a>
                                 <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
                                 <b>Cód. Serv:</b> BC-1403</br>
                                 <b>Custo:</b> R$83,43</br>
@@ -1351,7 +1284,7 @@
                             <!--Commodities News-->
                             <div class="row align-items-center destacar">
                                 <div class="col-4 n3">
-                                        <a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="">Commodities News</a>
+                                        <a data-placement="right" data-toggle="tooltip" data-html="true" title="Serviço de informação em tempo real direcionado aos profissionais, investidores e produtores do mercado de commodities em nível global, com análises, comentários e insights sobre agricultura, pecuária e metais, com cobertura de preços à vista e de mercados futuros.">Commodities News</a>
                                         <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
                                         <b>Cód. Serv:</b> BC-1103</br>
                                         <b>Custo:</b> R$95,00</br>
@@ -1366,7 +1299,7 @@
                             <!--Energy News-->
                             <div class="row align-items-center destacar">
                                 <div class="col-4 n3">
-                                        <a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="">Energy News</a>
+                                        <a data-placement="right" data-toggle="tooltip" data-html="true" title="Noticiário que cobre o setor de energia para investidores que precisam acompanhar o mercado mundial de Futuros e à vista sobre petróleo, petroquímica e eletricidade. Inclui análises sobre exploração de petróleo, situação geopolítica no mundo, além de constantes atualizações sobre o comércio de recursos energéticos globais e relatórios de dados semanais do inventário de petróleo dos EUA.">Energy News</a>
                                         <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
                                         <b>Cód. Serv:</b> BC-1322</br>
                                         <b>Custo:</b> R$70,00</br>
@@ -1381,7 +1314,7 @@
                             <!--Equities News-->
                             <div class="row align-items-center destacar">
                                 <div class="col-4 n3">
-                                        <a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="">Equities News</a>
+                                        <a data-placement="right" data-toggle="tooltip" data-html="true" title="Noticiário que cobre as empresas listadas nas principais bolsas mundiais, com ampla cobertura das empresas norte-americanas. Cobre especificamente notícias relevantes sobre empresas, divulgação de lucros, dividendos, reestruturações, aquisições e incorporações, mudanças nas estruturas gerenciais, políticas estratégicas e etc.">Equities News</a>
                                         <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
                                         <b>Cód. Serv:</b> BC-1315</br>
                                         <b>Custo:</b> R$95,00</br>
@@ -1396,7 +1329,7 @@
                             <!--Financial News-->
                             <div class="row align-items-center destacar">
                                 <div class="col-4 n3">
-                                        <a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="">Financial News</a>
+                                        <a data-placement="right" data-toggle="tooltip" data-html="true" title="Notícias financeiras em Tempo Real, com abrangência internacional e direcionadas aos principais executivos das grandes empresas, que além de acompanharem de perto o mercado interno, também estão atentos aos principais fatos econômicos e financeiros mundiais. O conteúdo cobre especificamente os mercados de Renda Fixa, Forex, Money Market, ações e derivativos financeiros, taxas de juros e Energia, além de política, economia, países emergentes, com enfoque nos Sovereign Bonds e privatizações.">Financial News</a>
                                         <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
                                         <b>Cód. Serv:</b> BC-1103</br>
                                         <b>Custo:</b> R$155,00</br>
@@ -1413,7 +1346,7 @@
                     <!--Feed Político-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2">
-                                <a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="">Feed Político</a>
+                                <a data-placement="right" data-toggle="tooltip" data-html="true" title="Noticioso em Tempo Real dedicado à cobertura do cenário político, em que abrange os bastidores das três esferas do Poder (Executivo, Legislativo e Judiciário),  e os fatos importantes que rodam a política brasileiro assim como seus impactos.">Feed Político</a>
                                 <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
                                 <b>Cód. Serv:</b> BC-13783</br>
                                 <b>Custo:</b> R$180,00</br>
@@ -1428,7 +1361,7 @@
                     <!--Newsletter Milho & Soja-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2">
-                                <a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="">Newsletter Milho & Soja</a>
+                                <a data-placement="right" data-toggle="tooltip" data-html="true" title="">Newsletter Milho & Soja</a>
                                 <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
                                 <b>Cód. Serv:</b> BA-19081</br>
                                 <b>Custo:</b> R$64,00</br>
@@ -1443,7 +1376,7 @@
                     <!--Newsletter Pecuária-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2">
-                                <a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="">Newsletter Pecuária</a>
+                                <a data-placement="right" data-toggle="tooltip" data-html="true" title="">Newsletter Pecuária</a>
                                 <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
                                 <b>Cód. Serv:</b> BA-19080</br>
                                 <b>Custo:</b> R$64,00</br>
@@ -1458,9 +1391,7 @@
                     <!--Têndencias Online-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2">
-                            <a href="#" data-placement="right" data-toggle="tooltip" data-html="true" title="Análises on-line dos principais fatos politicos e economicos que tenham
-                            impacto nos negócios. Revela os bastidores do noticiário e antecipa tambem
-                            as principais tendencias do mercado.">Tendências Online</a>
+                            <a data-placement="right" data-toggle="tooltip" data-html="true" title="Análises on-line dos principais fatos políticos e econômicos que tenham impacto nos negócios. Revelando os bastidores dos noticiários e antecipando também as principais tendências do mercado.">Tendências Online</a>
                             <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
                             <b>Cód. Serv:</b> BC-111</br>
                             <b>Custo:</b> R$301,48</br>
@@ -1543,7 +1474,16 @@
                     <!--CBOT RT-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2">
-                            CBOT - Chicago Board of Trade  
+                                <span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante do CME Group, possui contratos Futuros e Opções de Ações, Commodities Agrícolas e Taxas de Juros. Seus principais contratos são:<br>
+                                        <ul>
+                                            <li>SBC - Soja grão</li>
+                                            <li>COC - Milho</li>
+                                            <li>WHK - Trigo</li>
+                                            <li>NQC - E-Mini Nasdaq 100</li>
+                                            <li>RCC - Arroz em casca</li>
+                                            <li>ZQC - Fed Funds 30</li>
+                                            <li>ZDC - Dow Jones Futures</li>
+                                        </ul>">CBOT - Chicago Board of Trade </span>
                             <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
                             <b>Cód. Serv:</b> BC-550</br>
                             <b>Fee:</b> U$142,02</br>
@@ -1573,7 +1513,17 @@
                     <!--CME-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2">
-                            CME - Chicago Mercantile Exchange 
+                                <span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante do CME Group, possui contratos Futuros e Opções de Ações, Commodities Agrícolas, Taxas de Juros e Câmbio. Seus principais contratos são:<br>
+                                        <ul>
+                                            <li>EDC - Eurodollar</li>
+                                            <li>SP5 - Índice S&P500 Futuro</li>
+                                            <li>SPM - Mini S&P500</li>
+                                            <li>NQC - E-Mini Nasdaq 100</li>
+                                            <li>BRC - BRL/USD</li>
+                                            <li>BPC - GBP/USD</li>
+                                            <li>LCC - Live Cattle</li>
+                                            <li>FCC - Feeder Cattle</li>
+                                        </ul>">CME - Chicago Mercantile Exchange </span>
                             <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
                             <b>Cód. Serv:</b> BC-552</br>
                             <b>Fee:</b> U$142,02</br>
@@ -1588,7 +1538,16 @@
                     <!--Comex-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2">
-                            COMEX - Commodity Exchange 
+                                <span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante do CME Group, possui contratos Futuros e Opções somente de Metais. Seus principais contratos são:<br>
+                                        <ul>
+                                            <li>GLN - Ouro Futuro</li>
+                                            <li>QO - Mini contrato de ouro</li>
+                                            <li>SIN - Prata Futuro</li>
+                                            <li>QIN - Mini contrato de prata</li>
+                                            <li>HGN - Cobre Futuro</li>
+                                            <li>PLN - Platina Futuro</li>
+                                            <li>PAN - Paládio Futuro</li>
+                                        </ul>">COMEX - Commodity Exchange </span>
                             <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
                             <b>Cód. Serv:</b> BC-550</br>
                             <b>Fee:</b> U$142,02</br>
@@ -1602,7 +1561,16 @@
                     <!--IPE-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2">
-                            ICE Europe (IPE) 
+                                <span data-placement="right" data-toggle="tooltip" data-html="true" title="Possui contratos futuros e de opções para petróleo bruto , taxas de juros, derivativos de ações, gás natural, energia, carvão, emissões e commodities leves. Seus principais contratos são:<br>
+                                        <ul>
+                                            <li>OIL - Crude Oil</li>
+                                            <li>WTI - Petróleo WTI Futuro</li>
+                                            <li>PTL - Gas Oil PTL</li>
+                                            <li>CCL - Cacau</li>
+                                            <li>RCC - Café robusta</li>
+                                            <li>SWL - Açúcar</li>
+                                            <li>WHL - Trigo</li>
+                                        </ul>">ICE Europe (IPE) </span>
                             <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
                             <b>Cód. Serv:</b> BC-554</br>
                             <b>Fee:</b> U$174,20</br>
@@ -1617,7 +1585,13 @@
                     <!--NYBOT-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2">
-                            ICE US (NYBOT) 
+                                <span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante da ICE Group, possui contratos futuros para Commodities Agrícolas, Índices de Ações, Metais, Taxas de Juros, Câmbio e Energia. Seus principais contratos são:<br>
+                                        <ul>
+                                            <li>SGN - Açúcar Bruto #11</li>
+                                            <li>CCN - Cacau</li>
+                                            <li>CFN - Café Arábica</li>
+                                            <li>OJN - Suco de Laranja, tipo A</li>
+                                        </ul>">ICE US (NYBOT) </span>
                             <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
                             <b>Cód. Serv:</b> BC-564</br>
                             <b>Fee:</b> U$153,30</br>
@@ -1775,7 +1749,7 @@
                                     <!--CME S&P Indices -->
                                     <div class="row align-items-center destacar">
                                         <div class="col-4  n4">
-                                            S&P Indices 
+                                            <span  data-placement="right" data-toggle="tooltip" data-html="true" title="Informações em tempo real dos benchmarks S&P500 e S&P100 da Standard & Poor’s, além de outros índices setorizados, por blocos mundiais e países, totalizando mais de 2.400 ativos.">S&P Indices </span>
                                             <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
                                             <b>Cód. Serv:</b> BC-2228</br>
                                             <b>Fee:</b> U$4,89</br>
@@ -1794,7 +1768,7 @@
                      <!--JP Morgan (Risco País)-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2">
-                            JP Morgan (Risco País) 
+                            <span data-placement="right" data-toggle="tooltip" data-html="true" title="O chamado risco país reflete a percepção de segurança que os investidores externos têm em relação a um país. Esse risco é medido pelo número de pontos percentuais de juros que determinado governo tem de pagar a mais que os Estados Unidos para conseguir empréstimos no exterior. É calculado pelo banco J.P. Morgan tanto para o Brasil quanto para México, Argentina, Rússia, entre outras economias emergentes.">JP Morgan (Risco País) </span>
                             <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
                             <b>Cód. Serv:</b> BC-2228</br>
                             <b>Custo:</b> U$99,75</br>
@@ -1809,7 +1783,7 @@
                     <!--Latibex-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2">
-                            Latibex - Bolsa de Madri 
+                                <span data-placement="right" data-toggle="tooltip" data-html="true" title="A Bolsa de Madrid foi criada em 1831 e hoje é um importante centro financeiro na Europa, com negociação de ações, certificados de empresas latinoamericanas (Latibex), ETFs, Warrants e Fundos de Investimento.">Latibex - Bolsa de Madri </span> 
                             <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
                             <b>Cód.Serv:</b> BC-2064</br>
                             <b>Fee:</b> US$10,42</br>
@@ -1824,7 +1798,7 @@
                     <!--Latibex-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2">
-                            LME - Metais 
+                            <span data-placement="right" data-toggle="tooltip" data-html="true" title="A London Stock Exchange, LME, é considerada o centro de liquidez de metais. Os preços gerados 24 horas por dia em suas três plataformas de negociação são referência mundial para este mercado.">LME - Metais </span>
                             <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="
                             <b>Delay:</b> 30 min <br/>
                             <b>Cód.Serv:</b> BC-1339</br>
@@ -1844,7 +1818,7 @@
                     <!--Markit CDS - Soberando Corporativo-->
                     <div class="row align-items-center destacar">
                         <div class="col-4  n2">
-                            Markit CDS - Soberando Corporativo 
+                            <span data-placement="right" data-toggle="tooltip" data-html="true" title="CDS é um instrumento de crédito (derivativo) de renda fixa, negociado em OTC (mercado de balcão) utilizado para operações de Hedge e/ou arbitragem contra risco de inadimplência.<br>O conteúdo de CDS Corporativo/Soberano contempla informações de CDS para as principais empresas brasileiras e os principais países do mundo.">Markit CDS - Soberando Corporativo </span>
                             <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
                             <b>Cód.Serv:</b> BC-10479</br>
                             <b>Custo:</b> US$100,00</br>
@@ -1858,7 +1832,7 @@
                     <!--Nasdaq-->
                     <div class="row align-items-center destacar">
                         <div class="col-4 n2">
-                            Nasdaq - Ações 
+                            <span data-placement="right" data-toggle="tooltip" data-html="true" title="A Nasdaq faz parte do grupo NASDAQ OMX, que conta com 26 mercados,  3 clearings e 5 centrais depositárias espalhadas nos 6 continentes. O grupo trabalho com múltiplos asset classes incluindo ações, derivativos, renda fixa, commodities e produtos estruturados. São mais de 3.400 empresas listadas em 35 países, diversas soluções de tecnologia e pós-trading , além dos mais de 40.000 índices em tempo real.">Nasdaq - Ações </span>
                             <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
                             <b>Cód.Serv:</b> BC-7059</br>
                             <b>Fee:</b> ÑP:U$1,71 - P:US$40,29</br>
@@ -1930,6 +1904,1402 @@
         </div>       
 </div>
 
+<!-- Pacotes Broadcast Agro -->
+<div id="bagro" class='d-none'>
+    <!--Fomrs e checkbox da pagina-->
+    
+    
+    <!--Inicio do Conteúdo Incluso #  Cabeçalho-->
+    <div class="container-fluid titulo-tabela" id="cont-incluso-bagro">
+        <div class="row align-items-center" style="border-bottom: 1px solid white">
+            <div class="col-4" ></div>
+            <div class="col"  id="agrotrade-lb"><b><a href="{{ url_for('bagro_terminal', _anchor='pctAgroTrade') }}"><u>Agro Trade</u></a></b></div>
+            <div class="col"  id="agro-lb"><a href="{{ url_for('bagro_terminal', _anchor='pctAgro') }}"><u><b>Agro</u></b></a></div>
+        </div>
+
+        <div class="row align-items-center" id="valores-bagro" >
+            <div class="col-4" style="font-size: 18px;"><b>Conteúdos</b></div>
+            <div class="col"  id="agrotrade-valor">R$ 430,00</div>
+            <div class="col"  id="agro-valor">R$ 900,00</div>
+
+        </div>
+        
+    </div>
+    
+    <!-- notícias-->
+    <div class="container-fluid">
+        <div class="row align-items-center destacar">
+            <div class="col-4"><i id="iconNbagro" class="fas fa-angle-right"></i>&nbsp;<a id="NoticiaN1" onclick="iconNoticia()" class="text-decoration-none" data-toggle="collapse" href="#Noticias-collapse"><b>Notícias</b></a></div>
+            <div class="col"  id="n-agrotrade"><i class="fas fa-check"></i></div>
+            <div class="col"  id="n-agro"><i class="fas fa-check"></i></div>
+        </div>
+    </div>
+    <div class="collapse" id="Noticias-collapse">
+        <div class="container-fluid">
+            <!--TOP NEWS AGRO-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Apanhado das 15 matérias do Agro News de maior destaque no momento segundo a redação">Top News Agro</span> <!--i class="fas fa-info-circle nprint"></i--></div>
+                <div class="col"  id="n-topnewsagro-agrotrade"><i class="fas fa-times"></i></div>
+                <div class="col"  id="n-topnewsagro-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <!--AGRO NEWS-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Agro News</span> <!--i class="fas fa-info-circle nprint"></i--></div>
+                <div class="col"  id="n-agronews-agrotrade"><i class="fas fa-times"></i></div>
+                <div class="col"  id="n-agronews-agro"><i class="fas fa-check"></i></div>
+
+            </div>
+            <!--AGRO NEWS FAST-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Agro News Fast</span> <!--i class="fas fa-info-circle nprint"></i--></div>
+                <div class="col"  id="n-agronewsfast-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="n-agronewsfast-agro"><i class="fas fa-times"></i></div>
+            </div>
+            <!--Conjuntura e Finanças-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Notícias em Tempo Real com foco no mercado financeiro dos principais fatos políticos, econômicos e empresariais que também afetam o setor produtivo. Cobertura intensiva dos mercados de dólar, juros, títulos públicos e dos principais fatos que afetam o mercado de capitais.">Conjuntura e Finanças</span> <!--i class="fas fa-info-circle nprint" ></i--></div>
+                <div class="col"  id="n-conjfin-agrotrade"><i class="fas fa-times"></i></div>
+                <div class="col"  id="n-conjfin-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <!--Conjuntura e Negócios-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Seleção de notícias sobre negócios e empresas, principalmente de companhias de capital aberto publicadas nos noticiários on line da Agência Estado e no jornal 'O Estado de S. Paulo'.<br>A cobertura contempla os setores: Alimentos e Bebidas, Automotivo, Comércio e Serviços, Construção Civil, Energia, Financeiro, Mineração e Siderurgia, Química e Petroquímica, Telecom e TI e Transportes e Automotivo.">Conjuntura e Negócios</span> <!--i class="fas fa-info-circle nprint"></i--></div>
+                <div class="col"  id="n-conjneg-agrotrade"><i class="fas fa-times"></i></div>
+                <div class="col"  id="n-conjneg-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <!--Radar da Imprensa Agro-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Sinopse diária das notícias dos principais jornais do país, reunindo as manchetes e as informações sobre agenda. Traz também uma síntese das notícias econômicas, políticas, de negócios, do mercado financeiro, de esportes, geral, colunas, revistas e assuntos internacionais, elaborado pela estrutura jornalística da Agência Estado.">Radar da Imprensa Agro</span> <!--i class="fas fa-info-circle nprint"></i--></div>
+                <div class="col"  id="n-radimpagro-agrotrade"><i class="fas fa-times"></i></div>
+                <div class="col"  id="n-radimpagro-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <!--Análises e Cenários Agrícolas-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Análises e Cenários Agrícolas</span> <!--i class="fas fa-info-circle nprint"></i--></div>
+                <div class="col"  id="n-anaecenaagri-agrotrade"><i class="fas fa-times"></i></div>
+                <div class="col"  id="n-anaecenaagri-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <!--Cenários Agro-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Cenários Agro</span> <!--i class="fas fa-info-circle nprint"></i--></div>
+                <div class="col"  id="n-cenariosagro-agrotrade"><i class="fas fa-times"></i></div>
+                <div class="col"  id="n-cenariosagro-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <!--Mercados Agro-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Mercados Agro</span> <!--i class="fas fa-info-circle nprint"></i--></div>
+                <div class="col"  id="n-mercadosagro-agrotrade"><i class="fas fa-times"></i></div>
+                <div class="col"  id="n-mercadosagro-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <!--Newsletter-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><i id="iconNNewsletterbagro" class="fas fa-angle-right"></i>&nbsp;<a id="NewsletterN2" onclick="iconNoticiaNewsLetter()"class="text-decoration-none" data-toggle="collapse" href="#Noticias-nwlttr-collapse"><b>Newsletters</b></a></div>
+                <div class="col" id="n-nwlttr-agrotrade"><i class="fas fa-times"></i></div>
+                <div class="col" id="n-nwlttr-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <div class="collapse" id="Noticias-nwlttr-collapse">
+                <div>
+                    <!-- Soja e Milho-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Soja e Milho </span></div>
+                        <div class="col"  id="n-nwlttr-sojamilho-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="n-nwlttr-sojamilho-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                    <!--Pecuária-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Pecuária</span></div>
+                        <div class="col"  id="n-nwlttr-pecuaria-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="n-nwlttr-pecuaria-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                </div>
+            </div>
+            <!--Newspaper (caderno e PDF)-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Newspaper (caderno e PDF)</span> <!--i class="fas fa-info-circle nprint"></i--></div>
+                <div class="col"  id="n-cadnewspaper-agrotrade"><i class="fas fa-times"></i></div>
+                <div class="col"  id="n-cadnewspaper-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <!--Broadcast TV)-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Broadcast TV e Podcast</span> <!--i class="fas fa-info-circle nprint" ></i--></div>
+                <div class="col"  id="n-bctv-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="n-bctv-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <!--Estadao Digital)-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Acesso ao portal e a versão digital do Jornal 'O Estadao de S.Palo'">Estadão Digital</span> <!--i class="fas fa-info-circle nprint" ></i--></div>
+                <div class="col"  id="n-estadaodig-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="n-estadaodig-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <!--Release-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Release</span> <!--i class="fas fa-info-circle nprint"></i--></div>
+                <div class="col"  id="n-release-agrotrade"><i class="fas fa-times"></i></div>
+                <div class="col"  id="n-release-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <!--Esportes-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Esportes</span> <!--i class="fas fa-info-circle nprint"></i--></div>
+                <div class="col"  id="n-esportes-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="n-esportes-agro"><i class="fas fa-check"></i></div>
+            </div>
+            
+            
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><i id="iconNContribagro" class="fas fa-angle-right"></i>&nbsp;<a id="NotContriN2" onclick="iconNoticiaContri()"class="text-decoration-none" data-toggle="collapse" href="#Noticias-ctbd-collapse"><b>Contribuidores</b></a></div>
+                <div class="col" id="n-ctbd-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col" id="n-ctbd-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <!-- Contribuidores Noticias-->
+            <div class="collapse" id="Noticias-ctbd-collapse">
+                <div>
+                    <!--Agência Bovespa-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4 n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Agência Bovespa</span></div>
+                        <div class="col"  id="n-ctbd-agbov-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="n-ctbd-agbov-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                    <!--Análises Agrícolas Cepea-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Cepea - Análises Agrícolas</span></div>
+                        <div class="col"  id="n-ctbd-anagricolacepea-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="n-ctbd-anagricolacepea-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                    <!--AgResource-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Soja">AgResource</span></div>
+                        <div class="col"  id="n-ctbd-agresource-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="n-ctbd-agresource-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                    <!--Agrifatto-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Análise semanal do mercado de Boi e Boi Gordo">Agrifatto</span></div>
+                        <div class="col"  id="n-ctbd-agrifatto-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="n-ctbd-agrifatto-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                    <!--Archer Consulting-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Açúcar e Café">Archer Consulting</span></div>
+                        <div class="col"  id="n-ctbd-archer-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="n-ctbd-archer-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                    <!--Grão Direto (Soja e Milho)-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Soja e Milho">Grão Direto</span></div>
+                        <div class="col"  id="n-ctbd-graodireto-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="n-ctbd-graodireto-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                    <!--Radar Investimento-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Boi Gordo">Radar Investimento</span></div>
+                        <div class="col"  id="n-ctbd-radarinvest-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="n-ctbd-radarinvest-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                    <!--Scot Consultoria-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Boi e Leite">Scot Consultoria</span></div>
+                        <div class="col"  id="n-ctbd-scot-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="n-ctbd-scot-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                    <!--Bolsa de Cereais-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Bolsa de Cereais do Estadao de São Paulo">Bolsa de Cereais</span></div>
+                        <div class="col"  id="n-ctbd-bolsacereais-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="n-ctbd-bolsacereais-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Cotações-->
+    <div class="container-fluid">
+        <div class="row align-items-center destacar">
+            <div class="col-4"><i id="iconCotacaobagro" class="fas fa-angle-right"></i>&nbsp;<a id="CotacaoN1" onclick="iconCotacao()"class="text-decoration-none" data-toggle="collapse" title="teste" href="#Cotacao-collapse"><b>Cotações</b></a></div>
+            <div class="col"  id="c-agrotrade"><i class="fas fa-check"></i></div>
+            <div class="col"  id="c-agro"><i class="fas fa-check"></i></div>
+        </div>
+    </div>
+    <div class="collapse" id="Cotacao-collapse">
+        <div  class="container-fluid">
+            <!--AGRO-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><i id="iconAgro-0" class="fas fa-angle-right"></i>&nbsp;<a id="CotAgroN2" onclick="iconCotacaoAgro()"class="text-decoration-none" data-toggle="collapse" href="#Cotacao-agro-collapse"><b>Agro</b> <i id="iconCAgro-1" class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="<b><u>Delay de 15 min</u></b></br>Disponível em <u>TODOS</u> os pacotes"></i></a></div>
+                <div class="col"  id="c-agro-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="c-agro-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <div class="collapse" id="Cotacao-agro-collapse">
+                <div>
+                    <!--Bovinos - Mercado de Reposição-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Bovinos - Mercado de Reposição</span> <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i> <!--div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="<b><u>Tempo Real</u></b></br>Disponível <u>SOMENTE</u> mediante contratação de um dos serviços abaixos:</br><b>Cód.Serv:</b> BC-19083 Level I (Sem Livro)</br><b>Fee:</b> ÑP: R$24,15 - P: R$120,71</br><b>Cód.Serv:</b> BC-160 Level II (Com Livro)</br><b>Fee:</b> ÑP: R$40,24 - P: R$174,36</br><b>Cód.Serv:</b> BC-19084 Agro Level II (Com Livro)</br><b>Fee:</b> R$40,24"><b>RT</b></div--></div>
+                        <div class="col"  id="c-agro-bovmercrepo-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="c-agro-bovmercrepo-agro"><i class="fas fa-check"></i></div>
+
+                    </div>
+                    <!--Estimativas de Sofra-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Estimativas de Safra</span> <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                        <div class="col"  id="c-agro-estsafras-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="c-agro-estsafras-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                    <!--Fertilizantes (Soja e Milho)-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Soja e Milho">Fertilizantes </span> <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                        <div class="col"  id="c-agro-fertilizantes-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="c-agro-fertilizantes-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                    <!--Fretes Mini-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4 n3"><span   data-placement="right" data-toggle="tooltip" data-html="true" title="">Fretes Mini <div class="realtime"><b>RT</b></div></span>
+                        </div>
+                        <div class="col"  id="c-agro-fretesmini-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="c-agro-fretes-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                    <!--Fretes Full-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4 n3"><span   data-placement="right" data-toggle="tooltip" data-html="true" title="">Fretes Full <div class="realtime"><b>RT</b></div></span>
+                        </div>
+                        <div class="col"  id="c-agro-fretesfull-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="c-agro-fretesfull-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                    <!--Line up - Navios-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Line up - Navios </span> <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                        <div class="col"  id="c-agro-lineup-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="c-agro-lineup-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                    <!--Paridade Exportação (Soja Grão)-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Soja Grão">Paridade Exportação </span> <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                        <div class="col"  id="c-agro-paridexport-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="c-agro-paridexport-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                    <!--Preços Físicos-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4 n3"><span   data-placement="right" data-toggle="tooltip" data-html="true" title="Preços físicos de grãos das principais praças do Brasil, captados pela equipe do Broadcast. Além dos indicadores e preços regionalizados de todas as commodities pelo CEPEA/ESALQ e Scot Consultoria.">Preços Físicos <div class="realtime"><b>RT</b></div></span>
+                        </div>
+                        <div class="col"  id="c-agro-precosfisicos-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="c-agro-precosfisicos-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                    <!--Prêmio FOB - Soja-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Prêmio FOB - Soja </span> <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                        <div class="col"  id="c-agro-premiofob-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="c-agro-premiofob-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                </div>
+            </div>
+            <!--B3-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><i id="iconCB3-0bagro" class="fas fa-angle-right"></i>&nbsp;<a id="CotB3N2" onclick="iconCotacaoB3()"class="text-decoration-none" data-toggle="collapse" href="#Cotacao-b3-collapse"><b>B3</b> <i id="iconCB3-1bagro" class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="<b><u>Delay de 15 min</u></b></br>Disponível em <u>TODOS</u> os pacotes"></i></a></div>
+                <div class="col"  id="c-b3-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="c-b3-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <div class="collapse" id="Cotacao-b3-collapse">
+                <div>
+                    <!--BM&F (com Agro, Fundos ETF e Imobiliários)-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Ofertas e negócios de contratos de derivativos negociados na B3 (como juros, câmbio, índice, agropecuário).">BM&F - Derivativos Agros e Financeiros</span> <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i> <!--div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="<b><u>Tempo Real</u></b></br>Disponível <u>SOMENTE</u> mediante contratação de um dos serviços abaixos:</br><b>Cód.Serv:</b> BC-19083 Level I (Sem Livro)</br><b>Fee:</b> ÑP: R$24,15 - P: R$120,71</br><b>Cód.Serv:</b> BC-160 Level II (Com Livro)</br><b>Fee:</b> ÑP: R$40,24 - P: R$174,36</br><b>Cód.Serv:</b> BC-19084 Agro Level II (Com Livro)</br><b>Fee:</b> R$40,24"><b>RT</b></div--></div>
+                        <div class="col"  id="c-b3-bmf-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="c-b3-bmf-agro"><i class="fas fa-check"></i></div>
+
+                    </div>
+                    <!--Bovespa (com Índice, Opções, Fundos ETF e Imobiliários)¹S-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3">
+                                <span data-placement="right" data-toggle="tooltip" data-html="true" title="Cotações de ações listadas na B3 (segmento Bovespa), contratos de opções de ação e índices Bovespa.">Bovespa - Índices e ações </span>
+                            <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i> 
+                            <!--div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="<b><u>Tempo Real</u></b></br>Disponível <u>SOMENTE</u> mediante contratação de um dos serviços abaixos:</br><b>Cód.Serv:</b> BC-150 Level I (Sem Livro)</br><b>Fee:</b> ÑP: R$4,03 - P: R$120,71</br><b>Cód.Serv:</b> BC-19082 Level II (Livro)</br><b>Fee:</b> ÑP: R$6,70 - P: R$174,36">
+                                <b>RT</b>
+                            </div-->
+                        </div>
+                        <div class="col"  id="c-b3-bov-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="c-b3-bov-agro"><i class="fas fa-check"></i></div>
+
+                    </div>
+                </div>
+            </div>
+                <!--Broadcast-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><i id="iconCBC-0bagro" class="fas fa-angle-right"></i>&nbsp;<a id="CotBcN2" onclick="iconCotacaoBC()"class="text-decoration-none" data-toggle="collapse" href="#Cotacao-bc-collapse"><b>Broadcast</b> <div id="iconCBC-1bagro"  class="realtime"><b>RT</b></div></a></div>
+                <div class="col"  id="c-bc-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="c-bc-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <div class="collapse" id="Cotacao-bc-collapse">
+                <div>
+                    <!--AE TAxas Mini-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Principais Indicadores de Inflação, Taxa de Juros, Câmbio Spot e Commodities captados no mercado balcão (OTC) e órgãos do mercado financeiro.">AE Taxas Mini</span> <div class="realtime"><b>RT</b></div>
+                        </div>
+                        <div class="col"  id="c-bc-taxasmini-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="c-bc-taxasmini-agro"><i class="fas fa-check"></i></div>
+                        
+                    </div>
+                        <!--AE TAxas Full-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4 n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="AE Taxas Mini + diversos indicadores financeiros, taxas do Banco Central e de outras instituições contabilizando mais de 2.400 ativos">AE Taxas Full <div class="realtime"><b>RT</b></div></span>
+                        </div>
+                        <div class="col"  id="c-bc-taxasfull-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="c-bc-taxasfull-agro"><i class="fas fa-check"></i></div>
+                    </div>
+                    
+                    <!--Forward Moedas-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Taxas de câmbios negociadas no mercado a termo.">Forward Moedas <div class="realtime"><b>RT</b></div></span>
+                        </div>
+                        <div class="col"  id="c-bc-forward-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="c-bc-forward-agro"><i class="fas fa-check"></i></div>
+                        
+                    </div>
+                    <!--Spot Metais-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Preços dos principais metais negociados no mundo e taxas LBMA (Libor).">Spot Metais <div class="realtime"><b>RT</b></div></span>
+                        </div>
+                        <div class="col"  id="c-bc-metais-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="c-bc-metais-agro"><i class="fas fa-check"></i></div>
+                        
+                    </div>
+                    <!--Spot Moedas Mini-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3" ><span data-placement="right" data-toggle="tooltip" data-html="true" title="Contempla as ofertas de compra e venda das principais moedas à vista além de Líbor para dólar.">Spot Moedas Mini <div class="realtime"><b>RT</b></div></span>
+                        </div>
+                        <div class="col"  id="c-bc-moedasmini-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="c-bc-moedasmini-agro"><i class="fas fa-check"></i></div>
+                        
+                    </div>
+                    <!--Spot Moedas Full-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Spot Moedas Mini + demais paridades disponíveis contabilizando mais de 2.000 ativos.">Spot Moedas Full <div class="realtime"><b>RT</b></div></span>
+                        </div>
+                        <div class="col"  id="c-bc-moedasfull-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="c-bc-moedasfull-agro"><i class="fas fa-check"></i></div>
+                        
+                    </div>
+                </div>
+            </div>
+            <!--CBOT-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante do CME Group, possui contratos Futuros e Opções de Ações, Commodities Agrícolas e Taxas de Juros. Seus principais contratos são:<br>
+                        <ul>
+                            <li>SBC - Soja grão</li>
+                            <li>COC - Milho</li>
+                            <li>WHK - Trigo</li>
+                            <li>NQC - E-Mini Nasdaq 100</li>
+                            <li>RCC - Arroz em casca</li>
+                            <li>ZQC - Fed Funds 30</li>
+                            <li>ZDC - Dow Jones Futures</li>
+                        </ul>">CBOT - Chicago Board of Trade </span><i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
+                <div class="col"  id="c-cbot-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="c-cbot-agro"><i class="fas fa-check"></i></div>
+                
+            </div>      
+            <!--CETIP-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2" data-placement="right" data-toggle="tooltip" data-html="true" title="Informações de Cotações, Negociações e Leilões">CETIP <i class="far fa-clock"></i></div>
+                <div class="col"  id="c-cetip-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="c-cetip-agro"><i class="fas fa-check"></i></div>
+                
+            </div>
+            <!--CME-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante do CME Group, possui contratos Futuros e Opções de Ações, Commodities Agrícolas, Taxas de Juros e Câmbio. Seus principais contratos são:<br>
+                        <ul>
+                            <li>EDC - Eurodollar</li>
+                            <li>SP5 - Índice S&P500 Futuro</li>
+                            <li>SPM - Mini S&P500</li>
+                            <li>NQC - E-Mini Nasdaq 100</li>
+                            <li>BRC - BRL/USD</li>
+                            <li>BPC - GBP/USD</li>
+                            <li>LCC - Live Cattle</li>
+                            <li>FCC - Feeder Cattle</li>
+                        </ul>">CME - Chicago Mercantile Exchange </span><i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
+                <div class="col"  id="c-cme-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="c-cme-agro"><i class="fas fa-check"></i></div>
+                
+            </div>
+            <!--Comex-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante do CME Group, possui contratos Futuros e Opções somente de Metais. Seus principais contratos são:<br>
+                        <ul>
+                            <li>GLN - Ouro Futuro</li>
+                            <li>QO - Mini contrato de ouro</li>
+                            <li>SIN - Prata Futuro</li>
+                            <li>QIN - Mini contrato de prata</li>
+                            <li>HGN - Cobre Futuro</li>
+                            <li>PLN - Platina Futuro</li>
+                            <li>PAN - Paládio Futuro</li>
+                        </ul>">COMEX - Commodity Exchange </span><i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
+                <div class="col"  id="c-comex-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="c-comex-agro"><i class="fas fa-check"></i></div>
+                
+            </div>
+            <!--IPE-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Possui contratos futuros e de opções para petróleo bruto , taxas de juros, derivativos de ações, gás natural, energia, carvão, emissões e commodities leves. Seus principais contratos são:<br>
+                        <ul>
+                            <li>OIL - Crude Oil</li>
+                            <li>WTI - Petróleo WTI Futuro</li>
+                            <li>PTL - Gas Oil PTL</li>
+                            <li>CCL - Cacau</li>
+                            <li>RCC - Café robusta</li>
+                            <li>SWL - Açúcar</li>
+                            <li>WHL - Trigo</li>
+                        </ul>">ICE Europe (IPE) </span><i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
+                <div class="col"  id="c-ipe-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="c-ipe-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <!--NYBOT-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante da ICE Group, possui contratos futuros para Commodities Agrícolas, Índices de Ações, Metais, Taxas de Juros, Câmbio e Energia. Seus principais contratos são:<br>
+                        <ul>
+                            <li>SGN - Açúcar Bruto #11</li>
+                            <li>CCN - Cacau</li>
+                            <li>CFN - Café Arábica</li>
+                            <li>OJN - Suco de Laranja, tipo A</li>
+                        </ul>">ICE US (NYBOT) </span><i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
+                <div class="col"  id="c-nybot-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="c-nybot-agro"><i class="fas fa-check"></i></div>
+                
+            </div>                
+            <!--Indices Mundiais-->
+            <div class="row align-items-center destacar" style="page-break-after: auto;">
+                <div class="col-4  n2"><i id="iconCIndices-0bagro" class="fas fa-angle-right"></i>&nbsp;<a id="CotIndN2" onclick="iconCIndices()"class="text-decoration-none" data-toggle="collapse" title="Índices das principais bolsas de valores no mundo como Nasdaq, Frankfurt, Tóquio, Londres, México, Xangai, entre outros." href="#c-indices-collapse"><b>Índices Mundiais</b></a> <i id="iconCIndices-1bagro" class="far fa-clock"></i> <div id="iconCIndices-2bagro" class="endofday"><b>EoD</b></div></div> 
+                <div class="col"  id="c-indicesMundi-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="c-indicesMundi-agro"><i class="fas fa-check"></i></div>
+                
+            </div>
+            <div class="collapse" id="c-indices-collapse">
+                <div>
+                    <!--Ásia e Oceania-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><i id="iconCIndAsiaOcean-0bagro" class="fas fa-angle-right"></i>&nbsp;<a id="CindAON3" onclick="iconCIndAsiaOcean()"class="text-decoration-none" data-toggle="collapse"  href="#c-ind-ao-collapse"><b>Ásia e Oceania</b></a> <i id="iconCIndAsiaOcean-1bagro"class="far fa-clock"></i> <div id="iconCIndAsiaOcean-2bagro" class="endofday"><b>EoD</b></div></div>
+                        <div class="col"  id="c-ind-ao-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="c-ind-ao-agro"><i class="fas fa-check"></i></div>
+                        
+                    </div>
+                    <div class="collapse" id="c-ind-ao-collapse">
+                        <div>
+                            <!--Australia Stock Exchange-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">Australia Stock Exchange <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                                <div class="col"  id="c-ind-ao-australia-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-ao-australia-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                            <!--Hang Seng Indices-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">Hang Seng Indices <div class="endofday"><b>EoD</b></div></div>
+                                <div class="col"  id="c-ind-ao-hangseng-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-ao-hangseng-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                            <!--Korea Exchange Indices-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">Korea Exchange Indices <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 20 min"></i></div>
+                                <div class="col"  id="c-ind-ao-korea-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-ao-korea-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                            <!--Nikkei Indices-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">Nikkei Indices <div class="endofday"><b>EoD</b></div></div>
+                                <div class="col"  id="c-ind-ao-nikkei-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-ao-nikkei-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                            <!--Shangai and Shenzhen Stock Exchange-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">Shangai and Shenzhen Stock Exchange <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                                <div class="col"  id="c-ind-ao-shangai-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-ao-shangai-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                            <!--Stock Exchange of Thailand-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">Stock Exchange of Thailand <div class="endofday"><b>EoD</b></div></div>
+                                <div class="col"  id="c-ind-ao-thailand-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-ao-thailand-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                            <!--Taiwan Stock Exchange-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">Taiwan Stock Exchange <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 20 min"></i></div>
+                                <div class="col"  id="c-ind-ao-taiwan-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-ao-taiwan-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!--Europa-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><i id="iconCIndEuropa-0bagro" class="fas fa-angle-right"></i>&nbsp;<a id="CindEuroN3" onclick="iconCIndEuropa()"class="text-decoration-none" data-toggle="collapse"  href="#c-ind-euro-collapse"><b>Europa</b></a> <i id="iconCIndEuropa-1bagro" class="far fa-clock"></i></div>
+                        <div class="col"  id="c-ind-euro-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="c-ind-euro-agro"><i class="fas fa-check"></i></div>
+                        
+                    </div>
+                    <div class="collapse" id="c-ind-euro-collapse">
+                        <div>
+                            <!--Deutsche Boerse Indices-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">Deutsche Boerse Indices <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 30 min"></i></div>
+                                <div class="col"  id="c-ind-euro-deutsche-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-euro-deutsche-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                            <!--FTSE Index Values-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">FTSE Index Values <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                                <div class="col"  id="c-ind-euro-ftse-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-euro-ftse-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                            <!--NYSE Euronext Indices-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">NYSE Euronext Indices <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                                <div class="col"  id="c-ind-euro-euronext-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-euro-euronext-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                            <!--Madrid - IBEX Indice-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">Madrid - IBEX Indice <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                                <div class="col"  id="c-ind-euro-madrid-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-euro-madrid-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                            <!--Swiss Exchange Indices-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">Swiss Exchange Indices <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                                <div class="col"  id="c-ind-euro-swiss-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-euro-swiss-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!--Latam-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><i id="iconCIndLatam-0bagro" class="fas fa-angle-right"></i>&nbsp;<a id="CindLatamN3" onclick="iconCIndLatam()"class="text-decoration-none" data-toggle="collapse" href="#c-ind-latam-collapse"><b>Latam</b></a> <i id="iconCIndLatam-1bagro"  class="far fa-clock"></i></div>
+                        <div class="col"  id="c-ind-latam-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="c-ind-latam-agro"><i class="fas fa-check"></i></div>
+                        
+                    </div>
+                    <div class="collapse" id="c-ind-latam-collapse">
+                        <div>
+                            <!--Buenos Aires Stock Exchange-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">Buenos Aires Stock Exchange <i class="far fa-clock"></i></div>
+                                <div class="col"  id="c-ind-latam-buenos-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-latam-buenos-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                            <!--Mexico Indices-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">Mexico Indices <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 20 min"></i></div>
+                                <div class="col"  id="c-ind-latam-mex-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-latam-mex-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                            <!--Santiago Stock Exchange-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">Santiago Stock Exchange <i class="far fa-clock"></i></div>
+                                <div class="col"  id="c-ind-latam-sant-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-latam-sant-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!--USA-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3"><i id="iconCIndUSA-0bagro" class="fas fa-angle-right"></i>&nbsp;<a id="CindUSAN3" onclick="iconCIndUSA()"class="text-decoration-none" data-toggle="collapse" href="#c-ind-usa-collapse"><b>USA</b></a> <i id="iconCIndUSA-1bagro" class="far fa-clock"></i></div>
+                        <div class="col"  id="c-ind-usa-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="c-ind-usa-agro"><i class="fas fa-check"></i></div>
+                        
+                    </div>
+                    <div class="collapse" id="c-ind-usa-collapse">
+                        <div>
+                            <!--CBOE Indexes-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">CBOE Indexes <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                                <div class="col"  id="c-ind-usa-cboe-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-usa-cboe-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                            
+                            <!--Nasdaq Índices-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">Nasdaq Indexes <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                                <div class="col"  id="c-ind-usa-nasdaqind-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-usa-nasdaqind-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                            <!--NYSE Global Index Feeds - GIFS-->
+                            <div class="row align-items-center destacar">
+                                <div class="col-4  n4">NYSE Global Index Feeds - GIFS <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                                <div class="col"  id="c-ind-usa-gifs-agrotrade"><i class="fas fa-check"></i></div>
+                                <div class="col"  id="c-ind-usa-gifs-agro"><i class="fas fa-check"></i></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Latibex-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="A Bolsa de Madrid foi criada em 1831 e hoje é um importante centro financeiro na Europa, com negociação de ações, certificados de empresas latinoamericanas (Latibex), ETFs, Warrants e Fundos de Investimento.">Latibex - Bolsa de Madri </span><i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                <div class="col"  id="c-latibex-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="c-latibex-agro"><i class="fas fa-check"></i></div>
+                
+            </div>
+            <!--Markit CDS Índices-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="CDS é um instrumento de crédito (derivativo) de renda fixa, negociado em OTC (mercado de balcão) utilizado para operações de Hedge e/ou arbitragem contra risco de inadimplência.<br>A informação de índices de CDS contempla os principais índices apurados pela Markit para vencimentos de cinco anos.">Markit CDS Índices</span></div>
+                <div class="col"  id="c-indcds-agrotrade"><i class="fas fa-times"></i></div>
+                
+                <div class="col"  id="c-indcds-agro"><i class="fas fa-check"></i></div>
+                
+            </div>
+            <!--Nasdaq-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="A Nasdaq faz parte do grupo NASDAQ OMX, que conta com 26 mercados,  3 clearings e 5 centrais depositárias espalhadas nos 6 continentes. O grupo trabalho com múltiplos asset classes incluindo ações, derivativos, renda fixa, commodities e produtos estruturados. São mais de 3.400 empresas listadas em 35 países, diversas soluções de tecnologia e pós-trading , além dos mais de 40.000 índices em tempo real.">Nasdaq - Ações </span><i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                <div class="col"  id="c-nasdaq-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="c-nasdaq-agro"><i class="fas fa-check"></i></div>
+                
+            </div>
+            <!--NYMEX-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2">NYMEX <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
+                <div class="col"  id="c-nymex-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="c-nymex-agro"><i class="fas fa-check"></i></div>
+                
+            </div>
+            <!--NYSE-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><i id="iconCNyse-0bagro" class="fas fa-angle-right"></i>&nbsp;<a id="CotNyseN2" onclick="iconCNyse()"class="text-decoration-none" data-toggle="collapse"  href="#c-nyse-collapse"><b>Nyse</b></a> <i id="iconCNyse-1bagro" class="far fa-clock"></i></div>
+                <div class="col"  id="c-nyse-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="c-nyse-agro"><i class="fas fa-check"></i></div>
+                
+            </div>
+            <div class="collapse" id="c-nyse-collapse">
+                <div>
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3">Nyse <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                        <div class="col"  id="c-nyse-bolsa-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="c-nyse-bolsa-agro"><i class="fas fa-check"></i></div>
+                        
+                    </div>
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3">Nyse Amex <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                        <div class="col"  id="c-nyse-amex-agrotrade"><i class="fas fa-check"></i></div>
+                        <div class="col"  id="c-nyse-amex-agro"><i class="fas fa-check"></i></div>
+                        
+                    </div>
+                </div>
+            </div>
+            <!--Anbima Tit. Públicos-->
+            <div class="row align-items-center destacar">
+                <div class="col-4 n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Taxas diárias dos títulos públicos brasileiros registrados na Anbima.">Tit. Públicos Anbima</span> <div class="realtime"><b>RT</b></div></div>
+                <div class="col"  id="c-anb-titpub-agrotrade"><i class="fas fa-check"></i></div>
+                <div class="col"  id="c-anb-titpub-agro"><i class="fas fa-check"></i></div>
+            </div>
+            <!--Treasuries Americanas-->
+            <div class="row align-items-center destacar">
+                    <div class="col-4 n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Dados em tempo real das treasuries americanas transacionadas no mercado de balcão">Treasuries Americanas</span> <div class="realtime"><b>RT</b></div></div>
+                <div class="col"  id="c-tresuaries-trade"><i class="fas fa-times"></i></div>
+                <div class="col"  id="c-tresuaries-agro"><i class="fas fa-times"></i></div>
+            </div>
+            <!--Contribuidores Cotação-->
+            <div class="row align-items-center destacar">
+                <div class="col-4  n2"><i id="iconCContribagro" class="fas fa-angle-right"></i>&nbsp;<a id="CotContriN2" onclick="iconCotacaoContri()"class="text-decoration-none" data-toggle="collapse" href="#Cotacao-ctbd-collapse"><b>Contribuidores</b></a></div>
+                <div class="col"  id="c-ctbd-agrotrade"><i class="fas fa-times"></i></div>
+                <div class="col"  id="c-ctbd-agro"><i class="fas fa-times"></i></div>
+            </div>
+            <div class="collapse" id="Cotacao-ctbd-collapse">
+                <div>
+                    <!--Câmbio-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3" title="27 Contribuidores de Câmbios contribuindo com Spot, Casado e Turismo">Câmbio</div>
+                        <div class="col"  id="c-ctbd-cambio-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="c-ctbd-cambio-agro"><i class="fas fa-times"></i></div>
+                    </div>
+                    <!--Preços Físicos-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3" title="">Preços Físicos</div>
+                        <div class="col"  id="c-ctbd-pfisicos-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="c-ctbd-pfisicos-agro"><i class="fas fa-times"></i></div>
+                    </div>
+                    <!--Renda Fixa-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3" title="16 Contribuidores de Renda Fixa contribuindo com CDB, LCI, LCA, Debêntures e Tít. Públicos">Renda Fixa</div>
+                        <div class="col"  id="c-ctbd-rfixa-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="c-ctbd-rfixa-agro"><i class="fas fa-times"></i></div>
+                    </div>
+                    <!--Indicadores-->
+                    <div class="row align-items-center destacar">
+                        <div class="col-4  n3" title="Indicadores Agrícolas, Macroeconômicos Agro e Geral">Indicadores</div>
+                        <div class="col"  id="c-ctbd-ind-agrotrade"><i class="fas fa-times"></i></div>
+                        <div class="col"  id="c-ctbd-ind-agro"><i class="fas fa-times"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Fim do Conteúdo Incluso #  Cabeçalho-->
+    <br>
+    <br>  
+    <!--Inicio do Conteúdos Adicionais Pagos #  Cabeçalho-->
+    <div class="container-fluid" id="cont-adc-pago-bagro">
+        <div class="row align-items-center" id="valores2" style="border-bottom: 1px solid white" >
+            <div class="col"  id="agrotrade-valor-2"><b></b></div>
+            <div class="col"  id="agro-valor-2"><b></b></div>
+        </div>
+        <div class="row align-items-center titulo-tabela">
+            <div class="col-4" style="font-size: 18px;"><b>Conteúdos Pagos</b></div>
+            <div class="col"  id="agrotrade-lb-2"><b>Agro Trade</b></div>
+            <div class="col"  id="agro-lb-2"><b>Agro</b></div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <!--Add Módulos-->
+        <div class="row align-items-center destacar">
+            <div class="col-4"><i id="iconModulosbagro" class="fas fa-angle-right"></i>&nbsp;<a id="ModN1" onclick="iconModulos()"class="text-decoration-none" data-toggle="collapse" title="" href="#Addon-mod-collapse"><b>Módulos</b></a></div>
+            <div class="col"  id="ad-mod-agrotrade"><i class="fas fa-plus"></i></div>
+            <div class="col"  id="ad-mod-agro"><i class="fas fa-plus"></i></div>
+
+        </div>
+        <div class="collapse" id="Addon-mod-collapse">
+            <div>
+                <!--ADD-on Político-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4  n2">
+                        <a data-placement="right" data-toggle="tooltip" data-html="true" title="
+                        O Add-On Político é um serviço dedicado à cobertura política, com notícias em tempo real, bastidores e análises sobre as três esferas do poder.">
+                        Add-On Político</a> 
+                        <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                        <b>Cód. Serv:</b> BC-19869</br>
+                        <b>Custo:</b> R$360</br>
+                        <b>Demonstração: 30 dias"></i>
+                    </div>
+                    <div class="col"  id="ad-mod-pol-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-mod-pol-agro"><i class="fas fa-plus"></i></div>
+
+                </div>
+                <!--Análise Fundamentalista-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4  n2"><i id="iconAnaFundbagro" class="fas fa-angle-right"></i>&nbsp;
+                        <a id="ModAFN2" onclick="iconAnaFund()"class="text-decoration-none" data-toggle="collapse" href="#Addon-mod-af-collapse"><b> 
+                            <span data-placement="right" data-toggle="tooltip" data-html="true" title="Ferramenta com informações de demonstrativos financeiros e indicadores de empresas tanto de capital Aberto quanto de capital Fechado.">Análise Fundamentalista</span></b>
+                        </a>
+                    </div>
+                    <div class="col"  id="ad-mod-af-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-mod-af-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                <div class="collapse" id="Addon-mod-af-collapse">
+                    <div>
+                        <!--Capital Aberto-->
+                        <div class="row align-items-center destacar">
+                            <div class="col-4  n3" title="Cód.Serv: BC-14167 | Custo: R$ 136,40">
+                                <span data-placement="right" data-toggle="tooltip" data-html="true" title="Ferramenta de Análise Fundamentalista com acesso <u>Somente</u> a dados Empresas de Capital Aberto">Capital Aberto</span> 
+                                <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                    <b>Cód. Serv:</b> BC-14167</br>
+                                    <b>Custo:</b> R$136,40</br>
+                                    <b>Demonstração: 30 dias"></i>
+                            </div>
+                            <div class="col"  id="ad-mod-af-capabe-agrotrade"><i class="fas fa-plus"></i></div>
+                            <div class="col"  id="ad-mod-af-capabe-agro"><i class="fas fa-plus"></i></div>
+                            
+                        </div>
+                        <!--Capital Fechado
+                        <div class="row align-items-center destacar">
+                            <div class="col-4  n3">
+                                <span data-placement="right" data-toggle="tooltip" data-html="true" title="Ferramenta de Análise Fundamentalista com acesso <u>Somente</u> a dados de Empresas de Capital Fechado">Capital Fechado</span>  
+                                <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                <b>Cód. Serv:</b> BC-19726</br>
+                                <b>Custo:</b> R$250,00</br>
+                                <b>Demonstração: Não Disponível"></i>
+                            </div>
+                            <div class="col"  id="ad-mod-af-capfech-trade"><i class="fas fa-times"></i></div>
+                            <div class="col"  id="ad-mod-af-capfech-conjuntura"><i class="fas fa-times"></i></div>
+                            <div class="col"  id="ad-mod-af-capfech-mercados"><i class="fas fa-times"></i></div>
+                            <div class="col"  id="ad-mod-af-capfech-news"><i class="fas fa-times"></i></div>
+                            <div class="col"  id="ad-mod-af-capfech-analises"><i class="fas fa-plus"></i></div>
+                        </div>
+                        -->
+                        <!--Cap. Aberto e Cap. Fechado
+                        <div class="row align-items-center destacar">
+                            <div class="col-4  n3">
+                                <span data-placement="right" data-toggle="tooltip" data-html="true" title="Ferramenta de Análise Fundamentalista com acesso a dados Empresas de Capital Aberto e Fechado<br>(*) Preço diferenciado para Broadcast Análises">Full</span> 
+                                <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                <b>Cód. Serv:</b> BC-19724</br>
+                                <b>Custo:</b> R$450,00</br></br>
+                                (<b style='color:red'>*</b>)<b>Cód. Serv:</b> BC-19726</br>
+                                <b>Custo:</b> R$250,00</br>
+
+                                <b>Demonstração: Não Disponível"></i>
+                            </div>
+                            <div class="col"  id="ad-mod-af-capabefech-agrotrade"><i class="fas fa-plus"></i></div>
+                            <div class="col"  id="ad-mod-af-capabefech-agro"><i class="fas fa-plus"></i></div>
+                            
+                        </div>
+                        -->
+                    </div>
+                </div>
+                <!--Deal Data-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4  n2">
+                        <a data-placement="right" data-toggle="tooltip" data-html="true" title="
+                        Ferramenta que analisa dado transacional sobre Fusões e Aquisições (M&A), Private Equity e Mercado de Capitais com foco nas transações mais importantes no Brasil.">Deal Data - Dados Transacionais</a> 
+                        <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                        <b>Cód. Serv:</b> BC-15171</br>
+                        <b>Custo:</b> R$425,00</br>
+                        <b>Demonstração: 15 dias"></i>
+                    </div>
+                    <div class="col"  id="ad-mod-dt-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-mod-dt-agro"><i class="fas fa-plus"></i></div>
+                </div>
+            </div>   
+        </div>
+        <!--Add Noticias-->
+        <div class="row align-items-center destacar">
+            <div class="col-4"><i id="iconModNoticiasbagro" class="fas fa-angle-right"></i>&nbsp;<a id="AdNotN1" onclick="iconModNoticias()"class="text-decoration-none" data-toggle="collapse" title="" href="#Addon-n-collapse"><b>Notícias</b></a></div>
+            <div class="col"  id="ad-n-agrotrade"><i class="fas fa-plus"></i></div>
+            <div class="col"  id="ad-n-agro"><i class="fas fa-plus"></i></div>
+            
+        </div>
+        <div class="collapse" id="Addon-n-collapse">
+            <div>
+                <!--Arko America Latina-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4 n2">
+                            <a data-placement="right" data-toggle="tooltip" data-html="true" title="Com uma experiência de 30 anos no coração político do Brasil, a Arko usa toda sua expertise para realizar análises políticas, prever riscos e antecipar tendências no segmento político.">Arko America Latina</a>
+                            <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                            <b>Cód. Serv:</b> BC-1669</br>
+                            <b>Custo:</b> R$386,34</br>
+                            <b>Demonstração: 30 dias"></i>
+                    </div>
+                    <div class="col"  id="ad-n-arko-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-n-arko-agro"><i class="fas fa-plus"></i></div>
+                </div>
+                <!--Bom dia Mercado-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4 n2">
+                            <a data-placement="right" data-toggle="tooltip" data-html="true" title="Coluna diária produzida pela jornalista Rosa Riscala que projeta as expectativas do mercado com foco nos fatos da agenda nacional e internacional, das notícias e dos movimentos dos mercados que podem influenciar os pregões.">Bom dia Mercado</a>
+                            <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                            <b>Cód. Serv:</b> BC-1403</br>
+                            <b>Custo:</b> R$83,43</br>
+                            <b>Demonstração: 30 dias"></i>
+                    </div>
+                    <div class="col"  id="ad-n-bdm-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-n-bdm-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                <!--Notiosos Dow Jones-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4 n2"><i id="iconModNDJNbagro" class="fas fa-angle-right"></i>&nbsp;<a id="AdNotDJN2" onclick="iconModNDJN()"class="text-decoration-none" data-toggle="collapse" title="Conteúdo em Inglês" href="#Addon-n-djn-collapse"><b>Dow Jones News</b></a></div>
+                    <div class="col"  id="ad-n-djn-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-n-djn-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                <div class="collapse" id="Addon-n-djn-collapse">
+                    <div>
+                        <!--Commodities News-->
+                        <div class="row align-items-center destacar">
+                            <div class="col-4 n3">
+                                    <a data-placement="right" data-toggle="tooltip" data-html="true" title="Serviço de informação em tempo real direcionado aos profissionais, investidores e produtores do mercado de commodities em nível global, com análises, comentários e insights sobre agricultura, pecuária e metais, com cobertura de preços à vista e de mercados futuros.">Commodities News</a>
+                                    <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                    <b>Cód. Serv:</b> BC-1103</br>
+                                    <b>Custo:</b> R$95,00</br>
+                                    <b>Demonstração: 30 dias"></i>
+                            </div>
+                            <div class="col"  id="ad-n-djn-cn-agrotrade"><i class="fas fa-plus"></i></div>
+                            <div class="col"  id="ad-n-djn-cn-agro"><i class="fas fa-plus"></i></div>
+                            
+                        </div>
+                        <!--Energy News-->
+                        <div class="row align-items-center destacar">
+                            <div class="col-4 n3">
+                                    <a data-placement="right" data-toggle="tooltip" data-html="true" title="Noticiário que cobre o setor de energia para investidores que precisam acompanhar o mercado mundial de Futuros e à vista sobre petróleo, petroquímica e eletricidade. Inclui análises sobre exploração de petróleo, situação geopolítica no mundo, além de constantes atualizações sobre o comércio de recursos energéticos globais e relatórios de dados semanais do inventário de petróleo dos EUA.">Energy News</a>
+                                    <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                    <b>Cód. Serv:</b> BC-1322</br>
+                                    <b>Custo:</b> R$70,00</br>
+                                    <b>Demonstração: 30 dias"></i>
+                            </div>
+                            <div class="col"  id="ad-n-djn-enn-agrotrade"><i class="fas fa-plus"></i></div>
+                            <div class="col"  id="ad-n-djn-enn-agro"><i class="fas fa-plus"></i></div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                <!--Feed Político-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4  n2">
+                            <a data-placement="right" data-toggle="tooltip" data-html="true" title="Noticioso em Tempo Real dedicado à cobertura do cenário político, em que abrange os bastidores das três esferas do Poder (Executivo, Legislativo e Judiciário),  e os fatos importantes que rodam a política brasileiro assim como seus impactos.">Feed Político</a>
+                            <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                            <b>Cód. Serv:</b> BC-13783</br>
+                            <b>Custo:</b> R$180,00</br>
+                            <b>Demonstração: 30 dias"></i>
+                    </div>
+                    <div class="col"  id="ad-n-pol-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-n-pol-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                
+                <!--Têndencias Online-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4  n2">
+                        <a data-placement="right" data-toggle="tooltip" data-html="true" title="Análises on-line dos principais fatos políticos e econômicos que tenham impacto nos negócios. Revelando os bastidores dos noticiários e antecipando também as principais tendências do mercado.">Tendências Online</a>
+                        <i class="fas fa-info-circle" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                        <b>Cód. Serv:</b> BC-111</br>
+                        <b>Custo:</b> R$301,48</br>
+                        <b>Demonstração: 30 dias"></i>
+                    </div>
+                    <div class="col"  id="ad-n-tenon-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-n-tenon-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+
+            </div>
+        </div>
+        <!--Add Cotacao-->
+        <div class="row align-items-center destacar">
+            <div class="col-4"><i id="iconModCotacaobagro" class="fas fa-angle-right"></i>&nbsp;<a id="AdCotN1" onclick="iconModCotacao()"class="text-decoration-none" data-toggle="collapse" title="" href="#Addon-c-collapse"><b>Cotações</b></a></div>
+            <div class="col"  id="ad-c-agrotrade"><i class="fas fa-plus"></i></div>
+            <div class="col"  id="ad-c-agro"><i class="fas fa-plus"></i></div>
+            
+        </div>
+        <div class="collapse" id="Addon-c-collapse">
+            <div>
+                <!--B3-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4  n2"><i id="iconAdCB3-0bagro" class="fas fa-angle-right"></i>&nbsp;<a id="AdCotB3N2" onclick="iconAdCotacaoB3()"class="text-decoration-none" data-toggle="collapse" href="#ad-c-b3-collapse"><b>B3</b> <div id="iconAdCB3-1bagro" class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title=""><b>RT</b></div></a></div>
+                    <div class="col"  id="ad-c-b3-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-b3-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                <div class="collapse" id="ad-c-b3-collapse">
+                    <div>
+                        <!--BM&F (com Agro, Fundos ETF e Imobiliários)-->
+                        <div class="row align-items-center destacar">
+                            <div class="col-4  n3">
+                                BM&F - Derivativos Agros e Financeiros
+                                <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                <b><u>Level I (Sem Livro)</u></b></br>
+                                <b>Cód. Serv:</b> BC-19083</br>
+                                <b>Fee:</b> ÑP: R$24,15 - P: R$120,71</br>
+                                <b><u>Level II (Com Livro)</u></b></br>
+                                <b>Cód. Serv:</b> BC-160</br>
+                                <b>Fee:</b> ÑP: R$40,24 - P: R$174,36</br>
+                                <b><u>Somente Agro Level II (Com Livro)</u></b></br>
+                                <b>Cód. Serv:</b> BC-19084</br>
+                                <b>Fee:</b> R$40,24</br>
+                                <b>Demonstração: 30 dias"><b>RT</b></div>
+                            </div>
+                            <div class="col"  id="ad-c-b3-bmf-agrotrade"><i class="fas fa-plus"></i></div>
+                            <div class="col"  id="ad-c-b3-bmf-agro"><i class="fas fa-plus"></i></div>
+                            
+                        </div>
+                        <!--Bovespa (com Índice, Opções, Fundos ETF e Imobiliários)¹S-->
+                        <div class="row align-items-center destacar">
+                            <div class="col-4  n3">
+                                Bovespa - Índices e ações  
+                                <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                <b><u>Level I (Sem Livro)</u></b></br>
+                                <b>Cód. Serv:</b> BC-150</br>
+                                <b>Fee:</b> ÑP: R$4,03 - P: R$120,71</br>
+                                <b><u>Level II (Com Livro)</u></b></br>
+                                <b>Cód. Serv:</b> BC-19082</br>
+                                <b>Fee:</b> ÑP: R$6,70 - P: R$174,36</br>
+                                <b>Demonstração: 30 dias"><b>RT</b></div>
+                            </div>
+                            <div class="col"  id="ad-c-b3-bov-agrotrade"><i class="fas fa-plus"></i></div>
+                            <div class="col"  id="ad-c-b3-bov-agro"><i class="fas fa-plus"></i></div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!--CBOT RT-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4  n2">
+                            <span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante do CME Group, possui contratos Futuros e Opções de Ações, Commodities Agrícolas e Taxas de Juros. Seus principais contratos são:<br>
+                                    <ul>
+                                        <li>SBC - Soja grão</li>
+                                        <li>COC - Milho</li>
+                                        <li>WHK - Trigo</li>
+                                        <li>NQC - E-Mini Nasdaq 100</li>
+                                        <li>RCC - Arroz em casca</li>
+                                        <li>ZQC - Fed Funds 30</li>
+                                        <li>ZDC - Dow Jones Futures</li>
+                                    </ul>">CBOT - Chicago Board of Trade </span>
+                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                        <b>Cód. Serv:</b> BC-550</br>
+                        <b>Fee:</b> U$142,02</br>
+                        <b><u>Snapshot</u></b></br>
+                        <b>Cód.Serv:</b> BC-1998</br>
+                        <b>Fee:</b> U$23,32</br>
+                        <b>Demonstração: 30 dias"><b>RT</b></div>
+                    </div>
+                    <div class="col"  id="ad-c-CBOT-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-CBOT-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                <!--CBOT Snapshot
+                <div class="row align-items-center destacar">
+                    <div class="col-4  px-lg-5" title="**** Cód.Serv: BC-1998| Custo Fee: U$23,32">CBOT</div>
+                    <div class="col"  id="ad-c-bmfi-trade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-bmfi-trade-aai"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-bmfi-conjuntura"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-bmfi-mercados-bs"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-bmfi-mercados"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-bmfi-news-bs"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-bmfi-news"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-bmfi-analises"><i class="fas fa-plus"></i></div>
+                </div> -->
+                <!--CME-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante do CME Group, possui contratos Futuros e Opções de Ações, Commodities Agrícolas, Taxas de Juros e Câmbio. Seus principais contratos são:<br>
+                            <ul>
+                                <li>EDC - Eurodollar</li>
+                                <li>SP5 - Índice S&P500 Futuro</li>
+                                <li>SPM - Mini S&P500</li>
+                                <li>NQC - E-Mini Nasdaq 100</li>
+                                <li>BRC - BRL/USD</li>
+                                <li>BPC - GBP/USD</li>
+                                <li>LCC - Live Cattle</li>
+                                <li>FCC - Feeder Cattle</li>
+                            </ul>">CME - Chicago Mercantile Exchange </span>
+                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                        <b>Cód. Serv:</b> BC-552</br>
+                        <b>Fee:</b> U$142,02</br>
+                        <b>Demonstração: 30 dias"><b>RT</b></div>
+                    </div>
+                    <div class="col"  id="ad-c-cme-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-cme-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                <!--Comex-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante do CME Group, possui contratos Futuros e Opções somente de Metais. Seus principais contratos são:<br>
+                        <ul>
+                            <li>GLN - Ouro Futuro</li>
+                            <li>QO - Mini contrato de ouro</li>
+                            <li>SIN - Prata Futuro</li>
+                            <li>QIN - Mini contrato de prata</li>
+                            <li>HGN - Cobre Futuro</li>
+                            <li>PLN - Platina Futuro</li>
+                            <li>PAN - Paládio Futuro</li>
+                        </ul>">COMEX - Commodity Exchange </span>
+                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                        <b>Cód. Serv:</b> BC-550</br>
+                        <b>Fee:</b> U$142,02</br>
+                        <b>Demonstração: 30 dias"><b>RT</b></div></div>
+                    <div class="col"  id="ad-c-comex-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-comex-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                <!--IPE-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4  n2">
+                            <span data-placement="right" data-toggle="tooltip" data-html="true" title="Possui contratos futuros e de opções para petróleo bruto , taxas de juros, derivativos de ações, gás natural, energia, carvão, emissões e commodities leves. Seus principais contratos são:<br>
+                                <ul>
+                                    <li>OIL - Crude Oil</li>
+                                    <li>WTI - Petróleo WTI Futuro</li>
+                                    <li>PTL - Gas Oil PTL</li>
+                                    <li>CCL - Cacau</li>
+                                    <li>RCC - Café robusta</li>
+                                    <li>SWL - Açúcar</li>
+                                    <li>WHL - Trigo</li>
+                                </ul>">ICE Europe (IPE) </span>
+                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                        <b>Cód. Serv:</b> BC-554</br>
+                        <b>Fee:</b> U$174,20</br>
+                        <b>Demonstração: 30 dias"><b>RT</b></div>
+                    </div>
+                    <div class="col"  id="ad-c-ipe-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-ipe-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                <!--NYBOT-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4  n2">
+                            <span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante da ICE Group, possui contratos futuros para Commodities Agrícolas, Índices de Ações, Metais, Taxas de Juros, Câmbio e Energia. Seus principais contratos são:<br>
+                                    <ul>
+                                        <li>SGN - Açúcar Bruto #11</li>
+                                        <li>CCN - Cacau</li>
+                                        <li>CFN - Café Arábica</li>
+                                        <li>OJN - Suco de Laranja, tipo A</li>
+                                    </ul>">ICE US (NYBOT) </span>
+                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                        <b>Cód. Serv:</b> BC-564</br>
+                        <b>Fee:</b> U$153,30</br>
+                        <b>Demonstração: 30 dias"><b>RT</b></div>
+                    </div>
+                    <div class="col"  id="ad-c-nybot-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-nybot-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                <!--Indices Mundiais-->
+                <div id="teste1" class="row align-items-center destacar" style="position: relative">
+                    <div class="col-4  n2"><i id="iconCIndices-0bagro" class="fas fa-angle-right"></i>&nbsp;<a id="CotIndN2" onclick="iconCIndices()"class="text-decoration-none" data-toggle="collapse" title="Índices das principais bolsas de valores no mundo como Nasdaq, Frankfurt, Tóquio, Londres, México, Xangai, entre outros." href="#c-indices-collapse"><b>Índices Mundiais</b></a> <i id="iconCIndices-1bagro" class="far fa-clock"></i> <div id="iconCIndices-2bagro" class="endofday"><b>EoD</b></div></div> 
+                    <div class="col"  id="ad-c-indicesMundi-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-indicesMundi-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                <div class="collapse" id="ad-c-indices-collapse">
+                    <div>
+                        <!--Europa-->
+                        <div class="row align-items-center destacar">
+                            <div class="col-4  n3"><i id="iconAdCIndEuropa-0bagro" class="fas fa-angle-right"></i>&nbsp;<a id="AdCindEuroN3" onclick="iconAdCIndEuropa()"class="text-decoration-none" data-toggle="collapse"  href="#ad-c-ind-euro-collapse"><b>Europa</b></a> <div class="realtime nprint" id="iconAdCIndEuropa-1bagro" data-placement="right" data-toggle="tooltip" data-html="true" title=""><b>RT</b></div></div>
+                            <div class="col"  id="ad-c-ind-euro-agrotrade"><i class="fas fa-plus"></i></div>
+                            <div class="col"  id="ad-c-ind-euro-agro"><i class="fas fa-plus"></i></div>
+                            
+                        </div>
+                        <div class="collapse" id="ad-c-ind-euro-collapse">
+                            <div>
+                                <!--Deutsche Boerse Indices-->
+                                <div class="row align-items-center destacar">
+                                    <div class="col-4  n4">
+                                        Deutsche Boerse Indices 
+                                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                        <b>Cód. Serv:</b> BC-18920</br>
+                                        <b>Fee:</b> ÑP: U$1,53- P: U$14,85</br>
+                                        <b>Demonstração: Não Disponível"><b>RT</b></div>
+                                    </div>
+                                    <div class="col"  id="ad-c-ind-euro-deutsche-agrotrade"><i class="fas fa-plus"></i></div>
+                                    <div class="col"  id="ad-c-ind-euro-deutsche-agro"><i class="fas fa-plus"></i></div>
+                                    
+                                </div>
+                                <!--FTSE Index Values-->
+                                <div class="row align-items-center destacar">
+                                    <div class="col-4  n4">
+                                        FTSE Index Values 
+                                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                        <b>Cód. Serv:</b> BC-2232</br>
+                                        <b>Fee:</b> U$58,78</br>
+                                        <b>Demonstração: 30 dias"><b>RT</b></div>
+                                    </div>
+                                    <div class="col"  id="ad-c-ind-euro-ftse-agrotrade"><i class="fas fa-plus"></i></div>
+                                    <div class="col"  id="ad-c-ind-euro-ftse-agro"><i class="fas fa-plus"></i></div>
+                                    
+                                </div>
+                                <!--NYSE Euronext Indices-->
+                                <div class="row align-items-center destacar">
+                                    <div class="col-4  n4">
+                                        NYSE Euronext Indices 
+                                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                        <b>Cód. Serv:</b> BC-18919</br>
+                                        <b>Fee:</b> U$33,24</br>
+                                        <b>Demonstração: 30 dias"><b>RT</b></div></div>
+                                    <div class="col"  id="ad-c-ind-euro-euronext-agrotrade"><i class="fas fa-plus"></i></div>
+                                    <div class="col"  id="ad-c-ind-euro-euronext-agro"><i class="fas fa-plus"></i></div>
+                                    
+                                </div>
+                                <!--Madrid - IBEX Indice-->
+                                <div class="row align-items-center destacar">
+                                    <div class="col-4  n4">
+                                        Madrid - IBEX Indice 
+                                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                        <b>Cód. Serv:</b> BC-19471</br>
+                                        <b>Fee:</b> U$13,83</br>
+                                        <b>Demonstração: 15 dias"><b>RT</b></div>
+                                    </div>
+                                    <div class="col"  id="ad-c-ind-euro-madrid-agrotrade"><i class="fas fa-plus"></i></div>
+                                    <div class="col"  id="ad-c-ind-euro-madrid-agro"><i class="fas fa-plus"></i></div>
+                                    
+                                </div>
+                                <!--Swiss Exchange Indices-->
+                                
+                            </div>
+                        </div>
+                        
+                        <!--USA-->
+                        <div class="row align-items-center destacar">
+                            <div class="col-4  n3"><i id="iconAdCIndUSA-0bagro" class="fas fa-angle-right"></i>&nbsp;<a id="AdCindUSAN3" onclick="iconAdCIndUSA()"class="text-decoration-none" data-toggle="collapse" href="#ad-c-ind-usa-collapse"><b>USA</b></a> <div class="realtime nprint" id="iconAdCIndUSA-2bagro" data-placement="right" data-toggle="tooltip" data-html="true" title=""><b>RT</b></div></div>
+                            <div class="col"  id="ad-c-ind-usa-agrotrade"><i class="fas fa-plus"></i></div>
+                            <div class="col"  id="ad-c-ind-usa-agro"><i class="fas fa-plus"></i></div>
+                            
+                        </div>
+                        <div class="collapse" id="ad-c-ind-usa-collapse">
+                            <div>
+                                <!--CBOE Indexes-->
+                                <div class="row align-items-center destacar">
+                                    <div class="col-4  n4">
+                                        CBOE Indexes 
+                                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                        <b>Cód. Serv:</b> BC-2231</br>
+                                        <b>Fee:</b> U$4,20</br>
+                                        <b>Demonstração: 30 dias"><b>RT</b></div>
+                                    </div>
+                                    <div class="col"  id="ad-c-ind-usa-cboe-agrotrade"><i class="fas fa-plus"></i></div>
+                                    <div class="col"  id="ad-c-ind-usa-cboe-agro"><i class="fas fa-plus"></i></div>
+                                    
+                                </div>
+                                 
+                                <!--Nasdaq Índices-->
+                                <div class="row align-items-center destacar">
+                                    <div class="col-4  n4">
+                                        Nasdaq Indexes 
+                                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                        <b>Cód. Serv:</b> BC-2230</br>
+                                        <b>Fee:</b> U$7,00</br>
+                                        <b>Demonstração: Não Disponível"><b>RT</b></div>
+                                    </div>
+                                    <div class="col"  id="ad-c-ind-usa-nasdaqind-agrotrade"><i class="fas fa-plus"></i></div>
+                                    <div class="col"  id="ad-c-ind-usa-nasdaqind-agro"><i class="fas fa-plus"></i></div>
+                                    
+                                </div>
+                                <!--Nasdaq Índices-->
+                                <div class="row align-items-center destacar">
+                                    <div class="col-4  n4">
+                                        NYSE Global Index Feeds - GIFS 
+                                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                        <b>Cód. Serv:</b> BC-14160</br>
+                                        <b>Fee:</b> U$38,61</br>
+                                        <b>Demonstração: 30 dias"><b>RT</b></div>
+                                    </div>
+                                    <div class="col"  id="ad-c-ind-usa-gifs-agrotrade"><i class="fas fa-plus"></i></div>
+                                    <div class="col"  id="ad-c-ind-usa-gifs-agro"><i class="fas fa-plus"></i></div>
+                                    
+                                </div>
+                                <!--CME S&P Indices -->
+                                <div class="row align-items-center destacar">
+                                    <div class="col-4  n4">
+                                            <span  data-placement="right" data-toggle="tooltip" data-html="true" title="Informações em tempo real dos benchmarks S&P500 e S&P100 da Standard & Poor’s, além de outros índices setorizados, por blocos mundiais e países, totalizando mais de 2.400 ativos.">S&P Indices </span>
+                                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                        <b>Cód. Serv:</b> BC-2228</br>
+                                        <b>Fee:</b> U$4,89</br>
+                                        <b>Demonstração: 30 dias"><b>RT</b></div></div>
+                                    <div class="col"  id="ad-c-ind-usa-sp-agrotrade"><i class="fas fa-plus"></i></div>
+                                    <div class="col"  id="ad-c-ind-usa-sp-agro"><i class="fas fa-plus"></i></div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                 <!--JP Morgan (Risco País)-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4  n2">
+                        <span data-placement="right" data-toggle="tooltip" data-html="true" title="O chamado risco país reflete a percepção de segurança que os investidores externos têm em relação a um país. Esse risco é medido pelo número de pontos percentuais de juros que determinado governo tem de pagar a mais que os Estados Unidos para conseguir empréstimos no exterior. É calculado pelo banco J.P. Morgan tanto para o Brasil quanto para México, Argentina, Rússia, entre outras economias emergentes.">JP Morgan (Risco País) </span>
+                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                        <b>Cód. Serv:</b> BC-2228</br>
+                        <b>Custo:</b> U$99,75</br>
+                        <b>Demonstração: Não Disponível"><b>RT</b></div>
+                    </div>
+                    <div class="col"  id="ad-c-jpmorgan-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-jpmorgan-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                <!--Latibex-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4  n2">
+                            <span data-placement="right" data-toggle="tooltip" data-html="true" title="A Bolsa de Madrid foi criada em 1831 e hoje é um importante centro financeiro na Europa, com negociação de ações, certificados de empresas latinoamericanas (Latibex), ETFs, Warrants e Fundos de Investimento.">Latibex - Bolsa de Madri </span>
+                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                        <b>Cód.Serv:</b> BC-2064</br>
+                        <b>Fee:</b> US$10,42</br>
+                        <b>Demonstração: Não Disponível"><b>RT</b></div>
+                    </div>
+                    <div class="col"  id="ad-c-latibex-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-latibex-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                <!--LME - Metais-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4  n2">
+                        <span data-placement="right" data-toggle="tooltip" data-html="true" title="A London Stock Exchange, LME, é considerada o centro de liquidez de metais. Os preços gerados 24 horas por dia em suas três plataformas de negociação são referência mundial para este mercado.">LME - Metais </span>
+                        <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                        <b>Delay:</b> 30 min <br/>
+                        <b>Cód.Serv:</b> BC-1339</br>
+                        <b>Fee:</b> US$37,06</br>
+                        <b>Demonstração: 30 dias"></i> 
+                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                        <b>Cód.Serv:</b> BC-558</br>
+                        <b>Fee:</b> US$141,05</br>
+                        <b>Demonstração: 30 dias"><b>RT</b></div>
+                    </div>
+                    <div class="col"  id="ad-c-lme-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-lme-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                <!--Markit CDS - Soberando Corporativo-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4  n2">
+                        <span data-placement="right" data-toggle="tooltip" data-html="true" title="CDS é um instrumento de crédito (derivativo) de renda fixa, negociado em OTC (mercado de balcão) utilizado para operações de Hedge e/ou arbitragem contra risco de inadimplência.<br>O conteúdo de CDS Corporativo/Soberano contempla informações de CDS para as principais empresas brasileiras e os principais países do mundo.">Markit CDS - Soberando Corporativo </span>
+                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                        <b>Cód.Serv:</b> BC-10479</br>
+                        <b>Custo:</b> US$100,00</br>
+                        <b>Demonstração: 10 dias"><b>RT</b></div></div>
+                    <div class="col"  id="ad-c-sobcorp-agrotrade"><i class="fas fa-times"></i></div>
+                    <div class="col"  id="ad-c-sobcorp-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                <!--Nasdaq-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4 n2">
+                            <span data-placement="right" data-toggle="tooltip" data-html="true" title="A Nasdaq faz parte do grupo NASDAQ OMX, que conta com 26 mercados,  3 clearings e 5 centrais depositárias espalhadas nos 6 continentes. O grupo trabalho com múltiplos asset classes incluindo ações, derivativos, renda fixa, commodities e produtos estruturados. São mais de 3.400 empresas listadas em 35 países, diversas soluções de tecnologia e pós-trading , além dos mais de 40.000 índices em tempo real.">Nasdaq - Ações </span>
+                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                        <b>Cód.Serv:</b> BC-7059</br>
+                        <b>Fee:</b> ÑP:U$1,71 - P:US$40,29</br>
+                        <b>Demonstração: Não Disponível"><b>RT</b></div>
+                    </div>
+                    <div class="col"  id="ad-c-nasdaq-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-nasdaq-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                <!--NYMEX-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4  n2">
+                        NYMEX 
+                        <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                        <b>Cód.Serv:</b> BC-562</br>
+                        <b>Fee:</b> U$142,02</br>
+                        <b>Demonstração: 30 dias"><b>RT</b></div>
+                    </div>
+                    <div class="col"  id="ad-c-nymex-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-nymex-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                <!--NYSE-->
+                <div class="row align-items-center destacar">
+                    <div class="col-4  n2"><i id="iconAdCNyse-0bagro" class="fas fa-angle-right"></i>&nbsp;<a id="AdCotNyseN2" onclick="iconAdCNyse()"class="text-decoration-none" data-toggle="collapse"  href="#ad-c-nyse-collapse"><b>Nyse</b></a> <div class="realtime nprint" id="iconAdCNyse-1bagro" data-placement="right" data-toggle="tooltip" data-html="true" title=""><b>RT</b></div></div>
+                    <div class="col"  id="ad-c-nyse-agrotrade"><i class="fas fa-plus"></i></div>
+                    <div class="col"  id="ad-c-nyse-agro"><i class="fas fa-plus"></i></div>
+                    
+                </div>
+                <div class="collapse" id="ad-c-nyse-collapse">
+                    <div>
+                        <div class="row align-items-center destacar">
+                            <div class="col-4  n3">
+                                Nyse 
+                                <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                <b>Cód.Serv:</b> BC-572</br>
+                                <b>Fee:</b> U$68,42</br>
+                                <b>Demonstração: 30 dias"><b>RT</b></div>
+                            </div>
+                            <div class="col"  id="ad-c-nyse-bolsa-agrotrade"><i class="fas fa-plus"></i></div>
+                            <div class="col"  id="ad-c-nyse-bolsa-agro"><i class="fas fa-plus"></i></div>
+                            
+                        </div>
+                        <div class="row align-items-center destacar">
+                            <div class="col-4  n3">Nyse Amex 
+                                <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                <b>Cód.Serv:</b> BC-13843</br>
+                                <b>Fee:</b> U$34,97</br>
+                                <b>Demonstração: 30 dias"><b>RT</b></div>
+                            </div>
+                            <div class="col"  id="ad-c-nyse-amex-agrotrade"><i class="fas fa-plus"></i></div>
+                            <div class="col"  id="ad-c-nyse-amex-agro"><i class="fas fa-plus"></i></div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>       
+</div>
+
+
 <div class="content print">
     <ul>
         <li class="alinha-vert mr-2"><b>Legenda:</b></li>
@@ -1947,7 +3317,7 @@
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 {%block scripts%}
-<script type="text/javascript" src="../static/js/ppp.js"></script>
-<script type="text/javascript" src="../static/js/ppp2.js"></script>
+<script type="text/javascript" src="../static/js/comparativo.js"></script>
+<script type="text/javascript" src="../static/js/comparativo2.js"></script>
 <script type="text/javascript" src="../static/js/teste.js"></script>
 {%endblock%}

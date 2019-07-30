@@ -1,4 +1,4 @@
-{% extends 'base.html'%}
+{% extends 'base1.html'%}
 {% block title %}: FAQ{% endblock %}
 
 {%block css%}
@@ -20,11 +20,11 @@
 <div class="jumbotron jumbotron-fluid bg-primary">
     <div class="container text-center">
         <h1 style="color: white">Perguntas Frequentes</h1>
-        <form method="POST" class="d-none form col-md-6 offset-md-3" action="/searchfaq">    
+        <form method="POST" class="form col-md-6 offset-md-3" action="/FAQ">    
             <div class="input-group mt-5">
                 <input type="text" name="contentSearch" class="form-control" placeholder="Buscar perguntas..." aria-label="Buscar perguntas..." aria-describedby="button-addon2">
                 <div class="input-group-append">
-                    <input class="btn btn-secondary" type="submit" id="button-addon2" value="Buscar"/>
+                    <input class="btn btn-outline-secondary" type="submit" id="button-addon2" value="Buscar"/>
                 </div>
             </div>
         </form>
@@ -36,269 +36,61 @@
     <div class="container-fluid">
         <div class="accordion mb-5" id="accordionExample">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
-                        Quais as novidades da nova versão 6.9.4.5 do Broadcast+?
-                    </button>
-                    <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ol>
-                                <li>
-                                    Add-In Broadcast - Excel
-                                    <ul>
-                                        <li> Nova função que permite consultar a LISTA DOS EVENTOS CORPORATIVOS (como dividendos, JCP, SPUT, INPUT e outros) das empresas listadas na B3, NYSE E NASDAQ, assim como os fundos imobiliários.</li>
-                                        <li> Consulta dos filtros da função de SÉRIES HISTÓRICAS mais rápido e prático.</li>
-                                        <li> COMPOSIÇÃO DA CARTEIRA DOS ÍNDICES DA BOVESPA, ou em quais índices os ativos fazem parte, como os respectivos pesos do dia.</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Broadcast Chat
-                                    <ul>
-                                        <li>NOVO LAYOUT, com visualização das conversar em janelas únicas ou de modo agrupado.</li>
-                                        <li>NOVO APLICATIVO para troca de mensagens com a comunidade Broadcast+ no seu SMARTPHONE OU TABLET.</li>
-                                    </ul>
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                        Quais fontes de cotações fazem parte do Broadcast+?
-                    </button>
-                    <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul>
-                                <li><h6>Bovespa - <small>Ações, Fundos, Índices e Renda Fixa</small></h6></li>
-                                <li><h6>BM&F - <small>Câmbio, Commodities e Fundos</small></h6></li>
-                                <li><h6>ICE Europe (IPE) - <small>Commodities</small></h6></li>
-                                <li><h6>ICE US (Nybot) - <small>Câmbio, Commodities e Índices</small></h6></li>
-                                <li><h6>ICE Europe (IPE) - <small>Câmbio, Commodities e Índices</small></h6></li> 
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                        Quais as principais formas de entrega de conteúdo?
-                    </button>
-                    <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
-                        <div class="card-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                        Contribuidores Broadcast: Como se tornar e tipos de contribuição?
-                    </button>
-                    <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p>Para se tornar um Contribuidor Broadcast, o cliente deverá  enviar um e-mail para marketdata.ae@estadao.com  informando os dados da Instituição, do(s) responsável(is) pela contribuição e quais conteúdos deseja  contribuir. Em caso de contribuição de preços é necessário informar ainda, quais serão os ativos e se haverá atualização fora do horário comercial (09hs às 18hrs).</p>
-                            <p>Atualmente existem 2 modos para o  envio das contribuições:</p>
-                            <ul>
-                                <li>Website Contribuidores - Para contribuição de Textos, PDFs e Vídeos.</li>
-                                <li>Broadcast Link - Para contribuição de Preços via Excel.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-                        O que é o VIX?
-                    </button>
-                    <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordionExample">
-                        <div class="card-body">
-                            VIX (Volatility Index) foi criado pela Bolsa CBOE e reflete informações da volatilidade de mercado derivadas das expectativas contidas no índice  americano  S&P 500. Conhecido como o “índice do medo”, o VIX é considerado uma das ferramentas mais potentes para a mensuração do risco e do sentimento dos investidores.
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
-                        Qual é a diferença entre o Spot Moedas Mini e o Spot Moedas Full?
-                    </button>
-                    <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordionExample">
-                        <div class="card-body">
-                            SPOT MOEDAS MINI é uma página que contém mais de 150 ativos e que contempla as principais paridades de moedas do mundo, além dos ativos da Libor. Ao contratar o SPOT MOEDAS FULL, o cliente, além de ter acesso a todos o conteúdo  disponível na página SPOT MOEDAS MINI, também  acessa todas as paridades disponíveis  no Broadcast, totalizando mais de 2.000 ativos.
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
-                        Qual é a cobertura de metais no Broadcast?
-                    </button>
-                    <div id="collapse7" class="collapse" aria-labelledby="heading7" data-parent="#accordionExample">
-                        <div class="card-body">
-                            Cotações de contratos futuros negociados na COMEX e  LME, além de metais negociados no mercado balcão (OTC Metals), Índices Dow Jones e Índices S&P.
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
-                        Qual é a cobertura de projeção de câmbio no Broadcast?
-                    </button>
-                    <div id="collapse8" class="collapse" aria-labelledby="heading8" data-parent="#accordionExample">
-                        <div class="card-body">
-                            Pesquisa Focus, divulgada semanalmente pelo Banco Central do Brasil e disponível  no  noticioso AE News  às segundas-feiras e no Menu Indicadores-> Brasil-> Pesquisa Focus.
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
-                        O que é código genérico e como utilizar o símbolo   “+” no painel?
-                    </button>
-                    <div id="collapse9" class="collapse" aria-labelledby="heading9" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p>O código genérico é utilizado, geralmente, em contratos futuros com o objetivo de facilitar o acompanhamento nos vencimentos dos contratos. A estrutura do código genérico é composta pelo código do contrato +  o caractere “@” + número. Exemplo: Os contratos de dólar da BM&F possuem os códigos DOLM19, DOLN19, DOLQ19 e assim sucessivamente. Cada um destes ativos possuem um código genérico conforme segue:</p>
-                            <div class="row">
-                                <div class="col">
-                                    <table>
-                                        <tr>
-                                            <th>Ativo</th>
-                                            <th>Genérico</th>
-                                        </tr>
-                                        <tr>
-                                            <td>DOLM19</td>
-                                            <td>DOL@0</td>
-                                        </tr>
-                                        <tr>
-                                            <td>DOLN19</td>
-                                            <td>DOL@1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>DOLQ19</td>
-                                            <td>DOL@2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>DOLU19</td>
-                                            <td>DOL@3</td>
-                                        </tr>
-                                        <tr>
-                                            <td>DOLV19</td>
-                                            <td>DOL@4</td>
-                                        </tr>
-                                        <tr>
-                                            <td>DOLX19</td>
-                                            <td>DOL@5</td>
-                                        </tr>
-                                        <tr>
-                                            <td>DOLZ19</td>
-                                            <td>DOL@6</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="col-8 text-center">
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <p>Quando o DOL@0 vencer, automaticamente o sistema fará a “rolagem” dos demais contratos transformando o genérico do DOLN19 em DOL@0 e assim sucessivamente. Esta funcionalidade auxilia os  usuários no controle dos ativos e na manutenção de suas planilhas.</p>
-                                </div>
-                                <div class=col-2> </div>
-                            </div>
-                                
-                            <br>
-                            
-                            <p>A função “+” dentro dos painéis do Broadcast   permite ao usuário listar  todos os ativos relacionados  a uma ação. Exemplo: Se um usuário deseja ter uma lista de todos os ativos que comecem com o termo “PETR”,  ele poderá digitar, dentro do painel,  PETR+.</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
-                        O que é o ICPBQ? 
-                    </button>
-                    <div id="collapse10" class="collapse" aria-labelledby="heading10" data-parent="#accordionExample">
-                        <div class="card-body">
-                            O Índice de Crédito Privado Broadcast Quantum (ICPBQ), lançado pelo Broadcast em parceria com a Quantum Finance, é um benchmark na indústria de fundos e o primeiro desta categoria, essencial para acompanhar os investimentos em ativos com risco de crédito privado.
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse11" aria-expanded="false" aria-controls="collapse11">
-                        Quais sãos os  Termômetros Broadcast  e como participar?  
-                    </button>
-                    <div id="collapse11" class="collapse" aria-labelledby="heading10" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p><b>O Termômetro Broadcast Bolsa é uma</b> sondagem semanal do Broadcast+ com o objetivo de identificar a visão dos agentes de mercado em relação à tendência do Ibovespa – se em alta, estável ou baixa. Os participantes recebem  um e-mail às quintas-feiras solicitando a indicação sobre a tendência do Ibovespa para a próxima semana,  o retornam com as opiniões   em 24 horas e  os dados  são apurados e divulgados no Broadcast+ no dia seguinte (sextas-feiras). A apuração das respostas, assim como a manutenção das informações captadas,  são de responsabilidade da área de Dados do Broadcast, que não  divulga  as respostas individuais. Para participar, os analistas, operadores de mercados e gestores de carteiras  devem  solicitar o cadastro  através do e-mail para <u>projeções.ae@estadao.com</u></p>
-                            <p><b>O Termômetro Broadcast Banco Central e Ministério da Economia é uma</b> pesquisa semanal sobre a satisfação dos agentes do mercado em relação ao Banco Central do Brasil e ao Ministério da Economia. O objetivo é aferir, a cada mês, o grau de satisfação com a gestão das políticas fiscal, monetária e cambial, além da eficácia da comunicação do Ministério da Fazenda e do Banco Central do Brasil.  Participam bancos, corretoras, consultorias, Assets, instituições de ensino, departamentos econômicos de empresas e outros com histórico de realização periódica de projeções de indicadores econômicos. Para a instituição efetuar o cadastro no termômetro é necessário enviar um e-mail para <u>projeções.ae@estadao.com</u></p>
-                            
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse12" aria-expanded="false" aria-controls="collapse12">
-                        O que é o Ranking Broadcast Projeções e como participar?
-                    </button>
-                    <div id="collapse12" class="collapse" aria-labelledby="heading12" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p><b>O Ranking Broadcast  Projeções é um</b> ranking anual da Agência Estado que premia as dez melhores instituições inscritas, de acordo com as projeções de sete indicadores econômicos enviados trimestralmente e ao longo do ano, à equipe de Dados do Broadcast.</p>
-                            <p>A premiação classifica as instituições  em duas categorias: Top Básico, que compõem as projeções dos indicadores IPCA, IGP-M, Taxa Selic e Dólar e Top Geral, que contempla, além dos indicadores do Top Básico, as projeções do Produto Interno Bruto, Balança Comercial e Relação Dívida/PIB.</p>
-                            <p>O Ranking Broadcast  Projeções permite a participação de Bancos, Corretoras, Consultorias, Assets, Instituições de Ensino e aquelas que periodicamente realizam projeções de indicadores econômicos.</p>
-                            <p>Para participar, a instituição deverá realizar um cadastro através do e-mail <u>projeções.ae@estadao.com</u></p>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse13" aria-expanded="false" aria-controls="collapse13">
-                        O que é o Ranking Broadcast Analista e como participar?
-                    </button>
-                    <div id="collapse13" class="collapse" aria-labelledby="heading13" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p><b>O Ranking Broadcast  Analistas</b> é um ranking anual da Agência Estado que premia os dez primeiros analistas que obtiveram as melhores rentabilidades em suas carteiras de ações e ainda, a melhor corretora. O ranking Broadcast Analistas é elaborado pela equipe de Dados do Broadcast, a partir dos relatórios de recomendações divulgados pelas corretoras no decorrer do ano, de todos os setores.</p>
-                            <p>É importante ressaltar que  os analistas participantes devem ter, obrigatoriamente, o CNPI – Certificado Nacional do Profissional de Investimento (APIMEC) e se casdastrarem  através do e-mail  <u>ranking.ae@estadao.com</u></p>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse14" aria-expanded="false" aria-controls="collapse14">
-                        Qual é a diferença entre o AE Taxas Mini e o AE Taxas?
-                    </button>
-                    <div id="collapse14" class="collapse" aria-labelledby="heading14" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <p>AE TAXAS MINI é uma página que contém mais de 80 ativos que contemplam os principais indicadores de inflação, PTAX, taxas do Banco Central do Brasil, BRENT e WTI. Ao contratar o AE TAXAS FULL, o cliente, além de ter acesso a todo o conteúdo disponível na página AE TAXAS MINI, também acessa todas as informações de renda fixa, câmbio, indicadores financeiros e macroeconômicos, captados pelo Broadcast e  totalizando mais de 29.000 ativos.</p>
-                        </div>
-                    </div>
-                </li>
+                {{html|safe}}
             </ul>
         </div>    
     </div>
     <!-- Button trigger modal -->
-    <div class="text-center fixed-faq">
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#pergunta">
-            <small>Não encontrou o que precisa? Clique aqui e faça uma pergunta!</small>
+    <div id="question" class="shadow text-center fixed-faq">
+        <button type="button" class="btn" data-toggle="modal" data-target="#pergunta">
+            <i class="fas fa-question-circle fa-2x"></i>
+            <p class="d-none"><small>Clique aqui <br>e Envie sua dúvida!</small></p>
         </button>
     </div>
 </section>
 
 <!-- Modal -->
 <div class="modal fade" id="pergunta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Faça uma pergunta?</h5>
-                    <!--
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                    -->
-                </div>
-                <form method="POST" action="/FAQ">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="email-contato" class="col-form-label">*E-mail para Contato:</label>
-                            <input type="text" class="form-control" id="email-contato" name="email-contato">
-                        </div>
-                        <div class="form-group">
-                            <label for="pergunta-text" class="col-form-label">*Pergunta:</label>
-                            <textarea class="form-control" id="pergunta-text" name="pergunta-text"></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <small>(*) Campos Obrigatórios</small>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-secondary">Enviar</button>
-                    </div>
-                </form>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Faça uma pergunta?</h5>
+                <!--
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+                -->
             </div>
+            <form method="POST" action="/FAQ">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="email-contato" class="col-form-label">*E-mail para Contato:</label>
+                        <input type="text" class="form-control" id="email-contato" name="email-contato">
+                    </div>
+                    <div class="form-group">
+                        <label for="pergunta-text" class="col-form-label">*Pergunta:</label>
+                        <textarea class="form-control" id="pergunta-text" name="pergunta-text"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <small>(*) Campos Obrigatórios</small>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                    <button id="Send" type="submit" class="btn btn-secondary" onclick="SucessSend()">Enviar</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
+
+<!--Alert Envio Sucesso-->
+<div id="sucesso" class="alert alert-success d-none">
+    <strong>Enviado com Sucesso!</strong> Assim que tivermos uma resposta, entraremos em contato.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{%endblock%}
+
+{%block scripts%}
+<script type="text/javascript" src="../static/js/faq.js"></script>
 {%endblock%}

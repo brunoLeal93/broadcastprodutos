@@ -8,7 +8,7 @@ class sendEmail:
     smtp_ssl_port = 465
     # username ou email para logar no servidor
     username = 'agenciaestado7@gmail.com'
-    password = 'Agencia02@2015'
+    password = 'Agencia03@2019'
 
     from_addr = username
     to_addrs = ['bruno.pereira@estadao.com']

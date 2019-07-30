@@ -1,9 +1,12 @@
-{%extends 'base.html'%}
+{%extends 'base1.html'%}
+{%block css %}
+<link rel="stylesheet" href="../static/css/bc-financeiro.css">
+{% endblock %}
 {% block title %}: BPRO Desktop{% endblock %}
 {%block content%}
     <!-- Jumbotrom -->
-    <div class="jumbotron jumbotron-fluid bg-primary">
-        <div class="container">
+    <div class="jumbotron jumbotron-fluid bg-financeiro">
+        <div class="container text-center">
             <h1>A melhor cobertura em tempo real do Mercado Financeiro</h1>
         </div>
     </div>
@@ -55,14 +58,14 @@
                                 </li>
                                 <li class="list-group-item">
                                     <h5>
-                                        FUNDOS <br/>
-                                        <small class="text-muted">Fundos ANBIMA e Fundos Bovespa.</small>
+                                        FUNDOS DE INVESTIMENTO <br/>
+                                        <small class="text-muted">Dados Anbima e Bovespa</small>
                                     </h5>
                                 </li>
                                 <li class="list-group-item">
                                     <h5>
                                         ÍNDICES <br/>
-                                        <small class="text-muted">Índices Mundiais, B3, CME, Dow Jones, Euronext, FTSE, ICE US, NASDAQ e NYSE GIFS.</small>
+                                        <small class="text-muted"> Bovespa (B3), Dow Jones, S&P, Euronext, FTSE, Deutsche Borse (DAX), Nasdaq e entre outros.</small>
                                     </h5>
                                 </li>
                                 <li class="list-group-item">
@@ -74,7 +77,7 @@
                                 <li class="list-group-item">
                                     <h5>
                                         TAXAS E INDICADORES <br/>
-                                        <small class="text-muted">Taxas Broadcast, JP Morgan e Contribuidores Broadcast.</small>
+                                        <small class="text-muted">Taxas Broadcast, Taxas de Banco Centrais e de Câmbio, e Indicadores Macroeconomicos do Brasil e do Mundo.</small>
                                     </h5>
                                 </li>
                             </ul>
@@ -217,7 +220,7 @@
                                                                 <a href="http://intranet/intranetae/uploads/BIP08_16_Fundos%20de%20Investimento.pdf">(BC-14166) Fundos de Investimento</a>
                                                             </li>
                                                         </ul>
-                                                        <small><a href="{{ url_for('.ppp', _anchor='cont-adc-pago') }}">Acessar lista completa de serviços comercializados avulsos.</a></small>
+                                                        <small><a href="{{ url_for('.comparativo', _anchor='cont-adc-pago') }}">Acessar lista completa de serviços comercializados avulsos.</a></small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -302,7 +305,7 @@
                                                                     <a href="http://intranet/intranetae/uploads/BIP08_16_Fundos%20de%20Investimento.pdf">(BC-14166) Fundos de Investimento</a>
                                                                 </li>
                                                             </ul>
-                                                            <small><a href="{{ url_for('ppp', _anchor='cont-adc-pago') }}">Acessar lista completa de serviços comercializados avulsos.</a></small>
+                                                            <small><a href="{{ url_for('comparativo', _anchor='cont-adc-pago') }}">Acessar lista completa de serviços comercializados avulsos.</a></small>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -391,7 +394,7 @@
                                                                     <a href="http://intranet/intranetae/uploads/BIP08_16_Fundos%20de%20Investimento.pdf">(BC-14166) Fundos de Investimento</a>
                                                                 </li>
                                                             </ul>
-                                                            <small><a href="{{ url_for('ppp', _anchor='cont-adc-pago') }}">Acessar lista completa de serviços comercializados avulsos.</a></small>
+                                                            <small><a href="{{ url_for('comparativo', _anchor='cont-adc-pago') }}">Acessar lista completa de serviços comercializados avulsos.</a></small>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -483,7 +486,7 @@
                                                                     <a href="http://intranet/intranetae/uploads/BIP08_16_Fundos%20de%20Investimento.pdf">(BC-14166) Fundos de Investimento</a>
                                                                 </li>
                                                             </ul>
-                                                            <small><a href="{{ url_for('ppp', _anchor='cont-adc-pago') }}">Acessar lista completa de serviços comercializados avulsos.</a></small>
+                                                            <small><a href="{{ url_for('comparativo', _anchor='cont-adc-pago') }}">Acessar lista completa de serviços comercializados avulsos.</a></small>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -548,7 +551,7 @@
                                                                     <a href="http://intranet/intranetae/uploads/BIP03_14_Dados%20de%20Transacoes.pdf">(BC-15171) Deal Data - TTR</a>
                                                                 </li>
                                                             </ul>
-                                                            <small><a href="{{ url_for('ppp', _anchor='cont-adc-pago') }}">Acessar lista completa de serviços comercializados avulsos.</a></small>
+                                                            <small><a href="{{ url_for('comparativo', _anchor='cont-adc-pago') }}">Acessar lista completa de serviços comercializados avulsos.</a></small>
                                                         </div>
                                                     </div>
                                                 </div>

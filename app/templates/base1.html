@@ -28,13 +28,18 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <a class="nav-link primary text-center home" href="{{url_for('home')}}">
-            <i class="fas fa-home"></i><br/>Home
+        <a class="nav-link home" href="{{url_for('home')}}">
+            <img src="../static/img/LOGO-BC-Institucional.png" height="35" style="margin-top: -25px;" width="auto" alt="Broadcast Comercial">
+            <!--<i class="fas fa-home"></i><br/>Home -->
         </a>
         <ul class="navbar-nav menu teste">
+            <li class="nav-item">
+                <a id="logo-bc-home" class="nav-link text-secondary" href="{{url_for('home')}}"><b>HOME</b></a>
+            </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="../static/img/LOGO-BC-Financeiro.png" height="40" width="auto" alt="Broadcast Financeiro">
+                <a id="logo-bc-financeiro" class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <b>FINANCEIRO</b>
+                    <!--<img src="../static/img/LOGO-BC-Financeiro.png" height="40" width="auto" alt="Broadcast Financeiro">-->
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{url_for('bpro_terminal')}}">Desktop</a>
@@ -43,40 +48,39 @@
                 </div>
             </li>
             
-            <li class="nav-item dropdown" style="opacity: 0.3; filter: alpha(opacity=30);">
-                <a class="nav-link dropdown-toggle disabled" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <figure id="logo-bc-agro">
-                        <img  src="../static/img/LOGO-BC-Agro.png" height="40" width="auto" alt="Broadcast Agro">
-                        <figcaption>Em Breve</figcaption>
-                    </figure>
+            <li class="nav-item dropdown">
+                <a  id="logo-bc-agro" class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <b>AGRONEGÓCIO</b>
                 </a>
-                <!--div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Desktop</a>
-                    <a class="dropdown-item" href="#">Web</a>
-                    <a class="dropdown-item" href="#">Wallboard</a>
-                </div-->
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{url_for('bagro_terminal')}}">Desktop</a>
+                    <a class="dropdown-item disabled" href="#">Web (Em Breve)</a>
+                    <a class="dropdown-item disabled" href="#">Wallboard (Em Breve)</a>
+                </div>
             </li>
             <li class="nav-item" style="opacity: 0.3; filter: alpha(opacity=30);">
-                <a class="nav-link disabled" href="#">
+                <a class="nav-link text-primary disabled" href="#">
                     <figure id="logo-bc-pol">
-                        <img  src="../static/img/LOGO-BC-Político.png" height="41" width="auto" alt="Broadcast Agro">
+                        <b>POLÍTICO</b>
+                        <!--<img  src="../static/img/LOGO-BC-Político.png" height="41" width="auto" alt="Broadcast Agro">-->
                         <figcaption>Em Breve</figcaption>
                     </figure>
                 </a>
             </li>
             <li class="nav-item" style="opacity: 0.3; filter: alpha(opacity=30);">
-                <a class="nav-link disabled" href="#">
+                <a class="nav-link  text-primary disabled" href="#">
                     <figure id="logo-bc-tr">
-                        <img  src="../static/img/LOGO-BC-TradingNews.png" height="40" width="auto" alt="Broadcast Agro">
+                        <b>TRADING NEWS</b>
+                        <!--<img  src="../static/img/LOGO-BC-TradingNews.png" height="40" width="auto" alt="Broadcast Agro">-->
                         <figcaption>Em Breve</figcaption>
                     </figure>
                 </a>
             </li>
             <li class="nav-item dropdown" style="opacity: 0.3; filter: alpha(opacity=30);">
-                <a class="nav-link dropdown-toggle mt-1 disabled" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-primary disabled" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     
                     <figure id="logo-bc-sol">
-                        <h5 class="mt-1"><b>SOLUÇÕES</b></h5>
+                        <b>SOLUÇÕES</b>
                         <figcaption>Em Breve</figcaption>
                     </figure>
                     

@@ -1,4 +1,4 @@
-/* JS dos Checkbox */
+/* JS dos Checkbox - BPRO - Terminal */
 
 $('#ckMostraPrecos').click(function(){
     var ckPrecos = document.getElementById('ckMostraPrecos');
@@ -50,7 +50,7 @@ $('#ckMostraPrecos').click(function(){
 })
 
 
-$('#checkAll').click(function(){
+$('#checkAll').click(function(){   
     var chkAll = document.getElementById('checkAll');
     var ckTrade = document.getElementById('trade');
     var ckConjuntura  = document.getElementById('conjuntura');
@@ -1908,3 +1908,6 @@ $('#analises').click(function() {
     };
 
 });
+
+
+/* JS dos Checkbox - BAGRO - Terminal */

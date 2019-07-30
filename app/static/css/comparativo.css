@@ -15,12 +15,21 @@ b{
     color: black;
 }
 
-.fixar {
-    position:fixed;
-    top: 0px;
-    background: white;
-    margin-top: 0px !important;
-    z-index: 10;
+a#logo-bc-home{
+    color: var(--primary) !important;
+  }
+  
+a#logo-bc-home:hover{
+color: var(--secondary) !important;
+}
+
+.fixed-head-conteudos {
+    background-color: white;
+    position: fixed;
+    top: 70px;
+    right: 0;
+    left: 0;
+    z-index: 1030;
 }
 
 div .tooltip-inner {
@@ -100,7 +109,8 @@ a.change-css{
 */
 
 .col            {text-align: center;}
-#ppp .row            {border-bottom: 1px solid #dedede}
+#bpro .row            {border-bottom: 1px solid #dedede}
+#bagro .row            {border-bottom: 1px solid #dedede}
 i.fa-times      {color: #cd2232;}
 i.fa-check      {color: green;}
 i.fa-angle-right {color: #007bff;}

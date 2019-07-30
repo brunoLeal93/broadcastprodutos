@@ -1,7 +1,7 @@
-{%extends 'base1.html'%}
+{%extends 'base.html'%}
 {% block title %}: Cotação{% endblock %}
 {%block css%}
-<link rel="stylesheet" href="../static/css/cotacao.css">
+<link rel="stylesheet" href="../static/css/noticias.css">
 {%endblock%}
 {%block content%}
     <!-- Modal 
@@ -108,17 +108,17 @@
     </div>
 -->
     <!-- Jumbotrom -->
-    <div class="jumbotron jumbotron-fluid bg-primary">
+    <div class="jumbotron jumbotron-fluid bg-primary" id="topo">
         <div class="container text-center">
-            <h3 style="color: white">Market Data</h3>
-            <form method="POST" class="form col-md-6 offset-md-3" action="/cotacao" name="Busca">    
+            <h3 style="color: white">Noticiosos</h3>
+            <!--
+            <form method="POST" class="form col-md-6 offset-md-3" action="/noticias" name="Busca">    
                 <div class="input-group mt-5">
                     <input type="text" name="contentSearch" id="contentSearch" class="form-control typeahead" data-provide="typeahead" autocomplete="off" placeholder="Busque por Mercadoria, Fonte ou Mercado" aria-label="Buscar em nossas cotações..." aria-describedby="button-addon2">
                     <div class="input-group-append">
                         <input class="btn btn-secondary" type="submit" id="button-addon2" value="Buscar"/>
                     </div>
                 </div>
-                <!--
                 <button id="btn-Filtros" type="button" class="btn btn-secondary mt-2" data-toggle="modal" data-target="#filtrosModal">
                     Filtros
                 </button>
@@ -132,59 +132,70 @@
 
     </section>
     <!-- Section Derivativos -->
-    {%if html == "Não Encontrou":%}
-    <section class="jumbotron bg-light">
-        <div class="container text-center">
-            <h2>Nada Localizado! Por favor, tente novamente.</h2>
-        </div>
-    </section>
-    {%elif html != '':%}
-    <section class="jumbotron bg-light">
-        <div class="title"><h3 style="color: black" class="text-center mb-4">Contratos Derivativos</h3></div>
-        <div class="container text-center">
-            {{html|safe}}
-        </div>
-    </section>
-    {%else:%}
-    <section class="jumbotron bg-light">
-        <div class="container">
-            <!--h2 class="text-center">Realize uma busca!</h2-->
-            <h4>Possibilidades de Busca: <i class="fas fa-search text-secondary ml-3"></i></h4>
-            <ol type="1" style="font-size: 20px">
-                <li>Por uma ou mais Mercadorias:
-                    <ul class="ml-3">
-                        <li>Ex: Soja Milho café</li>
-                    </ul>
-                </li>
-                <li>Por Mercadoria e Mercado Específico:
-                    <ul class="ml-3">
-                        <li>Ex: Algodão Futuro</li>
-                    </ul>
-                </li>
-                <li>Por Mercadoria e Fonte Específica:
-                    <ul class="ml-3">
-                        <li>Ex: Arroz IPE</li>
-                    </ul>
-                </li>
-                <li>Por Fonte e Mercado Específico:
-                    <ul class="ml-3">
-                        <li>Ex: BMF Opção</li>
-                    </ul>
-                </li>
-                <li>Por Mercadoria, Fonte e Mercado Específico:
-                    <ul class="ml-3">
-                        <li>Ex: Açúcar Nybot Futuro</li>
-                    </ul>
-                </li>
 
-            </ol>
+    <section class="jumbotron bg-light" id="listaCadernos">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <ul>
+                        <li><a href="#aenews">AE News</a></li>
+                        <li><a href="#empset">Empresas e Setores</a></li>
+                        <li>Conjuntura e Finanças</li>
+                        <li>Conjuntura e Negócios</li>
+                    </ul>
+                </div>
+                <div class="col">
+                        <ul>
+                            <li>Agro News</li>
+                            <li>Agro News Fast</li>
+                            <li>Conjuntura e Finanças</li>
+                            <li>Conjuntura e Negócios</li>
+                        </ul>
+                    </div>
+            </div>
         </div>
+        <div class="row mt-5" id="aenews">
+            <div class="title"><h3 class="mb-4">AE News</h3></div>
+            <div class="row">
+                <div class="container-fluid">
+                    <p>Serviço líder no mercado nacional, que traz notícias em tempo real dos principais
+                            acontecimentos políticos, econômicos e empresariais, com intensa cobertura dos mercados de ações, dólar,
+                            juros, títulos públicos e fatos relevantes para os negócios. Acompanha também os indicadores econômicos,
+                            inflação e cenário internacional.</p>
+                    <p>Informações exclusivas sobre os bastidores e antecipação dos fatos que irão impactar a economia, o mercado
+                            financeiro e as instituições, elaboradas a partir de entrevistas com executivos, economistas, analistas de mercado,
+                            autoridades do governo federal e parlamentares;</p>
+                    <p>Entrevistas multimídias exclusivas ao vivo, com executivos, autoridades do governo federal e parlamentares sobre
+                            assuntos de interesse do mercado financeiro;</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="row mt-3" id="emset">
+                <div class="title"><h3 class="mb-4">Empresa e Setores</h3></div>
+                <div class="row">
+                    <div class="container-fluid">
+                        <p>Serviço líder no mercado nacional, que traz notícias em tempo real dos principais
+                                acontecimentos políticos, econômicos e empresariais, com intensa cobertura dos mercados de ações, dólar,
+                                juros, títulos públicos e fatos relevantes para os negócios. Acompanha também os indicadores econômicos,
+                                inflação e cenário internacional.</p>
+                        <p>Informações exclusivas sobre os bastidores e antecipação dos fatos que irão impactar a economia, o mercado
+                                financeiro e as instituições, elaboradas a partir de entrevistas com executivos, economistas, analistas de mercado,
+                                autoridades do governo federal e parlamentares;</p>
+                        <p>Entrevistas multimídias exclusivas ao vivo, com executivos, autoridades do governo federal e parlamentares sobre
+                                assuntos de interesse do mercado financeiro;</p>
+                    </div>
+                </div>
+            </div>
+
+        
+        
     </section>
-    {%endif%}
+    
 {%endblock%}
 
 {%block scripts%}
 
-<script src="../static/js/cotacao.js"></script>
+<script src="../static/js/noticias.js"></script>
 
 {%endblock%}

@@ -1,0 +1,36 @@
+Tarefas
+    1º Comparativo:
+        - Impressão:
+            1º No modo "Expandir Tudo", corta parte do FTSE nos Conteúdos Pagos;
+            2º Iserir no rodapé informações sobre o compartilhamento do conteúdo;
+        
+        - Novos Pacotes:
+            1º Inserir Pacotes Agro;
+        
+        - Discutir:
+            1º Os Pacotes Wallboard deverão ser inclusos? Se sim, como devemos apresenta-los? Separados ou juntos dos Pacotes para Desktop?
+                * Wallboards Financeiro é possível realizar uma comparação (Wallboard Tradicional vs Wallboard Cotação)
+                * Wallboard Agro não é possível, pois não há com que comparar.
+            2º Os Pacotes Web ??
+    
+    2º Telas Exclusivas:
+        - Financeiro:
+            1º Wallboard;
+            2º Web; Vale a pena criar? Já que agora temos o Trading News!!!
+        - Agronegócio:
+            1º Desktop;
+            2º Wallboard;
+            3º Web;
+        - Político;
+        - Trading News;
+        - Soluções;
+            1º Entrega de Conteúdo; (Data Feed / XML / Webserver)
+            2º Web White Label;
+            3º Ticker;
+            4º TV Conteúdo;
+            5º Ferramentas para Sites de RI;
+    3º Tela de Cadernos (Notícias)
+        - Disposição das Informações:
+            1º Lista dos Cadernos que servirá como atalho até a descrição do Caderno, dispostas em Colunas;
+            2º Cada item da lista servirá como atalho ao descritivo dos cadernos
+

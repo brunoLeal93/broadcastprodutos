@@ -1,9 +1,16 @@
+.fixed-top{
+    background-color: white;
+    border-bottom: 1px solid #dedede;
+    z-index: 1050;
+}
 .teste {
     list-style: none;
     padding: 0;
     margin: 0;
     width: 100%;
 }
+
+
 
 .home{
     font-size: 11px;
@@ -16,7 +23,12 @@ i.fa-home {
     justify-content: space-around;
     margin-left: 25%;
 }
-
+a#logo-bc-financeiro:hover, a#logo-bc-financeiro:focus{
+    color:#00a9fd !important;
+}
+a#logo-bc-agro:hover, a#logo-bc-agro:focus{
+    color:#86a436 !important;
+}
 #logo-bc-agro{
     display: inline-block;
     position: relative;
@@ -24,8 +36,8 @@ i.fa-home {
 
 #logo-bc-agro figcaption{
     position: absolute;
-    top: 30px;
-    right: 36px;
+    top: 19px; /*30px*/
+    right: 29px; /*36px*/
     font-size: 14px;
     color: #0a1c2d;
     text-shadow: -2px 0px 5px black;
@@ -39,8 +51,8 @@ i.fa-home {
 
 #logo-bc-pol figcaption{
     position: absolute;
-    top: 30px;
-    right: 36px;
+    top: 21px; /*30px*/
+    right: 8px; /*36px*/
     font-size: 14px;
     color: #0a1c2d;
     text-shadow: -2px 0px 5px black;
@@ -54,8 +66,8 @@ i.fa-home {
 
 #logo-bc-tr figcaption{
     position: absolute;
-    top: 32px;
-    right: 36px;
+    top: 21px; /*32px*/
+    right: 32px; /*36px*/
     font-size: 14px;
     color: #0a1c2d;
     text-shadow: -2px 0px 5px black;
@@ -69,8 +81,8 @@ i.fa-home {
 
 #logo-bc-sol figcaption{
     position: absolute;
-    top: 29px;
-    right: 11px;
+    top: 21px; /*30px*/
+    right: 11px; /*36px*/
     font-size: 14px;
     color: #0a1c2d;
     text-shadow: -2px 0px 5px black;
