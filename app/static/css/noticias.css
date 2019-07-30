@@ -1,2 +1,10 @@
 .container-fluid  {border-bottom: 1px solid #dedede}
 h3 {color: black}
+
+a#logo-bc-home{
+    color: var(--primary) !important;
+  }
+  
+a#logo-bc-home:hover{
+color: var(--secondary) !important;
+}
