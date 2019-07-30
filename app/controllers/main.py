@@ -42,7 +42,7 @@ def faq():
         return render_template('faq.html', html=html)
 
 
-@app.route('/MarketData', methods=['GET' , 'POST'])
+@app.route('/cotacao', methods=['GET' , 'POST'])
 def cotacao():
         src = searchCotacao()
         htmlderi = ch.htmlDerivativos()
