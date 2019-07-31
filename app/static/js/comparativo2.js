@@ -7,6 +7,8 @@ $('#ckMostraPrecos').click(function(){
     var ckMercados  = document.getElementById('mercados');
     var ckNews  = document.getElementById('news');
     var ckAnalises  = document.getElementById('analises');
+    var ckNews  = document.getElementById('agrotrade');
+    var ckAnalises  = document.getElementById('agro');
 
     if(ckPrecos.checked == true){
         if(ckTrade.checked == true){
@@ -23,6 +25,12 @@ $('#ckMostraPrecos').click(function(){
         }
         if(ckAnalises.checked == true){
             $('#analises-valor').show();
+        }
+        if(ckNews.checked == true){
+            $('#agrotrade-valor').show();
+        }
+        if(ckAnalises.checked == true){
+            $('#agro-valor').show();
         }
         
     }else{
@@ -46,6 +54,8 @@ $('#ckMostraPrecos').click(function(){
         $('#mercados-valor').hide();
         $('#news-valor').hide();
         $('#analises-valor').hide();
+        $('#agrotrade-valor').hide();
+        $('#agro-valor').hide();
     }
 })
 
