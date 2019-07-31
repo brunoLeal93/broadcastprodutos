@@ -1966,6 +1966,7 @@ $('#agrotrade').click(function() {
         $("#ad-c-latibex-agrotrade").hide();
         $("#ad-c-nasdaq-agrotrade").hide();
         $("#ad-c-agrotrade").hide();
+        $("#n-nwlttr-pecuaria-agrotrade").hide();
         $("#ad-c-nybot-agrotrade").hide();
         $("#ad-c-nymex-agrotrade").hide();
         $("#ad-c-nyse-amex-agrotrade").hide();
@@ -2116,6 +2117,7 @@ $('#agrotrade').click(function() {
 
 
     }else{
+        $("#n-nwlttr-pecuaria-agrotrade").show();
         $("#ad-c-b3-bmf-agrotrade").show();
         $("#ad-c-b3-bov-agrotrade").show();
         if($(document.getElementById("ad-c-b3-collapse")).hasClass('show')==false){
@@ -2315,29 +2317,29 @@ $('#agrotrade').click(function() {
         $("#ad-mod-af-capfech-agrotrade").show();
         $("#ad-c-lme-agrotrade").show();
         $("#n-estadaodig-agrotrade").show();
-        $("#n-anaecenaagri-agrotrade").show():
-        $("#n-cenariosagro-agrotrade").show():
-        $("#n-mercadosagro-agrotrade").show():
-        $("#n-nwlttr-sojamilho-agrotrade").show():
-        $("#n-esportes-agrotrade").show():
-        $("#n-ctbd-anagricolacepea-agrotrade").show():
-        $("#n-ctbd-agresource-agrotrade").show():
-        $("#n-ctbd-agrifatto-agrotrade").show():
-        $("#n-ctbd-archer-agrotrade").show():
-        $("#n-ctbd-graodireto-agrotrade").show():
-        $("#n-ctbd-radarinvest-agrotrade").show():
-        $("#n-ctbd-scot-agrotrade").show():
-        $("#n-ctbd-bolsacereais-agrotrade").show():
-        $("#c-agro-bovmercrepo-agrotrade").show():
-        $("#c-agro-estsafras-agrotrade").show():
-        $("#c-agro-fertilizantes-agrotrade").show():
-        $("#c-agro-fretesmini-agrotrade").show():
-        $("#c-agro-fretesfull-agrotrade").show():
-        $("#c-agro-lineup-agrotrade").show():
-        $("#c-agro-paridexport-agrotrade").show():
-        $("#c-agro-precosfisicos-agrotrade").show():
-        $("#c-agro-premiofob-agrotrade").show():
-        $("#c-ctbd-pfisicos-agrotrade").show():
+        $("#n-anaecenaagri-agrotrade").show();
+        $("#n-cenariosagro-agrotrade").show();
+        $("#n-mercadosagro-agrotrade").show();
+        $("#n-nwlttr-sojamilho-agrotrade").show();
+        $("#n-esportes-agrotrade").show();
+        $("#n-ctbd-anagricolacepea-agrotrade").show();
+        $("#n-ctbd-agresource-agrotrade").show();
+        $("#n-ctbd-agrifatto-agrotrade").show();
+        $("#n-ctbd-archer-agrotrade").show();
+        $("#n-ctbd-graodireto-agrotrade").show();
+        $("#n-ctbd-radarinvest-agrotrade").show();
+        $("#n-ctbd-scot-agrotrade").show();
+        $("#n-ctbd-bolsacereais-agrotrade").show();
+        $("#c-agro-bovmercrepo-agrotrade").show();
+        $("#c-agro-estsafras-agrotrade").show();
+        $("#c-agro-fertilizantes-agrotrade").show();
+        $("#c-agro-fretesmini-agrotrade").show();
+        $("#c-agro-fretesfull-agrotrade").show();
+        $("#c-agro-lineup-agrotrade").show();
+        $("#c-agro-paridexport-agrotrade").show();
+        $("#c-agro-precosfisicos-agrotrade").show();
+        $("#c-agro-premiofob-agrotrade").show();
+        $("#c-ctbd-pfisicos-agrotrade").show();
 
 
     };
@@ -2352,6 +2354,7 @@ $('#agro').click(function() {
     if(ckAgro.checked == false){
         var chkAll = document.getElementById('checkAll');
         chkAll.checked = false;
+        $("#n-nwlttr-pecuaria-agro").hide();
         $("#ad-c-agro").hide();
         $("#ad-c-b3-agro").hide();
         $("#ad-c-b3-bmf-agro").hide();
@@ -2527,6 +2530,7 @@ $('#agro').click(function() {
 
 
     }else{
+        $("#n-nwlttr-pecuaria-agro").show();
         if($(document.getElementById("Addon-c-collapse")).hasClass('show')==false){
             $("#ad-c-agro").show();
         }

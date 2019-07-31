@@ -846,10 +846,10 @@ function iconModulos(){
             if(ckAnalises.checked == true){
                 $("#ad-mod-analises").show();
             }
-            if(ckNews.checked == true){
+            if(ckAgroTrade.checked == true){
                 $("#ad-mod-agrotrade").show();
             }
-            if(ckAnalises.checked == true){
+            if(ckAgro.checked == true){
                 $("#ad-mod-agro").show();
             }
         }
@@ -899,10 +899,10 @@ function iconAnaFund(){
             if(ckAnalises.checked == true){
                 $("#ad-mod-af-analises").show();
             }
-            if(ckNews.checked == true){
+            if(ckAgroTrade.checked == true){
                 $("#ad-mod-af-agrotrade").show();
             }
-            if(ckAnalises.checked == true){
+            if(ckAgro.checked == true){
                 $("#ad-mod-af-agro").show();
             }
         }
@@ -1005,10 +1005,10 @@ function iconModNDJN(){
             if(ckAnalises.checked == true){
                 $("#ad-n-djn-analises").show();
             }
-            if(ckNews.checked == true){
+            if(ckAgroTrade.checked == true){
                 $("#ad-n-djn-agrotrade").show();
             }
-            if(ckAnalises.checked == true){
+            if(ckAgro.checked == true){
                 $("#ad-n-djn-agro").show();
             }
         }
@@ -1058,10 +1058,10 @@ function iconModCotacao(){
             if(ckAnalises.checked == true){
                 $("#ad-c-analises").show();
             }
-            if(ckNews.checked == true){
+            if(ckAgroTrade.checked == true){
                 $("#ad-c-agrotrade").show();
             }
-            if(ckAnalises.checked == true){
+            if(ckAgro.checked == true){
                 $("#ad-c-agro").show();
             }
         }
