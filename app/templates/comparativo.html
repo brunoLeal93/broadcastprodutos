@@ -15,7 +15,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Controles de Exibição</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Filtros de Exibição</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -179,7 +179,7 @@
                     </div>
                     <!--AE NEWS-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Principal noticiário em Tempo Real que cobre todos os principais centros econômicos e financeiros do Brasil e do mundo, os desdobramentos dos mercados internacionais e seus impactos no mercado local e notícias <b>Exclusivas</b> com temas diários como: a <b>Abertura</b>, os <b>Cenários (1 e 2)</b>, <b>Pulso do Mercado</b>, entre outros que embasam de forma rápida e completa a tomada de decisão.">AE News</span> <!--i class="fas fa-info-circle nprint"></i--></div>
+                        <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Principal noticiário em Tempo Real com notícias <b>Exclusivas</b> com temas diários (Ex. <b>Abertura</b>, os <b>Cenários (1 e 2)</b>, <b>Pulso do Mercado</b> e etc) que cobrem todos os principais centros econômicos, políticos e financeiros do Brasil e do mundo.">AE News</span> <!--i class="fas fa-info-circle nprint"></i--></div>
                         <div class="col"  id="n-aenews-trade"><i class="fas fa-times"></i></div>
                         <div class="col"  id="n-aenews-conjuntura"><i class="fas fa-times"></i></div>
                         <div class="col"  id="n-aenews-mercados"><i class="fas fa-times"></i></div>
@@ -521,7 +521,7 @@
                     </div>
                     <!--Broadcast-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n2"><i id="iconCBC-0" class="fas fa-angle-right"></i>&nbsp;<a id="CotBcN2" onclick="iconCotacaoBC()"class="text-decoration-none" data-toggle="collapse" href="#Cotacao-bc-collapse"><b>Broadcast</b> <div id="iconCBC-1"  class="realtime"><b>RT</b></div></a></div>
+                        <div class="col-4  n2"><i id="iconCBC-0" class="fas fa-angle-right"></i>&nbsp;<a id="CotBcN2" onclick="iconCotacaoBC()"class="text-decoration-none" data-toggle="collapse" href="#Cotacao-bc-collapse"><b>Broadcast</b> <div id="iconCBC-1"  class="realtime"><b>RT</b></div> <div id="iconCBC-2" class="endofday"><b>Eod</b></div></a></div>
                         <div class="col"  id="c-bc-trade"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-bc-conjuntura"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-bc-mercados"><i class="fas fa-check"></i></div>
@@ -552,7 +552,7 @@
                             </div>
                              <!--Agrotaxas - Preços Físicos e Fretes-->
                             <div class="row align-items-center destacar">
-                                <div class="col-4 n3"><span   data-placement="right" data-toggle="tooltip" data-html="true" title="Preços físicos de grãos das principais praças do Brasil, captados pela equipe do Broadcast. Além dos indicadores e preços regionalizados de todas as commodities pelo CEPEA/ESALQ e Scot Consultoria.<br>Mais de 150 rotas de fretes rodoviários entre regiões produtoras e destinos finais.">Agrotaxas - Preços Físicos e Fretes <div class="realtime"><b>RT</b></div></span>
+                                <div class="col-4 n3"><span   data-placement="right" data-toggle="tooltip" data-html="true" title="Preços físicos de grãos das principais praças do Brasil, captados pela equipe do Broadcast. Além dos indicadores e preços regionalizados de todas as commodities pelo CEPEA/ESALQ e Scot Consultoria.<br>Mais de 150 rotas de fretes rodoviários entre regiões produtoras e destinos finais.">Agrotaxas - Preços Físicos e Fretes </span><div class="endofday"><b>Eod</b></div>
                                 </div>
                                 <div class="col"  id="c-bc-agrotaxas-trade"><i class="fas fa-times"></i></div>
                                 <div class="col"  id="c-bc-agrotaxas-conjuntura"><i class="fas fa-times"></i></div>
@@ -898,7 +898,7 @@
                             </div>
                             <div class="collapse" id="c-ind-usa-collapse">
                                 <div>
-                                    <!--CBOE Indexes-->
+                                    <!--CBOE Indexes
                                     <div class="row align-items-center destacar">
                                         <div class="col-4  n4">CBOE Indexes <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
                                         <div class="col"  id="c-ind-usa-cboe-trade"><i class="fas fa-check"></i></div>
@@ -907,6 +907,7 @@
                                         <div class="col"  id="c-ind-usa-cboe-news"><i class="fas fa-check"></i></div>
                                         <div class="col"  id="c-ind-usa-cboe-analises"><i class="fas fa-check"></i></div>
                                     </div>
+                                    -->
                                     
                                     <!--Nasdaq Índices-->
                                     <div class="row align-items-center destacar">
@@ -1704,6 +1705,11 @@
                                     <div class="row align-items-center destacar">
                                         <div class="col-4  n4">
                                             CBOE Indexes 
+                                            <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                            <b>Delay:</b> 15 min <br/>
+                                            <b>Cód.Serv:</b> BC-xxxxx</br>
+                                            <b>Fee:</b> US$xxxxx</br>
+                                            <b>Demonstração: xxx dias"></i> 
                                             <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
                                             <b>Cód. Serv:</b> BC-2231</br>
                                             <b>Fee:</b> U$4,20</br>
@@ -2123,7 +2129,7 @@
         <div  class="container-fluid">
             <!--AGRO-->
             <div class="row align-items-center destacar">
-                <div class="col-4  n2"><i id="iconAgro-0" class="fas fa-angle-right"></i>&nbsp;<a id="CotAgroN2" onclick="iconCotacaoAgro()"class="text-decoration-none" data-toggle="collapse" href="#Cotacao-agro-collapse"><b>Agro</b> <i id="iconCAgro-1" class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="<b><u>Delay de 15 min</u></b></br>Disponível em <u>TODOS</u> os pacotes"></i></a></div>
+                <div class="col-4  n2"><i id="iconCAgro-0" class="fas fa-angle-right"></i>&nbsp;<a id="CotAgroN2"I onclick="iconCotacaoAgro()"class="text-decoration-none" data-toggle="collapse" href="#Cotacao-agro-collapse"><b>Agro</b> </a></div>
                 <div class="col"  id="c-agro-agrotrade"><i class="fas fa-check"></i></div>
                 <div class="col"  id="c-agro-agro"><i class="fas fa-check"></i></div>
             </div>
@@ -2131,20 +2137,20 @@
                 <div>
                     <!--Bovinos - Mercado de Reposição-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Bovinos - Mercado de Reposição</span> <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i> <!--div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="<b><u>Tempo Real</u></b></br>Disponível <u>SOMENTE</u> mediante contratação de um dos serviços abaixos:</br><b>Cód.Serv:</b> BC-19083 Level I (Sem Livro)</br><b>Fee:</b> ÑP: R$24,15 - P: R$120,71</br><b>Cód.Serv:</b> BC-160 Level II (Com Livro)</br><b>Fee:</b> ÑP: R$40,24 - P: R$174,36</br><b>Cód.Serv:</b> BC-19084 Agro Level II (Com Livro)</br><b>Fee:</b> R$40,24"><b>RT</b></div--></div>
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Bovinos - Mercado de Reposição</span> <div class="endofday" data-placement="right" data-toggle="tooltip" data-html="true" title="Por volta das 15 horas"><b>MoD</b></div></div>
                         <div class="col"  id="c-agro-bovmercrepo-agrotrade"><i class="fas fa-times"></i></div>
                         <div class="col"  id="c-agro-bovmercrepo-agro"><i class="fas fa-check"></i></div>
 
                     </div>
                     <!--Estimativas de Sofra-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Estimativas de Safra</span> <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Acompanhamento diário nas atualizações dos indicadores disponibilizados pelo USDA, CONAB e IBGE, para  Soja (Farelo, Óleo e Grão), Milho, Café, Trigo, Algodão, Açúcar, Arroz e Cana de Açúcar, que são <u>lançados até o dia 15 de cada mês.</u>">Estimativas de Safra</span> </div>
                         <div class="col"  id="c-agro-estsafras-agrotrade"><i class="fas fa-times"></i></div>
                         <div class="col"  id="c-agro-estsafras-agro"><i class="fas fa-check"></i></div>
                     </div>
                     <!--Fertilizantes (Soja e Milho)-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Soja e Milho">Fertilizantes </span> <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Soja e Milho, com atualização nos dia 5 e 20 de cada mês as 17 horas">Fertilizantes </span> </div>
                         <div class="col"  id="c-agro-fertilizantes-agrotrade"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-agro-fertilizantes-agro"><i class="fas fa-check"></i></div>
                     </div>
@@ -2164,19 +2170,19 @@
                     </div>
                     <!--Line up - Navios-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Line up - Navios </span> <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="">Line up - Navios </span> <div class="endofday" data-placement="right" data-toggle="tooltip" data-html="true" title="Por volta das 19 horas"><b>EoD</b></div></div>
                         <div class="col"  id="c-agro-lineup-agrotrade"><i class="fas fa-times"></i></div>
                         <div class="col"  id="c-agro-lineup-agro"><i class="fas fa-check"></i></div>
                     </div>
                     <!--Paridade Exportação (Soja Grão)-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Soja Grão">Paridade Exportação </span> <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
+                        <div class="col-4  n3"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Soja Grão">Paridade Exportação </span> <div class="realtime"><b>RT</b></div></div>
                         <div class="col"  id="c-agro-paridexport-agrotrade"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-agro-paridexport-agro"><i class="fas fa-check"></i></div>
                     </div>
                     <!--Preços Físicos-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4 n3"><span   data-placement="right" data-toggle="tooltip" data-html="true" title="Preços físicos de grãos das principais praças do Brasil, captados pela equipe do Broadcast. Além dos indicadores e preços regionalizados de todas as commodities pelo CEPEA/ESALQ e Scot Consultoria.">Preços Físicos <div class="realtime"><b>RT</b></div></span>
+                        <div class="col-4 n3"><span   data-placement="right" data-toggle="tooltip" data-html="true" title="Preços físicos de grãos das principais praças do Brasil, captados pela equipe do Broadcast. Além dos indicadores e preços regionalizados de todas as commodities pelo CEPEA/ESALQ e Scot Consultoria.">Preços Físicos <div class="endofday" data-placement="right" data-toggle="tooltip" data-html="true" title="Por volta das 18:40"><b>EoD</b></div></span>
                         </div>
                         <div class="col"  id="c-agro-precosfisicos-agrotrade"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-agro-precosfisicos-agro"><i class="fas fa-check"></i></div>
@@ -2513,18 +2519,16 @@
                         <div class="col-4  n3"><i id="iconCIndUSA-0bagro" class="fas fa-angle-right"></i>&nbsp;<a id="CindUSAN3" onclick="iconCIndUSA()"class="text-decoration-none" data-toggle="collapse" href="#c-ind-usa-collapse"><b>USA</b></a> <i id="iconCIndUSA-1bagro" class="far fa-clock"></i></div>
                         <div class="col"  id="c-ind-usa-agrotrade"><i class="fas fa-check"></i></div>
                         <div class="col"  id="c-ind-usa-agro"><i class="fas fa-check"></i></div>
-                        
                     </div>
                     <div class="collapse" id="c-ind-usa-collapse">
                         <div>
-                            <!--CBOE Indexes-->
+                            <!--CBOE Indexes
                             <div class="row align-items-center destacar">
                                 <div class="col-4  n4">CBOE Indexes <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
                                 <div class="col"  id="c-ind-usa-cboe-agrotrade"><i class="fas fa-check"></i></div>
                                 <div class="col"  id="c-ind-usa-cboe-agro"><i class="fas fa-check"></i></div>
-                                
                             </div>
-                            
+                        -->
                             <!--Nasdaq Índices-->
                             <div class="row align-items-center destacar">
                                 <div class="col-4  n4">Nasdaq Indexes <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 15 min"></i></div>
@@ -2567,7 +2571,16 @@
             </div>
             <!--NYMEX-->
             <div class="row align-items-center destacar">
-                <div class="col-4  n2">NYMEX <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
+                <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Participante do CME Group, possui contratos Futuros e Opções de Energia, principalmente e Commodities Agrícolas. Seus principais contratos são:<br>
+                    <ul>
+                        <li>CLN - Light Sweet Crude Oil</li>
+                        <li>BZN - Brent Crude Oil Last Day</li>
+                        <li>HON - Heating OIL NY</li>
+                        <li>RBN - RBOB Gasoline</li>
+                        <li>QLN - Carvão</li>
+                        <li>NGN - Natural Gas Henry Hub</li>
+                    </ul>">NYMEX </span>
+                    <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="Delay de 10 min"></i></div>
                 <div class="col"  id="c-nymex-agrotrade"><i class="fas fa-check"></i></div>
                 <div class="col"  id="c-nymex-agro"><i class="fas fa-check"></i></div>
                 
@@ -3125,6 +3138,11 @@
                                 <div class="row align-items-center destacar">
                                     <div class="col-4  n4">
                                         CBOE Indexes 
+                                        <i class="far fa-clock" data-placement="right" data-toggle="tooltip" data-html="true" title="
+                                            <b>Delay:</b> 15 min <br/>
+                                            <b>Cód.Serv:</b> BC-xxxxx</br>
+                                            <b>Fee:</b> US$xxxxx</br>
+                                            <b>Demonstração: xxx dias"></i> 
                                         <div class="realtime nprint" data-placement="right" data-toggle="tooltip" data-html="true" title="
                                         <b>Cód. Serv:</b> BC-2231</br>
                                         <b>Fee:</b> U$4,20</br>

@@ -1,7 +1,8 @@
-from flask import render_template, request, jsonify, redirect
+from flask import render_template, request, jsonify, redirect, flash
 from app import app
 from app.models.buscador import searchCotacao, searchFAQ
 from app.models import criaHtml as ch
+from app.models.forms import FAQForm
 from app.controllers.sendEmail import sendEmail
 from pprint import pprint
 from pymongo import ASCENDING
@@ -20,26 +21,33 @@ def comparativo():
 
 @app.route('/FAQ', methods=('GET', 'POST'))
 def faq():
+        form = FAQForm()
         src = searchFAQ()
         htmlfaq = ch.htmlFAQ()
         result = src.searchfaq("")
         html = htmlfaq.montaHtmlFAQ(result)
 
         if request.method == "POST":
-                solicitante = request.form.get('email-contato')
-                pergunta = request.form.get('pergunta-text')
-                if solicitante and pergunta != None:
-                        
+                faqText = request.form.get('contentSearch')
+
+                if form.validate():
+
+                        solicitante = form.email.data
+                        pergunta = form.pergunta.data
                         se = sendEmail()
-                        se.send(solicitante,pergunta)     
-                else:
-                        faqText = request.form.get('contentSearch')
+                        se.send(solicitante,pergunta)
+                        flash('<strong>Enviado com Sucesso!</strong> Assim que tivermos uma resposta, entraremos em contato.')
+                        form.pergunta.data=""
+                        return render_template('faq.html', html=html, form=form)
+
+                if faqText != None:
+                        print(faqText)
                         result = src.searchfaq(faqText)
                         html = htmlfaq.montaHtmlFAQ(result)
-                        return render_template('faq.html', html=html)
-                        
-                        
-        return render_template('faq.html', html=html)
+                        return render_template('faq.html', html=html, form=form)
+
+
+        return render_template('faq.html', html=html, form=form)
 
 
 @app.route('/cotacao', methods=['GET' , 'POST'])
@@ -81,4 +89,4 @@ def bpro_terminal():
 
 @app.route('/BAGRO-Terminal', methods=('GET' , 'POST'))
 def bagro_terminal():
-        return render_template('BCAGRO-Terminal.html')
+        return render_template('BAGRO-Terminal.html')

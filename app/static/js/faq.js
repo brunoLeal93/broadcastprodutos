@@ -1,7 +1,18 @@
 $("#question").hover(
     function() {
-        $( "div p" ).removeClass( "d-none" );
+        $( "div button p" ).removeClass( "d-none" );
       }, function() {
-        $( "div p" ).addClass( "d-none" );
+        $( "div button p" ).addClass( "d-none" );
       }
   );
+
+  function SucessSend(){
+    $( "#sucesso" ).removeClass( "d-none" );
+    console.log(v1);
+    //$(document.getElementById("Cotacao-b3-collapse")).hasClass('d-show')
+
+    //if($(document.getElementById("Cotacao-b3-collapse")).hasClass('d-show')){
+
+    //}
+
+  }
