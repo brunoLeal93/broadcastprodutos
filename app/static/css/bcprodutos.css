@@ -16,7 +16,9 @@ i.fa-home {
 .bkg-jumbotronTop {
   background-image: url(http://broadcast.com.br/wp-content/uploads/2017/06/bpro4.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 500px;
+  background-position: center 40%;
+
   background-color: #000;
 }
 .bkg-jumbotronTop .display-4 {

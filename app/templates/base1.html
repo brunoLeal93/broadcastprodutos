@@ -29,7 +29,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <a class="nav-link home" href="{{url_for('home')}}">
-            <img src="../static/img/LOGO-BC-Institucional.png" height="35" style="margin-top: -25px;" width="auto" alt="Broadcast Comercial">
+           {%block logo%} <img src="../static/img/LOGO-BC-Institucional.png" height="35" style="margin-top: -25px;" width="auto" alt="Broadcast Comercial"> {% endblock %}
             <!--<i class="fas fa-home"></i><br/>Home -->
         </a>
         <ul class="navbar-nav menu teste">
