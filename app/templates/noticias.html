@@ -4,193 +4,99 @@
 <link rel="stylesheet" href="../static/css/noticias.css">
 {%endblock%}
 {%block content%}
-    <!-- Modal 
-    <div class="modal fade" id="filtrosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Filtros</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+
+<!-- Jumbotrom -->
+<div class="jumbotron jumbotron-fluid bg-primary" id="topo">
+    <div class="container text-center">
+        <h3 style="color: white">Noticiosos</h3>
+        <!--
+        <form method="POST" class="form col-md-6 offset-md-3" action="/noticias" name="Busca">    
+            <div class="input-group mt-5">
+                <input type="text" name="contentSearch" id="contentSearch" class="form-control typeahead" data-provide="typeahead" autocomplete="off" placeholder="Busque por Mercadoria, Fonte ou Mercado" aria-label="Buscar em nossas cotações..." aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <input class="btn btn-secondary" type="submit" id="button-addon2" value="Buscar"/>
+                </div>
+            </div>
+            <button id="btn-Filtros" type="button" class="btn btn-secondary mt-2" data-toggle="modal" data-target="#filtrosModal">
+                Filtros
             </button>
-        </div>
-        <div class="modal-body">
-            <form method="POST" action="/cotacao">
-                <div class="row">
-                    <div class="input-group mt-2 ml-2 mr-2">
-                        <input type="text" name="contentSearch" id="contentSearch" class="form-control" placeholder="Buscar em nossas cotações..." aria-label="Buscar em nossas cotações..." aria-describedby="button-Buscar">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-check mt-2">
-                            <h5>Mercados</h5>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="todosMercados" checked>
-                            <label class="form-check-label" for="todosMercados" >Todos</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="aVista" checked>
-                            <label class="form-check-label" for="aVista" >A Vista</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="aTermo" checked>
-                            <label class="form-check-label" for="aTermo">A Termo</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="Balcao" checked>
-                            <label class="form-check-label" for="Balcao">Balcão</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="Futuro" checked>
-                            <label class="form-check-label" for="Futuro">Futuro</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="Opcao" checked>
-                            <label class="form-check-label" for="Opcao">Opção</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="Spred" checked>
-                            <label class="form-check-label" for="Spred">Spred</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="Swap" checked>
-                            <label class="form-check-label" for="Swap">Swap</label>
-                        </div>
-                    </div>
-                    <div class="col">
-                            <div class="form-check mt-2">
-                                <h5>Tipo Ativo</h5>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="todosTipoAtivo" checked>
-                                <label class="form-check-label" for="todosTipoAtivo">Todos</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="Acao" checked>
-                                <label class="form-check-label" for="Acao" >Ação</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="Cambio" checked>
-                                <label class="form-check-label" for="Cambio" >Câmbio</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="Commodities" checked>
-                                <label class="form-check-label" for="Commodities">Commodities</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="Fundos" checked>
-                                <label class="form-check-label" for="Fundos">Fundos</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="IndAcao" checked>
-                                <label class="form-check-label" for="IndAcao">Índices Ação</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="RendaFixa" checked>
-                                <label class="form-check-label" for="RendaFixa">Renda Fixa</label>
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="TaxasIndic" checked>
-                                <label class="form-check-label" for="TaxasIndic">Taxas e Indicadores</label>
-                            </div>
-                        </div>
-                </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button type="submit" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-            <button type="submit" id="button-Buscar" class="btn btn-secondary">Buscar</button>
-        </div>
-        </div>
+            -->
+        </form>
     </div>
-    </div>
--->
-    <!-- Jumbotrom -->
-    <div class="jumbotron jumbotron-fluid bg-primary" id="topo">
-        <div class="container text-center">
-            <h3 style="color: white">Noticiosos</h3>
-            <!--
-            <form method="POST" class="form col-md-6 offset-md-3" action="/noticias" name="Busca">    
-                <div class="input-group mt-5">
-                    <input type="text" name="contentSearch" id="contentSearch" class="form-control typeahead" data-provide="typeahead" autocomplete="off" placeholder="Busque por Mercadoria, Fonte ou Mercado" aria-label="Buscar em nossas cotações..." aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                        <input class="btn btn-secondary" type="submit" id="button-addon2" value="Buscar"/>
-                    </div>
-                </div>
-                <button id="btn-Filtros" type="button" class="btn btn-secondary mt-2" data-toggle="modal" data-target="#filtrosModal">
-                    Filtros
-                </button>
-                -->
-            </form>
-        </div>
-    </div>
-    <!--
-    <table style='width:100%'><tr><th class='text-center'>Mercadoria</th><th class='text-center'>Fonte</th><th class='text-center'>Mercado</th><th class='text-center'>Descrição Papel</th><th class='text-center'>Cód. Bolsa</th><th class='text-center'>Cód. Broadcast</th></tr><tr><td class='text-center' rowspan='9' class='text-center'>Café</td><td class='text-center' rowspan='4' class='text-center'>BMF</td><td class='text-center'>Futuro</td><td>Café Arábica Rolagem</td><td class='text-center'>CR1</td><td class='text-center'>CR1</td></tr><tr><td class='text-center'>Futuro</td><td>Café Arábica Tipo 4/5</td><td class='text-center'>ICF</td><td class='text-center'>ICF</td></tr><tr><td class='text-center'>Opção</td><td>Café Arábica Tipo 4/5</td><td class='text-center'>ICF</td><td class='text-center'>ICF</td></tr><tr><td class='text-center'>Futuro</td><td>Café Arábica Tipo 4/5</td><td class='text-center'>ICF</td><td class='text-center'>ICF</td></tr><tr><td class='text-center' rowspan='2' class='text-center'>ICE Europe (IPE)</td><td class='text-center'>Futuro</td><td>Café Robusta</td><td class='text-center'>RC</td><td class='text-center'>RCC</td></tr><tr><td class='text-center'>Opção</td><td>Café Robusta</td><td class='text-center'>RC</td><td class='text-center'>RRC</td></tr><tr><td class='text-center' rowspan='3' class='text-center'>ICE US (NYBOT)</td><td class='text-center'>Futuro</td><td>Café Arábica</td><td class='text-center'>KC</td><td class='text-center'>CFN</td></tr><tr><td class='text-center'>Opção</td><td>Café Arábica</td><td class='text-center'>KC</td><td class='text-center'>CF</td></tr><tr><td class='text-center'>Opção</td><td>Café Arábica</td><td class='text-center'>KCW</td><td class='text-center'>KCW</td></tr></table>
-     -->
+</div>
+<!--
+<table style='width:100%'><tr><th class='text-center'>Mercadoria</th><th class='text-center'>Fonte</th><th class='text-center'>Mercado</th><th class='text-center'>Descrição Papel</th><th class='text-center'>Cód. Bolsa</th><th class='text-center'>Cód. Broadcast</th></tr><tr><td class='text-center' rowspan='9' class='text-center'>Café</td><td class='text-center' rowspan='4' class='text-center'>BMF</td><td class='text-center'>Futuro</td><td>Café Arábica Rolagem</td><td class='text-center'>CR1</td><td class='text-center'>CR1</td></tr><tr><td class='text-center'>Futuro</td><td>Café Arábica Tipo 4/5</td><td class='text-center'>ICF</td><td class='text-center'>ICF</td></tr><tr><td class='text-center'>Opção</td><td>Café Arábica Tipo 4/5</td><td class='text-center'>ICF</td><td class='text-center'>ICF</td></tr><tr><td class='text-center'>Futuro</td><td>Café Arábica Tipo 4/5</td><td class='text-center'>ICF</td><td class='text-center'>ICF</td></tr><tr><td class='text-center' rowspan='2' class='text-center'>ICE Europe (IPE)</td><td class='text-center'>Futuro</td><td>Café Robusta</td><td class='text-center'>RC</td><td class='text-center'>RCC</td></tr><tr><td class='text-center'>Opção</td><td>Café Robusta</td><td class='text-center'>RC</td><td class='text-center'>RRC</td></tr><tr><td class='text-center' rowspan='3' class='text-center'>ICE US (NYBOT)</td><td class='text-center'>Futuro</td><td>Café Arábica</td><td class='text-center'>KC</td><td class='text-center'>CFN</td></tr><tr><td class='text-center'>Opção</td><td>Café Arábica</td><td class='text-center'>KC</td><td class='text-center'>CF</td></tr><tr><td class='text-center'>Opção</td><td>Café Arábica</td><td class='text-center'>KCW</td><td class='text-center'>KCW</td></tr></table>
+    -->
 
-    </section>
-    <!-- Section Derivativos -->
+</section>
+<!-- Section Derivativos -->
 
-    <section class="jumbotron bg-light" id="listaCadernos">
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <ul>
-                        <li><a href="#aenews">AE News</a></li>
-                        <li><a href="#empset">Empresas e Setores</a></li>
-                        <li>Conjuntura e Finanças</li>
-                        <li>Conjuntura e Negócios</li>
-                    </ul>
-                </div>
-                <div class="col">
-                        <ul>
-                            <li>Agro News</li>
-                            <li>Agro News Fast</li>
-                            <li>Conjuntura e Finanças</li>
-                            <li>Conjuntura e Negócios</li>
-                        </ul>
-                    </div>
+<section class="jumbotron bg-light" id="NotDestaques">
+    <h5 class="mb-3 text-primary">Noticiosos em Destaques:</h5>
+    <div class="card-deck">
+        <div class="card text-center">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">AE News</h5>
+                <p class="card-text">Principal noticiário em Tempo Real com notícias <b>Exclusivas</b> com temas diários (Ex. <b>Abertura</b>, os <b>Cenários (1 e 2)</b>, <b>Pulso do Mercado</b> e etc).</p>
+                <button id="btn-aenews" class="btn btn-outline-secondary mt-auto" data-target="#aenews" data-toggle="modal">Saiba mais</button>
             </div>
         </div>
-        <div class="row mt-5" id="aenews">
-            <div class="title"><h3 class="mb-4">AE News</h3></div>
-            <div class="row">
-                <div class="container-fluid">
-                    <p>Serviço líder no mercado nacional, que traz notícias em tempo real dos principais
-                            acontecimentos políticos, econômicos e empresariais, com intensa cobertura dos mercados de ações, dólar,
-                            juros, títulos públicos e fatos relevantes para os negócios. Acompanha também os indicadores econômicos,
-                            inflação e cenário internacional.</p>
-                    <p>Informações exclusivas sobre os bastidores e antecipação dos fatos que irão impactar a economia, o mercado
-                            financeiro e as instituições, elaboradas a partir de entrevistas com executivos, economistas, analistas de mercado,
-                            autoridades do governo federal e parlamentares;</p>
-                    <p>Entrevistas multimídias exclusivas ao vivo, com executivos, autoridades do governo federal e parlamentares sobre
-                            assuntos de interesse do mercado financeiro;</p>
-                </div>
+        <div class="card text-center">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Empresas e Setores</h5>
+                <p class="card-text">Cobertura composta por notícias, análises e cenários das empresas com relevância no mercado de capitais e dos principais setores da economia brasileira.</p>
+                <div class="btn btn-outline-secondary mt-auto disabled" data-target="#empset" data-toggle="modal">Em breve</div>
             </div>
         </div>
-    
-        <div class="row mt-3" id="emset">
-                <div class="title"><h3 class="mb-4">Empresa e Setores</h3></div>
-                <div class="row">
-                    <div class="container-fluid">
-                        <p>Serviço líder no mercado nacional, que traz notícias em tempo real dos principais
-                                acontecimentos políticos, econômicos e empresariais, com intensa cobertura dos mercados de ações, dólar,
-                                juros, títulos públicos e fatos relevantes para os negócios. Acompanha também os indicadores econômicos,
-                                inflação e cenário internacional.</p>
-                        <p>Informações exclusivas sobre os bastidores e antecipação dos fatos que irão impactar a economia, o mercado
-                                financeiro e as instituições, elaboradas a partir de entrevistas com executivos, economistas, analistas de mercado,
-                                autoridades do governo federal e parlamentares;</p>
-                        <p>Entrevistas multimídias exclusivas ao vivo, com executivos, autoridades do governo federal e parlamentares sobre
-                                assuntos de interesse do mercado financeiro;</p>
-                    </div>
-                </div>
+        <div class="card text-center">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Agro News</h5>
+                <p class="card-text">Fornecendo análises, cenários e tendências para o agronegócio em Tempo Real, o Agro News cobre o desempenho de commodities a nível global.</p>
+                <div class="btn btn-outline-secondary mt-auto disabled" data-target="#agronews" data-toggle="modal">Em breve</div>
             </div>
+        </div>
+        <div class="card text-center">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Político</h5>
+                <p class="card-text">Ampla cobertura em tempo real do cenário político brasileiro, com os bastidores das três esferas do poder, as votações em destaque e entrevistas exclusivas.</p>
+                <div class="btn btn-outline-secondary mt-auto disabled" data-target="#politico" data-toggle="modal">Em breve</div>
+            </div>
+        </div>
+        <div class="card text-center">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Trading View</h5>
+                <p class="card-text">jsoidjsi jdoisdjsaidjsa jdoiasjdoksamdlskaj lklskdo dksopdiwd ms dsdmskdj i odksapodkosim,sdmsadkopid id</p>
+                <div class="btn btn-outline-secondary mt-auto disabled" data-target="#tradingview" data-toggle="modal">Em breve</div>
+            </div>
+        </div>
+    </div>
+</section>
 
-        
-        
-    </section>
+<!-- Modal -->
+<div class="modal fade" id="aenews" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">AE News</h5>
+            </div>
+            <div class="modal-body">
+                <p>Noticiário em tempo real, produzido a partir das informações colhidas minuto a minuto pelo jornalistas da Agência Estado, locados no Brasil e com correspondentes em Londres e Nova York, cobrindo intensamente os mercados de ações, câmbio, juros, títulos públicos, os principais centros financeiros com os números e notícias das principais economias e empresas do mundo, os desdobramentos dos mercados internacionais e seus impactos no mercado local.</p>
+                <p>O AE News, ainda, consolida todas as informações dos demais cadernos garantindo que o investidor tenha a mãos e não perca nenhuma informação que seja relevante para sua tomada de decisão. Além da sua ampla cobertura nacional e internacional dos fatos econômicos e políticos, o AE News fornece matérias diárias com temas específicos, alguns desses temas são:</p>
+                <ul>
+                    <li><i>Cenários 1</i> - Reúne quatro textos divulgados antes das 13 horas com um olhar aprofundado sobre o comportamento dos mercados de Câmbio, Juros e Bolsa nacionais durante a primeira metade da sessão diária de negócios, além de um panorama das atividades das principais praças internacionais até esse horário.</li>
+                    <li><i>Cenário 2</i> - Assim como no Cenário 1, três textos reúnem e comentam todos os assuntos econômicos e políticos que interferiram nas transações do dia nos mercados nacionais de Bolsa, Câmbio e Juros. Um quarto texto aglutina e avalia os destaques dos negócios financeiros internacionais.</li>
+                    <li><i>PSC</i> - Divulgado todos os dias às 6h30, apresenta o resumo dos acontecimentos dos cenários político e econômico de maior relevância para os mercados ocorridos após o envio do cenário-2.</li>
+                    <li><i>Pulso do Mercado</i> - Registro rápido e curto que informa e dá a primeira justificativa para movimentações bruscas do mercado.</li>
+                    <li><i>Exclusivo</i> -  Notícias divulgadas com exclusividade pela Redação do Broadcast, antes de nossos concorrentes.</li>
+                    <li><i>Bastidores</i> - Identifica textos que levam ao leitor os detalhes não públicos, mas conseguidos com fontes dos repórteres do Broadcast diretamente envolvidas em decisões ou acontecimentos econômicos ou políticos importantes.</li>
+                    <li><i>Especial</i> - Matérias especiais que desenvolvem mais profundamente temas que estão em destaque nos cenários econômico, corporativo ou político, no momento.</li>
+                    <li><i>Top Picks</i> - Principais recomendações das equipes de análises das instituições financeiras para o mercado de ações brasileiro.</li>
+                    <li><i>Direto de Wall Street</i> - Divulgado todos os dias um pouco antes da abertura dos mercados americanos, apresenta um panorama dos acontecimentos e variáveis que têm interferência no desempenho dos ativos dos EUA.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
     
 {%endblock%}
 

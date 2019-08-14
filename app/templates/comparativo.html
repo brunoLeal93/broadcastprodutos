@@ -88,7 +88,7 @@
 </div>
 
 <!-- Jumbotrom -->
-<div class="jumbotron jumbotron-fluid bg-primary mb-3">
+<div id="topo" class="jumbotron jumbotron-fluid bg-primary mb-3">
     <div class="container-fluid">
         <h3 class="mb-3 text-center nprint" style="color: white; margin-top:-20px">Conteúdos vs Pacotes</h3>
         <form>
@@ -179,7 +179,8 @@
                     </div>
                     <!--AE NEWS-->
                     <div class="row align-items-center destacar">
-                        <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Principal noticiário em Tempo Real com notícias <b>Exclusivas</b> com temas diários (Ex. <b>Abertura</b>, os <b>Cenários (1 e 2)</b>, <b>Pulso do Mercado</b> e etc) que cobrem todos os principais centros econômicos, políticos e financeiros do Brasil e do mundo.">AE News</span> <!--i class="fas fa-info-circle nprint"></i--></div>
+                        <div class="col-4  n2"><span data-placement="right" data-toggle="tooltip" data-html="true" title="Principal noticiário em Tempo Real com notícias <b>Exclusivas</b> com temas diários (Ex. <b>Abertura</b>, os <b>Cenários (1 e 2)</b>, <b>Pulso do Mercado</b> e etc) que cobrem todos os principais centros econômicos, políticos e financeiros do Brasil e do mundo.">
+                            <a href="{{ url_for('noticias', _anchor='aenews') }}">AE News</a></span> <!--i class="fas fa-info-circle nprint"></i--></div>
                         <div class="col"  id="n-aenews-trade"><i class="fas fa-times"></i></div>
                         <div class="col"  id="n-aenews-conjuntura"><i class="fas fa-times"></i></div>
                         <div class="col"  id="n-aenews-mercados"><i class="fas fa-times"></i></div>

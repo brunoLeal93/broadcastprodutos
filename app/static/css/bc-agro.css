@@ -1,9 +1,10 @@
 .bg-agro {
-  background-image: url(https://www.simnoticias.com.br/wp-content/uploads/2019/01/agronegcio.jpg);
+  background-image: url(../img/banner-Agro.jpg);
   background-repeat: no-repeat;
-  background-size: 100% 1000px;
+  background-size: cover;
   background-position: center 40%;
-  background-color: #000;
+
+
 }
 
 a#logo-bc-agro{

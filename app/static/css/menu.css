@@ -9,9 +9,29 @@
     margin: 0;
     width: 100%;
 }
+/* css do icon Volta ao Topo*/
+.fixed-back-top{
+    position:fixed;
+    z-index:998; 
+    left:94%; 
+    top:90%;
+    overflow:hidden;
+    padding:6px;
+    border-radius: 150px;
+  }
 
+  .fas.fa-arrow-circle-up{
+    color: black;
+    -webkit-text-stroke-width: 2px;
+    
+  }
 
+  .fas.fa-arrow-circle-up:hover{
+    color: transparent;
+    -webkit-text-stroke-color: black;
+  }
 
+/*Fim */
 .home{
     font-size: 11px;
 }

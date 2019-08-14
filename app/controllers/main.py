@@ -5,7 +5,7 @@ from app.models import criaHtml as ch
 from app.models.forms import FAQForm
 from app.controllers.sendEmail import sendEmail
 from pprint import pprint
-from pymongo import ASCENDING
+
 
 @app.route('/Home', methods=('GET', 'POST'))
 @app.route('/', methods=('GET', 'POST'))

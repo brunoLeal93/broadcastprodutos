@@ -1,6 +1,7 @@
 @charset "UTF-8";
 body {
   background-color: #232323 !important;
+  width:100%;
 }
 
 .chart-container {

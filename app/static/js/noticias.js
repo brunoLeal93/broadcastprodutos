@@ -1,6 +1,8 @@
-function vaiparaCaderno(id){
-  a="#"
-  b= a.concat(id)
-  window.location.href=id;
-  console.log(b);
-}
+
+$(document).ready(function() {
+  var url_atual = window.location.href;
+  if(url_atual.match(/aenews/)){
+      document.getElementById("btn-aenews").click();
+      console.log(1)
+  } 
+});

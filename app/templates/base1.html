@@ -95,8 +95,12 @@
         </ul>
       </div>
     </nav>
+    <!--Volta ao topo-->
     {%endblock%}
     {%block content%}{% endblock %}
+    <div id="back-top" class="fixed-back-top d-none">
+        <a href="#topo"><i class="fas fa-arrow-circle-up fa-3x" data-placement="top" data-toggle="tooltip" data-html="true" title="Volta ao Topo!"></i></a>
+    </div>
     {%block footer%}
     <!-- Footer -->
     <footer class="footer mt-3">
@@ -148,21 +152,9 @@
     <script src="../static/node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../static/node_modules/chart.js/dist/chart.js"></script>
 
-    <!-- Optional JavaScript -->
-    <script>
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();              
-        });
-
-        $(window).on('scroll', function(event) {
-            var scrollValue = $(window).scrollTop();
-            if ( scrollValue > 10) {
-                 $('.navbar').addClass('fixed-top');
-            }else{
-               $('.navbar').removeClass('fixed-top');
-            }
-        });
-    </script>
+    <!-- Base JavaScript -->
+    <script src="../static/js/base.js"></script>
+    
     {%block scripts%}{% endblock %}
   </body>
 </html>
