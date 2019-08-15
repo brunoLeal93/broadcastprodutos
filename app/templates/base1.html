@@ -19,18 +19,14 @@
     {%block nav %}
     <!-- Nav Menu -->
     <nav class="navbar navbar-expand-md navbar-light bg-gradient-light">
-        <!--
-      <a class="navbar-brand" href="{{url_for('home')}}">
-          <img src="../static/img/logo-bcComercial.png" height="40" width="auto" alt="Broadcast Comercial">
-      </a>
-    -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <a class="nav-link home" href="{{url_for('home')}}">
+
            {%block logo%} <img src="../static/img/LOGO-BC-Institucional.png" height="35" style="margin-top: -25px;" width="auto" alt="Broadcast Comercial"> {% endblock %}
-            <!--<i class="fas fa-home"></i><br/>Home -->
+
         </a>
         <ul class="navbar-nav menu teste">
             <li class="nav-item">
@@ -101,6 +97,31 @@
     <div id="back-top" class="fixed-back-top d-none">
         <a href="#topo"><i class="fas fa-arrow-circle-up fa-3x" data-placement="top" data-toggle="tooltip" data-html="true" title="Volta ao Topo!"></i></a>
     </div>
+    <!--Modal Fale Conosco-->
+    <div class="modal fade" id="fale-conosco" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">AE News</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Noticiário em tempo real, produzido a partir das informações colhidas minuto a minuto pelo jornalistas da Agência Estado, locados no Brasil e com correspondentes em Londres e Nova York, cobrindo intensamente os mercados de ações, câmbio, juros, títulos públicos, os principais centros financeiros com os números e notícias das principais economias e empresas do mundo, os desdobramentos dos mercados internacionais e seus impactos no mercado local.</p>
+                        <p>O AE News, ainda, consolida todas as informações dos demais cadernos garantindo que o investidor tenha a mãos e não perca nenhuma informação que seja relevante para sua tomada de decisão. Além da sua ampla cobertura nacional e internacional dos fatos econômicos e políticos, o AE News fornece matérias diárias com temas específicos, alguns desses temas são:</p>
+                        <ul>
+                            <li><i>Cenários 1</i> - Reúne quatro textos divulgados antes das 13 horas com um olhar aprofundado sobre o comportamento dos mercados de Câmbio, Juros e Bolsa nacionais durante a primeira metade da sessão diária de negócios, além de um panorama das atividades das principais praças internacionais até esse horário.</li>
+                            <li><i>Cenário 2</i> - Assim como no Cenário 1, três textos reúnem e comentam todos os assuntos econômicos e políticos que interferiram nas transações do dia nos mercados nacionais de Bolsa, Câmbio e Juros. Um quarto texto aglutina e avalia os destaques dos negócios financeiros internacionais.</li>
+                            <li><i>PSC</i> - Divulgado todos os dias às 6h30, apresenta o resumo dos acontecimentos dos cenários político e econômico de maior relevância para os mercados ocorridos após o envio do cenário-2.</li>
+                            <li><i>Pulso do Mercado</i> - Registro rápido e curto que informa e dá a primeira justificativa para movimentações bruscas do mercado.</li>
+                            <li><i>Exclusivo</i> -  Notícias divulgadas com exclusividade pela Redação do Broadcast, antes de nossos concorrentes.</li>
+                            <li><i>Bastidores</i> - Identifica textos que levam ao leitor os detalhes não públicos, mas conseguidos com fontes dos repórteres do Broadcast diretamente envolvidas em decisões ou acontecimentos econômicos ou políticos importantes.</li>
+                            <li><i>Especial</i> - Matérias especiais que desenvolvem mais profundamente temas que estão em destaque nos cenários econômico, corporativo ou político, no momento.</li>
+                            <li><i>Top Picks</i> - Principais recomendações das equipes de análises das instituições financeiras para o mercado de ações brasileiro.</li>
+                            <li><i>Direto de Wall Street</i> - Divulgado todos os dias um pouco antes da abertura dos mercados americanos, apresenta um panorama dos acontecimentos e variáveis que têm interferência no desempenho dos ativos dos EUA.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     {%block footer%}
     <!-- Footer -->
     <footer class="footer mt-3">
@@ -134,7 +155,7 @@
                 </li>
             </ul>
         </div>
-        <div class="mt-3 col-md-6 offset-md-3 text-center"><small>As informações contidas neste documento são de uso exclusivo da Agência Estado e seus clientes, ficando restrita a divulgação, cópia ou distribuição das mesmas.</small></div>
+        <div class="mt-3 col-md-6 offset-md-3 text-center"><small>As informações contidas neste documento são de uso exclusivo da Agência Estado e seus clientes, ficando restrita a divulgação, cópia ou distribuição das mesmas.<br><a data-target="#fale-conosco" data-toggle="modal">Fale conosco</a></small></div>
     </footer>
     
     <!-- Copyright -->
