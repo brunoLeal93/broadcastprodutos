@@ -1396,6 +1396,9 @@ function controlaNivel(){
         if($(document.getElementById("Cotacao-anb-collapse")).hasClass('show')){
             document.getElementById("CotAnbN2").click();
         }
+        if($(document.getElementById("Cotacao-agro-collapse")).hasClass('show')){
+            document.getElementById("CotAgroN2").click();
+        }
         if($(document.getElementById("Cotacao-b3-collapse")).hasClass('show')){
             document.getElementById("CotB3N2").click();
         }
@@ -1475,6 +1478,9 @@ function controlaNivel(){
             if($(document.getElementById("Cotacao-anb-collapse")).hasClass('show')){
                 document.getElementById("CotAnbN2").click();
             }
+            if($(document.getElementById("Cotacao-agro-collapse")).hasClass('show')){
+                document.getElementById("CotAgroN2").click();
+            }
             if($(document.getElementById("Cotacao-b3-collapse")).hasClass('show')){
                 document.getElementById("CotB3N2").click();
             }
@@ -1553,6 +1559,9 @@ function controlaNivel(){
                 }
                 if($(document.getElementById("Cotacao-anb-collapse")).hasClass('show')==false){
                     document.getElementById("CotAnbN2").click();
+                }
+                if($(document.getElementById("Cotacao-agro-collapse")).hasClass('show')==false){
+                    document.getElementById("CotAgroN2").click();
                 }
                 if($(document.getElementById("Cotacao-b3-collapse")).hasClass('show')==false){
                     document.getElementById("CotB3N2").click();
