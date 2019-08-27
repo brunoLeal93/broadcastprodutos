@@ -1333,7 +1333,7 @@ function iconAdCNyse(){
             $("#ad-c-nyse-agro").show();
         } else {
             if(ckTrade.checked == true){
-                $("ad-#c-nyse-trade").show();
+                $("#ad-c-nyse-trade").show();
             }
             if(ckConjuntura.checked == true){
                 $("#ad-c-nyse-conjuntura").show();
