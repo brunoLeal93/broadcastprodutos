@@ -25,6 +25,9 @@ def faq():
         src = searchFAQ()
         htmlfaq = ch.htmlFAQ()
         result = src.searchfaq("")
+        
+        print(result)
+
         html = htmlfaq.montaHtmlFAQ(result)
 
         if request.method == "POST":
