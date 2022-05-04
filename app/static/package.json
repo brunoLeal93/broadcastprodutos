@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.7.7",
+    "angular": "^1.8.3",
     "bootstrap": "^4.3.1",
     "chart.js": "^2.8.0",
     "chartjs-subtitle": "^0.2.0",
